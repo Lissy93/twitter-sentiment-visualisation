@@ -1,0 +1,8 @@
+extends layout
+block content
+    div.content.map
+        script(src="/bower_components/webcomponentsjs/webcomponents.min.js")
+        link(rel="import", href="/bower_components/google-map/google-map.html")
+        include map_style
+        google-map(latitude="37.77493", longitude="-122.41942", fit-to-markers, styles="#{mapstyle}")
+    script(src='/javascripts/map.js')
