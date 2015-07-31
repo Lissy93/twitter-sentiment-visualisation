@@ -1,0 +1,35 @@
+{
+  "name": "twitter-sentiment-visualisation",
+  "version": "0.0.0",
+  "authors": [
+    "alicia@aliciasykes.com"
+  ],
+  "description": "A series of data visualisations showing overall sentiment from Tweets by location and/or topic",
+  "main": "app.js",
+  "moduleType": [
+    "node"
+  ],
+  "keywords": [
+    "awesome",
+    "twitter",
+    "sentiment-analysis",
+    "d3",
+    "visualisation",
+    "data"
+  ],
+  "license": "MIT",
+  "homepage": "http://twitter-sentiment-visualisation.as93.net",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#1.0.0",
+    "google-map": "GoogleWebComponents/google-map#~1.0.3",
+    "jquery": "~2.1.4",
+    "materialize": "~0.97.0"
+  }
+}
