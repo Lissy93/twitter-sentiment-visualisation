@@ -31,7 +31,7 @@ var del     = require('del');
 var CONFIG = {
     SOURCE_ROOT         : "source",     // Folder name for all js and css source
     DEST_ROOT           : "public",     // Folder name for the results root
-    JS_DEST_DIR_NAME    : "scripts",    // Name of JavaScript directory
+    JS_DEST_DIR_NAME    : "javascripts",// Name of JavaScript directory
     JS_SRC_DIR_NAME     : "scripts",    // Name of JavaScript directory
     CSS_DEST_DIR_NAME   : "stylesheets",// Name of CSS directory
     CSS_SRC_DIR_NAME    : "styles",     // Name of CSS directory
@@ -65,8 +65,8 @@ gulp.task('scripts',  function(){
         .pipe(changed(jsResPath))
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'))
-        .pipe(concat(CONFIG.JS_FILE_NAME,{newLine: ';'}))
-        .pipe(uglify())
+        //.pipe(concat(CONFIG.JS_FILE_NAME,{newLine: ';'}))
+        //.pipe(uglify())
         .pipe(footer(CONFIG.FOOTER_TEXT))
         .pipe(gsize())
         .pipe(gulp.dest(jsResPath))
@@ -76,19 +76,25 @@ gulp.task('scripts',  function(){
 
 /* CSS Tasks */
 gulp.task('styles',  function(){
-    var cssSrcPath = CONFIG.SOURCE_ROOT + '/'+CONFIG.CSS_SRC_DIR_NAME+'/**/*';
+    var cssSrcPath = CONFIG.SOURCE_ROOT + '/'+CONFIG.CSS_SRC_DIR_NAME;
     var cssResPath = CONFIG.DEST_ROOT + '/'+CONFIG.CSS_DEST_DIR_NAME;
 
-    var cssFromLess = gulp.src(cssSrcPath+'.less')
+    var cssFromLess = gulp.src([cssSrcPath+'/*.less'])
+        .pipe(less());
+    var cssFromVanilla = gulp.src([cssSrcPath+'/*.css']);
+
+    var excludedCss = gulp.src(cssSrcPath+'/*/*.css');
+
+    var excludedLess = gulp.src(cssSrcPath+'/*/*.less')
         .pipe(less());
 
-    var cssFromVanilla = gulp.src(cssSrcPath+'.css');
+    var concatinatedCss = es.merge(cssFromLess, cssFromVanilla)
+        .pipe(concat(CONFIG.CSS_FILE_NAME));
 
-    return es.merge(cssFromLess, cssFromVanilla)
+    return es.merge(concatinatedCss, excludedCss, excludedLess)
         .pipe(changed(cssResPath))
         .pipe(cssLint())
         .pipe(cssLint.reporter())
-        .pipe(concat(CONFIG.CSS_FILE_NAME))
         .pipe(minCss({compatibility: 'ie8'}))
         .pipe(gsize())
         .pipe(gulp.dest(cssResPath))
