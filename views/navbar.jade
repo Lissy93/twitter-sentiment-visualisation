@@ -2,9 +2,9 @@ nav
     .nav-wrapper
         a.brand-logo(href='#') Twitter Sentiment Visualisation
         ul#nav-mobile.right.hide-on-med-and-down
-            li.active
+            li(class=(pageNum===0 ? 'active' : ''))
                 a(href='/') Dashboard
-            li
+            li(class=(pageNum===1 ? 'active' : ''))
                 a(href='/map') Map
-            li
+            li(class=(pageNum===2 ? 'active' : ''))
                 a(href='/timeline') Timeline
