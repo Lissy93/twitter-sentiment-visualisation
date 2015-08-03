@@ -1,1 +1,3 @@
 --compilers coffee:coffee-script/register
+--recursive
+--reporter mochawesome --reporter-options reportDir=./test/awesome-reports

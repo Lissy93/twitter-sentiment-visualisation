@@ -3,5 +3,6 @@ bower_components
 .idea
 *.idea
 test/logs
+test/awesome-reports
 .log
 *.log
