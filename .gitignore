@@ -2,5 +2,6 @@ node_modules
 bower_components
 .idea
 *.idea
+test/logs
 .log
 *.log
