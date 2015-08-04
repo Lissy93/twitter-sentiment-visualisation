@@ -21,11 +21,14 @@ var cssLint = require('gulp-csslint');
 var minCss  = require('gulp-minify-css');
 var uncss   = require('gulp-uncss');
 var changed = require('gulp-changed');
+var mocha   = require('gulp-mocha');
 var footer  = require('gulp-footer');
 var nodemon = require('gulp-nodemon');
 var bSync   = require('browser-sync');
 var es      = require('event-stream');
 var del     = require('del');
+require('coffee-script/register')
+
 
 /* Define constants */
 var CONFIG = {
@@ -47,6 +50,13 @@ gulp.task('clean', function (cb) {
         CONFIG.DEST_ROOT+'/'+CONFIG.JS_DEST_DIR_NAME+'/**/*',
         CONFIG.DEST_ROOT+'/'+CONFIG.CSS_DEST_DIR_NAME+'/**/*'
     ], cb);
+});
+
+
+/* Run Mocha tests */
+gulp.task('test', function () {
+    return gulp.src('test/*.{js,coffee}')
+        .pipe(mocha({compiler: 'nyan'}));
 });
 
 /* JavaScript Tasks */
