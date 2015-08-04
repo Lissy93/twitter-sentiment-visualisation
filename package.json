@@ -53,6 +53,7 @@
     "mocha": "^2.2.5",
     "mochawesome": "^1.2.0",
     "phantom": "^0.7.2",
+    "require-dir": "^0.3.0",
     "sinon": "^1.15.4",
     "supertest": "^1.0.1"
   },
