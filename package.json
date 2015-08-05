@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "mocha"
+    "test": "mocha",
+    "cover": "istanbul cover node_modules/mocha/bin/_mocha -- -R spec"
   },
   "main": "app.js",
   "repository": {
@@ -39,6 +40,7 @@
     "gulp-csslint": "^0.1.5",
     "gulp-filesize": "0.0.6",
     "gulp-footer": "^1.0.5",
+    "gulp-istanbul": "^0.10.0",
     "gulp-jshint": "^1.11.2",
     "gulp-less": "^3.0.3",
     "gulp-minify-css": "^1.2.0",
