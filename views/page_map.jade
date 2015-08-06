@@ -1,6 +1,9 @@
 extends layout
+block head
+    script(src='https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true&libraries=places')
+    script(src='/javascripts/autocomplete-map.js')
+
 block content
-    main.content.map
         div.map-options.row
             .input-field.col.s6
                 input#txtLocation.validate(type='text')
@@ -8,9 +11,7 @@ block content
             .input-field.col.s6
                 input#txtKeyword.validate(type='text')
                 label.active(for='txtKeyword') Keyword or Topic
+        #map-canvas
 
-        script(src="/bower_components/webcomponentsjs/webcomponents.min.js")
-        link(rel="import", href="/bower_components/google-map/google-map.html")
-        include map_style
-        google-map(latitude="37.77493", longitude="-122.41942", fit-to-markers, styles="#{mapstyle}")
-    //script(src='/javascripts/map.js')
+
+block scripts

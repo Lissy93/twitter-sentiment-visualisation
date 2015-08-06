@@ -3,8 +3,11 @@ html
   head
     title= title
     include ./head
+    block head
   body.vertical.layout
     div#loading-graphic
     include ./navbar
     block content
     include ./footer_scripts
+    block scripts
+
