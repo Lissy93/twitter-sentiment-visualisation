@@ -1,6 +1,1 @@
-(function() {
-  $(window).load(function() {
-    $('#loading-graphic').fadeOut('slow');
-  });
-
-}).call(this);
+(function(){$(window).load(function(){$("#loading-graphic").fadeOut("slow")})}).call(this);
