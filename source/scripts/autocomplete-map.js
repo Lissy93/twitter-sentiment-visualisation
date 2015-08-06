@@ -1,18 +1,54 @@
 function initialize() {
+
+    // Create an array of styles.
+    var styles = [
+        {
+            stylers: [
+                { hue: "#00ffe6" },
+                { saturation: -20 }
+            ]
+        },{
+            featureType: "road",
+            elementType: "geometry",
+            stylers: [
+                { lightness: 100 },
+                { visibility: "simplified" }
+            ]
+        },{
+            featureType: "road",
+            elementType: "labels",
+            stylers: [
+                { visibility: "off" }
+            ]
+        }
+    ];
+
+    // Create a new StyledMapType object, passing it the array of styles,
+    // as well as the name to be displayed on the map type control.
+    var styledMap = new google.maps.StyledMapType(styles,
+        {name: "Styled Map"});
+
+
     var mapOptions = {
         center: new google.maps.LatLng(-33.8688, 151.2195),
-        zoom: 13
+        zoom: 13,
+        mapTypeControlOptions: {
+            mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+        }
     };
     var map = new google.maps.Map(document.getElementById('map-canvas'),
         mapOptions);
 
+    map.mapTypes.set('map_style', styledMap);
+    map.setMapTypeId('map_style');
+
+
+
     var input = /** @type {HTMLInputElement} */(
         document
-        .getElementById('txtLocation'))
-        .removeAttribute("placeholder");
+        .getElementById('txtLocation'));
 
     var autocomplete = new google.maps.places.Autocomplete(input);
-    //autocomplete.bindTo('bounds', map);
 
     var infowindow = new google.maps.InfoWindow();
     var marker = new google.maps.Marker({
@@ -58,7 +94,6 @@ function initialize() {
         infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
         infowindow.open(map, marker);
     });
-x
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
