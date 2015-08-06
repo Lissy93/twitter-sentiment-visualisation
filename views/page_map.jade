@@ -1,8 +1,16 @@
 extends layout
 block content
     main.content.map
+        div.map-options.row
+            .input-field.col.s6
+                input#txtLocation.validate(type='text')
+                label.active(for='txtLocation') Location
+            .input-field.col.s6
+                input#txtKeyword.validate(type='text')
+                label.active(for='txtKeyword') Keyword or Topic
+
         script(src="/bower_components/webcomponentsjs/webcomponents.min.js")
         link(rel="import", href="/bower_components/google-map/google-map.html")
         include map_style
         google-map(latitude="37.77493", longitude="-122.41942", fit-to-markers, styles="#{mapstyle}")
-    script(src='/javascripts/map.js')
+    //script(src='/javascripts/map.js')

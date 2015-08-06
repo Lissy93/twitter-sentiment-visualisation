@@ -1,5 +1,25 @@
 @import 'constants';
 
 google-map {
-  height: 600px;
+  height: 500px;
 }
+
+.map-options{
+  height: 5em;
+  width: 100%;
+  background: @col_white;
+  box-shadow: @shadow_panel_default;
+  margin: 3px 0;
+
+  .input-field{
+      input:focus {
+        border-bottom-color: @col_primary;
+        -webkit-box-shadow: 0 1px 0 0 @col_primary;
+        -moz-box-shadow: 0 1px 0 0 @col_primary;
+        box-shadow: 0 1px 0 0 @col_primary;
+      }
+
+      label:focus{ color: @col_primary; }
+  }
+}
+
