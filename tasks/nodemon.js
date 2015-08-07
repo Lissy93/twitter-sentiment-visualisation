@@ -1,6 +1,7 @@
 /* Include the necessary modules */
 var gulp    = require('gulp');
 var nodemon = require('gulp-nodemon');
+var bSync   = require('browser-sync');
 var CONFIG  = require('../tasks/config').CONFIG;
 
 /* Nodemon task for monitory for changes with live restarting */
