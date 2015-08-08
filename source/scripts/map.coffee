@@ -19,29 +19,90 @@ initialize = ->
       stylers: [ { visibility: 'off' } ]
     }
   ]
+
   # Create a new StyledMapType object, passing it the array of styles,
   styledMap = new (google.maps.StyledMapType)(styles, name: 'Sentiment Map')
   mapOptions =
     center: new (google.maps.LatLng)(51.5068, -0.1225)
     zoom: 13
-    mapTypeControlOptions: mapTypeIds: [
-      google.maps.MapTypeId.ROADMAP
-      'map_style'
-    ]
+    streetViewControl : false
+    panControl: false
+    mapTypeControlOptions:
+      style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR
+      position: google.maps.ControlPosition.LEFT_TOP
+      mapTypeIds: [
+        'map_style'
+        google.maps.MapTypeId.SATELLITE
+      ]
+    zoomControlOptions: {
+      style: google.maps.ZoomControlStyle.LARGE
+      position: google.maps.ControlPosition.LEFT_CENTER
+    }
 
   # Get map then set style
   map = new (google.maps.Map)(document.getElementById('map-canvas'), mapOptions)
   map.mapTypes.set 'map_style', styledMap
   map.setMapTypeId 'map_style'
 
-  #Heat map
+  #Heat map data
   taxiData = [
-    new (google.maps.LatLng)(51.511461, -0.0822538)
-    new (google.maps.LatLng)(51.511645, -0.081428)
-    new (google.maps.LatLng)(51.512086, -0.080687)
-    new (google.maps.LatLng)(51.512480, -0.078906)
-    new (google.maps.LatLng)(51.513060, -0.078349)
+    {
+      location: new (google.maps.LatLng)(51.511461, -0.0822538)
+      weight: 8
+    }
+    {
+      location: new (google.maps.LatLng)(51.511645, -0.081428)
+      weight: 2
+    }
+    {
+      location: new (google.maps.LatLng)(51.512086, -0.080687)
+      weight: 4
+    }
+    {
+      location: new (google.maps.LatLng)(51.512480, -0.078906)
+      weight: 0.8
+    }
+    {
+      location: new (google.maps.LatLng)(51.513060, -0.078349)
+      weight: 1
+    }
   ]
+
+  #Heat map options
+  toggleHeatmap = ->
+    heatmap.setMap if heatmap.getMap() then null else map
+    return
+
+  changeGradient = ->
+    gradient = [
+      'rgba(0, 255, 255, 0)'
+      'rgba(0, 255, 255, 1)'
+      'rgba(0, 191, 255, 1)'
+      'rgba(0, 127, 255, 1)'
+      'rgba(0, 63, 255, 1)'
+      'rgba(0, 0, 255, 1)'
+      'rgba(0, 0, 223, 1)'
+      'rgba(0, 0, 191, 1)'
+      'rgba(0, 0, 159, 1)'
+      'rgba(0, 0, 127, 1)'
+      'rgba(63, 0, 91, 1)'
+      'rgba(127, 0, 63, 1)'
+      'rgba(191, 0, 31, 1)'
+      'rgba(255, 0, 0, 1)'
+    ]
+    heatmap.set 'gradient', if heatmap.get('gradient') then null else gradient
+    return
+
+  changeRadius = ->
+    heatmap.set 'radius', if heatmap.get('radius') then null else 20
+    return
+
+  changeOpacity = ->
+    heatmap.set 'opacity', if heatmap.get('opacity') then null else 0.2
+    return
+
+
+  # Apply heat map to map
   pointArray = new (google.maps.MVCArray)(taxiData)
   heatmap = new (google.maps.visualization.HeatmapLayer)(data: pointArray)
   heatmap.setMap map
@@ -91,3 +152,4 @@ initialize = ->
   return
 
 google.maps.event.addDomListener window, 'load', initialize
+
