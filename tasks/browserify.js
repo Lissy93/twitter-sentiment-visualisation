@@ -14,14 +14,14 @@ var gsize   = require('gulp-filesize');
 var CONFIG  = require('../tasks/config').CONFIG;
 
 gulp.task('browserify', function (cb) {
-    glob('./'+CONFIG.SOURCE_ROOT+'/'+CONFIG.JS_SRC_DIR_NAME+'/**/main-**.{js,coffee}', function(err, files) {
+    glob('./'+CONFIG.SOURCE_ROOT+'/'+CONFIG.JS_SRC_DIR_NAME+'/**/**-main.{js,coffee}', function(err, files) {
         var tasks = files.map(function(entry) {
             return browserify({ entries:    [entry], debug: true })
                 .transform(coffeeify)
                 .bundle()
                 .pipe(source(entry))
                 .pipe(rename(function(filepath) {
-                    filepath.basename = filepath.basename.replace("main-","");
+                    filepath.basename = filepath.basename.replace("-main","");
                     filepath.dirname = "";
                     filepath.extname = ".bundle.js";
 
@@ -37,4 +37,6 @@ gulp.task('browserify', function (cb) {
         });
         es.merge(tasks);
     });
+
+    return gulp.src('*');
 });
