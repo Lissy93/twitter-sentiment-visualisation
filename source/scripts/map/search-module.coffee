@@ -1,5 +1,6 @@
 
 initiateSearch = (map) ->
+
   # Configure autocomplete and map search
   input = document.getElementById('txtLocation')
   autocomplete = new (google.maps.places.Autocomplete)(input)

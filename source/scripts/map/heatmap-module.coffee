@@ -1,6 +1,6 @@
 
-#Heat map data
-locationData1 = [
+#Sample heat map data
+positiveLocationData = [
   {
     location: new (google.maps.LatLng)(51.511461, -0.0822538)
     weight: 8
@@ -23,7 +23,7 @@ locationData1 = [
   }
 ]
 
-locationData2 = [
+negativeLocationData = [
   {
     location: new (google.maps.LatLng)(51.514362, -0.079676)
     weight: 8
@@ -46,17 +46,15 @@ locationData2 = [
   }
 ]
 
-
-
 # Apply heat map to map
-pointArray = new (google.maps.MVCArray)(locationData1)
-heatmap = new (google.maps.visualization.HeatmapLayer)(data: pointArray)
+PositivePointArray = new (google.maps.MVCArray)(positiveLocationData)
+positiveHeatmap = new (google.maps.visualization.HeatmapLayer)(data: PositivePointArray)
 
-pointArray2 = new (google.maps.MVCArray)(locationData2)
-heatmap2 = new (google.maps.visualization.HeatmapLayer)(data: pointArray2)
+negativePointArray = new (google.maps.MVCArray)(negativeLocationData)
+negativeHeatmap = new (google.maps.visualization.HeatmapLayer)(data: negativePointArray)
 
 #Set gradient
-gradient = [
+positiveGradient = [
   'rgba(0, 255, 255, 0)'
   'rgba(0, 255, 255, 1)'
   'rgba(0, 191, 255, 1)'
@@ -72,8 +70,7 @@ gradient = [
   'rgba(191, 0, 31, 1)'
   'rgba(255, 0, 0, 1)'
 ]
-heatmap.set 'gradient', gradient
+positiveHeatmap.set 'gradient', positiveGradient
 
-
-module.exports.positiveHeatmap = heatmap
-module.exports.negativeHeatmap = heatmap2
+module.exports.positiveHeatmap = positiveHeatmap
+module.exports.negativeHeatmap = negativeHeatmap

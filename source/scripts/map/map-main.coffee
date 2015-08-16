@@ -1,5 +1,3 @@
-
-
 initialize = ->
 
   # Include all map components
@@ -20,8 +18,7 @@ initialize = ->
   heatmapModule.positiveHeatmap.setMap map
   heatmapModule.negativeHeatmap.setMap map
 
-
-  # Places autocomplete, and map search
+  # Initiate the places auto-complete and map search
   searchModule.initiatePlaceSearch map
 
   return

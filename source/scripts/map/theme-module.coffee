@@ -21,4 +21,6 @@ styles = [
   }
 ]
 
-module.exports.styledMap = new (google.maps.StyledMapType)(styles, name: 'Sentiment Map')
+module.exports.styledMap = new (google.maps.StyledMapType)(styles,
+  name: 'Sentiment Map'
+)
