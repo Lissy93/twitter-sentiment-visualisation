@@ -5,6 +5,7 @@ initialize = ->
   optionsModule = require('../map/options-module.coffee')
   heatmapModule = require('../map/heatmap-module.coffee')
   searchModule  = require('../map/search-module.coffee')
+  autocompleteModule  = require('../map/autocomplete-module.coffee')
 
   # Get the map, and set the map options
   map = new (google.maps.Map)(document.getElementById('map-canvas'),\
@@ -20,6 +21,25 @@ initialize = ->
 
   # Initiate the places auto-complete and map search
   searchModule.initiatePlaceSearch map
+
+  # Call autocomplete constructor
+  data = [
+    {
+      'value': '11'
+      'label': 'one'
+    }
+    {
+      'value': '2'
+      'label': 'two'
+    }
+    {
+      'value': '3'
+      'label': 'three'
+    }
+  ]
+  $(document).ready ->
+    $('input#txtKeyword').autocompleter source: data
+    return
 
   return
 

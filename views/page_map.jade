@@ -1,7 +1,7 @@
 extends layout
 block head
+    link(rel='stylesheet', href='/bower_components/Autocompleter/jquery.autocompleter.css')
     script(src='https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places,visualization')
-    script(src='/javascripts/map.bundle.js')
 
 block content
         div.map-options.row
@@ -13,3 +13,5 @@ block content
                 label.active(for='txtKeyword') Keyword or Topic
         #map-canvas
 block scripts
+    script(type='text/javascript', src='/bower_components/Autocompleter/jquery.autocompleter.min.js')
+    script(type='text/javascript', src='/javascripts/map.bundle.js')
