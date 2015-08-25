@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "test": "mocha",
-    "cover": "istanbul cover node_modules/mocha/bin/_mocha -- -R spec"
+    "cover": "istanbul cover node_modules/mocha/bin/_mocha --dir ./reports/coverage-reports"
   },
   "main": "app.js",
   "repository": {
