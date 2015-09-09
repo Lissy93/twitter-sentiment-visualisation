@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var map = require('./routes/map');
+var liveMap = require('./routes/live-map');
 var timeline = require('./routes/timeline');
 var about = require('./routes/about');
 
@@ -27,6 +28,7 @@ app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
 app.use('/', routes);
 app.use('/map', map);
+app.use('/real-time-map', liveMap);
 app.use('/timeline', timeline);
 app.use('/about', about);
 
