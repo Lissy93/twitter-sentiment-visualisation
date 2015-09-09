@@ -14,28 +14,51 @@ var CONFIG  = require('../tasks/config').CONFIG;
 /* JavaScript Tasks */
 gulp.task('scripts',  function(){
 
-    var coffeeFilter = filter('**/*.coffee', {restore: true});
-    var bundleFilter = filter(['*', '!**/*-main.{js,coffee}', '!**/*-main.{js,coffee}']);
+    var allScriptSelector = '**/*.{js,coffee}'; // Selects all CoffeeScript and JavaScript files in nested directories
 
-    var jsSrcPath = CONFIG.SOURCE_ROOT + '/'+CONFIG.JS_SRC_DIR_NAME+'/**/*.{coffee,js}';
+    /* File path strings */
+    var jsSrcPath = CONFIG.SOURCE_ROOT + '/'+CONFIG.JS_SRC_DIR_NAME+'/'+allScriptSelector;
     var jsResPath = CONFIG.DEST_ROOT + '/'+CONFIG.JS_DEST_DIR_NAME;
 
-    return gulp.src(jsSrcPath)
-        .pipe(bundleFilter) // Ignore browserify files
+    /* A list of file sources and destinations */
+    var paths = [
+        { src: jsSrcPath, dest: jsResPath },
+        { src: 'models/src/*.coffee', dest: 'models' }
+    ];
 
-        /* CoffeeScript tasks */
-        .pipe(coffeeFilter)
-        .pipe(cofLint())
-        .pipe(cofLint.reporter())
-        .pipe(coffee())
-        .pipe(coffeeFilter.restore)
+    /* For each file path, run all script tasks */
+    var tasks = [];
+    paths.forEach(function(path) {
+        tasks.push(awsesomeizeScripts(path.src, path.dest));
+    });
 
-        .pipe(changed(jsResPath))
-        .pipe(jshint())
-        .pipe(jshint.reporter('jshint-stylish'))
-        .pipe(uglify())
-        .pipe(footer(CONFIG.FOOTER_TEXT))
-        .pipe(gsize())
-        .pipe(gulp.dest(jsResPath))
+    return (tasks); // Return all results as array of multiple streams
+
+
+    /* Function applies all the tasks on the script files and returns a pipe dest */
+    function awsesomeizeScripts(srcPath, resPath){
+
+        /* Filters to be applied (so that different operations can be done on different files) */
+        var bundleFilter = filter(['*', '!**/*-main.{js,coffee}', '!**/*-main.{js,coffee}']);
+        var coffeeFilter = filter('**/*.coffee', {restore: true}); // MUST be declared here in order to RESET correctly
+
+        return gulp.src(srcPath)
+            .pipe(bundleFilter) // Ignore browserify files
+
+            /* CoffeeScript tasks */
+            .pipe(coffeeFilter)
+            .pipe(cofLint())
+            .pipe(cofLint.reporter())
+            .pipe(coffee())
+            .pipe(coffeeFilter.restore)
+
+            .pipe(changed(jsResPath))
+            .pipe(jshint())
+            .pipe(jshint.reporter('jshint-stylish'))
+            .pipe(uglify())
+            .pipe(footer(CONFIG.FOOTER_TEXT))
+            .pipe(gsize())
+            .pipe(gulp.dest(resPath));
+    }
 
 });

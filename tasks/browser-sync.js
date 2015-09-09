@@ -12,7 +12,8 @@ gulp.task('browser-sync', ['nodemon', 'browserify', 'scripts', 'styles', 'test']
     });
     gulp.watch([
         CONFIG.SOURCE_ROOT+'/**/*.{js,coffee}',
-            '!'+CONFIG.SOURCE_ROOT+'/**/*-{main,module}.{js,coffee}'],
+        '!'+CONFIG.SOURCE_ROOT+'/**/*-{main,module}.{js,coffee}',
+        'models/src/**/*.{js,coffee}'],
         ['scripts', 'test']);
     gulp.watch(CONFIG.SOURCE_ROOT+'/**/*-{main,module}.{js,coffee}', ['browserify']);
     gulp.watch(CONFIG.SOURCE_ROOT+'/**/*.{css,less}',  ['styles']);
