@@ -23,7 +23,9 @@ gulp.task('scripts',  function(){
     /* A list of file sources and destinations */
     var paths = [
         { src: jsSrcPath, dest: jsResPath },
-        { src: 'models/src/*.coffee', dest: 'models' }
+        { src: 'models/src/*.coffee', dest: 'models' },
+        { src: 'utils/src/*.coffee', dest: 'utils' },
+        { src: 'config/src/*.coffee', dest: 'config' }
     ];
 
     /* For each file path, run all script tasks */
@@ -55,7 +57,7 @@ gulp.task('scripts',  function(){
             .pipe(changed(jsResPath))
             .pipe(jshint())
             .pipe(jshint.reporter('jshint-stylish'))
-            .pipe(uglify())
+            //.pipe(uglify())
             .pipe(footer(CONFIG.FOOTER_TEXT))
             .pipe(gsize())
             .pipe(gulp.dest(resPath));
