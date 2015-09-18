@@ -8,7 +8,8 @@ gulp.task('browser-sync', ['nodemon', 'browserify', 'scripts', 'styles', 'test']
         files: [CONFIG.SOURCE_ROOT+'/**/*.*'],
         proxy: 'http://localhost:3000',
         port: 4000,
-        browser: ['google chrome']
+        browser: ['google chrome'],
+        open: false // Don't open browser automatically - it's annoying
     });
     gulp.watch([
         CONFIG.SOURCE_ROOT+'/**/*.{js,coffee}',
@@ -17,6 +18,6 @@ gulp.task('browser-sync', ['nodemon', 'browserify', 'scripts', 'styles', 'test']
         ['scripts', 'test']);
     gulp.watch(CONFIG.SOURCE_ROOT+'/**/*-{main,module}.{js,coffee}', ['browserify']);
     gulp.watch(CONFIG.SOURCE_ROOT+'/**/*.{css,less}',  ['styles']);
-    gulp.watch(CONFIG.SOURCE_ROOT+"/**/*").on('change', bSync.reload);
+    gulp.watch(CONFIG.SOURCE_ROOT+"/**/*.js").on('change', bSync.reload);
     gulp.watch("views/**/*.jade").on('change', bSync.reload);
 });
