@@ -3,5 +3,5 @@ bower_components
 .idea
 reports
 *.log
-
+*/**/keys.*
 coverage
