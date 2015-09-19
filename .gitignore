@@ -1,7 +1,19 @@
+# Packages and libraries
 node_modules
 bower_components
+
+# IDE files and logs
 .idea
+*log
+
+# Test reports and results
 reports
-*.log
-*/**/keys.*
 coverage
+
+# API keys
+*/**/keys.*
+
+# Built files
+models/*.js
+utils/*.js
+routes/*.js
