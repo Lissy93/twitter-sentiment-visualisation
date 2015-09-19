@@ -5,6 +5,7 @@ bower_components
 # IDE files and logs
 .idea
 *log
+npm-debug.log.*
 
 # Test reports and results
 reports
