@@ -17,4 +17,5 @@ coverage
 # Built files
 models/*.js
 utils/*.js
+config/*.js
 routes/*.js
