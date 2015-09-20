@@ -10,7 +10,12 @@ var uncss   = require('gulp-uncss');
 var changed = require('gulp-changed');
 var footer  = require('gulp-footer');
 var es      = require('event-stream');
-var CONFIG  = require('../tasks/config').CONFIG;
+var gulpIf  = require('gulp-if');
+var argv    = require('yargs').argv;
+
+var CONFIG  = require('../tasks/config');
+
+var devMode = argv.dev ? true : CONFIG.SHOW_OUTPUT;
 
 /* CSS and Less Tasks */
 gulp.task('styles',  function(){
@@ -32,9 +37,9 @@ gulp.task('styles',  function(){
     return es.merge(concatinatedCss, excludedCss, excludedLess)
         .pipe(changed(cssResPath))
         .pipe(cssLint())
-        .pipe(cssLint.reporter())
+        .pipe(gulpIf(devMode, cssLint.reporter()))
         .pipe(minCss({compatibility: 'ie8'}))
-        .pipe(gsize())
+        .pipe(gulpIf(devMode, gsize()))
         .pipe(gulp.dest(cssResPath))
         .on('error', gutil.log);
 });

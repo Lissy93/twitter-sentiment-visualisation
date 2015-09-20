@@ -2,7 +2,7 @@
 var footerText = "\n\/* (C) Alicia Sykes <alicia@aliciasykes.com> 2015           " +
     "*\\\r\n\\* MIT License. Read full license at: https:\/\/goo.gl\/IL4lQJ *\/"
 
-var CONFIG = {
+module.exports = {
     SOURCE_ROOT         : "source",     // Folder name for all js and css source
     DEST_ROOT           : "public",     // Folder name for the results root
     CSS_DEST_DIR_NAME   : "stylesheets",// Name of CSS directory
@@ -16,7 +16,6 @@ var CONFIG = {
         { src: 'utils/src/*.coffee',                dest: 'utils' },
         { src: 'config/src/*.coffee',               dest: 'config' },
         { src: 'routes/src/*.coffee',               dest: 'routes' }
-    ]
+    ],
+    SHOW_OUTPUT: false
 };
-
-exports.CONFIG = CONFIG;

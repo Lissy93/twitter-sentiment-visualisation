@@ -12,7 +12,7 @@ var footer = require('gulp-footer');
 var gutil   = require('gulp-util');
 var gsize   = require('gulp-filesize');
 
-var CONFIG  = require('../tasks/config').CONFIG;
+var CONFIG  = require('../tasks/config');
 
 gulp.task('browserify', function (cb) {
     glob('./'+CONFIG.SOURCE_ROOT+'/scripts/**/**-main.{js,coffee,jsx}', function(err, files) {

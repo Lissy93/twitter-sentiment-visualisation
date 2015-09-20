@@ -7,8 +7,11 @@ var coffee  = require('gulp-coffee');
 var cofLint = require('gulp-coffeelint');
 var footer  = require('gulp-footer');
 var filter  = require('gulp-filter');
+var argv    = require('yargs').argv;
+var gulpIf  = require('gulp-if');
 
-var CONFIG  = require('../tasks/config').CONFIG;
+var CONFIG  = require('../tasks/config');
+var devMode = argv.dev ? true : CONFIG.SHOW_OUTPUT;
 
 /* JavaScript Tasks */
 gulp.task('scripts',  function(){
@@ -36,16 +39,15 @@ gulp.task('scripts',  function(){
 
             /* CoffeeScript tasks */
             .pipe(coffeeFilter)
-            .pipe(cofLint())
-            .pipe(cofLint.reporter())
-            .pipe(coffee())
+                .pipe(cofLint())
+                .pipe(gulpIf(devMode, cofLint.reporter()))
+                .pipe(coffee())
             .pipe(coffeeFilter.restore)
-
             .pipe(jshint())
-            .pipe(jshint.reporter('jshint-stylish'))
+            .pipe(gulpIf(devMode, jshint.reporter('jshint-stylish')))
             //.pipe(uglify()) // Uncomment line to minify output JavaScript
             .pipe(footer(CONFIG.FOOTER_TEXT))
-            .pipe(gsize())
+            .pipe(gulpIf(devMode, gsize()))
             .pipe(gulp.dest(resPath));
     }
 });

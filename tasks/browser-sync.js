@@ -3,8 +3,7 @@ var gulp    = require('gulp');
 var bSync   = require('browser-sync');
 var runSequence = require('run-sequence');
 
-var CONFIG  = require('../tasks/config').CONFIG;
-//todo build before nodemon
+var CONFIG  = require('../tasks/config');
 
 gulp.task('start', function () {
     runSequence('build', 'test', 'nodemon', 'browser-sync');

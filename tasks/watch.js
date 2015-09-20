@@ -1,6 +1,6 @@
 
 var gulp    = require('gulp');
-var CONFIG  = require('../tasks/config').CONFIG;
+var CONFIG  = require('../tasks/config');
 
 
 /* Configure files to watch for changes - NOT USED BY DEFAULT TASK */
