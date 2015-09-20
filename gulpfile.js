@@ -4,7 +4,9 @@
  * My super amazing gulp setup, does EVERYTHING cool
  * possible to do to turns already awesome code into
  * even more awesomely efficient code
- * View very commented version at https://goo.gl/3K2sFb
+ *
+ * The Gulp tasks are divided into the files in the './tasks/' directory
+ * Read the build documentation at './docs/building.md'
  */
 
 // Include gulp and require directory module
@@ -13,4 +15,4 @@ var reqdir  = require('require-dir');
 
 reqdir('./tasks'); // Include the folders containing ALL gulp tasks
 
-gulp.task('default', ['clean', 'browser-sync']); // Default task
+gulp.task('default', ['start']); // Default task
