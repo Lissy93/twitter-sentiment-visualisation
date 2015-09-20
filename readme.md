@@ -17,13 +17,13 @@ _modules, and then ```bower install``` which will download the bower_components.
 4. **Set Config** Run: ```npm run config``` this will create a new file for your
  API keys, and (if you are using Windows it will open the file automatically). 
  You will need to populate ```config\src\keys.coffee``` with your API keys, and save.
- Also check that your happy with the app config in ```config//src/app-config.coffee```
+ Also check that your happy with the app config in ```config/src/app-config.coffee```
  change what you need to in this file.
-5. **Build Project** - Run ```npm rub build``` to generate the compiled code fro
-m the source
+5. **Build Project** - Run ```npm run build``` to generate the compiled code from
+ the source
 6. **Start MongoDB** - In a seperate commnd line window, cd into where MongoDB i
-nstalled to, e.g. ```cd C:\Program Files\MongoDB\Server\3.0\bin``` then start Mo
-ngod with this command: ```mongod --dbpath C:\Users\YOUR_NAME\Documents\mongodb```
+nstalled to, e.g. ```cd C:\Program Files\MongoDB\Server\3.0\bin``` then start 
+Mongod with this command: ```mongod --dbpath C:\Users\YOUR_NAME\Documents\mongodb```
 7. **Run the project** - Run ```npm start``` then open your browser and navigat 
 to [http://localhost:8080]
 
