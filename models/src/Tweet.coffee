@@ -1,7 +1,6 @@
 mongoose = require 'mongoose'
 
 schema = new mongoose.Schema({
-  twid      : String
   body      : String
   dateTime  : String
 #  keywords  : Array

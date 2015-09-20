@@ -8,10 +8,8 @@ var cookieParser  = require('cookie-parser');
 var bodyParser    = require('body-parser');
 var mongoose      = require('mongoose');
 var http          = require('http');
-//var streamTweets  = require('stream-tweets'); //TODO fix package and re-add it
+var streamTweets  = require('stream-tweets'); //TODO fix package and re-add it
 var JSX           = require('node-jsx').install({extension: '.jsx'});
-
-var twitter       = require('ntwitter');
 
 /* Include the files defining the routes */
 var routes    = require('./routes/index');
@@ -57,10 +55,9 @@ app.use('/about', about);
 /* Set a stream listener for tweets matching tracking keywords */
 var credentials = require('./config/keys').twitter;
 
-//var st = new streamTweets(credentials); //TODO add this back in once module is fixed
-var twit = new twitter(credentials);
+var twit = new streamTweets(credentials);
 
-twit.stream('statuses/filter',{ track: 'hello'}, function(stream){
+twit.stream('hello', function(stream){
     streamHandler(stream,io);
 });
 
@@ -93,7 +90,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
-
 
 module.exports = app;

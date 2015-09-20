@@ -8,6 +8,7 @@
     "start": "node ./bin/www",
     "test": "mocha",
     "build": "gulp build",
+    "config": "gulp generate-config && start notepad 'config\\src\\keys.coffee'",
     "cover": "istanbul cover node_modules/mocha/bin/_mocha --dir ./reports/coverage-reports"
   },
   "main": "app.js",
