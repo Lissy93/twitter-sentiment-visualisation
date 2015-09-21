@@ -3,10 +3,10 @@
 
 
 .card{
-  box-shadow: @shadow_panel_default;
-  background: @col_white;
   display: inline-block;
+  background: #ffffff;
   border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 
   &:hover{
     box-shadow: @shadow_panel_hover;
@@ -15,8 +15,8 @@
   &.home-panels{
     width: 24em;
     height: 15em;
-    margin: 0.5em;
     padding: 0.5em 1em;
+    margin: 0.5em;
   }
 
 }
@@ -29,12 +29,12 @@
 
 
 .autocompleter {
-  width: 100%;
-  background: @col_white;
   position: absolute;
   top: 60px;
   left: 0;
   z-index: 100;
+  width: 100%;
+  background: #ffffff;
 }
 
 .autocompleter,
@@ -43,11 +43,11 @@
 }
 
 .autocompleter-list {
-  box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
-  list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
   text-align: left;
+  list-style: none;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
@@ -58,8 +58,8 @@
 
 .autocompleter-item {
   padding: 6px 12px;
-  color: #444444;
   font-size: 20px;
+  color: #444444;
   cursor: pointer;
 }
 
@@ -68,8 +68,8 @@
 }
 
 .autocompleter-item strong {
-  background: @col_paleprimary;
-  text-shadow: 0 1px 0 @col_white;
+  text-shadow: 0 1px 0 #ffffff;
+  background: #b3d4ea;
 }
 
 .autocompleter-item span {
@@ -77,15 +77,15 @@
 }
 
 .autocompleter-hint {
-  color: @col_palegrey;
-  text-align: left;
   top: -56px;
-  font-weight: 400;
   left: 0;
+  display: none;
   width: 100%;
   padding: 12px 12px 12px 13px;
   font-size: 24px;
-  display: none;
+  font-weight: 400;
+  color: #efefef;
+  text-align: left;
 }
 
 .autocompleter-hint span {
