@@ -1,5 +1,11 @@
 # Twitter Sentiment Visualisations
 
+[![Build Status](https://travis-ci.org/Lissy93/twitter-sentiment-visualisation.svg?branch=dev)](https://travis-ci.org/Lissy93/twitter-sentiment-visualisation)
+[![devDependency Status](https://david-dm.org/lissy93/twitter-sentiment-visualisation/dev-status.svg)](https://david-dm.org/lissy93/twitter-sentiment-visualisation#info=devDependencies)
+[![Dependency Status](https://david-dm.org/lissy93/twitter-sentiment-visualisation.svg)](https://david-dm.org/lissy93/twitter-sentiment-visualisation)
+[![Codacy Badge](https://api.codacy.com/project/badge/1caedd6623554c5cacb3cb450bc30a62)](https://www.codacy.com/app/lissy93/twitter-sentiment-visualisation)
+[![Test Coverage](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation/badges/coverage.svg)](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation/coverage)
+
 A web app that uses data from Twitter combined with sentiment analysis and
 emotion detection to create a series of data visualisations to illustrate
 the happy and less happy locations, topics and times.
