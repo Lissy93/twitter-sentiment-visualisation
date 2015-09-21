@@ -1,5 +1,4 @@
 var gulp    = require('gulp');
-var gutil   = require('gulp-util');
 var gsize   = require('gulp-filesize');
 var jshint  = require('gulp-jshint');
 var uglify  = require('gulp-uglify');

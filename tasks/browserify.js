@@ -4,7 +4,7 @@ var source = require('vinyl-source-stream');
 var coffeeify = require('coffeeify');
 var reactify = require('reactify');
 var buffer = require('vinyl-buffer');
-var sourcemaps = require('gulp-sourcemaps');
+//var sourcemaps = require('gulp-sourcemaps'); // Uncomment to use sourcemaps
 var glob = require('glob');
 var es = require('event-stream');
 var rename = require('gulp-rename');
@@ -14,7 +14,7 @@ var gsize   = require('gulp-filesize');
 
 var CONFIG  = require('../tasks/config');
 
-gulp.task('browserify', function (cb) {
+gulp.task('browserify', function () {
     glob('./'+CONFIG.SOURCE_ROOT+'/scripts/**/**-main.{js,coffee,jsx}', function(err, files) {
         var tasks = files.map(function(entry) {
             return browserify({ entries:    [entry], debug: true })

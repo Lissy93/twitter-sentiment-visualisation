@@ -6,7 +6,6 @@ var concat  = require('gulp-concat');
 var less    = require('gulp-less');
 var cssLint = require('gulp-csslint');
 var minCss  = require('gulp-minify-css');
-var uncss   = require('gulp-uncss');
 var changed = require('gulp-changed');
 var footer  = require('gulp-footer');
 var es      = require('event-stream');
@@ -40,6 +39,7 @@ gulp.task('styles',  function(){
         .pipe(gulpIf(devMode, cssLint.reporter()))
         .pipe(minCss({compatibility: 'ie8'}))
         .pipe(gulpIf(devMode, gsize()))
+        .pipe(footer(CONFIG.FOOTER_TEXT))
         .pipe(gulp.dest(cssResPath))
         .on('error', gutil.log);
 });

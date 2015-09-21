@@ -1,6 +1,5 @@
 /* Include the necessary modules */
 var gulp    = require('gulp');
-var CONFIG  = require('../tasks/config');
 
 /* CSS and Less Tasks */
 gulp.task('images',  function(){
