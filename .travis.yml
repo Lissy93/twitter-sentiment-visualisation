@@ -5,3 +5,7 @@ node_js:
 
 before_script:
     - "npm i -g mocha"
+
+notifications:
+  slack:
+    on_success: change
