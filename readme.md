@@ -33,15 +33,14 @@ View [detailed installation instructions]
 
 To run the tests: ```npm test``` or see the more [detailed testing plan]
 
-To modify/ develop code see [about the build environment]
+To modify or develop the code see [about the build environment]
 
    [Node.js]: <https://nodejs.org/en/>
    [MongoDB]: <https://www.mongodb.org/>
    [git]: <https://git-scm.com/>
-   [Starting a MongoDB instance] : <http://docs.mongodb.org/master/tutorial/getting-started-with-the-mongo-shell/>
+   [Starting a MongoDB instance]: <http://docs.mongodb.org/master/tutorial/getting-started-with-the-mongo-shell/>
    [http://localhost:8080]: <http://localhost:8080>
    [detailed installation instructions]: <docs/installation-instructions.md>
    [detailed testing plan]: <docs/methodology-testing.md>
-   [about the build environment] : <docs/build-environment.md>
-
+   [about the build environment]: <docs/build-environment.md>
 

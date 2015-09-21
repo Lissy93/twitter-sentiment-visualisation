@@ -1,9 +1,9 @@
 # Running TSV Locally 
 
-## Prerequsites
+## Prerequisites
 Since this is a Node application you'll need Node.js installed on your system. Download it from here http://nodejs.org and follow the steps to install.
 
-TSV also needs to be connected to a database in order to cashe Tweets. For this you will need to install MongoDB, this can be downloaded from https://www.mongodb.org/ and again just follow the installation set up.
+TSV also needs to be connected to a database in order to cache Tweets. For this you will need to install MongoDB, this can be downloaded from https://www.mongodb.org/ and again just follow the installation set up.
 
 Finally, if you wish to clone the git repository directly, you will also need git installed. You can get the latest version of git from: https://git-scm.com/downloads 
 
@@ -20,10 +20,10 @@ Once you've done that you should have a new folder called `twitter-sentiment-vis
 ## Install Dependencies 
 The backend dependencies can be installed using the npm package manager, run: `npm install` to download them into the node_modules directory. 
 
-The frontend dependancies need to be downloaded with Bower. Run `bower install` in the same way to save the frontend libraries and frameworks to the bower_components directory.
+The frontend dependencies need to be downloaded with Bower. Run `bower install` in the same way to save the frontend libraries and frameworks to the bower_components directory.
 
 ## Configuring
-Since the application requires access to a few API's to function, you need to provide it with your API keys. See the links at the bottom for where you can optain all the necissary keys.
+Since the application requires access to a few API's to function, you need to provide it with your API keys. See the links at the bottom for where you can obtain all the necessary keys.
 
 Run: `npm run config` to generate a JSON file for you to paste your keys into. If your on Windows, then this file should open automatically after running the command, (if not then just open `config\src\keys.coffee`) then just populate it with your stuff then save and close. 
 
@@ -39,26 +39,26 @@ Run `npm run build` to build the project
 One final step which must be done before the project can be run, is staring MongoDB.
 Have a look at the guide on the official MongoDB page for how to start MongoDB: http://docs.mongodb.org/master/tutorial/getting-started-with-the-mongo-shell/
 
-You will need to start MongoDb in a seperate window, for Windows you can do something like this: `cd C:\Program Files\MongoDB\Server\3.0\bin` and then `mongod --dbpath C:\Users\YOUR_NAME\Documents\mongodb`
+You will need to start MongoDb in a separate window, for Windows you can do something like this: `cd C:\Program Files\MongoDB\Server\3.0\bin` and then `mongod --dbpath C:\Users\YOUR_NAME\Documents\mongodb`
 
 
 ## Running
 Now that everything is set up and working, we can run the project! 
 
-Ensure the MongoDb instace is still open in another command line windows, and run the following in the TSV directory: `npm start`
+Ensure the MongoDb instance is still open in another command line windows, and run the following in the TSV directory: `npm start`
 
 
 Then in your web browser head over to:  http://localhost:8080
 
 
 ## Summary
-Install Node.js, MongoDB and git. Then run the following commands in series, modifiying where necissary.
+Install Node.js, MongoDB and git. Then run the following commands in series, modifying where necessary.
 ```
-npm install gulp bower -g   # Install Gulp and Bower globaly
+npm install gulp bower -g   # Install Gulp and Bower global
 git clone https://github.com/Lissy93/twitter- sentiment-visualisation.git # Clone the repo
-cd twitter-sent iment-visualisation # Navigate into the directory
-npm install # Download node module dependancies 
-bower install # Download frontend libaries and frameworks
+cd twitter-sentiment-visualisation # Navigate into the directory
+npm install # Download node module dependencies 
+bower install # Download frontend libraries and frameworks
 npm run config # Generate configuration files
 ## enter your API keys in config\src\keys.coffee
 npm run build # Build the project 
