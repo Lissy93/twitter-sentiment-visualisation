@@ -1,7 +1,7 @@
 var gulp    = require('gulp');
 var gsize   = require('gulp-filesize');
 var jshint  = require('gulp-jshint');
-var uglify  = require('gulp-uglify');
+//var uglify  = require('gulp-uglify'); // Uncomment to minify (see below aswell)
 var coffee  = require('gulp-coffee');
 var cofLint = require('gulp-coffeelint');
 var footer  = require('gulp-footer');

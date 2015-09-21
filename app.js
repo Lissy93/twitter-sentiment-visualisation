@@ -8,7 +8,7 @@ var cookieParser  = require('cookie-parser');
 var bodyParser    = require('body-parser');
 var mongoose      = require('mongoose');
 var http          = require('http');
-var streamTweets  = require('stream-tweets'); //TODO fix package and re-add it
+var streamTweets  = require('stream-tweets');
 var JSX           = require('node-jsx').install({extension: '.jsx'});
 
 /* Include the files defining the routes */
@@ -83,7 +83,7 @@ if (app.get('env') === 'development') {
 }
 
 /* production error handler (no stacktraces leaked to user) */
-app.use(function(err, req, res, next) {
+app.use(function(err, req, res) {
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,
