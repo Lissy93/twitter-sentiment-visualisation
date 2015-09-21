@@ -17,5 +17,5 @@ module.exports = {
         { src: 'config/src/*.coffee',               dest: 'config' },
         { src: 'routes/src/*.coffee',               dest: 'routes' }
     ],
-    SHOW_OUTPUT: false
+    SHOW_OUTPUT: true
 };
