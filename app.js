@@ -8,25 +8,22 @@ var cookieParser  = require('cookie-parser');
 var bodyParser    = require('body-parser');
 var mongoose      = require('mongoose');
 var http          = require('http');
-var streamTweets  = require('stream-tweets');
 var JSX           = require('node-jsx').install({extension: '.jsx'});
-
-/* Include the files defining the routes */
-var routes    = require('./routes/index');
-var map       = require('./routes/map');
-var liveMap   = require('./routes/live-map');
-var timeline  = require('./routes/timeline');
-var about     = require('./routes/about');
-var streamHandler = require('./utils/stream-handler');
 
 /* Create Express server and configure socket.io*/
 var app = express();
 var port = process.env.PORT || 8080;
 var server = http.createServer(app);
-var io = require('socket.io').listen(server);
 server.listen(port, function(){
     console.log('Express server listening on port ' + port);
 });
+
+/* Include the files defining the routes */
+var routes    = require('./routes/index');
+var map       = require('./routes/map');
+var liveMap   = require('./routes/live-map')(server);
+var timeline  = require('./routes/timeline');
+var about     = require('./routes/about');
 
 /* view engine setup */
 app.set('views', path.join(__dirname, 'views'));
@@ -50,16 +47,6 @@ app.use('/map', map);
 app.use('/real-time-map', liveMap);
 app.use('/timeline', timeline);
 app.use('/about', about);
-
-
-/* Set a stream listener for tweets matching tracking keywords */
-var credentials = require('./config/keys').twitter;
-
-var twit = new streamTweets(credentials);
-
-twit.stream('hello', function(stream){
-    streamHandler(stream,io);
-});
 
 
 /* catch 404 and forward to error handler */
