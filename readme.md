@@ -10,7 +10,9 @@
 > emotion detection to create a series of data visualisations to illustrate
 > the happy and less happy locations, topics and times.
 
-[View Trello Board Here]
+
+## Project Planning 
+- A set of [user stories with acceptance criteria] have been drawn up outlining what features the finished solution should have. They are also managed on the [Trello Board]
 
 ## Running Locally
 1. **Prerequisites** - You will need [Node.js], [MongoDB] and [git]  installed on 
@@ -37,7 +39,7 @@ To run the tests: ```npm test``` or see the more [detailed testing plan]
 
 To modify or develop the code see [about the build environment]
 
-   [View Trello Board Here]: <https://trello.com/b/jWBg1vd1/twitter-sentiment-visualisation>
+   [Trello Board]: <https://trello.com/b/jWBg1vd1/twitter-sentiment-visualisation>
    [Node.js]: <https://nodejs.org/en/>
    [MongoDB]: <https://www.mongodb.org/>
    [git]: <https://git-scm.com/>
@@ -46,4 +48,5 @@ To modify or develop the code see [about the build environment]
    [detailed installation instructions]: <docs/installation-instructions.md>
    [detailed testing plan]: <docs/methodology-testing.md>
    [about the build environment]: <docs/build-environment.md>
+   [user stories with acceptance criteria]: <docs/user-stories.md>
 
