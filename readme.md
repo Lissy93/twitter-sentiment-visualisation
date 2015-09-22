@@ -37,7 +37,20 @@ View [detailed installation instructions]
 
 To run the tests: ```npm test``` or see the more [detailed testing plan]
 
-To modify or develop the code see [about the build environment]
+
+## Building
+> TSV uses the Gulp streaming build tool to automate the development workflow.
+
+The key tasks you need to run are:
+- `gulp generate-config` - before first-time running of the project, run this command to generate configuration files for your API keys
+- `gulp build` - This will build the project fully, this includes cleaning the working directory and then all tasks that must happen for CoffeeScript, JavaScript, CSS, images, HTML and Browserify tasks.
+- `gulp nodemon` - Runs the application on the default port (probably 8080)
+- `gulp test` - This will run all unit and coverage tests, printing a summary of the results to the console and generating more detailed reports into the reports directory.
+- `gulp` - this is the default task, it will check the project is configured correctly, build ALL the files, run the server, watch for changes, recompile relevant files and reload browsers on change, and keep all browsers in sync, when a test condition changes it will also re-run tests - a lot going on!
+
+To read more about the project setup and gulp proces, see [build environment] in the docs
+
+
 
    [Trello Board]: <https://trello.com/b/jWBg1vd1/twitter-sentiment-visualisation>
    [Node.js]: <https://nodejs.org/en/>
@@ -47,6 +60,6 @@ To modify or develop the code see [about the build environment]
    [http://localhost:8080]: <http://localhost:8080>
    [detailed installation instructions]: <docs/installation-instructions.md>
    [detailed testing plan]: <docs/methodology-testing.md>
-   [about the build environment]: <docs/build-environment.md>
+   [build environment]: <docs/build-environment.md>
    [user stories with acceptance criteria]: <docs/user-stories.md>
 
