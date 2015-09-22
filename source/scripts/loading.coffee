@@ -1,3 +1,2 @@
 $(window).load ->
-  $('#loading-graphic').fadeOut 'slow'
-  return
+  $('.loading-graphic').fadeOut 'slow'
