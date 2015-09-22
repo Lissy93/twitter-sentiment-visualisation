@@ -9,13 +9,13 @@ var bodyParser    = require('body-parser');
 var mongoose      = require('mongoose');
 var http          = require('http');
 var JSX           = require('node-jsx').install({extension: '.jsx'});
+var config        = require('./config/app-config');
 
 /* Create Express server and configure socket.io*/
 var app = express();
-var port = process.env.PORT || 8080;
 var server = http.createServer(app);
-server.listen(port, function(){
-    console.log('Express server listening on port ' + port);
+server.listen(config.server.port, function(){
+    console.log('Express server listening on port ' + config.server.port);
 });
 
 /* Include the files defining the routes */
@@ -39,7 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
 /* Connect to MongoDB */
-mongoose.connect('mongodb://localhost/twitter-sentiment-visualisations');
+mongoose.connect(config.db.URL);
 
 /* Specify which route files to use */
 app.use('/', routes);
