@@ -6,9 +6,11 @@
 [![Code Climate](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation/badges/gpa.svg)](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation)
 [![Test Coverage](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation/badges/coverage.svg)](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation/coverage)
 
-A web app that uses data from Twitter combined with sentiment analysis and
-emotion detection to create a series of data visualisations to illustrate
-the happy and less happy locations, topics and times.
+> A web app that uses data from Twitter combined with sentiment analysis and
+> emotion detection to create a series of data visualisations to illustrate
+> the happy and less happy locations, topics and times.
+
+[View Trello Board Here]
 
 ## Running Locally
 1. **Prerequisites** - You will need [Node.js], [MongoDB] and [git]  installed on 
@@ -35,6 +37,7 @@ To run the tests: ```npm test``` or see the more [detailed testing plan]
 
 To modify or develop the code see [about the build environment]
 
+   [View Trello Board Here]: <https://trello.com/b/jWBg1vd1/twitter-sentiment-visualisation>
    [Node.js]: <https://nodejs.org/en/>
    [MongoDB]: <https://www.mongodb.org/>
    [git]: <https://git-scm.com/>
