@@ -38,7 +38,7 @@ View [detailed installation instructions]
 To run the tests: ```npm test``` or see the more [detailed testing plan]
 
 
-## Building
+## Automated Development Workflow
 > TSV uses the Gulp streaming build tool to automate the development workflow.
 
 The key tasks you need to run are:
@@ -48,7 +48,7 @@ The key tasks you need to run are:
 - `gulp test` - This will run all unit and coverage tests, printing a summary of the results to the console and generating more detailed reports into the reports directory.
 - `gulp` - this is the default task, it will check the project is configured correctly, build ALL the files, run the server, watch for changes, recompile relevant files and reload browsers on change, and keep all browsers in sync, when a test condition changes it will also re-run tests - a lot going on!
 
-To read more about the project setup and gulp proces, see [build environment] in the docs
+To read more about the project setup and gulp process, see [build environment] in the docs
 
 
 
