@@ -62,6 +62,7 @@ To read more about the project setup and gulp process, see [build environment] i
 - Continuous Integration Testing - [Travis CI](https://github.com/travis-ci/travis-ci)
 - Dependency Checking - [David](https://github.com/alanshaw/david)
 - Automated Code Review's - [Code Climate](https://github.com/codeclimate/codeclimate)
+- Headless Browser Testing – [PhantomJS](https://github.com/ariya/phantomjs)
 - Testing HTTP services - [SuperTest](https://github.com/visionmedia/supertest)
 
 More details on each of the tools and how they will be implemented along 

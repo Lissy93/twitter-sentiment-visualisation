@@ -128,6 +128,12 @@ poor identifiers, not following convention etc.. All of this information
 can help write better quality code. Code Climate also provides automated 
 coverage testing in conjunction with Istanbul.
 
+### Headless Browser Testing – [PhantomJS](https://github.com/ariya/phantomjs)
+For running functional frontend tests without having to use a browser, 
+it can be automated in the same way as the other tests and can test the 
+integration with other frontend libraries. PhantomJS also provides network 
+monitoring utilities that can help cut down page load times.
+
 ### Testing HTTP services – [SuperTest](https://github.com/visionmedia/supertest)
 SuperTest is an agent driven library for testing node.js HTTP servers using 
 a fluent API. It will be used for testing HTTP servers. It will be used to 
