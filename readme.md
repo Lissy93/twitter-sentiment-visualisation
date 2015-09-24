@@ -35,7 +35,7 @@ to [http://localhost:8080]
 
 View [detailed installation instructions]
 
-To run the tests: ```npm test``` or see the more [detailed testing plan]
+To run the tests: ```npm test``` or see the more [test strategy]
 
 
 ## Automated Development Workflow
@@ -51,6 +51,24 @@ The key tasks you need to run are:
 To read more about the project setup and gulp process, see [build environment] in the docs
 
 
+## Test Strategy 
+> Twitter Sentiment Visualisation follows the TDD approach and is structured around it's unit tests.
+
+**Testing Tools**
+- Framework - [Mocha](https://github.com/mochajs/mocha)
+- Assertion Library - [Chai](https://github.com/chaijs/chai)
+- Coverage Testing - [Istanbul](https://github.com/gotwarlost/istanbul)
+- Stubs, Spies and Mocking - [Sinon.js](https://github.com/sinonjs/sinon)
+- Continuous Integration Testing - [Travis CI](https://github.com/travis-ci/travis-ci)
+- Dependency Checking - [David](https://github.com/alanshaw/david)
+- Automated Code Review's - [Code Climate](https://github.com/codeclimate/codeclimate)
+- Testing HTTP services - [SuperTest](https://github.com/visionmedia/supertest)
+
+More details on each of the tools and how they will be implemented along 
+with the pass and fail criteria can be found on the [test strategy] page 
+of the documentation.
+
+
 
    [Trello Board]: <https://trello.com/b/jWBg1vd1/twitter-sentiment-visualisation>
    [Node.js]: <https://nodejs.org/en/>
@@ -59,7 +77,7 @@ To read more about the project setup and gulp process, see [build environment] i
    [Starting a MongoDB instance]: <http://docs.mongodb.org/master/tutorial/getting-started-with-the-mongo-shell/>
    [http://localhost:8080]: <http://localhost:8080>
    [detailed installation instructions]: <docs/installation-instructions.md>
-   [detailed testing plan]: <docs/methodology-testing.md>
+   [test strategy]: <docs/test-strategy.md>
    [build environment]: <docs/build-environment.md>
    [user stories with acceptance criteria]: <docs/user-stories.md>
 
