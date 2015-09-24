@@ -8,7 +8,7 @@
 
 [Methodology]()
 
-[Test Strategy](test-strategy)
+[Test Strategy](test-strategy.md)
 
 
 ----
