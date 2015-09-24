@@ -54,6 +54,9 @@ To read more about the project setup and gulp process, see [build environment] i
 ## Test Strategy 
 > Twitter Sentiment Visualisation follows the TDD approach and is structured around it's unit tests.
 
+To run tests: `npm test`
+
+
 **Testing Tools**
 - Framework - [Mocha](https://github.com/mochajs/mocha)
 - Assertion Library - [Chai](https://github.com/chaijs/chai)
