@@ -10,6 +10,13 @@
 > emotion detection to create a series of data visualisations to illustrate
 > the happy and less happy locations, topics and times.
 
+## Modules 
+Several open sauce node modules have been developed and published on npm as part of this project
+- [fetch-tweets] - fetches tweets from Twitter based on topic, location, timeframe or combination
+- [stream-tweets] - streams live Tweets in real-time
+- [tweet-location] - calculates the location from geo-tagged Tweets using the Twitter Geo API
+- [remove-words] - removes all non-key words from a string sentence
+- [sentiment-analysis] - useses the AFINN-111 word list to calculate overall sentiment of a sentence
 
 ## Project Planning 
 - A set of [user stories with acceptance criteria] have been drawn up outlining what features the finished solution should have. They are also managed on the [Trello Board]
@@ -72,7 +79,23 @@ More details on each of the tools and how they will be implemented along
 with the pass and fail criteria can be found on the [test strategy] page 
 of the documentation.
 
+## Documentation
+### Project Planning
+[User Stories](docs/user-stories.md)
 
+[High Level UML](docs/)
+
+[Methodology](docs/)
+
+[Test Strategy](docs/test-strategy.md)
+
+### Development Documentation
+
+[Installation Instructions](docs/installation-instructions.md)
+
+[Build Environment](docs/build-environment.md)
+
+[Testing](docs/test-strategy.md)
 
    [Trello Board]: <https://trello.com/b/jWBg1vd1/twitter-sentiment-visualisation>
    [Node.js]: <https://nodejs.org/en/>
@@ -84,4 +107,10 @@ of the documentation.
    [test strategy]: <docs/test-strategy.md>
    [build environment]: <docs/build-environment.md>
    [user stories with acceptance criteria]: <docs/user-stories.md>
+   
+   [fetch-tweets]: <https://www.npmjs.com/package/fetch-tweets>
+   [stream-tweets]: <https://www.npmjs.com/package/stream-tweets>
+   [tweet-location]: <https://www.npmjs.com/package/tweet-location>
+   [remove-words]: <https://www.npmjs.com/package/remove-words>
+   [sentiment-analysis]: <https://www.npmjs.com/package/sentiment-analysis>
 
