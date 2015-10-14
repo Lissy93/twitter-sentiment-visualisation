@@ -17,6 +17,7 @@ Several open sauce node modules have been developed and published on npm as part
 - [tweet-location] - calculates the location from geo-tagged Tweets using the Twitter Geo API
 - [remove-words] - removes all non-key words from a string sentence
 - [sentiment-analysis] - useses the AFINN-111 word list to calculate overall sentiment of a sentence
+- [hp-haven-sentiment-analysis] - A Node.js client library for HP Haven OnDemand Sentiment Analysis module
 
 ## Project Planning 
 - A set of [user stories with acceptance criteria] have been drawn up outlining what features the finished solution should have. They are also managed on the [Trello Board]
@@ -113,4 +114,5 @@ of the documentation.
    [tweet-location]: <https://www.npmjs.com/package/tweet-location>
    [remove-words]: <https://www.npmjs.com/package/remove-words>
    [sentiment-analysis]: <https://www.npmjs.com/package/sentiment-analysis>
+   [hp-haven-sentiment-analysis]: <https://github.com/Lissy93/haven-sentiment-analysis>
 
