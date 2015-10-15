@@ -12,12 +12,13 @@ module.exports = (server)->
 
     io = require('socket.io').listen(server)
 
-    # Set a stream listener for tweets matching tracking keywords
     credentials = require('../config/keys').twitter
 
     twit = new streamTweets(credentials)
 
-    twit.stream('hello', (stream)->
+    keyword = 'london'
+
+    twit.stream(keyword, (stream)->
       streamHandler(stream,io)
     )
 

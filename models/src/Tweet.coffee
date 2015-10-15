@@ -3,8 +3,8 @@ mongoose = require 'mongoose'
 schema = new mongoose.Schema({
 body      : String
 dateTime  : String
-#  keywords  : Array
-#  sentiment : Number
+keywords  : Array
+sentiment : Number
 #  location  : {lat: Number, lon: Number}
 })
 
