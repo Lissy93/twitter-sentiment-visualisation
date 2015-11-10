@@ -25,6 +25,8 @@
     "cookie-parser": "^1.4.0",
     "debug": "^2.2.0",
     "express": "^4.13.3",
+    "fetch-tweets": "^0.1.0",
+    "haven-sentiment-analysis": "git://github.com/Lissy93/haven-sentiment-analysis.git",
     "jade": "^1.11.0",
     "mongoose": "^4.1.6",
     "morgan": "^1.6.1",

@@ -24,6 +24,7 @@ var map       = require('./routes/map');
 var liveMap   = require('./routes/live-map')(server);
 var timeline  = require('./routes/timeline');
 var about     = require('./routes/about');
+var comparison= require('./routes/sa-comparison');
 
 /* view engine setup */
 app.set('views', path.join(__dirname, 'views'));
@@ -47,6 +48,7 @@ app.use('/map', map);
 app.use('/real-time-map', liveMap);
 app.use('/timeline', timeline);
 app.use('/about', about);
+app.use('/sa-comparison', comparison);
 
 
 /* catch 404 and forward to error handler */
