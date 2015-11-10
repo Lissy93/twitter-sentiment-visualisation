@@ -19,4 +19,5 @@ models/*.js
 utils/*.js
 config/*.js
 routes/*.js
-public/
+public/javascripts
+public/stylesheets
