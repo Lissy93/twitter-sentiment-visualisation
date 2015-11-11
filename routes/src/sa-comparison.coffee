@@ -6,8 +6,8 @@ defaultRes = require('../public/data/all_sentiment_results_edwardsnowdon.json')
 
 # Renders the layout with the sentiment results passed as param
 renderWithResults = (res, results) ->
-#res.render('index', { title: 'Express' });
-  res.json results
+  res.render('page_comparison', {results: results})
+#  res.json results
 
 # Root task, called when no params passed, should use default results
 router.get '/', (req, res, next) ->
@@ -39,6 +39,7 @@ router.get '/:query', (req, res, next) ->
             tweet: tweet
             dictionary_sentiment: dictionarySA(tweet)
             nlu_sentiment: Math.round(nluResults.aggregate.score * 1000) / 1000
+            human_sentiment: null
           completedRequests++
           if completedRequests == rawTweets.length
             renderWithResults res, results # Everything is done, now call render
@@ -60,7 +61,7 @@ router.get '/:query', (req, res, next) ->
   else
     renderWithResults res, defaultRes
 
-    
+
 
 module.exports = router
 
