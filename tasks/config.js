@@ -12,6 +12,7 @@ module.exports = {
     FOOTER_TEXT         : footerText,   // Optional footer text for output files
     SCRIPT_PATHS        : [             // Paths for JavaScript files
         { src: 'source/scripts/**/*.{js,coffee}',   dest: 'public/javascripts' },
+        { src: 'source/scripts/visualisations/*.coffee', dest: 'public/javascripts/charts' },
         { src: 'models/src/*.coffee',               dest: 'models' },
         { src: 'utils/src/*.coffee',                dest: 'utils' },
         { src: 'config/src/*.coffee',               dest: 'config' },
