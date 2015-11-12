@@ -16,6 +16,12 @@ body {
 
 main {
   flex: 1 0 auto;
+  margin: 1em auto;
+  padding: 1em;
+  &.whitebg{
+    background: @col_white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  }
 }
 
 
@@ -31,6 +37,16 @@ h1, h2, h3, h4, h5{
   font-weight: normal;
 }
 
-h3{
-  font-size: 1.3em;
+h2{
+  font-size: 2.28rem;
 }
+
+h3{
+  font-size: 1.8rem;
+}
+
+
+/******************\
+ *-- ADJUSTMENTS--*
+\******************/
+.maxWidth75{ max-width: 75em; }
