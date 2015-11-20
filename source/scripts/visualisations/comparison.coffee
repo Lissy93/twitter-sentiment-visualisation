@@ -21,9 +21,32 @@ generateBarChartData = (rawResults) ->
       sentimentObject.tweet
       sentimentObject.nlu_sentiment
       sentimentObject.dictionary_sentiment
-      sentimentObject.human_sentiment
+      if (sentimentObject.human_sentiment!= null) then sentimentObject.human_sentiment else 0
     ])
+
+  console.log chartData
   chartData
+
+generateSummaryChartData = (rawResults) ->
+  chartData = []
+  chartData.push ['', 'Dictionary', 'NLU', 'Human']
+  dictionaryTotal = 0
+  nluTotal = 0
+  humanTotal = 0
+  rawResults.forEach (sentimentObject) ->
+    dictionaryTotal += sentimentObject.dictionary_sentiment
+    nluTotal += sentimentObject.nlu_sentiment
+    humanTotal += sentimentObject.human_sentiment
+  chartData.push([
+    'Sentiment Analysis Results'
+    dictionaryTotal/rawResults.length
+    nluTotal/rawResults.length
+    humanTotal/rawResults.length
+  ])
+  chartData
+
+
+
 
 # Defines the chart data, options and calls draw method for both charts
 drawChart = ->
@@ -31,6 +54,9 @@ drawChart = ->
     google.visualization.arrayToDataTable generateChartData sentimentResults
   barData =
     google.visualization.arrayToDataTable generateBarChartData sentimentResults
+  summaryData =
+    google.visualization.arrayToDataTable generateSummaryChartData sentimentResults
+
 
   scatterOptions =
     title: 'Comparison of Different Sentiment Analysis Methods'
@@ -62,15 +88,33 @@ drawChart = ->
       side: 'top'
       label: 'Sentiment'
 
+  summaryOptions =
+    chart:
+      title: 'Summary of Sentiment Analysis Results'
+      subtitle: 'Comparing Dictionary and NLU based results'
+    bars: 'vertical'
+    vAxis:
+      format: 'decimal'
+      viewWindowMode: 'explicit'
+      viewWindow:
+        min: -1
+        max: 1
+    height: 400
+    colors: ['#6ec9ee', '#3D7CDB', '#0B326C']
 
-  table = new google.visualization.Table document.getElementById 'table_ch';
-  table.draw(barData, {width: '100%', height: '100%'});
+
+  chart = new  google.charts.Bar document.getElementById 'summarry_bar_ch'
+  chart.draw summaryData,  google.charts.Bar.convertOptions summaryOptions
+
+
+  table = new google.visualization.Table document.getElementById 'table_ch'
+  table.draw barData, {width: '100%', height: '100%'}
 
   scatterChart =
     new google.visualization.ScatterChart document.getElementById 'scatter_ch'
   scatterChart.draw scatterData, scatterOptions
 
-  barChart = new google.charts.Bar document.getElementById 'bar_ch'
+  barChart = new google.visualization.BarChart document.getElementById 'bar_ch'
   barChart.draw barData, barOptions
 
 google.load 'visualization', '1.1', packages: ['table', 'corechart', 'bar']

@@ -12,9 +12,7 @@ block content
         | and display the results in the table and charts below.
 
         div.row
-            div.col.s12
-                br
-                div.divider
+            include ./component_divider
             div.col.s12.m6
                 h3  Dictionary-based SA
                 p
@@ -40,9 +38,8 @@ block content
                 | <br />
                 | For this example the HP Haven OnDemand API has been used
 
-            div.col.s12
-                br
-                div.divider
+            include ./component_divider
+
             div.col.s12.m6(style='float:right')
                 h3 Data Sauce
 
@@ -66,9 +63,28 @@ block content
                     type='text', class='validate', value="#{searchTerm}")
                 a#btnCalculate.waves-effect.waves-light.btn(href='', style='float:right') Calculate
 
-            div.col.s12
+            include ./component_divider
+
+            div.col.s12.m6
                 br
-                div.divider
+                span#summarry_bar_ch
+
+            div.col.s12.m6
+                img(src='/images/sentiment-comparison.png', width='500px')
+
+
+            include ./component_divider
+
+
+        h3 Scatter Chart of Sentiment Data
+        span#scatter_ch
+
+        h3 Raw Data
+        span#table_ch
+
+        h3 Bar Chart
+        span#bar_ch
+
 
         script(type='text/javascript', src='https://www.google.com/jsapi')
         script(type='text/javascript').
@@ -76,14 +92,8 @@ block content
         script(type = 'text/javascript', src = '/bower_components/d3/d3.min.js')
         script(type='text/javascript', src='/javascripts/charts/comparison.js')
 
-        h3 Scatter Chart of Sentiment Data
-        span#scatter_ch(style='width: 850px; height: 600px')
+    include ./footer
 
-        h3 Raw Data
-        span#table_ch(style='width: 850px; height: 600px')
-
-        h3 Bar Chart
-        span#bar_ch(style='width: 1200px; height: 1500px')
 
 
 
