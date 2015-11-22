@@ -31,7 +31,6 @@
     "google-chart": "GoogleWebComponents/google-chart#~1.0.4",
     "google-map": "GoogleWebComponents/google-map#~1.0.3",
     "jquery": "~2.1.4",
-    "materialize": "~0.97.0",
-    "polymer": "Polymer/polymer#1.0.0"
+    "materialize": "~0.97.0"
   }
 }
