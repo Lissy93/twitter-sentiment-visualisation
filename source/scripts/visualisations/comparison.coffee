@@ -23,8 +23,6 @@ generateBarChartData = (rawResults) ->
       sentimentObject.dictionary_sentiment
       if (sentimentObject.human_sentiment!= null) then sentimentObject.human_sentiment else 0
     ])
-
-  console.log chartData
   chartData
 
 generateSummaryChartData = (rawResults) ->
@@ -45,8 +43,10 @@ generateSummaryChartData = (rawResults) ->
   ])
   chartData
 
-
-
+getSummaryRange = (chartData) ->
+  chartData[1].splice 0,1
+  for d, i in chartData[1] then chartData[1][i] = Math.abs(d)
+  Math.max.apply(Math, chartData[1])*2
 
 # Defines the chart data, options and calls draw method for both charts
 drawChart = ->
@@ -81,6 +81,9 @@ drawChart = ->
       subtitle: 'Hover over bar for more details of Tweet'
     width: 1000
     height: 1500
+    chartArea:
+      width: '50%'
+      height: '100%'
     backgroundColor: '#fff'
     bars: 'horizontal'
     colors: ['#6ec9ee', '#3D7CDB', '#0B326C']
@@ -97,8 +100,8 @@ drawChart = ->
       format: 'decimal'
       viewWindowMode: 'explicit'
       viewWindow:
-        min: -1
-        max: 1
+        min: - getSummaryRange generateSummaryChartData sentimentResults
+        max: getSummaryRange generateSummaryChartData sentimentResults
     height: 400
     colors: ['#6ec9ee', '#3D7CDB', '#0B326C']
 
