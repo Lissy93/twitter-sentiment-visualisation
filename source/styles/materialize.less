@@ -1,8 +1,16 @@
 @import "constants";
 nav, footer.page-footer{
   background: @col_primary;
+  z-index: 999;
 }
 
 .brand-logo{
   margin-left: 0.5em;
 }
+
+.btn{
+  background: @col_primary;
+  &:hover{ background: @col_paleprimary; }
+}
+
+.flow-text{font-size: 1.5em; }
