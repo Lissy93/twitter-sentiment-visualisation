@@ -18,9 +18,20 @@ main {
   flex: 1 0 auto;
   margin: 1em auto;
   padding: 1em;
-  &.whitebg{
-    background: @col_white;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+footer{
+  padding: 0;
+}
+
+.whitebg{
+  background: @col_white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  &.card-padding{
+    padding: 0.5em 1.5em;
+  }
+  &.curved{
+    border-radius: 0.2em;
   }
 }
 
@@ -28,7 +39,7 @@ main {
 /******************\
  *----- TEXT -----*
 \******************/
-p, a, span, li{
+p, a, span, li, html{
   font-family: @font_default;
 }
 
