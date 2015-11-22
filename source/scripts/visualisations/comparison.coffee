@@ -109,9 +109,8 @@ drawChart = ->
   chart = new  google.charts.Bar document.getElementById 'summarry_bar_ch'
   chart.draw summaryData,  google.charts.Bar.convertOptions summaryOptions
 
-
-  table = new google.visualization.Table document.getElementById 'table_ch'
-  table.draw barData, {width: '100%', height: '100%'}
+#  table = new google.visualization.Table document.getElementById 'table_ch'
+#  table.draw barData, {width: '100%', height: '100%'}
 
   scatterChart =
     new google.visualization.ScatterChart document.getElementById 'scatter_ch'
@@ -119,6 +118,28 @@ drawChart = ->
 
   barChart = new google.visualization.BarChart document.getElementById 'bar_ch'
   barChart.draw barData, barOptions
+
+  drawTableChart = () ->
+    data = generateBarChartData sentimentResults
+    myTable = ''
+    myTable += '<thead><tr>'
+    myTable += '<th style="width: 30em">Tweet</th>'
+    myTable += '<th>'+item+'</th>' for item in data[0].splice(1,3)
+    myTable += '</tr></thead>'
+    myTable += '<tbody>'
+    i = 1
+    while i < data.length
+      myTable += '<tr>'
+      myTable += '<td>'+cell+'</td>' for cell in data[i]
+      myTable += '</tr>'
+      i++
+
+    myTable += '</tbody>'
+
+
+
+
+  document.getElementById('table_ch').innerHTML = drawTableChart()
 
 google.load 'visualization', '1.1', packages: ['table', 'corechart', 'bar']
 
