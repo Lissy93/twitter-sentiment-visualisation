@@ -1,6 +1,6 @@
 
 # Converts the raw Sentiment data into a format suitable for the scatter chart
-generateChartData = (rawResults) ->
+generateScatterData = (rawResults) ->
   chartData = []
   chartData.push(['Sentiment', 'Dictionary-Based SA', 'NLU SA', 'Human SA'])
   chartData.push([0, null, null, 0])
@@ -12,20 +12,20 @@ generateChartData = (rawResults) ->
       chartData.push([tweetLen, null, null, sentimentObject.human_sentiment])
   chartData
 
-# Converts raw sentiment data into a format suitable for the bar chart
-generateBarChartData = (rawResults) ->
+generateBarData = (rawResults) ->
   chartData = []
   chartData.push(['Tweet', 'Dictionary-Based SA', 'NLU SA', 'Human SA'])
-  rawResults.forEach (sentimentObject) ->
+  rawResults.forEach (so) ->
     chartData.push([
-      sentimentObject.tweet
-      sentimentObject.nlu_sentiment
-      sentimentObject.dictionary_sentiment
-      if (sentimentObject.human_sentiment!= null) then sentimentObject.human_sentiment else 0
+      so.tweet
+      so.nlu_sentiment
+      so.dictionary_sentiment
+      if so.human_sentiment? then so.human_sentiment else 0
     ])
   chartData
+# Converts raw sentiment data into a format suitable for the bar chart
 
-generateSummaryChartData = (rawResults) ->
+generateSummaryData = (rawResults) ->
   chartData = []
   chartData.push ['', 'Dictionary', 'NLU', 'Human']
   dictionaryTotal = 0
@@ -51,11 +51,11 @@ getSummaryRange = (chartData) ->
 # Defines the chart data, options and calls draw method for both charts
 drawChart = ->
   scatterData =
-    google.visualization.arrayToDataTable generateChartData sentimentResults
+    google.visualization.arrayToDataTable generateScatterData sentimentResults
   barData =
-    google.visualization.arrayToDataTable generateBarChartData sentimentResults
+    google.visualization.arrayToDataTable generateBarData sentimentResults
   summaryData =
-    google.visualization.arrayToDataTable generateSummaryChartData sentimentResults
+    google.visualization.arrayToDataTable generateSummaryData sentimentResults
 
 
   scatterOptions =
@@ -100,8 +100,8 @@ drawChart = ->
       format: 'decimal'
       viewWindowMode: 'explicit'
       viewWindow:
-        min: - getSummaryRange generateSummaryChartData sentimentResults
-        max: getSummaryRange generateSummaryChartData sentimentResults
+        min: - getSummaryRange generateSummaryData sentimentResults
+        max: getSummaryRange generateSummaryData sentimentResults
     height: 400
     colors: ['#6ec9ee', '#3D7CDB', '#0B326C']
 
@@ -120,7 +120,7 @@ drawChart = ->
   barChart.draw barData, barOptions
 
   drawTableChart = () ->
-    data = generateBarChartData sentimentResults
+    data = generateBarData sentimentResults
     myTable = ''
     myTable += '<thead><tr>'
     myTable += '<th style="width: 30em">Tweet</th>'
@@ -150,4 +150,5 @@ google.setOnLoadCallback drawChart
 btnSearch = document.getElementById('btnCalculate')
 txtKeyword = document.getElementById('txtKeyword')
 txtKeyword.onchange = txtKeyword.onkeyup = ->
-  btnSearch.setAttribute('href', '/sa-comparison/'+encodeURIComponent(txtKeyword.value))
+  keyWord = encodeURIComponent(txtKeyword.value)
+  btnSearch.setAttribute('href', '/sa-comparison/'+keyWord)
