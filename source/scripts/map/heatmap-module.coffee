@@ -1,50 +1,21 @@
 
-#Sample heat map data
-positiveLocationData = [
-  {
-    location: new (google.maps.LatLng)(51.511461, -0.0822538)
-    weight: 8
-  }
-  {
-    location: new (google.maps.LatLng)(51.511645, -0.081428)
-    weight: 2
-  }
-  {
-    location: new (google.maps.LatLng)(51.512086, -0.080687)
-    weight: 4
-  }
-  {
-    location: new (google.maps.LatLng)(51.512480, -0.078906)
-    weight: 0.8
-  }
-  {
-    location: new (google.maps.LatLng)(51.513060, -0.078349)
-    weight: 1
-  }
-]
+positiveLocationData = []
+negativeLocationData = []
 
-negativeLocationData = [
-  {
-    location: new (google.maps.LatLng)(51.514362, -0.079676)
-    weight: 8
-  }
-  {
-    location: new (google.maps.LatLng)(51.513895, -0.079462)
-    weight: 2
-  }
-  {
-    location: new (google.maps.LatLng)(51.513841, -0.078775)
-    weight: 4
-  }
-  {
-    location: new (google.maps.LatLng)(51.513547, -0.077337)
-    weight: 0.8
-  }
-  {
-    location: new (google.maps.LatLng)(51.514068, -0.078067)
-    weight: 1
-  }
-]
+makeHeatData = () ->
+  sentimentResults.forEach (sentObj) ->
+    if sentObj.sentiment > 0
+      positiveLocationData.push({
+        location: new (google.maps.LatLng)(sentObj.location.lat, sentObj.location.lng)
+        weight: 8
+      })
+    else if sentObj.sentiment < 0
+      negativeLocationData.push({
+        location: new (google.maps.LatLng)(sentObj.location.lat, sentObj.location.lng)
+        weight: 8
+      })
+
+makeHeatData()
 
 # Apply heat map to map
 PositivePointArray = new (google.maps.MVCArray)(positiveLocationData)
