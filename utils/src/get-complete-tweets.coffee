@@ -27,10 +27,11 @@ class GetGeoSentimentTweets
 
   # Main
   go: (searchQuery, completeAction) ->
+    placesApiKey = @placesApiKey
     fetchFromTwitter(searchQuery, @twitterApiKeys).then (twitterResults) ->
       promises = [] # array of google places promises
       for tweet in twitterResults
-        promises.push findPlaceInfo tweet.location, @placesApiKey
+        promises.push findPlaceInfo tweet.location, placesApiKey
       q.all(promises).spread -> # When all the places promises have returned
         for tweet, index in twitterResults
           tweet.location = arguments[index] # Attach new location to Tweet
