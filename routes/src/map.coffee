@@ -1,6 +1,7 @@
 express = require('express')
 router = express.Router()
 
+Tweet = require '../models/Tweet'
 CompleteTweets = require '../utils/get-complete-tweets'
 
 sampleData = [
@@ -36,6 +37,30 @@ sampleData = [
   }
 ]
 
+
+formatResultsForMap = (twitterResults) ->
+  mapData = []
+  for tweet in twitterResults
+    if !tweet.location.error?
+      mapData.push
+        sentiment: tweet.sentiment
+        location:
+          lat: tweet.location.location.lat
+          lng: tweet.location.location.lng
+  mapData
+
+insertTweetsIntoDatabase = (twitterResults) ->
+  for tweet in twitterResults
+    tweetData =
+      body:     tweet.body
+      dateTime: tweet.date
+      keywords  : []
+      sentiment : tweet.sentiment
+      location  : tweet.location
+    tweetEntry = new Tweet(tweetData) # Create new model instance from object
+    tweetEntry.save
+
+
 router.get '/', (req, res, next) ->
   res.render 'page_map', data: sampleData, title: 'Map', pageNum: 1
 
@@ -51,16 +76,9 @@ router.get '/:query', (req, res, next) ->
   calculateResults = (searchTerm) ->
     completeTweets = new CompleteTweets(twitterKey, googlePlacesKey)
     completeTweets.go searchTerm, (results) ->
-      mapData = []
-      for tweet in results
-        if !tweet.location.error?
-          mapData.push
-            sentiment: tweet.sentiment
-            location:
-              lat: tweet.location.location.lat
-              lng: tweet.location.location.lng
-
+      mapData = formatResultsForMap(results)
       res.render 'page_map', data: mapData, title: searchTerm+' Map', pageNum: 1
+      insertTweetsIntoDatabase(results)
 
   if searchTerm != null
     calculateResults searchTerm

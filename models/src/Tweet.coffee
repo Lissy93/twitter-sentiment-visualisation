@@ -5,7 +5,7 @@ body      : String
 dateTime  : String
 keywords  : Array
 sentiment : Number
-location  : { place_name: String, location: { lat: Number, lng: Number } }
+location  : { type : Object , "default" : {} }
 })
 
 schema.statics.getTweets = (page, skip, callback) ->
@@ -23,5 +23,11 @@ schema.statics.getTweets = (page, skip, callback) ->
         tweet.active = true # Set them to active
 
     callback tweets # Pass them back to the specified callback
+
+
+schema.statics.getAllTweets = (callback) ->
+  Tweet.find {}, (err, results) ->
+    callback results
+
 
 module.exports = Tweet = mongoose.model('Tweet', schema)
