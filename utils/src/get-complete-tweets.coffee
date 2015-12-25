@@ -2,6 +2,7 @@
 FetchTweets = require 'fetch-tweets'
 placeLookup = require 'place-lookup'
 sentiment = require 'sentiment-analysis'
+removeWords = require 'remove-words'
 q = require 'q'
 
 class GetGeoSentimentTweets
@@ -35,7 +36,8 @@ class GetGeoSentimentTweets
       q.all(promises).spread -> # When all the places promises have returned
         for tweet, index in twitterResults
           tweet.location = arguments[index] # Attach new location to Tweet
-          tweet.sentiment = sentiment(tweet.body) # Attach sentiment to Tweet
+          tweet.sentiment = sentiment tweet.body # Attach sentiment to Tweet
+          tweet.keywords = removeWords tweet.body # Attach keywords to Tweet
         completeAction twitterResults # Done!
 
 module.exports = GetGeoSentimentTweets
