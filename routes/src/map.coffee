@@ -4,40 +4,11 @@ router = express.Router()
 Tweet = require '../models/Tweet'
 CompleteTweets = require '../utils/get-complete-tweets'
 
-sampleData = [
-  {
-    sentiment: 0.8
-    location:
-      lat: 51.528735
-      lng: -0.381783
-  },
-  {
-    sentiment: 0.5
-    location:
-      lat: 51.522265
-      lng: -0.388324
-  },
-  {
-    sentiment: 0.2
-    location:
-      lat: 51.524735
-      lng: -0.384753
-  },
-  {
-    sentiment: -0.2
-    location:
-      lat: 51.594735
-      lng: -0.314753
-  },
-  {
-    sentiment: -0.4
-    location:
-      lat: 51.924735
-      lng: -0.314753
-  }
-]
+# API keys
+twitterKey = require('../config/keys').twitter
+googlePlacesKey = require('../config/keys').googlePlaces
 
-
+# Converts ordinary Tweet array to lat + lng array for the heat map
 formatResultsForMap = (twitterResults) ->
   mapData = []
   for tweet in twitterResults
@@ -49,40 +20,56 @@ formatResultsForMap = (twitterResults) ->
           lng: tweet.location.location.lng
   mapData
 
+# Inserts an array of valid Tweets into the database
 insertTweetsIntoDatabase = (twitterResults) ->
   for tweet in twitterResults
     tweetData =
       body:     tweet.body
       dateTime: tweet.date
-      keywords  : []
+      keywords  : tweet.keywords
       sentiment : tweet.sentiment
       location  : tweet.location
-    tweetEntry = new Tweet(tweetData) # Create new model instance from object
-    tweetEntry.save
+    if isSuitableForDb tweetData
+      tweetEntry = new Tweet(tweetData) # Create new model instance from object
+      tweetEntry.save (err) ->
+        if err then console.log 'Error saving Tweet - ' + err
 
+# Determines if a Tweet object is complete, if it should be saved in the db
+isSuitableForDb = (tweetData) ->
+  if tweetData.sentiment == 0 then return false
+  if tweetData.location.error? then return false
+  if !tweetData.location.location.lat? then return false
+  if !tweetData.location.location.lng? then return false
+  return true
 
-router.get '/', (req, res, next) ->
-  res.render 'page_map', data: sampleData, title: 'Map', pageNum: 1
+# Calls methods to fetch and format Tweets from the database
+renderWithDatabaseResults = (cb) ->
+  Tweet.getAllTweets (tweets) ->
+    cb formatResultsForMap tweets
 
+# Calls methods to fetch fresh Twitter, sentiment, and place data
+renderWithFreshData = (searchTerm, cb) ->
+  completeTweets = new CompleteTweets(twitterKey, googlePlacesKey)
+  completeTweets.go searchTerm, (results) ->
+    mapData = formatResultsForMap(results)
+    insertTweetsIntoDatabase(results)
+    cb mapData
 
+# Main path for map page
+router.get '/', (req, res) ->
+  renderWithDatabaseResults (data) ->
+    res.render 'page_map', data: data, title: 'Map', pageNum: 1
+
+# Path for map sub-page
 router.get '/:query', (req, res, next) ->
 
-  # Keys and instance variables
-  twitterKey = require('../config/keys').twitter
-  googlePlacesKey = require('../config/keys').googlePlaces
   searchTerm = req.params.query # Get the search term from URL param
 
-  # Method will generate an object with all calculated sentiments for tweet
-  calculateResults = (searchTerm) ->
-    completeTweets = new CompleteTweets(twitterKey, googlePlacesKey)
-    completeTweets.go searchTerm, (results) ->
-      mapData = formatResultsForMap(results)
-      res.render 'page_map', data: mapData, title: searchTerm+' Map', pageNum: 1
-      insertTweetsIntoDatabase(results)
-
   if searchTerm != null
-    calculateResults searchTerm
+    renderWithFreshData searchTerm, (mapData) ->
+      res.render 'page_map', data: mapData, title: searchTerm+' Map', pageNum: 1
   else
-    res.render 'page_map', data: sampleData, title: 'Map', pageNum: 1
+    renderWithDatabaseResults (data) ->
+      res.render 'page_map', data: data, title: 'Map', pageNum: 1
 
 module.exports = router
