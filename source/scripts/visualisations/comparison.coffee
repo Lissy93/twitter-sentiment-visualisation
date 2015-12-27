@@ -12,6 +12,7 @@ generateScatterData = (rawResults) ->
       chartData.push([tweetLen, null, null, sentimentObject.human_sentiment])
   chartData
 
+# Converts raw sentiment data into a format suitable for the bar chart
 generateBarData = (rawResults) ->
   chartData = []
   chartData.push(['Tweet', 'Dictionary-Based SA', 'NLU SA', 'Human SA'])
@@ -23,8 +24,8 @@ generateBarData = (rawResults) ->
       if so.human_sentiment? then so.human_sentiment else 0
     ])
   chartData
-# Converts raw sentiment data into a format suitable for the bar chart
 
+# Converts raw sentiment data into a format suitable for the column chart
 generateSummaryData = (rawResults) ->
   chartData = []
   chartData.push ['', 'Dictionary', 'NLU', 'Human']
@@ -43,6 +44,7 @@ generateSummaryData = (rawResults) ->
   ])
   chartData
 
+# Finds range of sentiment
 getSummaryRange = (chartData) ->
   chartData[1].splice 0,1
   for d, i in chartData[1] then chartData[1][i] = Math.abs(d)
@@ -57,7 +59,7 @@ drawChart = ->
   summaryData =
     google.visualization.arrayToDataTable generateSummaryData sentimentResults
 
-
+  # Define chart options for all charts
   scatterOptions =
     title: 'Comparison of Different Sentiment Analysis Methods'
     width: 900
@@ -105,12 +107,9 @@ drawChart = ->
     height: 400
     colors: ['#6ec9ee', '#3D7CDB', '#0B326C']
 
-
+  # Create all google charts with chart options
   chart = new  google.charts.Bar document.getElementById 'summarry_bar_ch'
   chart.draw summaryData,  google.charts.Bar.convertOptions summaryOptions
-
-#  table = new google.visualization.Table document.getElementById 'table_ch'
-#  table.draw barData, {width: '100%', height: '100%'}
 
   scatterChart =
     new google.visualization.ScatterChart document.getElementById 'scatter_ch'
@@ -119,6 +118,7 @@ drawChart = ->
   barChart = new google.visualization.BarChart document.getElementById 'bar_ch'
   barChart.draw barData, barOptions
 
+  # Create a HTML table for the raw results
   drawTableChart = () ->
     data = generateBarData sentimentResults
     myTable = ''
@@ -136,13 +136,10 @@ drawChart = ->
 
     myTable += '</tbody>'
 
-
-
-
   document.getElementById('table_ch').innerHTML = drawTableChart()
 
+# Load the google visualisations packages and call the draw method
 google.load 'visualization', '1.1', packages: ['table', 'corechart', 'bar']
-
 google.setOnLoadCallback drawChart
 
 
