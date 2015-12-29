@@ -12,19 +12,19 @@ module.exports = (data, io) ->
 
   if data.location.location.lat == 0 and data.location.place_name != ''
     placeLookup data.location.place_name, placesApiKey, (placeResults) ->
-
         tweetLocation = if !placeResults.error then placeResults else blankPlace
         tweet = makeTweetObj(data, tweetLocation)
         tweetEntry = new Tweet(tweet) # Create new model instance from object
 
         tweetEntry.save
-
+        console.log tweet
         io.emit 'tweet', tweet # If everythinks cool, emit the tweet
 
   else
     tweet = makeTweetObj(data, blankPlace)
     tweetEntry = new Tweet(tweet) # Create new model instance from object
     tweetEntry.save
+    console.log tweet
     io.emit 'tweet', tweet # If everythinks cool, emit the tweet
 
 

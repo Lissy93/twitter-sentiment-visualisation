@@ -78,6 +78,9 @@ module.exports = TweetsApp = React.createClass({
         socket.on('tweet', function (data) {
             self.addTweet(data);
         });
+        socket.on('disconnect', function () {
+            console.log('disconnect client event....');
+        });
     },
 
     // Render the component

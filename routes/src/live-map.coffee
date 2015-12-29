@@ -16,12 +16,11 @@ module.exports = (server)->
 
     twit = new streamTweets(credentials)
 
-    keyword = 'london'
+    keyword = 'oxford'
 
     twit.stream(keyword, (stream)->
       streamHandler(stream,io)
     )
-
 
     Tweet.getTweets 0, 0, (tweets) ->
       reactHtml = React.renderToString(TweetsApp(tweets: tweets))
