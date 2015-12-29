@@ -4,3 +4,4 @@ $(window).load ->
 
 root = exports ? this
 root.showLoader = () -> $('#loading-graphic').fadeIn 'slow'
+root.hideLoader = () -> $('#loading-graphic').fadeOut 'slow'
