@@ -1,96 +1,95 @@
 extends layout
 block content
-    main.content.whitebg.maxWidth75
-        h2 Comparison of methods of calculating Sentiment Analysis
-        p
-        | There are a number of different methods of calculating
-        | sentiment analysis (SA). For this experiment I compare the
-        | two most common methods, dictionary-based SA and natural
-        | language understanding SA.
-        | A set of Tweets will be fetched from the Twitter API, and
-        | a script will calculate the sentiment for with both methods
-        | and display the results in the table and charts below.
+    main.content.maxWidth75
+        div.whitebg.card-padding.curved
+            h2 Comparison of methods of calculating Sentiment Analysis
+            p
+              | There are a number of different methods of calculating
+              | sentiment analysis (SA). For this experiment I compare the
+              | two most common methods, dictionary-based SA and natural
+              | language understanding SA.
+              | A set of Tweets will be fetched from the Twitter API, and
+              | a script will calculate the sentiment for with both methods
+              | and display the results in the table and charts below.
 
-        div.row
-            include ./component_divider
-            div.col.s12.m6
-                h3  Dictionary-based SA
-                p
-                | Dictionary-based sentiment analysis uses predefined dataset
-                | of words annotated with their semantic values. The algorithm
-                | simply looks up the semantic value for each word and then
-                | calculates the overall sentiment for the sentence based on
-                | the values for each word. <br />
-                | The word list used in this example is the AFINN-111.
-                | You can view the sourcecode and documentation for the
-                | dictionary-based SA module
-                | <a href="https://github.com/Lissy93/sentiment-analysis">here</a>
-
-            div.col.s12.m6
-                h3  Natural Language Understanding SA
-                p
-                | Natural language understanding-based sentiment analysis is a
-                | little more complex, and takes longer for each calculation. It
-                | also tends to be more costly as well, however the results are
-                | considerably more accurate. It is also possible to extract
-                | more than just a positivity value for each string, you can
-                | drill down into much more detail about the attitudes conveyed.
-                | <br />
-                | For this example the HP Haven OnDemand API has been used
-
-            include ./component_divider
-
-            div.col.s12.m6(style='float:right')
-                h3 Data Sauce
-
-                if(searchTerm)
-                    p Showing results related to #{searchTerm}
-
-                else
+            div.row
+                include ./component_divider
+                div.col.s12.m6
+                    h3  Dictionary-based SA
                     p
-                    | The following examples are using Twitter data relating to the
-                    | Edward Snowdon news story in 2013. There is also a third
-                    | column added which represents the sentiment calculated by a
-                    | number of humans in a questionnaire, this is to act as a
-                    | benchmark <br>
-                    | You can enter your own search query below, Twitter data will
-                    | be fetched and the sentiment of each Tweet then calculated.
+                      | Dictionary-based sentiment analysis uses predefined dataset
+                      | of words annotated with their semantic values. The algorithm
+                      | simply looks up the semantic value for each word and then
+                      | calculates the overall sentiment for the sentence based on
+                      | the values for each word. <br />
+                      | The word list used in this example is the AFINN-111.
+                      | You can view the sourcecode and documentation for the
+                      | dictionary-based SA module
+                      | <a href="https://github.com/Lissy93/sentiment-analysis">here</a>
+
+                div.col.s12.m6
+                    h3  Natural Language Understanding SA
+                    p
+                      | Natural language understanding-based sentiment analysis is a
+                      | little more complex, and takes longer for each calculation. It
+                      | also tends to be more costly as well, however the results are
+                      | considerably more accurate. It is also possible to extract
+                      | more than just a positivity value for each string, you can
+                      | drill down into much more detail about the attitudes conveyed.
+                      | <br />
+                      | For this example the HP Haven OnDemand API has been used
+
+                include ./component_divider
+
+                div.col.s12.m6(style='float:right')
+                    h3 Data Sauce
+
+                    if(searchTerm)
+                        p Showing results related to #{searchTerm}
+
+                    else
+                        p
+                          | The following examples are using Twitter data relating to the
+                          | Edward Snowdon news story in 2013. There is also a third
+                          | column added which represents the sentiment calculated by a
+                          | number of humans in a questionnaire, this is to act as a
+                          | benchmark <br>
+                          | You can enter your own search query below, Twitter data will
+                          | be fetched and the sentiment of each Tweet then calculated.
+
+                div.col.s12.m6
+                    h3 Custom Data Sauce
+                    input#txtKeyword(
+                        placeholder='Enter keyword to calculate custom sentiment comparison data',
+                        type='text', class='validate', value="#{searchTerm}")
+                    a#btnCalculate.waves-effect.waves-light.btn(href='', style='float:right', onclick='showLoader()') Calculate
+
+          include ./component_divider
+
+          div.row
+            div.col.s12.m6
+                div.whitebg.card-padding.curved.card-margin(style='width:35em')
+                    span#summarry_bar_ch
 
             div.col.s12.m6
-                h3 Custom Data Sauce
-                input#txtKeyword(
-                    placeholder='Enter keyword to calculate custom sentiment comparison data',
-                    type='text', class='validate', value="#{searchTerm}")
-                a#btnCalculate.waves-effect.waves-light.btn(href='', style='float:right') Calculate
-
-            include ./component_divider
-
-            div.col.s12.m6
-                br
-                span#summarry_bar_ch
-
-            div.col.s12.m6
-                img(src='/images/sentiment-comparison.png', width='500px')
+                img(src='/images/sentiment-comparison.png', width='500px').whitebg.card-padding.curved
 
 
-            include ./component_divider
+        div.row.whitebg.card-padding.curved
+            span#scatter_ch
+
+        div.row.whitebg.card-padding.curved
+            table#table_ch.bordered.centered.responsive-table(style='width:71em')
+
+        div.row.whitebg.card-padding.curved
+            span#bar_ch
 
 
-        h3 Scatter Chart of Sentiment Data
-        span#scatter_ch
-
-        h3 Raw Data
-        span#table_ch
-
-        h3 Bar Chart
-        span#bar_ch
-
-
-        script(type='text/javascript', src='https://www.google.com/jsapi')
-        script(type='text/javascript').
-            var sentimentResults = !{JSON.stringify(results)};
-        script(type = 'text/javascript', src = '/bower_components/d3/d3.min.js')
-        script(type='text/javascript', src='/javascripts/charts/comparison.js')
+            script(type='text/javascript', src='https://www.google.com/jsapi')
+            script(type='text/javascript').
+                var sentimentResults = !{JSON.stringify(results)};
+            script(type = 'text/javascript', src = '/bower_components/d3/d3.min.js')
+            script(type='text/javascript', src='/javascripts/charts/comparison.js')
 
     include ./footer
 
