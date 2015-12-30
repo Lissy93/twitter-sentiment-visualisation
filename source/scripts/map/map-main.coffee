@@ -57,33 +57,24 @@ initialize = ->
       url: pathToNothing
       height: 35
       width: 35
-      anchor: [
-        16
-        0
-      ]
-      textColor: '#ff00ff'
+      anchor: [16, 0]
+      textColor: 'transparent'
       textSize: 10
     }
     {
       url: pathToNothing
       height: 45
       width: 45
-      anchor: [
-        24
-        0
-      ]
-      textColor: '#ff0000'
+      anchor: [24, 0]
+      textColor: 'transparent'
       textSize: 11
     }
     {
       url: pathToNothing
       height: 55
       width: 55
-      anchor: [
-        32
-        0
-      ]
-      textColor: '#ffffff'
+      anchor: [32, 0]
+      textColor: 'transparent'
       textSize: 12
     }
   ]
