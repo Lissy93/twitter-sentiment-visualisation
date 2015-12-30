@@ -19,6 +19,10 @@ styles = [
     elementType: 'labels'
     stylers: [ { visibility: 'off' } ]
   }
+  {
+    featureType: "poi"
+    stylers: [ { visibility: "off" } ]
+  }
 ]
 
 module.exports.styledMap = new (google.maps.StyledMapType)(styles,
