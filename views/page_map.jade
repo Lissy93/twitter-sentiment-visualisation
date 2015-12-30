@@ -14,6 +14,7 @@ block content
         #map-canvas
 block scripts
     script(type='text/javascript', src='/bower_components/Autocompleter/jquery.autocompleter.min.js')
+    script(type='text/javascript', src='/bower_components/markerclusterer_compiled/index.js')
     script(type='text/javascript').
         var sentimentResults = !{JSON.stringify(data)};
     script(type='text/javascript', src='/javascripts/map.bundle.js')

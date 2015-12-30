@@ -18,6 +18,7 @@ formatResultsForMap = (twitterResults) ->
         location:
           lat: tweet.location.location.lat
           lng: tweet.location.location.lng
+        tweet: tweet.body
   mapData
 
 # Inserts an array of valid Tweets into the database
