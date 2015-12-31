@@ -8,6 +8,16 @@ CompleteTweets = require '../utils/get-complete-tweets'
 twitterKey = require('../config/keys').twitter
 googlePlacesKey = require('../config/keys').googlePlaces
 
+# Slightly blur location data, as to not reveal users exact position
+blurLocationData = (loc) ->
+  loc = loc + '' # Convert location part into a string
+  accuracy = 3 # -1 = 110km, 1 = 10km, 2 = 1km, 3 = 100m, 4 = 10m ...
+  digitIndex = (loc).indexOf('.') + accuracy # Find index of digit to modify
+  randomDigit = Math.floor(Math.random() * 10)
+  if loc.length > digitIndex
+    loc = loc.substr(0, digitIndex) + randomDigit + loc.substr(digitIndex + 1)
+  Number loc # Convert result back to a number, and return
+
 # Converts ordinary Tweet array to lat + lng array for the heat map
 formatResultsForMap = (twitterResults) ->
   mapData = []
@@ -16,8 +26,8 @@ formatResultsForMap = (twitterResults) ->
       mapData.push
         sentiment: tweet.sentiment
         location:
-          lat: tweet.location.location.lat
-          lng: tweet.location.location.lng
+          lat: blurLocationData tweet.location.location.lat
+          lng: blurLocationData tweet.location.location.lng
         tweet: tweet.body
   mapData
 
