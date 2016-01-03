@@ -31,7 +31,7 @@
     "mongoose": "^4.1.6",
     "morgan": "^1.6.1",
     "node-jsx": "^0.13.3",
-    "place-lookup": "0.0.1",
+    "place-lookup": "0.0.2",
     "q": "^1.4.1",
     "react": "^0.13.3",
     "react-dom": "^0.14.0-rc1",
