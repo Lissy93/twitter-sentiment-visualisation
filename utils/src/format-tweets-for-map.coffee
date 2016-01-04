@@ -31,7 +31,7 @@ class FormatTweetsForMap
           tweet: tweet.body
     mapData
 
-  # Inserts an array of valid Tweets into the database
+  # Inserts an array of valid Tweets into the database, if not already
   insertTweetsIntoDatabase = (twitterResults) ->
     for tweet in twitterResults
       tweetData =
@@ -41,9 +41,11 @@ class FormatTweetsForMap
         sentiment : tweet.sentiment
         location  : tweet.location
       if isSuitableForDb tweetData
-        tweetEntry = new Tweet(tweetData) # Create new model instance from object
-        tweetEntry.save (err) ->
-          if err then console.log 'Error saving Tweet - ' + err
+        Tweet.findOneAndUpdate
+          body: tweetData.body,
+          tweetData,
+          upsert: true,
+          (err) -> if err then console.log 'ERROR UPDATING TWEET - '+err
 
   # Determines if a Tweet object is complete & if it should be saved in the db
   isSuitableForDb = (tweetData) ->
