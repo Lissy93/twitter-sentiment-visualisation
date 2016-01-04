@@ -53,6 +53,10 @@ isSuitableForDb = (tweetData) ->
   if !tweetData.location.location.lng? then return false
   return true
 
+# Merge results
+mergeResults = (res1, res2) ->
+  res1.concat res2
+
 # Calls methods to fetch and format Tweets from the database
 renderWithDatabaseResults = (cb) ->
   Tweet.getAllTweets (tweets) ->
@@ -62,9 +66,10 @@ renderWithDatabaseResults = (cb) ->
 renderWithFreshData = (searchTerm, cb) ->
   completeTweets = new CompleteTweets(twitterKey, googlePlacesKey)
   completeTweets.go searchTerm, (results) ->
-    mapData = formatResultsForMap(results)
     insertTweetsIntoDatabase(results)
-    cb mapData
+    Tweet.searchTweets searchTerm, (tweets) ->
+      mapData = formatResultsForMap mergeResults results, tweets
+      cb mapData
 
 # Main path for map page
 router.get '/', (req, res) ->
@@ -75,6 +80,9 @@ router.get '/', (req, res) ->
 router.get '/:query', (req, res, next) ->
 
   searchTerm = req.params.query # Get the search term from URL param
+#
+#  renderWithSearchedDatabaseResults searchTerm, (data) ->
+#    res.render 'page_map', data: data, title: searchTerm+ ' Map', pageNum: 1
 
   if searchTerm != null
     renderWithFreshData searchTerm, (mapData) ->
