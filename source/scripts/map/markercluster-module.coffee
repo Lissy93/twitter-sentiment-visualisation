@@ -3,6 +3,17 @@ class MarkerClusterSetup
 
   constructor: (map) -> @map = map
 
+  makeInfoWindowContent = (markerData) ->
+    scoreString =
+      if markerData.sentiment > 0
+        "<b style='color: green'>#{markerData.sentiment*100}% Positive</b>"
+      else if markerData.sentiment < 0
+        "<b style='color: darkred'>#{markerData.sentiment*-100}% Negative</b>"
+      else "<b style='color: grey'>Neutral</b>"
+    "<div style='max-width: 25em'>"+
+    "<p>#{markerData.tweet}</p>"+scoreString+
+    "</div>"
+
   makeShape = () ->
     coords: [1, 1, 1, 20, 18, 20, 18, 1]
     type: 'poly'
@@ -29,7 +40,7 @@ class MarkerClusterSetup
       })
       # Action listener to show window when user presses marker
       google.maps.event.addListener marker, 'click', (evt) ->
-        infowindow.setContent @get('title')
+        infowindow.setContent makeInfoWindowContent sentObj
         infowindow.open @map, this
 
       markers.push(marker)
