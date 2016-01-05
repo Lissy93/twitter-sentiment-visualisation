@@ -1,6 +1,7 @@
 mapOptions =
   center: new (google.maps.LatLng)(51.5068, -0.1225)
-  zoom: 13
+  zoom: 3
+  maxZoom: 20
   streetViewControl : false
   panControl: false
   mapTypeControlOptions:
