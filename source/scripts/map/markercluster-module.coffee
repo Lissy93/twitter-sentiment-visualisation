@@ -1,18 +1,36 @@
 
+removeWords = require 'remove-words'
+
 class MarkerClusterSetup
 
   constructor: (map) -> @map = map
 
+
+  # Creates the HTML for the info window displayed when a maker is clicked
   makeInfoWindowContent = (markerData) ->
+
+    uniformWord = (word) -> (''+word).toLowerCase().replace /\W/g, ''
+
+    # Make the coloured score string (e.g. '30% Positive')
     scoreString =
       if markerData.sentiment > 0
         "<b style='color: green'>#{markerData.sentiment*100}% Positive</b>"
       else if markerData.sentiment < 0
         "<b style='color: darkred'>#{markerData.sentiment*-100}% Negative</b>"
       else "<b style='color: grey'>Neutral</b>"
-    "<div style='max-width: 25em'>"+
-    "<p>#{markerData.tweet}</p>"+scoreString+
-    "</div>"
+
+    # Make clickable Tweet text
+    clickWords = removeWords markerData.tweet # Array of keywords
+    htmlTweet = ''
+    aStyle = 'style="color: black; font-weight: bold;" ' # style for hyperlinks
+    for word in markerData.tweet.split " "
+      if uniformWord(word) in clickWords
+        htmlTweet += "<a #{aStyle} href='/map/#{uniformWord word}'>#{word}</a> "
+      else htmlTweet += "#{word} "
+
+    # Put everything together to return
+    "<div style='max-width: 25em'><p>#{htmlTweet}</p>#{scoreString}</div>"
+
 
   makeShape = () ->
     coords: [1, 1, 1, 20, 18, 20, 18, 1]
