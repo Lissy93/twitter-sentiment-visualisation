@@ -2,28 +2,73 @@
 
 # Array of styles.
 styles = [
-  { stylers: [
-    { hue: '#00ffe6' }
-    { saturation: -20 }
-  ] }
   {
-    featureType: 'road'
-    elementType: 'geometry'
-    stylers: [
-      { lightness: 100 }
-      { visibility: 'simplified' }
-    ]
+    'featureType': 'administrative.country'
+    'elementType': 'geometry.stroke'
+    'stylers': [ { 'color': '#DCE7EB' } ]
   }
   {
-    featureType: 'road'
-    elementType: 'labels'
-    stylers: [ { visibility: 'off' } ]
+    'featureType': 'administrative.province'
+    'elementType': 'geometry.stroke'
+    'stylers': [ { 'color': '#DCE7EB' } ]
   }
   {
-    featureType: "poi"
-    stylers: [ { visibility: "off" } ]
+    'featureType': 'landscape'
+    'elementType': 'geometry'
+    'stylers': [ { 'visibility': 'off' } ]
+  }
+  {
+    'featureType': 'poi'
+    'elementType': 'all'
+    'stylers': [ { 'visibility': 'off' } ]
+  }
+  {
+    'featureType': 'road'
+    'elementType': 'all'
+    'stylers': [ { 'visibility': 'off' } ]
+  }
+  {
+    'featureType': 'road'
+    'elementType': 'labels'
+    'stylers': [ { 'visibility': 'off' } ]
+  }
+  {
+    'featureType': 'transit'
+    'elementType': 'labels.icon'
+    'stylers': [ { 'visibility': 'off' } ]
+  }
+  {
+    'featureType': 'transit.line'
+    'elementType': 'geometry'
+    'stylers': [ { 'visibility': 'off' } ]
+  }
+  {
+    'featureType': 'transit.line'
+    'elementType': 'labels.text'
+    'stylers': [ { 'visibility': 'off' } ]
+  }
+  {
+    'featureType': 'transit.station.airport'
+    'elementType': 'geometry'
+    'stylers': [ { 'visibility': 'off' } ]
+  }
+  {
+    'featureType': 'transit.station.airport'
+    'elementType': 'labels'
+    'stylers': [ { 'visibility': 'off' } ]
+  }
+  {
+    'featureType': 'water'
+    'elementType': 'geometry'
+    'stylers': [ { 'color': '#83888B' } ]
+  }
+  {
+    'featureType': 'water'
+    'elementType': 'labels'
+    'stylers': [ { 'visibility': 'off' } ]
   }
 ]
+
 
 module.exports.styledMap = new (google.maps.StyledMapType)(styles,
   name: 'Sentiment Map'
