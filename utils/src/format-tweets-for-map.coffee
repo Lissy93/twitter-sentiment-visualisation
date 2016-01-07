@@ -74,3 +74,7 @@ class FormatTweetsForMap
 ftfm = new FormatTweetsForMap()
 module.exports.getFreshData = ftfm.renderWithFreshData
 module.exports.getDbData = ftfm.renderWithDatabaseResults
+module.exports.getSentence = {
+  mapShowing: "Map showing X results relating to XXX"
+  sentimentSummary: "XX% Positive"
+}

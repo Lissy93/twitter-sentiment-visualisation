@@ -11,15 +11,17 @@ block content
             .input-field.col.s6
                 input#txtKeyword.validate(type='text')
                 label.active(for='txtKeyword') Keyword or Topic
+
         #map-canvas
 
         div.map-footer-options.zero-margin.row
             div.col.s4
-                p Map showing X results relating to XXX
+                p= summary_text.mapShowing
             div.col.s4
-                p Average sentiment is 26% Positive
+                p= summary_text.sentimentSummary
             div.col.s4
                 img.pull-right(src='/images/heatmap-key.png')
+
 block scripts
     script(type='text/javascript', src='/bower_components/Autocompleter/jquery.autocompleter.min.js')
     script(type='text/javascript', src='/bower_components/markerclusterer_compiled/index.js')

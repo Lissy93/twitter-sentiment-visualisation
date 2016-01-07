@@ -5,9 +5,11 @@ mapTweetFormatter = require '../utils/format-tweets-for-map'
 
 # Render to page
 render = (res, data, title) ->
-  jadeTemplate = 'page_map' # The template to render
-  pageNum = 1 # The position in application
-  res.render jadeTemplate, data: data, title: title, pageNum: pageNum
+  res.render 'page_map', # Call res.render for the map page
+    data: data    # The map data
+    summary_text: mapTweetFormatter.getSentence # Summary of results
+    title: title  # The title of the rendered map
+    pageNum: 1    # The position in the application
 
 # Call render with search term
 renderSearchTerm = (res, searchTerm) ->
