@@ -58,10 +58,53 @@ class FormatTweetsForMap
   # Merge two sets of results
   mergeResults = (res1, res2) -> res1.concat res2
 
+  # Make sentence description for map
+  makeSentence = (data, searchTerm) ->
+
+    findAv = (arr) ->
+      t = 0
+      for i in arr then t += i
+      t/arr.length
+
+    relatingTo = if searchTerm? then "relating to #{searchTerm}" else ""
+    resSource = "the latest Twitter results"
+
+    posSent = []
+    negSent = []
+    neuSent = []
+
+    for item in data
+      if item.sentiment > 0 then posSent.push item.sentiment
+      else if item.sentiment < 0 then negSent.push item.sentiment
+      else neuSent.push(0)
+
+    avPositive = Math.round(findAv(posSent) * 100)
+    avNegative = Math.round(findAv(negSent) * -100)
+    avSentiment= Math.round(findAv(posSent.concat(negSent).concat(neuSent))*100)
+
+    overallSentiment =
+      if avSentiment > 0 then "Positive"
+      else if avSentiment < 0 then "Negative"
+      else "Neutral"
+
+
+
+    mapShowing = "Map showing #{data.length} of #{resSource} #{relatingTo}<br>"
+    mapShowing += "Overall sentiment is: #{overallSentiment} (#{avSentiment}%)"
+
+    sentimentSummary =  "Average positive: #{avPositive}%. "
+    sentimentSummary += "Average negative: #{avNegative}%.<br>"
+
+    {
+    mapShowing: mapShowing
+    sentimentSummary: sentimentSummary
+    }
+
+
   # Calls methods to fetch and format Tweets from the database
   renderWithDatabaseResults: (cb) ->
     Tweet.getAllTweets (tweets) ->
-      cb formatResultsForMap tweets
+      cb formatResultsForMap(tweets), makeSentence(tweets, null)
 
   # Calls methods to fetch fresh Twitter, sentiment, and place data
   renderWithFreshData: (searchTerm, cb) ->
@@ -69,12 +112,9 @@ class FormatTweetsForMap
     completeTweets.go searchTerm, (webTweets) ->
       insertTweetsIntoDatabase(webTweets) # Add new Tweets to the db
       Tweet.searchTweets searchTerm, (dbTweets) -> # Fetch matching db results
-        cb formatResultsForMap mergeResults webTweets, dbTweets
+        data = mergeResults webTweets, dbTweets
+        cb formatResultsForMap(data), makeSentence(data, searchTerm)
 
 ftfm = new FormatTweetsForMap()
 module.exports.getFreshData = ftfm.renderWithFreshData
 module.exports.getDbData = ftfm.renderWithDatabaseResults
-module.exports.getSentence = {
-  mapShowing: "Map showing X results relating to XXX"
-  sentimentSummary: "XX% Positive"
-}

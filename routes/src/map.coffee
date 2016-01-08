@@ -4,21 +4,21 @@ router = express.Router()
 mapTweetFormatter = require '../utils/format-tweets-for-map'
 
 # Render to page
-render = (res, data, title) ->
+render = (res, data, title, summaryTxt) ->
   res.render 'page_map', # Call res.render for the map page
     data: data    # The map data
-    summary_text: mapTweetFormatter.getSentence # Summary of results
+    summary_text: summaryTxt # Summary of results
     title: title  # The title of the rendered map
     pageNum: 1    # The position in the application
 
 # Call render with search term
 renderSearchTerm = (res, searchTerm) ->
-  mapTweetFormatter.getFreshData searchTerm, (mapData) ->
-    render res, mapData, searchTerm+' Map'
+  mapTweetFormatter.getFreshData searchTerm, (mapData, summaryTxt) ->
+    render res, mapData, searchTerm+' Map', summaryTxt
 
 # Call render for database data
 renderAllData = (res) ->
-  mapTweetFormatter.getDbData (data) -> render res, data, 'Map'
+  mapTweetFormatter.getDbData (data, txt) ->  render res, data, 'Map', txt
 
 # Path for main map root page
 router.get '/', (req, res) -> renderAllData res

@@ -16,9 +16,9 @@ block content
 
         div.map-footer-options.zero-margin.row
             div.col.s4
-                p= summary_text.mapShowing
+                p!= summary_text.mapShowing
             div.col.s4
-                p= summary_text.sentimentSummary
+                p!= summary_text.sentimentSummary
             div.col.s4
                 img.pull-right(src='/images/heatmap-key.png')
 
