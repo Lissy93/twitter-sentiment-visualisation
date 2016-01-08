@@ -1,5 +1,6 @@
 Tweet = require '../models/Tweet' # The Tweet model
 CompleteTweets = require '../utils/get-complete-tweets' # Fetches & formats data
+MakeSummarySentences = require '../utils/make-summary-sentences'
 
 # API keys
 twitterKey = require('../config/keys').twitter
@@ -60,46 +61,7 @@ class FormatTweetsForMap
 
   # Make sentence description for map
   makeSentence = (data, searchTerm) ->
-
-    findAv = (arr) ->
-      t = 0
-      for i in arr then t += i
-      t/arr.length
-
-    relatingTo = if searchTerm? then "relating to #{searchTerm}" else ""
-    resSource = "the latest Twitter results"
-
-    posSent = []
-    negSent = []
-    neuSent = []
-
-    for item in data
-      if item.sentiment > 0 then posSent.push item.sentiment
-      else if item.sentiment < 0 then negSent.push item.sentiment
-      else neuSent.push(0)
-
-    avPositive = Math.round(findAv(posSent) * 100)
-    avNegative = Math.round(findAv(negSent) * -100)
-    avSentiment= Math.round(findAv(posSent.concat(negSent).concat(neuSent))*100)
-
-    overallSentiment =
-      if avSentiment > 0 then "Positive"
-      else if avSentiment < 0 then "Negative"
-      else "Neutral"
-
-
-
-    mapShowing = "Map showing #{data.length} of #{resSource} #{relatingTo}<br>"
-    mapShowing += "Overall sentiment is: #{overallSentiment} (#{avSentiment}%)"
-
-    sentimentSummary =  "Average positive: #{avPositive}%. "
-    sentimentSummary += "Average negative: #{avNegative}%.<br>"
-
-    {
-    mapShowing: mapShowing
-    sentimentSummary: sentimentSummary
-    }
-
+    (new MakeSummarySentences data, searchTerm).makeMapSentences()
 
   # Calls methods to fetch and format Tweets from the database
   renderWithDatabaseResults: (cb) ->
