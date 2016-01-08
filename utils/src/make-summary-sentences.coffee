@@ -29,24 +29,30 @@ class MakeSummarySentences
     else if avSentiment < 0 then "Negative"
     else "Neutral"
 
+  makeTxtStyle = (sentiment) ->
+    col =
+      if sentiment > 0 or sentiment == 'Positive' then 'green'
+      else if sentiment < 0 or sentiment == 'Negative' then 'darkred'
+      else 'gray'
+    " style='font-weight: bold; color: #{col}' "
+
   # Makes the sentences for the map
   makeMapSentences: () ->
     averages = getAverageSentiments(@tweetObjects)
-    overallSentiment = getOverallSentimentName(averages.avSentiment)
-    relatingTo = if @searchTerm? then "relating to #{@searchTerm}" else ""
+    overallSent = getOverallSentimentName(averages.avSentiment)
+    relatingTo = if @searchTerm? then "relating to <b>#{@searchTerm}</b>" else ""
     resSource = "the latest Twitter results"
 
-    mapShowing = "Map showing #{@tweetObjects.length} "
+    mapShowing = "Map showing <b>#{@tweetObjects.length}</b> "
     mapShowing += "of #{resSource} #{relatingTo}<br>"
-    mapShowing += "Overall sentiment is: #{overallSentiment} "
-    mapShowing += "(#{averages.avSentiment}%)"
+    mapShowing += "Overall sentiment is: "
+    mapShowing += "<span #{makeTxtStyle overallSent} >#{overallSent} "
+    mapShowing += "(#{averages.avSentiment}%)</span>"
 
-    sentimentSummary =  "Average positive: #{averages.avPositive}%. "
-    sentimentSummary += "Average negative: #{averages.avNegative}%.<br>"
+    sentimentSummary =  "Average positive: <b>#{averages.avPositive}%</b>. "
+    sentimentSummary += "Average negative: <b>#{averages.avNegative}%</b>.<br>"
 
-    {
     mapShowing: mapShowing
     sentimentSummary: sentimentSummary
-    }
 
 module.exports = MakeSummarySentences
