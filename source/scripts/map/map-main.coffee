@@ -28,21 +28,19 @@ initialize = ->
 
   # Call autocomplete constructor
   data = [
-    {
-      'value': '11'
-      'label': 'one'
-    }
-    {
-      'value': '2'
-      'label': 'two'
-    }
-    {
-      'value': '3'
-      'label': 'three'
-    }
+    {'value': '11', 'label': 'one'}
+    {'value': '2',  'label': 'two'}
+    {'value': '3',  'label': 'three' }
   ]
+
   $(document).ready ->
-    $('input#txtKeyword').autocompleter source: data
+    goToUrl = (url) -> window.location = url # Navigate to a URL
+    keywordSel = 'input#txtKeyword' # Selector for the keyword search box
+    $(keywordSel).autocompleter source: data # Turn on auto complete search
+
+    # Submit search term, when the user presses enter
+    $(keywordSel).bind 'enter', () -> goToUrl('/map/'+$(keywordSel).val())
+    $(keywordSel).keyup (e) -> if e.keyCode == 13 then $(this).trigger 'enter'
 
 google.maps.event.addDomListener window, 'load', initialize
 
