@@ -1,7 +1,7 @@
 
 positiveLocationData = []
 negativeLocationData = []
-
+neutralLocationData  = []
 
 makeLocationObject = (locationObj) ->
   new (google.maps.LatLng)(locationObj.lat, locationObj.lng)
@@ -20,6 +20,12 @@ sentimentResults.forEach (sentObj) ->
       weight: Math.abs sentObj.sentiment * 10
     })
 
+  else
+    neutralLocationData.push({
+      location: makeLocationObject(sentObj.location)
+      weight: 5
+    })
+
 
 # Apply heat map to map
 PositivePointArray = new (google.maps.MVCArray)(positiveLocationData)
@@ -29,6 +35,10 @@ positiveHeatmap =
 negativePointArray = new (google.maps.MVCArray)(negativeLocationData)
 negativeHeatmap =
   new (google.maps.visualization.HeatmapLayer)(data: negativePointArray)
+
+neutralPointArray = new (google.maps.MVCArray)(neutralLocationData)
+neutralHeatmap =
+  new (google.maps.visualization.HeatmapLayer)(data: neutralPointArray)
 
 
 # Define gradients
@@ -66,9 +76,18 @@ negativeGradient = [
   'rgb(240,0,0)', 'rgb(220,0,0)', 'rgb(210,0,0)', 'rgb(190,0,0)', 'rgb(170,0,0)'
 ]
 
+neutralGradient = [
+  'rgba(160,160,160,0)', 'rgba(150,150,150,0.2)', 'rgba(140,140,140,0.5)',
+  'rgba(130,130,130,0.7)', 'rgba(120,120,120,0.9)', 'rgb(100,100,100)',
+  'rgb(90,90,90)', 'rgb(80,80,80)', 'rgb(70,70,70)', 'rgb(60,60,60)',
+  'rgb(50,50,50)', 'rgb(40,40,40)', 'rgb(35,35,35)', 'rgb(30,30,30)'
+]
+
 # Set gradients
 positiveHeatmap.set 'gradient', positiveGradient
 negativeHeatmap.set 'gradient', negativeGradient
+neutralHeatmap.set 'gradient', neutralGradient
 
 module.exports.positiveHeatmap = positiveHeatmap
 module.exports.negativeHeatmap = negativeHeatmap
+module.exports.neutralHeatmap = neutralHeatmap

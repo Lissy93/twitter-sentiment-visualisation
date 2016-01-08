@@ -19,6 +19,7 @@ initialize = ->
   # Apply heat map
   heatmapModule.positiveHeatmap.setMap map
   heatmapModule.negativeHeatmap.setMap map
+  heatmapModule.neutralHeatmap.setMap map
 
   # Apply invisible marker cluster to map, so user can click
   markerClusterModule map
