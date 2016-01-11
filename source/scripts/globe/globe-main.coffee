@@ -14,14 +14,16 @@ globe = new (DAT.Globe)(container, {
 
 console.log sentimentResults
 
+series = []
+
+for tweetObject in sentimentResults
+  series.push tweetObject.location.lat
+  series.push tweetObject.location.lng
+  series.push 3 # Sentiment (0-8)
+  series.push 0 # Colour (1|2|3)
+
 # Sample data
-data = [
-  [
-    'seriesA', [ 51.2, -1.2, 1, 0,
-                 51.0, -1.0, 2, 1,
-                 50.2, -0.6, 3, 2]
-  ]
-];
+data = [ [ 'seriesA', series ] ];
 
 # Add data to the globe
 for d in data then globe.addData(d[1], {format: 'legend', name: d[0]})
