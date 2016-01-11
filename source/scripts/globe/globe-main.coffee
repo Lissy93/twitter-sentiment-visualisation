@@ -12,6 +12,8 @@ globe = new (DAT.Globe)(container, {
   colorFn: (label) -> new THREE.Color([negCol, neutCol, posCol][label])
 })
 
+console.log sentimentResults
+
 # Sample data
 data = [
   [
