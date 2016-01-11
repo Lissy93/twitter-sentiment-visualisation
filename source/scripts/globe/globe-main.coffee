@@ -1,34 +1,62 @@
 
-container = document.getElementById('container')
+class ConfigureGlobe
 
-# Colors for the bars
-negCol  = 'rgb(255,0,0)'
-neutCol = 'rgb(150,150,150)'
-posCol  = 'rgb(0,255,0)'
+  constructor = () -> go()
 
-# Create new instance of globe, passing in options
-globe = new (DAT.Globe)(container, {
-  imgDir: '/images/',
-  colorFn: (label) -> new THREE.Color([negCol, neutCol, posCol][label])
-})
+  constants = {
+    maxHeight: 4  # Maximum height of the bars on the globe
+    neutralSentiment: 0.2 # The sentiment weighting to be assigned to neutral
+    colors: [
+      'rgb(240,40,40)'    # Negative Color (red)
+      'rgb(180,180,180)'  # Neutral Color  (gray)
+      'rgb(40,240,40)'    # Positive Color (green)
+    ]
+    containerId: 'container'  # The ID of the HTML container to place the globe
+    imageDir: '/images/'       # The directory storing all globe-related images
+  }
 
-console.log sentimentResults
+  makeBarHeight = (sentiment) ->
+    if sentiment == 0 then sentiment = constants.neutralSentiment
+    height = sentiment * constants.maxHeight
+    if height >= 0 then height else Math.abs height # Always return positive
 
-series = []
 
-for tweetObject in sentimentResults
-  series.push tweetObject.location.lat
-  series.push tweetObject.location.lng
-  series.push 3 # Sentiment (0-8)
-  series.push 0 # Colour (1|2|3)
+  makeBarColIndex = (sentiment) ->
+    if sentiment > 0 then return 2
+    else if sentiment < 0 then return 0
+    else return 1
 
-# Sample data
-data = [ [ 'seriesA', series ] ];
+  makeGlobeData = (sentimentResults) ->
+    series = []
+    for tweetObject in sentimentResults
+      series.push tweetObject.location.lat
+      series.push tweetObject.location.lng
+      series.push makeBarHeight tweetObject.sentiment
+      series.push makeBarColIndex tweetObject.sentiment
+    [ [ 'Sentiment', series ] ];
 
-# Add data to the globe
-for d in data then globe.addData(d[1], {format: 'legend', name: d[0]})
+  createGlobe = () ->
+    new (DAT.Globe)(document.getElementById(constants.containerId), {
+      imgDir: constants.imageDir,
+      colorFn: (label) -> new THREE.Color(constants.colors[label])
+    })
 
-globe.createPoints() # Create the geometry
 
-globe.animate() # Begin animation
+
+  go: () ->
+
+  # Configure new globe
+  globe = createGlobe()
+
+  # Make globe data array
+  data = makeGlobeData sentimentResults
+
+  # Add data to the globe
+  for d in data then globe.addData(d[1], {format: 'legend', name: d[0]})
+
+  globe.createPoints() # Create the geometry
+
+  globe.animate() # Begin animation
+
+configureGlobe = new ConfigureGlobe()
 
