@@ -20,6 +20,7 @@
   border-radius: 5px;
   cursor: default;
   opacity: 0.9;
+  min-height: 3.5em;
 
   h2, p, label{
     color: @col_white
@@ -40,8 +41,9 @@
     .white-outline();
     cursor: pointer;
     padding: 0.5em;
-    margin-top: -0.5em;
-    width: 5em;
+    margin: -0.5em 1em;
+    width: 7em;
+    text-align: center;
     position: relative;
   }
 
@@ -49,7 +51,7 @@
     .white-outline();
     margin: 1em;
     padding: 0.5em;
-    width: 20em;
+    width: 18em;
     &:focus{ background: rgba(50,50,50,.75); outline: none; }
   }
 }

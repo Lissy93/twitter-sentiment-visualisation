@@ -5,14 +5,15 @@ block pageConfig
 block content
     div.top-left-controls
         a.outline-button.bring-down(href='/', title='Back to Home') &#8592; Home
-        a.outline-button.bring-down.pull-right(title='Hide this container') Hide &#10006;
-        h2 Sentiment Globe
-        p The globe shows the sentiment from Tweets around the world,
-            | red indicates negative and green positive.
-            | The height of the bar represents the scale of the sentiment.
-            | You can use your mouse to rotate the globe.
-        input#txtKeyword(placeholder='Enter a keyword or topic')
-        a.outline-button#btnSearch Search
+        a.outline-button.bring-down.pull-right(title='Hide this container', id='btnHide') Hide &#10006;
+        div#theContent
+            h2 Sentiment Globe
+            p The globe shows the sentiment from Tweets around the world,
+                | red indicates negative and green positive.
+                | The height of the bar represents the scale of the sentiment.
+                | You can use your mouse to rotate the globe.
+            input#txtKeyword(placeholder='Enter a keyword or topic')
+            a.outline-button#btnSearch Search
 
 
     div#container
