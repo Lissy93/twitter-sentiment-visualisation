@@ -13,9 +13,9 @@
 .top-left-controls {
   position: absolute;
   margin: 0.5em;
-  padding: 0 1em;
+  padding: 0.3em;
   z-index: 999;
-  max-width: 30em;
+  max-width: 20em;
   background: rgba(50, 50, 50, .75);
   border-radius: 5px;
   cursor: default;
@@ -24,6 +24,11 @@
 
   h2, p, label{
     color: @col_white
+  }
+
+  h2{
+    display: inline;
+    font-size: 1.5em;
   }
 
   .white-outline{
@@ -41,17 +46,18 @@
     .white-outline();
     cursor: pointer;
     padding: 0.5em;
-    margin: -0.5em 1em;
+    margin: 0.5em;
     width: 7em;
+    display: inline-block;
     text-align: center;
     position: relative;
   }
 
   input{
     .white-outline();
-    margin: 1em;
+    margin: 1em 0.5em;
     padding: 0.5em;
-    width: 18em;
+    width: 15em;
     &:focus{ background: rgba(50,50,50,.75); outline: none; }
   }
 }
