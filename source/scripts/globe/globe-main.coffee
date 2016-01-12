@@ -61,7 +61,7 @@ class ConfigureGlobe
 configureGlobe = new ConfigureGlobe()
 
 
-vis = true
+vis = false
 
 
 $(document).ready ->
