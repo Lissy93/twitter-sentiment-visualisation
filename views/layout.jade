@@ -1,3 +1,5 @@
+block pageConfig
+
 doctype html
 html
   head
@@ -6,7 +8,8 @@ html
     block head
   body.vertical.layout
     div#loading-graphic
-    include ./navbar
+    unless hideNav
+      include ./navbar
     block content
     include ./footer_scripts
     block scripts
