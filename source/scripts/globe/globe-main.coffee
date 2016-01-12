@@ -60,3 +60,14 @@ class ConfigureGlobe
 
 configureGlobe = new ConfigureGlobe()
 
+
+$(document).ready ->
+  goToUrl = (url) -> window.location = url # Navigate to a URL
+  keywordSel = 'input#txtKeyword' # Selector for the keyword search box
+
+  # Submit search term, when the user presses enter
+  $(keywordSel).bind 'enter', () -> goToUrl('/globe/'+$(keywordSel).val())
+  $(keywordSel).keyup (e) -> if e.keyCode == 13 then $(this).trigger 'enter'
+  $('#btnSearch').click () -> goToUrl('/globe/'+$(keywordSel).val())
+
+
