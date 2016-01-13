@@ -54,5 +54,6 @@ class MakeSummarySentences
 
     mapShowing: mapShowing
     sentimentSummary: sentimentSummary
+    searchTerm: if @searchTerm then @searchTerm else ''
 
 module.exports = MakeSummarySentences

@@ -6,7 +6,7 @@ block content
     div.top-left-controls
         a.outline-button.auto-width(href='/', title='Back to Home') &#8592; Home
         h2 Sentiment Globe
-        input#txtKeyword(placeholder='Enter a keyword or topic')
+        input#txtKeyword(placeholder='Enter a keyword or topic', value='#{summary_text.searchTerm}')
         div.outline-button#btnSearch Search
         div.outline-button(title='Hide this container', id='btnHide') More Data
 
