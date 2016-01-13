@@ -11,6 +11,7 @@ var rename = require('gulp-rename');
 var footer = require('gulp-footer');
 var gutil   = require('gulp-util');
 var gsize   = require('gulp-filesize');
+var debowerify = require('debowerify');
 
 var CONFIG  = require('../tasks/config');
 
@@ -20,6 +21,7 @@ gulp.task('browserify', function () {
             return browserify({ entries:    [entry], debug: true })
                 .transform(coffeeify)
                 .transform(reactify)
+                .transform(debowerify)
                 .bundle()
                 .pipe(source(entry))
                 .pipe(rename(function(filepath) {
