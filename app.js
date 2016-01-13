@@ -9,11 +9,16 @@ var bodyParser    = require('body-parser');
 var mongoose      = require('mongoose');
 var http          = require('http');
 var JSX           = require('node-jsx').install({extension: '.jsx'});
+var streamTweets  = require('stream-tweets');
 var config        = require('./config/app-config');
+var streamHandler = require('./utils/stream-handler');
+
+
 
 /* Create Express server and configure socket.io*/
 var app = express();
 var server = http.createServer(app);
+var io = require('socket.io').listen(server);
 server.listen(config.server.port, function(){
     console.log('Express server listening on port ' + config.server.port);
 });
@@ -22,7 +27,7 @@ server.listen(config.server.port, function(){
 var routes    = require('./routes/index');
 var map       = require('./routes/map');
 var globe     = require('./routes/globe');
-var liveMap   = require('./routes/live-map')(server);
+var liveMap   = require('./routes/live-map');
 var timeline  = require('./routes/timeline');
 var about     = require('./routes/about');
 var comparison= require('./routes/sa-comparison');
@@ -51,6 +56,16 @@ app.use('/real-time-map', liveMap);
 app.use('/timeline', timeline);
 app.use('/about', about);
 app.use('/sa-comparison', comparison);
+
+
+/* Set a stream listener for tweets matching tracking keywords */
+var credentials = require('./config/keys').twitter;
+
+var twit = new streamTweets(credentials);
+
+twit.stream('goodbye', function(stream){
+  streamHandler(stream,io);
+});
 
 
 /* catch 404 and forward to error handler */
