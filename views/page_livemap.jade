@@ -1,16 +1,32 @@
 extends layout
 block head
+    link(rel='stylesheet', href='/bower_components/Autocompleter/jquery.autocompleter.css')
+    script(src='https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places,visualization')
 
 block content
     div.map-options.row
         .input-field.col.s6
-            input#txtLocation.validate(type='text')
-            label.active(for='txtLocation') Location
-        .input-field.col.s6
             input#txtKeyword.validate(type='text')
             label.active(for='txtKeyword') Keyword or Topic
-    section(id='react-app') !{markup}
-    script(id='initial-state', type='application/json') !{state}
+        .input-field.col.s6
+            input#txtLocation.validate(type='text')
+            label.active(for='txtLocation') Location
+
+    #map-canvas
+
+    div.map-footer-options.zero-margin.row
+        div.col.s5
+            p!= summary_text.mapShowing
+        div.col.s4
+            p!= summary_text.sentimentSummary
+        div.col.s3
+            img.pull-right(src='/images/heatmap-key.png')
+
 block scripts
-    script(src='https://cdn.socket.io/socket.io-1.1.0.js')
-    script(type='text/javascript', src='/javascripts/live-tweets.bundle.js')
+    script(type='text/javascript', src='/bower_components/Autocompleter/jquery.autocompleter.min.js')
+    script(type='text/javascript', src='/bower_components/markerclusterer_compiled/index.js')
+    script(type='text/javascript', src='https://cdn.socket.io/socket.io-1.4.3.js')
+    script(type='text/javascript').
+        var sentimentResults = !{JSON.stringify(data)};
+    script(type='text/javascript', src='/javascripts/map.bundle.js')
+    script(type='text/javascript', src='/javascripts/live-map.js')

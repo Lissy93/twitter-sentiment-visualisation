@@ -32,8 +32,6 @@ module.exports = (data, io) ->
       tweetLocation = if !placeResults.error then placeResults else blankPlace
       tweet = makeTweetObj(data, tweetLocation)
 
-      console.log tweet
-
       if isSuitableForDb tweet
         Tweet.findOneAndUpdate
           body: tweet.body,
@@ -45,7 +43,6 @@ module.exports = (data, io) ->
 
   else
     tweet = makeTweetObj(data, blankPlace)
-    console.log tweet
     io.emit 'tweet', tweet # If everythinks cool, emit the tweet
 
 
