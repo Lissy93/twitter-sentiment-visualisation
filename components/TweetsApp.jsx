@@ -7,7 +7,7 @@ var Tweets = require('./Tweets.jsx');
 // Export the TweetsApp component
 module.exports = TweetsApp = React.createClass({
 
-    // Method to add a tweet to our timeline
+    // Method to add a tweet to the component
     addTweet: function(tweet){
         var updated = this.state.tweets;
         var count = this.state.count + 1;
@@ -15,44 +15,6 @@ module.exports = TweetsApp = React.createClass({
         updated.unshift(tweet);
         this.setState({tweets: updated, count: count, skip: skip});
     },
-
-    // Method to get JSON from server by page
-    getPage: function(page){
-        var request = new XMLHttpRequest(), self = this;
-        request.open('GET', 'page/' + page + "/" + this.state.skip, true);
-        request.onload = function() {
-            if (request.status >= 200 && request.status < 400){
-                self.loadPagedTweets(JSON.parse(request.responseText));
-            } else {
-                self.setState({paging: false, done: true});
-            }
-        };
-        request.send();
-    },
-
-    // Method to show the unread tweets
-    showNewTweets: function(){
-        var updated = this.state.tweets;
-        updated.forEach(function(tweet){
-            tweet.active = true;
-        });
-        this.setState({tweets: updated, count: 0});
-    },
-
-    // Method to load tweets fetched from the server
-    loadPagedTweets: function(tweets){
-        var self = this;
-        if(tweets.length > 0) {
-            var updated = this.state.tweets;
-            tweets.forEach(function(tweet){
-                updated.push(tweet);
-            });
-            self.setState({tweets: updated, paging: false});
-        } else {
-            this.setState({done: true, paging: false});
-        }
-    },
-
 
     // Set the initial component state
     getInitialState: function(props){
