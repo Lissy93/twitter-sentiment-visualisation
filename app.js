@@ -63,7 +63,7 @@ var credentials = require('./config/keys').twitter;
 
 var twit = new streamTweets(credentials);
 
-twit.stream('goodbye', function(stream){
+twit.stream('twitter', function(stream){
   streamHandler(stream,io);
 });
 
