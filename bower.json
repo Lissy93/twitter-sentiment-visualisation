@@ -36,6 +36,7 @@
     "Detector": "https://raw.githubusercontent.com/dataarts/webgl-globe/master/globe/third-party/Detector.js",
     "three.min": "https://raw.githubusercontent.com/dataarts/webgl-globe/master/globe/third-party/three.min.js",
     "Tween": "https://raw.githubusercontent.com/dataarts/webgl-globe/master/globe/third-party/Tween.js",
-    "globe": "https://raw.githubusercontent.com/dataarts/webgl-globe/master/globe/globe.js"
+    "globe": "https://raw.githubusercontent.com/dataarts/webgl-globe/master/globe/globe.js",
+    "socket.io": "https://raw.githubusercontent.com/socketio/socket.io-client/master/socket.io.js"
   }
 }
