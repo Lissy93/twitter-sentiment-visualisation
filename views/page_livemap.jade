@@ -12,6 +12,9 @@ block content
             input#txtLocation.validate(type='text')
             label.active(for='txtLocation') Location
 
+    a.waves-effect.waves-light.btn.absolute.whiteBtn(style='margin: 3.5em 1em;'
+        onClick='window.clearMap()'
+        title='Clear the map of current data to see real-time data arrive') Clear Map
     #map-canvas
 
     div.map-footer-options.zero-margin.row

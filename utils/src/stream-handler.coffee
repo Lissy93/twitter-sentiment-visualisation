@@ -27,19 +27,31 @@ isSuitableForDb = (tweetData) ->
 
 module.exports = (data, io) ->
 
-  if data.location.location.lat == 0 and data.location.place_name != ''
-    placeLookup data.location.place_name, placesApiKey, (placeResults) ->
-      tweetLocation = if !placeResults.error then placeResults else blankPlace
-      tweet = makeTweetObj(data, tweetLocation)
+  if data.location.location.lat !=0
+    tweet = makeTweetObj data, data.location
+    io.emit 'tweet', tweet
+    if isSuitableForDb tweet
+      Tweet.findOneAndUpdate
+        body: tweet.body,
+        tweet,
+        upsert: true,
+        (err) -> if err then console.log 'ERROR UPDATING TWEET - '+err
 
-      if isSuitableForDb tweet
-        Tweet.findOneAndUpdate
-          body: tweet.body,
-          tweet,
-          upsert: true,
-          (err) -> if err then console.log 'ERROR UPDATING TWEET - '+err
 
-      io.emit 'tweet', tweet # If everythinks cool, emit the tweet
+  else if data.location.location.lat == 0 and data.location.place_name != ''
+#    placeLookup data.location.place_name, placesApiKey, (placeResults) ->
+#      tweetLocation = if !placeResults.error then placeResults else blankPlace
+#      tweet = makeTweetObj(data, tweetLocation)
+#
+#      if isSuitableForDb tweet
+#        Tweet.findOneAndUpdate
+#          body: tweet.body,
+#          tweet,
+#          upsert: true,
+#          (err) -> if err then console.log 'ERROR UPDATING TWEET - '+err
+#
+#      io.emit 'tweet', tweet # If everythinks cool, emit the tweet
+
 
   else
     tweet = makeTweetObj(data, blankPlace)
