@@ -44,7 +44,7 @@ initialize = ->
     $(keywordSel).keyup (e) -> if e.keyCode == 13 then $(this).trigger 'enter'
 
     # Live interactions
-    window.addHeatToMap = (so) -> liveInteractions.addHeatToMap(so, heatmapModule)
+    window.addHeatToMap = (so) -> liveInteractions.addToMap(so, heatmapModule)
     window.clearMap = -> liveInteractions.clearMap(heatmapModule)
 
 
