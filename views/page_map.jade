@@ -12,6 +12,10 @@ block content
                 input#txtLocation.validate(type='text')
                 label.active(for='txtLocation') Location
 
+        a.waves-effect.waves-light.btn.absolute.whiteBtn(style='margin: 3.5em 1em;'
+        onClick='window.clearMap()'
+        title='Clear the map of current data to see real-time data arrive') Clear Map
+
         #map-canvas
 
         div.map-footer-options.zero-margin.row
@@ -25,6 +29,8 @@ block content
 block scripts
     script(type='text/javascript', src='/bower_components/Autocompleter/jquery.autocompleter.min.js')
     script(type='text/javascript', src='/bower_components/markerclusterer_compiled/index.js')
+    script(type='text/javascript', src='https://cdn.socket.io/socket.io-1.4.3.js')
     script(type='text/javascript').
         var sentimentResults = !{JSON.stringify(data)};
     script(type='text/javascript', src='/javascripts/map.bundle.js')
+    script(type='text/javascript', src='/javascripts/live-map.js')
