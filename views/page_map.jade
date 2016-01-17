@@ -6,15 +6,16 @@ block head
 block content
         div.map-options.row
             .input-field.col.s6
-                input#txtKeyword.validate(type='text')
+                input#txtKeyword.validate(type='text', value='#{summary_text.searchTerm}')
                 label.active(for='txtKeyword') Keyword or Topic
             .input-field.col.s6
                 input#txtLocation.validate(type='text')
                 label.active(for='txtLocation') Location
 
-        a.waves-effect.waves-light.btn.absolute.whiteBtn(style='margin: 3.5em 1em;'
-        onClick='window.clearMap()'
-        title='Clear the map of current data to see real-time data arrive') Clear Map
+        unless summary_text.searchTerm
+            a.waves-effect.waves-light.btn.absolute.whiteBtn(style='margin: 3.5em 1em;'
+            onClick='window.clearMap()'
+            title='Clear the map of current data to see real-time data arrive') Clear Map
 
         #map-canvas
 
