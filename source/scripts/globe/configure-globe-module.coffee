@@ -1,7 +1,8 @@
 
 class ConfigureGlobe
 
-  constructor = () -> go()
+
+  constructor: -> @globe
 
   constants = {
     maxHeight: 4  # Maximum height of the bars on the globe
@@ -42,20 +43,31 @@ class ConfigureGlobe
     })
 
 
+  addNewPoint: (sentimentObj) ->
+    data = [
+      sentimentObj.location.lat
+      sentimentObj.location.lng
+      makeBarHeight sentimentObj.sentiment
+      makeBarColIndex sentimentObj.sentiment
+    ]
+    @globe.addData(data, {format: 'legend', name: 'newData'})
+    @globe.createPoints()
+
 
   go: () ->
 
-# Configure new globe
-  globe = createGlobe()
+    # Configure new globe
+    @globe = createGlobe()
 
-  # Make globe data array
-  data = makeGlobeData sentimentResults
+    # Make globe data array
+    data = makeGlobeData sentimentResults
 
-  # Add data to the globe
-  for d in data then globe.addData(d[1], {format: 'legend', name: d[0]})
+    # Add data to the globe
+    for d in data then @globe.addData(d[1], {format: 'legend', name: d[0]})
 
-  globe.createPoints() # Create the geometry
+    @globe.createPoints() # Create the geometry
 
-  globe.animate() # Begin animation
+    @globe.animate() # Begin animation
+
 
 module.exports = ConfigureGlobe
