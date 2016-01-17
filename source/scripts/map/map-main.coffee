@@ -8,6 +8,7 @@ initialize = ->
   autocompleteModule  = require('../map/autocomplete-module.coffee')
   markerClusterModule  = require('../map/markercluster-module.coffee')
   liveInteractions  = require('../map/live-interactions-module.coffee')
+  socketModule  = require('../map/socket-module.coffee')
 
   # Get the map, and set the map options
   map = new (google.maps.Map)(document.getElementById('map-canvas'),\
@@ -46,9 +47,6 @@ initialize = ->
     # Live interactions
     window.addHeatToMap = (so) -> liveInteractions.addToMap(so, heatmapModule)
     window.clearMap = -> liveInteractions.clearMap(heatmapModule)
-
-
-
 
 
 google.maps.event.addDomListener window, 'load', initialize
