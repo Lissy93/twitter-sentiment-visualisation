@@ -1,11 +1,13 @@
 
-socket = io.connect('http://localhost:8080');
+if searchTerm == ''
 
-socket.on 'tweet', (tweetObj) ->
-  heatMapItem =
-    sentiment: tweetObj.sentiment
-    location:
-      lat: tweetObj.location.location.lat
-      lng: tweetObj.location.location.lng
+  socket = io.connect('http://localhost:8080');
 
-  window.addHeatToMap(heatMapItem)
+  socket.on 'tweet', (tweetObj) ->
+    heatMapItem =
+      sentiment: tweetObj.sentiment
+      location:
+        lat: tweetObj.location.location.lat
+        lng: tweetObj.location.location.lng
+
+    window.addHeatToMap(heatMapItem)
