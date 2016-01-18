@@ -40,11 +40,11 @@ class MakeSummarySentences
   makeMapSentences: () ->
     averages = getAverageSentiments(@tweetObjects)
     overallSent = getOverallSentimentName(averages.avSentiment)
-    relatingTo = if @searchTerm? then "relating to <b>#{@searchTerm}</b>" else ""
+    relTo = if @searchTerm? then "relating to <b>#{@searchTerm}</b>" else ""
     resSource = "the latest Twitter results"
 
     mapShowing = "Map showing <b>#{@tweetObjects.length}</b> "
-    mapShowing += "of #{resSource} #{relatingTo}<br>"
+    mapShowing += "of #{resSource} #{relTo}<br>"
     mapShowing += "Overall sentiment is: "
     mapShowing += "<span #{makeTxtStyle overallSent} >#{overallSent} "
     mapShowing += "(#{averages.avSentiment}%)</span>"
