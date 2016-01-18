@@ -20,15 +20,6 @@ block content
 
     div#container
 
-    div.map-footer-options.zero-margin.row
-        div.col.s5
-            p!= summary_text.mapShowing
-        div.col.s4
-            p!= summary_text.sentimentSummary
-        div.col.s3
-            img.pull-right(src='/images/heatmap-key.png')
-
-
 block scripts
     script(type='text/javascript', src='/bower_components/Detector/index.js')
     script(type='text/javascript', src='/bower_components/three.min/index.js')

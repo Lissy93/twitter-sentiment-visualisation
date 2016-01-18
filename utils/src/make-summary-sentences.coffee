@@ -57,7 +57,8 @@ class MakeSummarySentences
 
 
   makeMapSentences = (tweetObjects, averages, overallSent, relTo) ->
-    mapShowing = "Map showing <b>#{tweetObjects.length}</b> "
+    numRes = "<b><span id='numRes'>#{tweetObjects.length}</span></b>"
+    mapShowing = "Map showing #{numRes} "
     mapShowing += "of the latest Twitter results #{relTo}<br>"
     mapShowing += "Overall sentiment is: "
     mapShowing += "<span #{makeTxtStyle overallSent} >#{overallSent} "

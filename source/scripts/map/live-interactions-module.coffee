@@ -22,6 +22,8 @@ addHeatToMap = (sentimentObject, heatmapModule) ->
 
   updateLayer(heatmapLayer, newItem)
 
+  $('span#numRes').text(Number($('span#numRes').text())+1) # Increment counter
+
 # Removes all heatmap layers
 clearMap = (heatmapModule) ->
   heatmapModule.positiveHeatmap.setData([])
