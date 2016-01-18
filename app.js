@@ -8,7 +8,6 @@ var cookieParser  = require('cookie-parser');
 var bodyParser    = require('body-parser');
 var mongoose      = require('mongoose');
 var http          = require('http');
-var JSX           = require('node-jsx').install({extension: '.jsx'});
 var streamTweets  = require('stream-tweets');
 var config        = require('./config/app-config');
 var streamHandler = require('./utils/stream-handler');
