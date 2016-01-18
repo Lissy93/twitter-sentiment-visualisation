@@ -22,6 +22,8 @@ class MakeSummarySentences
     avPositive:  Math.round(findAv(posSent) * 100)
     avNegative:  Math.round(findAv(negSent) * -100)
     avSentiment: Math.round(findAv(posSent.concat(negSent).concat(neuSent))*100)
+    totalPositive: posSent.length
+    totalNegative: negSent.length
 
   # Determines if the overall sentiment is "Positive", "Negative" or "Neutral"
   getOverallSentimentName = (avSentiment) ->
@@ -36,15 +38,27 @@ class MakeSummarySentences
       else 'gray'
     " style='font-weight: bold; color: #{col}' "
 
-  # Makes the sentences for the map
-  makeMapSentences: () ->
-    averages = getAverageSentiments(@tweetObjects)
-    overallSent = getOverallSentimentName(averages.avSentiment)
-    relTo = if @searchTerm? then "relating to <b>#{@searchTerm}</b>" else ""
-    resSource = "the latest Twitter results"
 
-    mapShowing = "Map showing <b>#{@tweetObjects.length}</b> "
-    mapShowing += "of #{resSource} #{relTo}<br>"
+  makeGlobeSentence = (tweetObjects, relTo, averages, overallSent) ->
+    numRes = "<b><span id='numRes'>#{tweetObjects.length}</span></b>"
+    overallSentTxt = "<span #{makeTxtStyle overallSent} >#{overallSent}"
+    overallSentTxt += "(#{averages.avSentiment}%)</span>"
+    positivePercent = "<span #{makeTxtStyle 1}>#{averages.avPositive}%</span>"
+    negativePercent = "<span #{makeTxtStyle -1}>#{averages.avNegative}%</span>"
+    s = "Globe displaying #{numRes} sentiment values calculated "
+    s += "from Twitter results #{relTo} "
+    s += "the overall sentiment is #{overallSentTxt}."
+    s += "<br><br>"
+    s += "#{averages.totalPositive} Tweets are positive "
+    s += "with an average sentiment of #{positivePercent} "
+    s += "and #{averages.totalNegative} Tweets are negative "
+    s += "with an average sentiment of #{negativePercent}."
+    s
+
+
+  makeMapSentences = (tweetObjects, averages, overallSent, relTo) ->
+    mapShowing = "Map showing <b>#{tweetObjects.length}</b> "
+    mapShowing += "of the latest Twitter results #{relTo}<br>"
     mapShowing += "Overall sentiment is: "
     mapShowing += "<span #{makeTxtStyle overallSent} >#{overallSent} "
     mapShowing += "(#{averages.avSentiment}%)</span>"
@@ -54,6 +68,19 @@ class MakeSummarySentences
 
     mapShowing: mapShowing
     sentimentSummary: sentimentSummary
+
+
+  # Makes the sentences for the map
+  makeMapSentences: () ->
+    averages = getAverageSentiments(@tweetObjects)
+    overallSent = getOverallSentimentName(averages.avSentiment)
+    relTo = if @searchTerm? then "relating to <b>#{@searchTerm}</b>" else ""
+
+    mapSentences = makeMapSentences @tweetObjects, averages, overallSent, relTo
+    mapShowing: mapSentences.mapShowing
+    sentimentSummary: mapSentences.sentimentSummary
+    globeSentence: makeGlobeSentence @tweetObjects, relTo, averages, overallSent
     searchTerm: if @searchTerm then @searchTerm else ''
+
 
 module.exports = MakeSummarySentences

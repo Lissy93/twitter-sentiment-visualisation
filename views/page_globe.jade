@@ -12,9 +12,11 @@ block content
 
         div#theContent(style='display:none')
             p The globe shows the sentiment from Tweets around the world,
-                | red indicates negative and green positive.
+                | in real-time. Red indicates negative and green positive.
                 | The height of the bar represents the scale of the sentiment.
                 | You can use your mouse to rotate the globe.
+            br
+            p!=summary_text.globeSentence
 
     div#container
 
