@@ -9,5 +9,5 @@ gulp.task('clean', function (cb) {
     scriptPaths.map(function(sp){
         paths.push(sp.dest+'/*.js');
     });
-    del(paths, cb);
+    del(paths).then(cb());
 });
