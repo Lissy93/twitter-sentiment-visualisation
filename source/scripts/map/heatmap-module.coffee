@@ -88,6 +88,10 @@ positiveHeatmap.set 'gradient', positiveGradient
 negativeHeatmap.set 'gradient', negativeGradient
 neutralHeatmap.set 'gradient', neutralGradient
 
+# Set opacity
+positiveHeatmap.set('opacity', 0.7);
+negativeHeatmap.set('opacity', 0.7);
+
 module.exports.positiveHeatmap = positiveHeatmap
 module.exports.negativeHeatmap = negativeHeatmap
 module.exports.neutralHeatmap = neutralHeatmap
