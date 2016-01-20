@@ -47,6 +47,10 @@ initialize = ->
     # Live interactions
     window.addHeatToMap = (so) -> liveInteractions.addToMap(so, heatmapModule)
     window.clearMap = -> liveInteractions.clearMap(heatmapModule)
+    window.togglePositive = ->
+      liveInteractions.toggleHeatMap(heatmapModule.positiveHeatmap)
+    window.toggleNegative = ->
+      liveInteractions.toggleHeatMap(heatmapModule.negativeHeatmap)
 
 
 google.maps.event.addDomListener window, 'load', initialize

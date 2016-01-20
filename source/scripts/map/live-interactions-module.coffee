@@ -30,6 +30,10 @@ clearMap = (heatmapModule) ->
   heatmapModule.neutralHeatmap.setData([])
   heatmapModule.negativeHeatmap.setData([])
 
+toggleHeatMap = (heatmap) ->
+  heatmap.setMap if heatmap.getMap() then null else map
+
 
 module.exports.addToMap = addHeatToMap
 module.exports.clearMap = clearMap
+module.exports.toggleHeatMap = toggleHeatMap
