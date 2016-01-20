@@ -24,11 +24,20 @@ addHeatToMap = (sentimentObject, heatmapModule) ->
 
   $('span#numRes').text(Number($('span#numRes').text())+1) # Increment counter
 
+oldPositiveHeatData = []
+oldNegativeHeatData = []
+
 # Removes all heatmap layers
 clearMap = (heatmapModule) ->
-  heatmapModule.positiveHeatmap.setData([])
+  tempPos = oldPositiveHeatData
+  tempNeg = oldNegativeHeatData
+
+  oldPositiveHeatData = heatmapModule.positiveHeatmap.getData().j
+  oldNegativeHeatData = heatmapModule.negativeHeatmap.getData().j
+
+  heatmapModule.positiveHeatmap.setData(tempPos)
   heatmapModule.neutralHeatmap.setData([])
-  heatmapModule.negativeHeatmap.setData([])
+  heatmapModule.negativeHeatmap.setData(tempNeg)
 
 toggleHeatMap = (heatmap) ->
   heatmap.setMap if heatmap.getMap() then null else map
