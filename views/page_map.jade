@@ -13,8 +13,7 @@ block content
                 label.active(for='txtLocation') Location
 
         unless summary_text.searchTerm
-            a.waves-effect.waves-light.btn.absolute.whiteBtn(style='margin: 3.5em 1em;'
-            onClick='window.clearMap()'
+            a.waves-effect.waves-light.btn.absolute.whiteBtn#btnClearMap(onClick='window.clearMap()'
             title='Clear the map of current data to see real-time data arrive') Clear Map
 
         #map-canvas
