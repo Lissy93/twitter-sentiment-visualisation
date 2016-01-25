@@ -29,6 +29,7 @@ var globe     = require('./routes/globe');
 var timeline  = require('./routes/timeline');
 var about     = require('./routes/about');
 var comparison= require('./routes/sa-comparison');
+var wordCloud = require('./routes/word-cloud');
 
 /* view engine setup */
 app.set('views', path.join(__dirname, 'views'));
@@ -53,6 +54,7 @@ app.use('/globe', globe);
 app.use('/timeline', timeline);
 app.use('/about', about);
 app.use('/sa-comparison', comparison);
+app.use('/word-cloud', wordCloud)
 
 
 /* Set a stream listener for tweets matching tracking keywords */
