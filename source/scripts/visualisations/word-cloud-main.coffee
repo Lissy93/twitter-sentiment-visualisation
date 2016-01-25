@@ -108,6 +108,6 @@ draw = (words) ->
 
 d3.layout.cloud().size([WIDTH, HEIGHT])
   .words(wordData)
-  .rotate(-> ~ ~(Math.random() * 2) * 90)
+  .rotate(-> ~ ~ (Math.round(Math.random()*5)*45)-90)
   .font('Impact').fontSize((d) -> sizeScale d.freq )
   .on('end', draw).start()
