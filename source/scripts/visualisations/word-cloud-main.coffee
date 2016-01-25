@@ -1,4 +1,11 @@
-fill = d3.scale.category20b()
+
+scaleColors = ["#a50026","#d73027","#f46d43","#fdae61","#fee08b","#ffffbf","#d9ef8b","#a6d96a","#66bd63","#1a9850","#006837"]
+
+
+fill = d3.scale.linear()
+.domain([-1,1])
+.range(scaleColors)
+
 
 draw = (words) ->
   d3.select('body')
@@ -13,7 +20,7 @@ draw = (words) ->
     .append('text')
     .style('font-size', (d) -> d.size + 'px')
     .style('font-family', 'Impact')
-    .style('fill', (d, i) -> fill i)
+    .style('fill', (d, i) -> fill -0.5)
     .attr('text-anchor', 'middle')
     .attr('transform', (d) ->
       'translate(' + [
