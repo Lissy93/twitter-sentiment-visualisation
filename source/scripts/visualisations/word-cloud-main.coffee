@@ -67,8 +67,8 @@ wordData = [
 
 ]
 
-WIDTH = 500  # Width constant for canvas and chart
-HEIGHT = 500 # Height constant for canvas and chart
+WIDTH = 600  # Width constant for canvas and chart
+HEIGHT = 600 # Height constant for canvas and chart
 
 getSentimentForWord = (word) ->
   for each in wordData then if each.text == word then return each.sentiment
@@ -82,7 +82,7 @@ fillScale = d3.scale.linear()
 .range(scaleColors)
 
 sizeScale = d3.scale.linear()
-.domain([0,80])
+.domain([0,100])
 .range([10,80])
 
 
@@ -92,6 +92,7 @@ draw = (words) ->
     .attr('width', WIDTH+200)
     .attr('height', HEIGHT+100)
     .style('padding', '50px')
+    .style('opacity', '0.8')
     .append('g')
     .attr('transform', 'translate(150,150)')
     .selectAll('text')
