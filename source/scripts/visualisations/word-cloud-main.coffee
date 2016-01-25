@@ -3,8 +3,15 @@ scaleColors = ["#a50026","#d73027","#f46d43","#fdae61","#fee08b","#ffffbf","#d9e
 
 
 fill = d3.scale.linear()
-.domain([-1,1])
+.domain([-1,-0.8, -0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6, 0.8, 1])
 .range(scaleColors)
+
+console.log fill -1
+console.log fill -0.5
+console.log fill 0
+console.log fill 0.5
+console.log fill 1
+
 
 
 draw = (words) ->
@@ -20,7 +27,7 @@ draw = (words) ->
     .append('text')
     .style('font-size', (d) -> d.size + 'px')
     .style('font-family', 'Impact')
-    .style('fill', (d, i) -> fill -0.5)
+    .style('fill', (d, i) -> fill 0.5)
     .attr('text-anchor', 'middle')
     .attr('transform', (d) ->
       'translate(' + [
