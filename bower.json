@@ -37,6 +37,7 @@
     "three.min": "https://raw.githubusercontent.com/dataarts/webgl-globe/master/globe/third-party/three.min.js",
     "Tween": "https://raw.githubusercontent.com/dataarts/webgl-globe/master/globe/third-party/Tween.js",
     "globe": "https://raw.githubusercontent.com/dataarts/webgl-globe/master/globe/globe.js",
-    "socket.io": "https://raw.githubusercontent.com/socketio/socket.io-client/master/socket.io.js"
+    "socket.io": "https://raw.githubusercontent.com/socketio/socket.io-client/master/socket.io.js",
+    "d3-word-cloud": "https://jardindesconnaissances.googlecode.com/svn-history/r82/trunk/public/js/d3.layout.cloud.js"
   }
 }
