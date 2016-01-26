@@ -1,6 +1,8 @@
 Tweet = require '../models/Tweet' # The Tweet model
 CompleteTweets = require '../utils/get-complete-tweets' # Fetches & formats data
 MakeSummarySentences = require '../utils/make-summary-sentences'
+removeWords = require 'remove-words'
+sentimentAnalysis = require 'sentiment-analysis'
 
 # API keys
 twitterKey = require('../config/keys').twitter
@@ -11,37 +13,25 @@ class FormatWordsForCloud
 
   # Converts ordinary Tweet array to suitable form for word cloud
   formatResultsForCloud = (twitterResults) ->
-#    mapData = []
-#    for tweet in twitterResults
-#      if !tweet.location.error?
-#        mapData.push
-#          text: ''
-#          sentiment
-#          sentiment: tweet.sentiment
-#          location:
-#            lat: blurLocationData tweet.location.location.lat
-#            lng: blurLocationData tweet.location.location.lng
-#          tweet: tweet.body
-#    mapData
-    [
-      {text: 'Wheatley', sentiment: -1, freq: 28}
-      {text: 'tuna', sentiment: -0.6, freq: 12}
-      {text: 'brown', sentiment: -0.4, freq: 20}
-      {text: 'rain', sentiment: -0.2, freq: 15}
-      {text: 'neutral', sentiment: 0, freq: 8}
-      {text: 'coke', sentiment: 0.2, freq: 10}
-      {text: 'corn flakes', sentiment: 0.4, freq: 25}
-      {text: 'JavaScript', sentiment: 0.6, freq: 10}
-      {text: 'Lucozade', sentiment: 0.8, freq: 20}
-      {text: 'Nothing!!', sentiment: 1, freq: 50}
-      {text: 'Lorem', sentiment: -0.7, freq: 18}
-      {text: 'Ipsum', sentiment: -0.2, freq: 32}
-      {text: 'Dolor', sentiment: 0.6, freq: 38}
-      {text: 'Siet', sentiment: 0.5, freq: 28}
-      {text: 'Ammet', sentiment: 1, freq: 15}
-    ]
+    results = []
+
+    tweetWords = makeTweetWords twitterResults
+
+    for word in tweetWords
+      sent = sentimentAnalysis word
+      if sent != 0
+        results.push
+            text: word
+            sentiment: sent
+            freq: 1
+    results
 
 
+  # Make a paragraph of keywords
+  makeTweetWords = (twitterResults) ->
+    para = ''
+    for tweet in twitterResults then para += tweet.body + ' '
+    removeWords para
 
   # Inserts an array of valid Tweets into the database, if not already
   insertTweetsIntoDatabase = (twitterResults) ->
