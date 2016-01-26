@@ -14,16 +14,13 @@ class FormatWordsForCloud
   # Converts ordinary Tweet array to suitable form for word cloud
   formatResultsForCloud = (twitterResults) ->
     results = []
-
     tweetWords = makeTweetWords twitterResults
-
     for word in tweetWords
       sent = sentimentAnalysis word
       if sent != 0
-        results.push
-            text: word
-            sentiment: sent
-            freq: 1
+        f = results.filter((item) -> item.text == word)
+        if f.length == 0 then results.push(text: word, sentiment: sent, freq: 1)
+        else for res in results then  if res.text == word then res.freq++
     results
 
 
@@ -31,7 +28,7 @@ class FormatWordsForCloud
   makeTweetWords = (twitterResults) ->
     para = ''
     for tweet in twitterResults then para += tweet.body + ' '
-    removeWords para
+    removeWords para, false
 
   # Inserts an array of valid Tweets into the database, if not already
   insertTweetsIntoDatabase = (twitterResults) ->
