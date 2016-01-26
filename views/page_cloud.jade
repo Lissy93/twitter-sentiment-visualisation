@@ -6,6 +6,8 @@ block content
 block scripts
     script(type='text/javascript', src='/bower_components/d3/d3.min.js')
     script(type='text/javascript', src='/bower_components/d3-word-cloud/index.js')
+    script(type='text/javascript').
+        var wordData = !{JSON.stringify(data)};
     script(type='text/javascript', src='/javascripts/word-cloud.bundle.js')
 
 
