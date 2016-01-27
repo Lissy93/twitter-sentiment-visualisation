@@ -1,5 +1,5 @@
 
-WIDTH = 600  # Width constant for canvas and chart
+WIDTH = 1200  # Width constant for canvas and chart
 HEIGHT = 600 # Height constant for canvas and chart
 
 getSentimentForWord = (word) ->
@@ -14,17 +14,16 @@ fillScale = d3.scale.linear()
 .range(scaleColors)
 
 sizeScale = d3.scale.linear()
-.domain([0,100])
-.range([10,80])
+.domain([0,80])
+.range([13,80])
 
 
 
 draw = (words) ->
   d3.select('svg#cloud')
-    .attr('width', WIDTH+200)
-    .attr('height', HEIGHT+100)
-    .style('padding', '50px')
-    .style('opacity', '0.8')
+    .attr('width', WIDTH)
+    .attr('height', HEIGHT)
+    .style('padding', HEIGHT/4+'px '+WIDTH/3+'px')
     .append('g')
     .attr('transform', 'translate(150,150)')
     .selectAll('text')
