@@ -3,21 +3,23 @@ CompleteTweets = require '../utils/get-complete-tweets' # Fetches & formats data
 MakeSummarySentences = require '../utils/make-summary-sentences'
 removeWords = require 'remove-words'
 sentimentAnalysis = require 'sentiment-analysis'
+FetchTweets = require 'fetch-tweets'
 
 # API keys
 twitterKey = require('../config/keys').twitter
 googlePlacesKey = require('../config/keys').googlePlaces
 
+fetchTweets = new FetchTweets twitterKey
 
 class FormatWordsForCloud
 
   # Converts ordinary Tweet array to suitable form for word cloud
-  formatResultsForCloud = (twitterResults) ->
+  formatResultsForCloud = (twitterResults, allWords = false) ->
     results = []
     tweetWords = makeTweetWords twitterResults
     for word in tweetWords
       sent = sentimentAnalysis word
-      if sent != 0
+      if allWords or sent != 0
         f = results.filter((item) -> item.text == word)
         if f.length == 0 then results.push(text: word, sentiment: sent, freq: 1)
         else for res in results then  if res.text == word then res.freq++
@@ -29,30 +31,6 @@ class FormatWordsForCloud
     para = ''
     for tweet in twitterResults then para += tweet.body + ' '
     removeWords para, false
-
-  # Inserts an array of valid Tweets into the database, if not already
-  insertTweetsIntoDatabase = (twitterResults) ->
-    for tweet in twitterResults
-      tweetData =
-        body:     tweet.body
-        dateTime: tweet.date
-        keywords  : tweet.keywords
-        sentiment : tweet.sentiment
-        location  : tweet.location
-      if isSuitableForDb tweetData
-        Tweet.findOneAndUpdate
-          body: tweetData.body,
-          tweetData,
-          upsert: true,
-          (err) -> if err then console.log 'ERROR UPDATING TWEET - '+err
-
-  # Determines if a Tweet object is complete & if it should be saved in the db
-  isSuitableForDb = (tweetData) ->
-    if tweetData.sentiment == 0 then return false
-    if tweetData.location.error? then return false
-    if !tweetData.location.location.lat? then return false
-    if !tweetData.location.location.lng? then return false
-    return true
 
   # Merge two sets of results
   mergeResults = (res1, res2) -> res1.concat res2
@@ -68,12 +46,10 @@ class FormatWordsForCloud
 
 # Calls methods to fetch fresh Twitter, sentiment, and place data
   renderWithFreshData: (searchTerm, cb) ->
-    completeTweets = new CompleteTweets(twitterKey, googlePlacesKey)
-    completeTweets.go searchTerm, (webTweets) ->
-      insertTweetsIntoDatabase(webTweets) # Add new Tweets to the db
+    fetchTweets.byTopic searchTerm, (webTweets) ->
       Tweet.searchTweets searchTerm, (dbTweets) -> # Fetch matching db results
         data = mergeResults webTweets, dbTweets
-        cb formatResultsForCloud(data), makeSentence(data, searchTerm)
+        cb formatResultsForCloud(data, true), makeSentence(data, searchTerm)
 
 fwfc = new FormatWordsForCloud()
 module.exports.getFreshData = fwfc.renderWithFreshData

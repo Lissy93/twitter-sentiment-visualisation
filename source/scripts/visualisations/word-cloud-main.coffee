@@ -6,7 +6,7 @@ getSentimentForWord = (word) ->
   for each in wordData then if each.text == word then return each.sentiment
   0 # if for some reason we can't find the word, then just return neutral.
 
-scaleColors = ["#a50026","#d73027","#f46d43","#fdae61","#fee08b","#ffffbf",
+scaleColors = ["#a50026","#d73027","#f46d43","#fdae61","#fee08b","#B4B4B4",
                "#d9ef8b","#a6d96a","#66bd63","#1a9850","#006837"]
 
 fillScale = d3.scale.linear()
