@@ -32,11 +32,13 @@ draw = (words) ->
     .append('text')
     .style('font-size', (d) -> d.size + 'px')
     .style('font-family', 'Impact')
+    .style('cursor', 'pointer')
     .style('fill', (d, i) -> fillScale getSentimentForWord d.text)
     .attr('text-anchor', 'middle')
     .attr('transform', (d) ->
       'translate(' + [d.x, d.y,] + ')rotate(' + d.rotate + ')')
     .text (d) -> d.text
+    .on 'click', (d, i) -> window.location.href = '/word-cloud/'+d.text
 
 d3.layout.cloud().size([WIDTH, HEIGHT])
   .words(wordData)
