@@ -1,5 +1,13 @@
 extends layout
 block content
+    div.top-left-controls-light
+        p Word cloud shows keywords commonly used in the latest Tweets. <br>
+            | The colour indicates sentiment of the containing Tweet
+            | (red= negative, and green= positive),
+            | and the size of the word represents the frequency of use.
+        label.active(for='txtKeyword') Keyword or Topic
+        input#txtKeyword.validate(type='text', value='#{summary_text.searchTerm}')
+
     main.content.zero-padding.zero-margin
         svg#cloud(style='display: block; margin: 0 auto')
 

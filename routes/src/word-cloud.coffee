@@ -8,6 +8,7 @@ router.get '/', (req, res, next) ->
     res.render 'page_cloud',
       title: 'Word Cloud'
       pageNum: 5
+      summary_text: txt
       data: data
 
 
@@ -17,6 +18,7 @@ router.get '/:query', (req, res) ->
     res.render 'page_cloud',
       title: 'Word Cloud'
       pageNum: 5
+      summary_text: txt
       data: data
 
 
