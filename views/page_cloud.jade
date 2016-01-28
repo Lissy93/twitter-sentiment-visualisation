@@ -5,9 +5,9 @@ block content
             .col.s12
                 ul.tabs
                     li.tab.col.s3
-                        a.active(href='#test1') Cloud
-                    li.tab.col.s3(onClick='window.location="/scatter-plot-words"')
-                        a(href='/scatter-plot-words') Scatter
+                        a.active(href='/word-cloud') Cloud
+                    li.tab.col.s3(onClick='showLoader(); window.location="/word-scatter-plot"')
+                        a(href='/word-scatter-plot') Scatter
 
         h2 Intro
         p Word cloud shows keywords commonly used in the latest Tweets. <br>
