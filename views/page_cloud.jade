@@ -8,7 +8,7 @@ block content
             | and the size of the word represents the frequency of use.
         h2 Custom Twitter Data
         br
-        label.active(for='txtKeyword') Enter a Keyword (press Enter to search)
+        label.active(for='txtKeyword') Enter Keyword (press Enter to go)
         input#txtKeyword.validate(type='text', value='#{summary_text.searchTerm}')
         br
         div.waves-effect.waves-light.btn.centerBlock#btnHide Show More
@@ -18,13 +18,24 @@ block content
             br
             ul
             each val in summary_text.topWords.topPositive
-                li #{val.freq} x <b>#{val.text}</b> (<span style='color: green'>#{val.sentiment*100}% positive</span>)
+                li
+                    a(href='/word-cloud/#{val.text}') #{val.freq} x <b>#{val.text}</b> (<span style='color: green'>#{val.sentiment*100}% positive</span>)
             br
             h2 Top Words used in Negative Tweets
             br
             ul
             each val in summary_text.topWords.topNegative
-                li #{val.freq} x <b>#{val.text}</b> (<span style='color: red'>#{val.sentiment*100}% negative</span>)
+                li
+                    a(href='/word-cloud/#{val.text}')  #{val.freq} x <b>#{val.text}</b> (<span style='color: red'>#{val.sentiment*100}% negative</span>)
+            br
+            if summary_text.trending
+                h2 Trending Key Words
+                br
+                ul
+                each val in summary_text.trending
+                    li
+                        a(href='/word-cloud/#{val.text}') #{val.freq} x <b>#{val.text}</b>
+                br
 
 
     main.content.zero-padding.zero-margin

@@ -36,6 +36,10 @@ class FormatWordsForCloud
 
     {topPositive: posData, topNegative: negData}
 
+  findTrendingWords = (cloudWords) ->
+    cloudWords.sort (a, b) -> parseFloat(a.freq) - parseFloat(b.freq)
+    cloudWords = cloudWords.reverse().slice(0,10)
+
 
   # Make a paragraph of keywords
   makeTweetWords = (twitterResults) ->
@@ -66,6 +70,7 @@ class FormatWordsForCloud
         cloudData = formatResultsForCloud(data, true)
         sentence =  makeSentence(data, searchTerm)
         sentence.topWords = findTopWords cloudData
+        sentence.trending = findTrendingWords cloudData
         cb cloudData, sentence
 
 fwfc = new FormatWordsForCloud()
