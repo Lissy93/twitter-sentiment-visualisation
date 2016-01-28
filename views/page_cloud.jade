@@ -14,17 +14,17 @@ block content
         div.waves-effect.waves-light.btn.centerBlock#btnHide Show More
         br
         div#theContent(style='display:none')
-            h2 Top Positive Words
+            h2 Top Words used in Positive Tweets
             br
             ul
             each val in summary_text.topWords.topPositive
-                li #{val.freq} x <b>#{val.text}</b> (<span style='color: green'>#{val.sentiment}% positive</span>)
+                li #{val.freq} x <b>#{val.text}</b> (<span style='color: green'>#{val.sentiment*100}% positive</span>)
             br
-            h2 Top Negative Words
+            h2 Top Words used in Negative Tweets
             br
             ul
             each val in summary_text.topWords.topNegative
-                li #{val.freq} x <b>#{val.text}</b> (<span style='color: red'>#{val.sentiment}% negative</span>)
+                li #{val.freq} x <b>#{val.text}</b> (<span style='color: red'>#{val.sentiment*100}% negative</span>)
 
 
     main.content.zero-padding.zero-margin

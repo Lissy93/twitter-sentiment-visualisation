@@ -25,19 +25,17 @@ class FormatWordsForCloud
         else for res in results then  if res.text == word then res.freq++
     results
 
-  findTopWords = () ->
-    res =
-      topPositive: [
-        {text: 'lorem', sentiment: '10%', freq: 100}
-        {text: 'ipsum', sentiment: '50%', freq: 87}
-        {text: 'dolar', sentiment: '30%', freq: 52}
-      ]
-      topNegative: [
-        {text: 'siet', sentiment: '40%', freq: 900}
-        {text: 'amet', sentiment: '50%', freq: 57}
-        {text: 'ds', sentiment: '90%', freq: 32}
-      ]
-    res
+  findTopWords = (cloudWords) ->
+    posData = cloudWords.filter (cw) -> cw.sentiment > 0
+    negData = cloudWords.filter (cw) -> cw.sentiment < 0
+
+    posData.sort (a, b) -> parseFloat(a.freq) - parseFloat(b.freq)
+    posData = posData.reverse().slice(0,5)
+    negData.sort (a, b) -> parseFloat(a.freq) - parseFloat(b.freq)
+    negData = negData.reverse().slice(0,5)
+
+    {topPositive: posData, topNegative: negData}
+
 
   # Make a paragraph of keywords
   makeTweetWords = (twitterResults) ->
