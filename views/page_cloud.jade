@@ -8,8 +8,24 @@ block content
             | and the size of the word represents the frequency of use.
         h2 Custom Twitter Data
         br
-        label.active(for='txtKeyword') Enter a Keyword or Topic
+        label.active(for='txtKeyword') Enter a Keyword (press Enter to search)
         input#txtKeyword.validate(type='text', value='#{summary_text.searchTerm}')
+        br
+        div.waves-effect.waves-light.btn.centerBlock#btnHide Show More
+        br
+        div#theContent(style='display:none')
+            h2 Top Positive Words
+            br
+            ul
+            each val in summary_text.topWords.topPositive
+                li= val.text
+            br
+            h2 Top Negative Words
+            br
+            ul
+            each val in summary_text.topWords.topNegative
+                li= val.text
+
 
     main.content.zero-padding.zero-margin
         svg#cloud(style='display: block; margin: 0 auto')

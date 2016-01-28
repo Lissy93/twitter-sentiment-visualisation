@@ -25,6 +25,19 @@ class FormatWordsForCloud
         else for res in results then  if res.text == word then res.freq++
     results
 
+  findTopWords = () ->
+    res =
+      topPositive: [
+        {text: 'lorem', sentiment: '10%', freq: 100}
+        {text: 'ipsum', sentiment: '50%', freq: 87}
+        {text: 'dolar', sentiment: '30%', freq: 52}
+      ]
+      topNegative: [
+        {text: 'siet', sentiment: '40%', freq: 900}
+        {text: 'amet', sentiment: '50%', freq: 57}
+        {text: 'ds', sentiment: '90%', freq: 32}
+      ]
+    res
 
   # Make a paragraph of keywords
   makeTweetWords = (twitterResults) ->
@@ -42,14 +55,20 @@ class FormatWordsForCloud
   # Calls methods to fetch and format Tweets from the database
   renderWithDatabaseResults: (cb) ->
     Tweet.getAllTweets (tweets) ->
-      cb formatResultsForCloud(tweets), makeSentence(tweets, null)
+      cloudData = formatResultsForCloud(tweets)
+      sentence =  makeSentence(tweets, null)
+      sentence.topWords = findTopWords cloudData
+      cb cloudData, sentence
 
 # Calls methods to fetch fresh Twitter, sentiment, and place data
   renderWithFreshData: (searchTerm, cb) ->
     fetchTweets.byTopic searchTerm, (webTweets) ->
       Tweet.searchTweets searchTerm, (dbTweets) -> # Fetch matching db results
         data = mergeResults webTweets, dbTweets
-        cb formatResultsForCloud(data, true), makeSentence(data, searchTerm)
+        cloudData = formatResultsForCloud(data, true)
+        sentence =  makeSentence(data, searchTerm)
+        sentence.topWords = findTopWords cloudData
+        cb cloudData, sentence
 
 fwfc = new FormatWordsForCloud()
 module.exports.getFreshData = fwfc.renderWithFreshData
