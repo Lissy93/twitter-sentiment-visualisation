@@ -14,7 +14,7 @@ var streamHandler = require('./utils/stream-handler');
 
 
 
-/* Create Express server and configure socket.io*/
+/* Create Express server and configure socket.io */
 var app = express();
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
@@ -30,6 +30,7 @@ var timeline  = require('./routes/timeline');
 var about     = require('./routes/about');
 var comparison= require('./routes/sa-comparison');
 var wordCloud = require('./routes/word-cloud');
+var wordPlot  = require('./routes/word-plot');
 
 /* view engine setup */
 app.set('views', path.join(__dirname, 'views'));
@@ -54,7 +55,8 @@ app.use('/globe', globe);
 app.use('/timeline', timeline);
 app.use('/about', about);
 app.use('/sa-comparison', comparison);
-app.use('/word-cloud', wordCloud)
+app.use('/word-cloud', wordCloud);
+app.use('/word-scatter-plot', wordPlot)
 
 
 /* Set a stream listener for tweets matching tracking keywords */

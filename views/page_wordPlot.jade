@@ -1,0 +1,26 @@
+extends layout
+block content
+    div.top-left-controls-light
+        .row
+            .col.s12
+                ul.tabs
+                    li.tab.col.s3(onClick='showLoader(); window.location="/word-cloud"')
+                        a(href='/word-cloud') Cloud
+                    li.tab.col.s3
+                        a.active(href='/word-scatter-plot') Scatter
+        h2 Intro
+        p Word cloud shows keywords commonly used in the latest Tweets. <br>
+            | The colour indicates sentiment of the containing Tweet
+            | (red= negative, and green= positive),
+            | and the size of the word represents the frequency of use.
+        br
+
+    main.content
+
+block scripts
+    script(type='text/javascript', src='/bower_components/d3/d3.min.js')
+    script(type='text/javascript', src='/bower_components/d3-word-cloud/index.js')
+    script(type='text/javascript').
+        var wordData = !{JSON.stringify(data)};
+    script(type='text/javascript', src='/javascripts/word-cloud.bundle.js')
+  
