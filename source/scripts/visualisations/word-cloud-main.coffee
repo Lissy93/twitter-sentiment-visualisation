@@ -21,7 +21,7 @@ fillScale = d3.scale.linear()
 
 sizeScale = d3.scale.linear()
 .domain([0,80])
-.range([13,70])
+.range([13,65])
 
 
 

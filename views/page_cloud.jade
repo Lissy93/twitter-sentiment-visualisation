@@ -1,6 +1,14 @@
 extends layout
 block content
     div.top-left-controls-light
+        .row
+            .col.s12
+                ul.tabs
+                    li.tab.col.s3
+                        a.active(href='#test1') Cloud
+                    li.tab.col.s3(onClick='window.location="/scatter-plot-words"')
+                        a(href='/scatter-plot-words') Scatter
+
         h2 Intro
         p Word cloud shows keywords commonly used in the latest Tweets. <br>
             | The colour indicates sentiment of the containing Tweet
@@ -8,7 +16,7 @@ block content
             | and the size of the word represents the frequency of use.
         h2 Custom Twitter Data
         br
-        label.active(for='txtKeyword') Enter Keyword (press Enter to go)
+        label.active(for='txtKeyword') Enter Keyword (press Enter to search)
         input#txtKeyword.validate(type='text', value='#{summary_text.searchTerm}')
         br
         div.waves-effect.waves-light.btn.centerBlock#btnHide Show More
@@ -36,8 +44,11 @@ block content
                     li
                         a(href='/word-cloud/#{val.text}') #{val.freq} x <b>#{val.text}</b>
                 br
-
-
+            else
+                a.waves-effect.waves-light.btn.centerBlock(href='/scatter-plot-words') View on Scatter Plot
+                br
+                br
+                
     main.content.zero-padding.zero-margin
         svg#cloud(style='display: block; margin: 0 auto')
 
