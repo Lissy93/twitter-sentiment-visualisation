@@ -9,7 +9,9 @@ configureGlobe.go()
 
 window.addSentiment = (so) -> configureGlobe.addNewPoint(so)
 
-require '../globe/page-controls-module.coffee'
+mainPage = 'globe'
+
+require '../page-controls-module.coffee'
 
 
 

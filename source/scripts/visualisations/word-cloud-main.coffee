@@ -1,4 +1,10 @@
 
+
+
+mainPage = 'word-cloud'
+pageControls = require '../page-controls-module.coffee'
+pageControls.setMainPage mainPage
+
 WIDTH = 1200  # Width constant for canvas and chart
 HEIGHT = 600 # Height constant for canvas and chart
 
