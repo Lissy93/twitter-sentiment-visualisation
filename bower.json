@@ -38,6 +38,7 @@
     "Tween": "https://raw.githubusercontent.com/dataarts/webgl-globe/master/globe/third-party/Tween.js",
     "globe": "https://raw.githubusercontent.com/dataarts/webgl-globe/master/globe/globe.js",
     "socket.io": "https://raw.githubusercontent.com/socketio/socket.io-client/master/socket.io.js",
-    "d3-word-cloud": "https://jardindesconnaissances.googlecode.com/svn-history/r82/trunk/public/js/d3.layout.cloud.js"
+    "d3-word-cloud": "https://jardindesconnaissances.googlecode.com/svn-history/r82/trunk/public/js/d3.layout.cloud.js",
+    "tipsy": "https://cdnjs.cloudflare.com/ajax/libs/jquery.tipsy/1.0.2/jquery.tipsy.js"
   }
 }
