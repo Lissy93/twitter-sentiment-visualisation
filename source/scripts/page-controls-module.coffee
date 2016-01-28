@@ -1,7 +1,6 @@
 
 vis = false
 
-console.log mainPage
 if !mainPage then mainPage = 'globe'
 
 $(document).ready ->
