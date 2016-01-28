@@ -18,13 +18,13 @@ block content
             br
             ul
             each val in summary_text.topWords.topPositive
-                li= val.text
+                li #{val.freq} x <b>#{val.text}</b> (<span style='color: green'>#{val.sentiment}% positive</span>)
             br
             h2 Top Negative Words
             br
             ul
             each val in summary_text.topWords.topNegative
-                li= val.text
+                li #{val.freq} x <b>#{val.text}</b> (<span style='color: red'>#{val.sentiment}% negative</span>)
 
 
     main.content.zero-padding.zero-margin

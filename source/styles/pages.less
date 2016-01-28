@@ -75,6 +75,8 @@
 .top-left-controls-light {
   width: 15em;
   padding: 0.3em 0.8em;
+  max-height: 550px;
+  overflow-y: auto;
 
   .top-left-controls();
   background: rgba(255,255,255,0.8);
@@ -82,5 +84,7 @@
   .outline-button{
     &:hover{ background: rgba(180,180,180,.25)}
   }
+
+  li{list-style-type: none;}
 
 }
