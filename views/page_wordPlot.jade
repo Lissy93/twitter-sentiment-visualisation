@@ -4,16 +4,18 @@ block content
         .row
             .col.s12
                 ul.tabs
-                    li.tab.col.s3(onClick='showLoader(); window.location="/word-cloud"')
+                    li.tab.col.s3(onClick='showLoader(); window.location="/word-cloud/#{summary_text.searchTerm}"')
                         a(href='/word-cloud') Cloud
                     li.tab.col.s3
                         a.active(href='/word-scatter-plot') Scatter
         h2 Intro
-        p Word cloud shows keywords commonly used in the latest Tweets. <br>
-            | The colour indicates sentiment of the containing Tweet
-            | (red= negative, and green= positive),
-            | and the size of the word represents the frequency of use.
+        p Scatter chart showing keywords commonly used in the latest Tweets, along
+            | with their sentiment, and frequency of use.
         br
+        h2 Custom Data
+            br
+            label.active(for='txtKeyword') Enter Keyword
+            input#txtKeyword.validate(type='text', value='#{summary_text.searchTerm}')
     br
     div#scatter-words.center-block.card-panel
 
@@ -22,5 +24,5 @@ block scripts
     script(type='text/javascript', src='/bower_components/tipsy/index.js')
     script(type='text/javascript').
         var wordData = !{JSON.stringify(data)};
-    script(type='text/javascript', src='/javascripts/charts/scatter-words.js')
+    script(type='text/javascript', src='/javascripts/scatter-words.bundle.js')
   
