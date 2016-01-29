@@ -4,7 +4,7 @@ vis = false
 if !mainPage then mainPage = 'globe'
 
 $(document).ready ->
-  goToUrl = (url) -> window.location = url # Navigate to a URL
+  goToUrl = (url) -> showLoader();  window.location = url # Navigate to a URL
   keywordSel = 'input#txtKeyword' # Selector for the keyword search box
 
   showDetails = () ->
