@@ -1,6 +1,6 @@
 extends layout
 block content
-    div.top-left-controls-light
+    div.top-left-controls-light.card-panel(style='width: 13em')
         .row
             .col.s12
                 ul.tabs
@@ -14,10 +14,8 @@ block content
             | (red= negative, and green= positive),
             | and the size of the word represents the frequency of use.
         br
-
-    main.content
-
-    div#scatter-words.center-block
+    br
+    div#scatter-words.center-block.card-panel
 
 block scripts
     script(type='text/javascript', src='/bower_components/d3/d3.min.js')

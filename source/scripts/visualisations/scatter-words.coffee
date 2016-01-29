@@ -23,14 +23,7 @@ groups = svg.append('g')
   .attr('transform', 'translate(' + margin.l + ',' + margin.t + ')')
 
 # array of the regions, used for the legend
-regions = [
-  'Asia'
-  'Europe'
-  'Middle East'
-  'N. America'
-  'S. America'
-  'Sub-Saharan Africa'
-]
+regions = ['Positive', 'Neutral', 'Negative' ]
 
 data = [
   {
@@ -38,9 +31,10 @@ data = [
     trust: -28
     business: 168
     gdppc: 17554.119067691
-    region: 'S. America'
+    region: 'Positive'
   }
 ]
+
 
 # sort data alphabetically by region, so that the colors match with legend
 data.sort (a, b) -> d3.ascending a.region, b.region
@@ -111,7 +105,7 @@ mouseOn = ->
 
 
   # skip this functionality for IE9, which doesn't like it
-  if !$.browser.msie then circle.moveToFront()
+#  if !$.browser.msie then circle.moveToFront() # TODO: fix this, it's broke
 
 # what happens when we leave a bubble?
 mouseOff = ->
