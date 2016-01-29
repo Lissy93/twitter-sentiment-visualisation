@@ -5,7 +5,12 @@ h = 500 - (margin.t) - (margin.b)
 x = d3.scale.linear().range([0, w])
 y = d3.scale.linear().range([h - 60, 0])
 
-color = d3.scale.category10()
+scaleColors = ["#a50026","#d73027","#f46d43","#fdae61","#fee08b","#B4B4B4",
+               "#d9ef8b","#a6d96a","#66bd63","#1a9850","#006837"]
+
+color = d3.scale.linear()
+  .domain([-1,-0.8, -0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6, 0.8, 1])
+  .range(scaleColors)
 
 svg = d3.select('#scatter-words')
   .append('svg')
@@ -22,28 +27,18 @@ yAxis = d3.svg.axis().scale(y)
 groups = svg.append('g')
   .attr('transform', 'translate(' + margin.l + ',' + margin.t + ')')
 
-# array of the regions, used for the legend
-regions = ['Positive', 'Neutral', 'Negative' ]
+# array of the sentiments, used for the legend
+sentiments = ['Positive', 'Neutral', 'Negative' ]
 
 data = [
-  {
-    country: 'Argentina'
-    trust: -28
-    business: 168
-    gdppc: 17554.119067691
-    region: 'Positive'
-  }
+  {text: 'Hello', freq: 30, sentiment: 0.2 }
 ]
 
-
-# sort data alphabetically by region, so that the colors match with legend
-data.sort (a, b) -> d3.ascending a.region, b.region
-
-x0 = Math.max(-d3.min(data, (d) -> d.trust
-), d3.max(data, (d) -> d.trust )
+x0 = Math.max(-d3.min(data, (d) -> d.freq
+), d3.max(data, (d) -> d.freq )
 )
-x.domain [-100, 100]
-y.domain [180, 0]
+x.domain [0, 100]
+y.domain [-1, 1]
 
 # style the circles, set their locations based on data
 circles = groups.selectAll('circle')
@@ -52,12 +47,12 @@ circles = groups.selectAll('circle')
   .append('circle')
   .attr('class', 'circles')
   .attr(
-    cx: (d) -> x +d.trust
-    cy: (d) -> y +d.business
+    cx: (d) -> x +d.freq
+    cy: (d) -> y +d.sentiment
     r: 8
-    id: (d) -> d.country
+    id: (d) -> d.text
   )
-  .style('fill', (d) -> color d.region )
+  .style('fill', (d) -> color d.sentiment )
 
 
 # what to do when we mouse over a bubble
@@ -104,8 +99,7 @@ mouseOn = ->
       @parentNode.appendChild this
 
 
-  # skip this functionality for IE9, which doesn't like it
-#  if !$.browser.msie then circle.moveToFront() # TODO: fix this, it's broke
+  circle.moveToFront()
 
 # what happens when we leave a bubble?
 mouseOff = ->
@@ -130,20 +124,38 @@ circles.on 'mouseout', mouseOff
 
 
 # tooltips (using jQuery plugin tipsy)
-circles.append('title').text (d) -> d.country
+circles.append('title')
+  .text (d) -> d.text
+
 $('.circles').tipsy gravity: 's'
 
 
+circles
+  .attr('class', 'tooltipped')
+  .attr('data-position', 'bottom')
+  .attr('data-delay', '50')
+  .attr('data-tooltip', 'HELLO')
+
+
 # the legend color guide
-legend = svg.selectAll('rect').data(regions).enter().append('rect').attr(
-  x: (d, i) -> 40 + i * 80
-  y: h
-  width: 25
-  height: 12).style('fill', (d) -> color d )
+legend = svg.selectAll('rect')
+  .data(sentiments)
+  .enter()
+  .append('rect')
+  .attr(
+    x: (d, i) -> 40 + i * 80
+    y: h
+    width: 25
+    height: 12)
+  .style('fill', (d) ->
+    if d == 'Positive' then return color 1
+    if d == 'Negative' then return color -1
+    else return color 0
+  )
 
 
 # legend labels
-svg.selectAll('text').data(regions).enter().append('text').attr(
+svg.selectAll('text').data(sentiments).enter().append('text').attr(
   x: (d, i) -> 40 + i * 80
   y: h + 24).text (d) -> d
 
@@ -174,3 +186,7 @@ svg.append('text')
   .attr('dy', '.75em')
   .attr('transform', 'rotate(-90)')
   .text 'Sentiment'
+
+
+$(document).ready ->
+  $('.tooltipped').tooltip delay: 50
