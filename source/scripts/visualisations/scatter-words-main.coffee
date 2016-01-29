@@ -1,16 +1,32 @@
+mainPage = 'word-scatter-plot'
+pageControls = require '../page-controls-module.coffee'
+pageControls.setMainPage mainPage
+
+
 # set the stage
 margin = {t: 30, r: 20, b: 20, l: 40}
 w = 600 - (margin.l) - (margin.r)
 h = 500 - (margin.t) - (margin.b)
-x = d3.scale.linear().range([0, w])
+
+
+biggestFreq = 10
+for e, i in wordData
+  if e.freq > biggestFreq then biggestFreq = e.freq
+  ran = Math.round(Math.random()*10)/100
+  wordData[i].sentiment = wordData[i].sentiment + ran
+
+
+x = d3.scale.linear().range([0, w/4, w/2, (w/4)*3, w])
 y = d3.scale.linear().range([h - 60, 0])
 
-scaleColors = ["#a50026","#d73027","#f46d43","#fdae61","#fee08b","#B4B4B4",
-               "#d9ef8b","#a6d96a","#66bd63","#1a9850","#006837"]
+scaleColors = ["#a50026","#d73027","#fdae61" ,"#B4B4B4",
+               "#a6d96a","#1a9850","#006837"]
 
 color = d3.scale.linear()
-  .domain([-1,-0.8, -0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6, 0.8, 1])
+  .domain([-0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6])
   .range(scaleColors)
+
+
 
 svg = d3.select('#scatter-words')
   .append('svg')
@@ -30,19 +46,15 @@ groups = svg.append('g')
 # array of the sentiments, used for the legend
 sentiments = ['Positive', 'Neutral', 'Negative' ]
 
-data = [
-  {text: 'Hello', freq: 30, sentiment: 0.2 }
-]
-
-x0 = Math.max(-d3.min(data, (d) -> d.freq
-), d3.max(data, (d) -> d.freq )
+x0 = Math.max(-d3.min(wordData, (d) -> d.freq
+), d3.max(wordData, (d) -> d.freq )
 )
-x.domain [0, 100]
-y.domain [-1, 1]
+x.domain [0, 10, 20, 50, biggestFreq]
+y.domain [-0.6, 0.6]
 
 # style the circles, set their locations based on data
 circles = groups.selectAll('circle')
-  .data(data)
+  .data(wordData)
   .enter()
   .append('circle')
   .attr('class', 'circles')
@@ -53,6 +65,7 @@ circles = groups.selectAll('circle')
     id: (d) -> d.text
   )
   .style('fill', (d) -> color d.sentiment )
+  .style('opacity','0.6')
 
 
 # what to do when we mouse over a bubble
@@ -108,7 +121,7 @@ mouseOff = ->
   # go back to original size and opacity
   circle.transition()
     .duration(800)
-    .style('opacity', .5)
+    .style('opacity', .4)
     .attr('r', 8)
     .ease 'elastic'
 
@@ -134,7 +147,7 @@ circles
   .attr('class', 'tooltipped')
   .attr('data-position', 'bottom')
   .attr('data-delay', '50')
-  .attr('data-tooltip', 'HELLO')
+  .attr('data-tooltip', (d) -> d.text)
 
 
 # the legend color guide
@@ -148,8 +161,8 @@ legend = svg.selectAll('rect')
     width: 25
     height: 12)
   .style('fill', (d) ->
-    if d == 'Positive' then return color 1
-    if d == 'Negative' then return color -1
+    if d == 'Positive' then return color 0.5
+    if d == 'Negative' then return color -0.5
     else return color 0
   )
 
