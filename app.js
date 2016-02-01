@@ -25,6 +25,7 @@ server.listen(config.server.port, function(){
 /* Include the files defining the routes */
 var routes    = require('./routes/index');
 var map       = require('./routes/map');
+var regionMap = require('./routes/region-map');
 var globe     = require('./routes/globe');
 var timeline  = require('./routes/timeline');
 var about     = require('./routes/about');
@@ -51,6 +52,7 @@ mongoose.connect(config.db.URL);
 /* Specify which route files to use */
 app.use('/', routes);
 app.use('/map', map);
+app.use('/region-map', regionMap);
 app.use('/globe', globe);
 app.use('/timeline', timeline);
 app.use('/about', about);

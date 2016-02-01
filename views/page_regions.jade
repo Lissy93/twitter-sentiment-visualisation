@@ -1,0 +1,12 @@
+extends layout
+block head
+    script(src='https://www.gstatic.com/charts/loader.js')
+    script(src='https://www.google.com/jsapi')
+block content
+
+    div#regions_div.card-panel(style='width: 80%').center-block
+
+block scripts
+    script(type='text/javascript').
+        var sentimentResults = !{JSON.stringify(data)};
+    script(type='text/javascript', src='/javascripts/regions.bundle.js')
