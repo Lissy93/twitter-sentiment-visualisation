@@ -9,6 +9,7 @@ router.get '/', (req, res, next) ->
       title: 'Time Line'
       pageNum: 3
       data: data
+      searchTerm: ''
 
 router.get '/:query', (req, res) ->
   searchTerm = req.params.query # Get the search term from URL param
@@ -17,5 +18,6 @@ router.get '/:query', (req, res) ->
       title: 'Time Line'
       pageNum: 3
       data: data
+      searchTerm: searchTerm
 
 module.exports = router

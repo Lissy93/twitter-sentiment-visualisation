@@ -6,10 +6,26 @@ block head
 
 block content
     main.content.timeline.full-width
-       h4 timeline
-       div#chart
-           svg(style='width: 80%; height: 15em;').center-block
+       div(style='width: 80%; margin-bottom: 1em').center-block
+           div.row
+               div.col.s6.card-panel(style='min-height: 10em')
+                   h4 #{searchTerm} Sentiment Timeline
+                   p Timeline shows the average positive and negative sentiments of
+                       | Tweets over the last 24 hours.
 
+                div.col.s1
+                    br
+
+                div.col.s5.card-panel(style='min-height: 10em')
+                    p Enter a keyword or topic to view the sentiment over time of a custom Twitter dataset
+
+                    label.active(for='txtKeyword', style='width: 8em') Enter keyword or topic to fetch new Tweets
+                    input#txtKeyword.validate(type='text', style='width: 12em; margin-right: 1em', value='#{searchTerm}')
+                    div.btn#btnSearch Search
+                    br
+
+        div#chart.card-panel(style='width: 80%; height: 15em;').center-block
+           svg
 
 block scripts
     script(type='text/javascript').
