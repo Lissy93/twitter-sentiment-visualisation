@@ -26,6 +26,7 @@
     "debug": "^2.2.0",
     "express": "^4.13.3",
     "fetch-tweets": "^0.1.5",
+    "find-region-from-location": "git+https://github.com/Lissy93/find-region-from-location.git",
     "haven-sentiment-analysis": "git://github.com/Lissy93/haven-sentiment-analysis.git",
     "jade": "^1.11.0",
     "mongoose": "^4.1.6",
