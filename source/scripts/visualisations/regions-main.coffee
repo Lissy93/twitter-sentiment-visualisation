@@ -4,8 +4,8 @@
 drawRegionsMap = ->
   data = google.visualization.arrayToDataTable(sentimentResults)
   options = {
-    colorAxis: {colors: ['#FA5858', '#BDBDBD', '#58FA58']}
-    backgroundColor: '#81d4fa'
+    colorAxis: {colors: ['#DF0101', '#BDBDBD', '#04B404']}
+    backgroundColor: '#2C2C2C'
     datalessRegionColor: '#D8D8D8'
     defaultColor: '#f5f5f5'
   }
