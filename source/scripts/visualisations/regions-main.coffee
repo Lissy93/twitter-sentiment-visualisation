@@ -2,16 +2,13 @@
 #console.log sentimentResults
 
 drawRegionsMap = ->
-  data = google.visualization.arrayToDataTable([
-      ['Country', 'Popularity'],
-      ['Germany', 200],
-      ['United States', 300],
-      ['Brazil', 400],
-      ['Canada', 500],
-      ['France', 600],
-      ['RU', 700]
-    ])
-  options = {}
+  data = google.visualization.arrayToDataTable(sentimentResults)
+  options = {
+    colorAxis: {colors: ['#FA5858', '#BDBDBD', '#58FA58']}
+    backgroundColor: '#81d4fa'
+    datalessRegionColor: '#D8D8D8'
+    defaultColor: '#f5f5f5'
+  }
   chart = new (google.visualization.GeoChart)(document.getElementById('regions_div'))
   chart.draw data, options
 
