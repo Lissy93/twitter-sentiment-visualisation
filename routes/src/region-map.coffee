@@ -1,7 +1,17 @@
 express = require('express')
 router = express.Router()
 
+findRegion =  require 'find-region-from-location'
+
 mapTweetFormatter = require '../utils/format-tweets-for-map'
+
+makeRegionMapData = (tweets) ->
+  results = [['Country', 'Sentiment']]
+  for tweet in tweets
+    region = findRegion.country(tweet.location.lat, tweet.location.lng)
+    results.push([region, tweet.sentiment])
+  results
+
 
 # Render to page
 render = (res, data, title, summaryTxt) ->
@@ -13,12 +23,14 @@ render = (res, data, title, summaryTxt) ->
 
 # Call render with search term
 renderSearchTerm = (res, searchTerm) ->
-  mapTweetFormatter.getFreshData searchTerm, (mapData, summaryTxt) ->
-    render res, mapData, searchTerm+' Region Map', summaryTxt
+  mapTweetFormatter.getFreshData searchTerm, (twitterData, summaryTxt) ->
+    regionData = makeRegionMapData twitterData
+    render res, regionData, searchTerm+' Region Map', summaryTxt
 
 # Call render for database data
 renderAllData = (res) ->
-  mapTweetFormatter.getDbData (data, txt) ->  render res, data, 'Map', txt
+  mapTweetFormatter.getDbData (data, txt) ->
+    render res, makeRegionMapData(data), 'Map', txt
 
 # Path for main map root page
 router.get '/', (req, res) -> renderAllData res
