@@ -12,12 +12,14 @@
 
 ## Modules 
 Several open sauce node modules have been developed and published on npm as part of this project
+- [sentiment-analysis] - useses the AFINN-111 word list to calculate overall sentiment of a sentence
 - [fetch-tweets] - fetches tweets from Twitter based on topic, location, timeframe or combination
 - [stream-tweets] - streams live Tweets in real-time
-- [tweet-location] - calculates the location from geo-tagged Tweets using the Twitter Geo API
 - [remove-words] - removes all non-key words from a string sentence
-- [sentiment-analysis] - useses the AFINN-111 word list to calculate overall sentiment of a sentence
+- [place-lookup] - finds the latitude and longitude for any fuzzy place name using the Google Places API 
 - [hp-haven-sentiment-analysis] - A Node.js client library for HP Haven OnDemand Sentiment Analysis module
+- [tweet-location] - calculates the location from geo-tagged Tweets using the Twitter Geo API
+- [find-region-from-location] - given a latitude and longitude calculates which region that point belongs in
 
 ## Project Planning 
 - A set of [user stories with acceptance criteria] have been drawn up outlining what features the finished solution should have. They are also managed on the [Trello Board]
@@ -111,8 +113,10 @@ of the documentation.
    
    [fetch-tweets]: <https://www.npmjs.com/package/fetch-tweets>
    [stream-tweets]: <https://www.npmjs.com/package/stream-tweets>
+   [place-lookup]: <https://github.com/Lissy93/place-lookup>
    [tweet-location]: <https://www.npmjs.com/package/tweet-location>
    [remove-words]: <https://www.npmjs.com/package/remove-words>
    [sentiment-analysis]: <https://www.npmjs.com/package/sentiment-analysis>
    [hp-haven-sentiment-analysis]: <https://github.com/Lissy93/haven-sentiment-analysis>
+   [find-region-from-location]: <https://github.com/Lissy93/find-region-from-location>
 
