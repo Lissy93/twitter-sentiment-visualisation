@@ -12,23 +12,30 @@ makeRegionMapData = (tweets) ->
   findAv = (arr) ->
     t = 0
     for i in arr then t += i
-    t/arr.length
+    Math.round(t/arr.length*100)/100
 
+  # Group together the sentiments to their regions
   prelimResults = {}
   for tweet in tweets
     region = findRegion.country(tweet.location.lat, tweet.location.lng)
     if prelimResults[region] then prelimResults[region].sentiments.push(tweet.sentiment)
     else prelimResults[region] = {region: region, sentiments: [tweet.sentiment]}
 
-  results = [['Country', 'Sentiment'], ['',-0.8], ['',0.8]]
+  # Make the results array, by finding the average sentiment for each region
+  results = []
   for regionKey of prelimResults
     if prelimResults.hasOwnProperty regionKey
       results.push([regionKey, findAv(prelimResults[regionKey].sentiments)])
 
+
+  # Order results by sentiment, then append colounm headings and min/max values
+  sortFunc = (a, b) -> if a[1] == b[1] then 0 else if a[1] < b[1] then -1 else 1
+  results.sort sortFunc
+  results.unshift ['Country', 'Sentiment'], ['',-0.8], ['',0.8]
   results
 
 getRegions = () ->
-  fs.readFileSync(__dirname + '../../public/data/regions.csv', 'utf8').split('\r\n')
+  fs.readFileSync(__dirname+'../../public/data/regions.csv','utf8').split('\r\n')
 
 
 # Render to page
