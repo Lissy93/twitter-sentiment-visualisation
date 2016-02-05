@@ -14,7 +14,7 @@ block content
                 p(style='text-align: center') OR
             div.col.s5
                 label.active(for='txtLocation') Enter a country or region
-                input#txtLocation.validate(type='text')
+                input#txtLocation.validate(type='text', value='#{summary_text.searchRegion}')
 
 
         div#regions_div.card-panel(style='width: 100%; padding: 0.5em').center-block
@@ -24,4 +24,5 @@ block scripts
     script(type='text/javascript').
         var sentimentResults = !{JSON.stringify(data)};
         var searchRegion = !{JSON.stringify(summary_text.searchRegion)};
+        var csvRegions = !{JSON.stringify(csvRegions)};
     script(type='text/javascript', src='/javascripts/regions.bundle.js')

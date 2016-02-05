@@ -1,3 +1,4 @@
+fs = require 'fs'
 express = require('express')
 router = express.Router()
 
@@ -19,12 +20,15 @@ makeRegionMapData = (tweets) ->
     if prelimResults[region] then prelimResults[region].sentiments.push(tweet.sentiment)
     else prelimResults[region] = {region: region, sentiments: [tweet.sentiment]}
 
-  results = [['Country', 'Sentiment']]
+  results = [['Country', 'Sentiment'], ['',-0.8], ['',0.8]]
   for regionKey of prelimResults
     if prelimResults.hasOwnProperty regionKey
       results.push([regionKey, findAv(prelimResults[regionKey].sentiments)])
 
   results
+
+getRegions = () ->
+  fs.readFileSync(__dirname + '../../public/data/regions.csv', 'utf8').split('\r\n')
 
 
 # Render to page
@@ -35,6 +39,7 @@ render = (res, data, title, summaryTxt, location = '') ->
     summary_text: summaryTxt # Summary of results
     title: title  # The title of the rendered map
     pageNum: 6    # The position in the application
+    csvRegions: getRegions() # List of all regions
 
 # Call render with search term
 renderSearchTerm = (res, searchTerm, location= '') ->

@@ -3,11 +3,25 @@ pageControls = require '../page-controls-module.coffee'
 pageControls.setMainPage 'region-map'
 
 
-data = [
-  {'value': 'GB', 'label': 'United Kingdom'}
-  {'value': 'AQ', 'label': 'Antarctica'}
-  {'value': 'FJ', 'label': 'Fiji' }
-]
+# Takes the raw CSV string and returns a nice list of JSON region objects
+convertCsvToJson = (csvRegions) ->
+  regions = []
+  for r in csvRegions.splice 1,csvRegions.length # For each line in CSV file
+    r = r.match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g) # Break into array
+    for e, i in r then r[i] = r[i].replace(/['"]+/g, '').trim() # Neaten
+    regions.push { # Create a JSON object for region, and push to results
+      country: r[0], alpha2_code: r[1], alpha3_code: r[2],
+      numeric_code: r[3], latitude: Number(r[4]), longitude: Number(r[5])
+    }
+  regions # Done, return regions
+
+# Convert regions to JSON
+regions = convertCsvToJson csvRegions
+
+# Make data array
+data = []
+for r in regions then data.push value: r.alpha2_code, label: r.country
+
 
 $(document).ready ->
   locSel = '#txtLocation'
@@ -32,6 +46,7 @@ drawRegionsMap = ->
     backgroundColor: '#2C2C2C'
     datalessRegionColor: '#D8D8D8'
     defaultColor: '#f5f5f5'
+    showZoomOut: true
   }
 
   if searchRegion != '' then options.region = searchRegion
