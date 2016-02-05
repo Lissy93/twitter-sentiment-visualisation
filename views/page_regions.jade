@@ -1,12 +1,27 @@
 extends layout
 block head
+    link(rel='stylesheet', href='/bower_components/Autocompleter/jquery.autocompleter.css')
     script(src='https://www.gstatic.com/charts/loader.js')
     script(src='https://www.google.com/jsapi')
 block content
 
-    div#regions_div.card-panel(style='width: 80%').center-block
+    div(style='width: 80%; margin: 1em auto;').center-block
+        div.row.card-panel(style='padding: 0.5em')
+            div.col.s5
+                label.active(for='txtKeyword') Enter keyword or topic to fetch new Tweets
+                input#txtKeyword.validate(type='text', value='#{summary_text.searchTerm}')
+            div.col.s2
+                p(style='text-align: center') OR
+            div.col.s5
+                label.active(for='txtLocation') Enter a country or region
+                input#txtLocation.validate(type='text')
+
+
+        div#regions_div.card-panel(style='width: 100%; padding: 0.5em').center-block
 
 block scripts
+    script(type='text/javascript', src='/bower_components/Autocompleter/jquery.autocompleter.min.js')
     script(type='text/javascript').
         var sentimentResults = !{JSON.stringify(data)};
+        var searchRegion = !{JSON.stringify(summary_text.searchRegion)};
     script(type='text/javascript', src='/javascripts/regions.bundle.js')
