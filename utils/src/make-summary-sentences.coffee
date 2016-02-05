@@ -64,8 +64,11 @@ class MakeSummarySentences
     mapShowing += "<span #{makeTxtStyle overallSent} >#{overallSent} "
     mapShowing += "(#{averages.avSentiment}%)</span>"
 
-    sentimentSummary =  "Average positive: <b>#{averages.avPositive}%</b>. <br>"
-    sentimentSummary += "Average negative: <b>#{averages.avNegative}%</b>."
+    p = makeTxtStyle 1
+    n = makeTxtStyle -1
+
+    sentimentSummary="Average positive: <b #{p}>#{averages.avPositive}%</b>.<br>"
+    sentimentSummary+="Average negative: <b #{n}>#{averages.avNegative}%</b>."
 
     mapShowing: mapShowing
     sentimentSummary: sentimentSummary
