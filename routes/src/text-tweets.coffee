@@ -6,11 +6,10 @@ FetchTweets = require 'fetch-tweets'
 twitterKey = require('../config/keys').twitter
 fetchTweets = new FetchTweets twitterKey
 removeWords = require 'remove-words'
-
 express = require('express')
 router = express.Router()
 
-
+# Makes keywords click-able hyperlinks, returns HTML
 makeClickWords = (body) ->
   clWord = (word) -> (''+word).toLowerCase().replace /\W/g, ''
   clickWords = removeWords body # Array of keywords
@@ -22,7 +21,7 @@ makeClickWords = (body) ->
     else htmlTweet += "#{word} "
   htmlTweet
 
-
+# Converts Tweet objects into the right format
 formatTweets = (tweets) ->
   pos = []
   neg = []
@@ -30,11 +29,11 @@ formatTweets = (tweets) ->
   tweets.sort (b, a) -> new Date(a.dateTime).getTime() - new Date(b.dateTime).getTime()
   tweets.slice(0,350)
 
-  for tweet in tweets
-    body = makeClickWords tweet.body
-    location = tweet.location.place_name
-    sentiment = tweet.sentiment
-    keywords = removeWords tweet.body
+  for t in tweets
+    body = makeClickWords t.body
+    location = t.location.place_name
+    sentiment = if t.sentiment then t.sentiment else sentimentAnalysis t.body
+    keywords = removeWords t.body
     r = body: body, location: location, sentiment: sentiment, keywords: keywords
     if sentiment > 0 then pos.push r else if sentiment < 0 then neg.push r
 
@@ -42,7 +41,7 @@ formatTweets = (tweets) ->
   neg.sort (a, b) -> parseFloat(a.sentiment) - parseFloat(b.sentiment)
   positive: pos.slice(0,100), negative: neg.slice(0,100)
 
-
+# Main route - no search term
 router.get '/', (req, res, next) ->
   Tweet.getAllTweets (tweets) ->
     res.render 'page_textTweets',
@@ -51,13 +50,14 @@ router.get '/', (req, res, next) ->
       data: formatTweets tweets
       searchTerm: ''
 
+# Route with search term
 router.get '/:query', (req, res) ->
   searchTerm = req.params.query # Get the search term from URL param
-#  tweetTimeFormatter.getFreshData searchTerm, (data, txt) ->
-  res.render 'page_textTweets',
-    title: searchTerm+' raw tweets'
-    pageNum: 7
-    data: {}
-    searchTerm: searchTerm
+  fetchTweets.byTopic searchTerm, (tweets) ->
+    res.render 'page_textTweets',
+      title: searchTerm+' raw tweets'
+      pageNum: 7
+      data: formatTweets tweets
+      searchTerm: searchTerm
 
 module.exports = router
