@@ -1,10 +1,6 @@
 
-
-removeWords = require 'remove-words'
-
-makeClickWords = (body) ->
+makeClickWords = (clickWords, body) ->
   clWord = (word) -> (''+word).toLowerCase().replace /\W/g, ''
-  clickWords = removeWords body # Array of keywords
   htmlTweet = ''
   aStyle = 'style="color: black; font-weight: bold;" ' # style for hyperlinks
   for word in body.split " "
@@ -19,7 +15,7 @@ makeDiv = (tweet) ->
   html += "<div class='pull-right'>"
   html += "<b style='color: #{col}'>#{tweet.sentiment*100}%</b>"
   html += "</div>"
-  html += "#{makeClickWords tweet.body}"
+  html += "#{makeClickWords tweet.keywords, tweet.body}"
   if tweet.location.place_name != null
     html += "<br><i class='tiny material-icons small-grey'>location_on</i>"
     html += "<p class='small-grey inline'>#{tweet.location.place_name}</p>"
