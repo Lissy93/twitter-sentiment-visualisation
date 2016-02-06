@@ -27,6 +27,10 @@ isSuitableForDb = (tweetData) ->
 
 module.exports = (data, io) ->
 
+  anyTweet = makeTweetObj data, data.location
+  io.emit 'anyTweet', anyTweet
+
+
   if data.location.location.lat !=0
     tweet = makeTweetObj data, data.location
     io.emit 'tweet', tweet
