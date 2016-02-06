@@ -8,7 +8,7 @@ block content
 
     div.row.center-block(style='width: 90%')
         div.col.s6.offset-s2.card-panel.input-field(style='height: 4em;')
-            input#txtKeyword.validate(type='text')
+            input#txtKeyword.validate(type='text', value='#{searchTerm}')
             label(for='txtKeyword', style='margin-top: 1em') Enter a keyword, topic or search term to fetch new Tweets
         div.col.s2.offset-s1.card-panel(style='height: 4em;')
             div.switch(style='margin-top: 1.5em')

@@ -22,19 +22,23 @@ makeDiv = (tweet) ->
   html += "</div>"
   html
 
-if searchTerm == ''
+socket = io.connect('http://localhost:8080');
 
-  socket = io.connect('http://localhost:8080');
+socket.on 'anyTweet', (tweetObj) ->
 
-  socket.on 'anyTweet', (tweetObj) ->
+  searchTerm = $('#txtKeyword').val()
 
-    if $('#showLive').is(':checked')
+  if (searchTerm == '' or
+    (tweetObj.body and tweetObj.body.indexOf(searchTerm) > -1)) and
+    $('#showLive').is(':checked')
 
       if tweetObj.sentiment > 0
         $("#positiveContainer").prepend(makeDiv tweetObj)
-        $('#positiveContainer .card-panel:last').remove()
+        if $('#positiveContainer .card-panel').length > 100
+          $('#positiveContainer .card-panel:last').remove()
 
       else if tweetObj.sentiment < 0
         $("#negativeContainer").prepend(makeDiv tweetObj)
-        $('#negativeContainer .card-panel:last').remove()
+        if $('#negativeContainer .card-panel').length > 100
+          $('#negativeContainer .card-panel:last').remove()
 
