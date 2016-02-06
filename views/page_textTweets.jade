@@ -12,7 +12,7 @@ block content
             label(for='txtKeyword', style='margin-top: 1.5em') Enter a keyword, topic or search term to fetch new Tweets
 
     div.row.center-block(style='width: 90%')
-        div.col.s6
+        div.col.s6#positiveContainer
             for tweet in data.positive
                 div.card-panel
                     div.pull-right
@@ -22,7 +22,7 @@ block content
                     p.small-grey.inline= tweet.location
 
 
-        div.col.s6
+        div.col.s6#negativeContainer
             for tweet in data.negative
                 div.card-panel
                     div.pull-right
@@ -34,6 +34,9 @@ block content
 
 
 block scripts
+    script(type='text/javascript', src='https://cdn.socket.io/socket.io-1.4.3.js')
     script(type='text/javascript').
         var results = !{JSON.stringify(data)};
+        var searchTerm = !{JSON.stringify(searchTerm)};
+    script(type='text/javascript', src='/javascripts/charts/text-tweets.js')
 
