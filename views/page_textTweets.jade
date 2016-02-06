@@ -5,7 +5,13 @@ block head
 
 block content
 
-    div.row
+
+    div.row.center-block(style='width: 50%')
+        div.card-panel.input-field
+            input#txtKeyword.validate(type='text')
+            label(for='txtKeyword', style='margin-top: 1.5em') Enter a keyword, topic or search term to fetch new Tweets
+
+    div.row.center-block(style='width: 90%')
         div.col.s6
             for tweet in data.positive
                 div.card-panel

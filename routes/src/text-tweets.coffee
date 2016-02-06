@@ -26,6 +26,10 @@ makeClickWords = (body) ->
 formatTweets = (tweets) ->
   pos = []
   neg = []
+
+  tweets.sort (b, a) -> new Date(a.dateTime).getTime() - new Date(b.dateTime).getTime()
+  tweets.slice(0,350)
+
   for tweet in tweets
     body = makeClickWords tweet.body
     location = tweet.location.place_name
@@ -37,6 +41,7 @@ formatTweets = (tweets) ->
   pos.sort (b, a) -> parseFloat(a.sentiment) - parseFloat(b.sentiment)
   neg.sort (a, b) -> parseFloat(a.sentiment) - parseFloat(b.sentiment)
   positive: pos.slice(0,100), negative: neg.slice(0,100)
+
 
 router.get '/', (req, res, next) ->
   Tweet.getAllTweets (tweets) ->
