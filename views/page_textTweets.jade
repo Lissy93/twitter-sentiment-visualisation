@@ -1,7 +1,30 @@
 extends layout
 
+block head
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+
 block content
-    h1 Raw Tweets
+
+    div.row
+        div.col.s6
+            for tweet in data.positive
+                div.card-panel
+                    div.pull-right
+                        b(style='color: green') #{tweet.sentiment*100}%
+                    p !{tweet.body}
+                    i.tiny.material-icons.small-grey.inline location_on
+                    p.small-grey.inline= tweet.location
+
+
+        div.col.s6
+            for tweet in data.negative
+                div.card-panel
+                    div.pull-right
+                        b(style='color: darkred') #{tweet.sentiment * 100}%
+                    p !{tweet.body}
+                    i.tiny.material-icons.small-grey.inline location_on
+                    p.small-grey.inline= tweet.location
+
 
 
 block scripts
