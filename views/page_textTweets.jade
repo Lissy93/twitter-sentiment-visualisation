@@ -1,0 +1,10 @@
+extends layout
+
+block content
+    h1 Raw Tweets
+
+
+block scripts
+    script(type='text/javascript').
+        var results = !{JSON.stringify(data)};
+
