@@ -42,3 +42,7 @@ socket.on 'anyTweet', (tweetObj) ->
         if $('#negativeContainer .card-panel').length > 100
           $('#negativeContainer .card-panel:last').remove()
 
+
+$('#txtKeyword').keyup (e) -> if e.keyCode == 13
+  showLoader()
+  window.location = '/text-tweets/'+$('#txtKeyword').val()
