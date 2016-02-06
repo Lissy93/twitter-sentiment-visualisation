@@ -2,6 +2,7 @@
 # Require necessary modules, API keys and instantiate objects
 Tweet = require '../models/Tweet' # The Tweet model
 sentimentAnalysis = require 'sentiment-analysis'
+moment = require 'moment'
 FetchTweets = require 'fetch-tweets'
 twitterKey = require('../config/keys').twitter
 fetchTweets = new FetchTweets twitterKey
@@ -35,6 +36,7 @@ formatTweets = (tweets) ->
     sentiment = if t.sentiment then t.sentiment else sentimentAnalysis t.body
     keywords = removeWords t.body
     r = body: body, location: location, sentiment: sentiment, keywords: keywords
+    r.dateTime = moment(t.dateTime).fromNow()
     if sentiment > 0 then pos.push r else if sentiment < 0 then neg.push r
 
   pos.sort (b, a) -> parseFloat(a.sentiment) - parseFloat(b.sentiment)

@@ -19,6 +19,9 @@ makeDiv = (tweet) ->
   if tweet.location.place_name != null
     html += "<br><i class='tiny material-icons small-grey'>location_on</i>"
     html += "<p class='small-grey inline'>#{tweet.location.place_name}</p>"
+  html += "<div class='pull-right'>"
+  html += "<i class='tiny material-icons small-grey inline'>schedule</i>"
+  html += "<p class='small-grey inline'>#{tweet.dateTime}</p></div>"
   html += "</div>"
   html
 

@@ -2,6 +2,7 @@ Tweet = require '../models/Tweet'
 
 removeWords = require 'remove-words'
 sentimentAnalysis = require 'sentiment-analysis'
+moment = require 'moment'
 placeLookup = require 'place-lookup'
 
 placesApiKey = require('../config/keys').googlePlaces
@@ -28,6 +29,7 @@ isSuitableForDb = (tweetData) ->
 module.exports = (data, io) ->
 
   anyTweet = makeTweetObj data, data.location
+  anyTweet.dateTime = moment(new Date(anyTweet.dateTime)).fromNow()
   io.emit 'anyTweet', anyTweet
 
 

@@ -29,6 +29,7 @@
     "find-region-from-location": "git+https://github.com/Lissy93/find-region-from-location.git",
     "haven-sentiment-analysis": "git://github.com/Lissy93/haven-sentiment-analysis.git",
     "jade": "^1.11.0",
+    "moment": "^2.11.2",
     "mongoose": "^4.1.6",
     "morgan": "^1.6.1",
     "place-lookup": "0.0.2",

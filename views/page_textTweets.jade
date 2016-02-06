@@ -25,9 +25,12 @@ block content
                     div.pull-right
                         b(style='color: green') #{tweet.sentiment*100}%
                     p !{tweet.body}
-                    i.tiny.material-icons.small-grey.inline location_on
-                    p.small-grey.inline= tweet.location
-
+                    if tweet.location
+                        i.tiny.material-icons.small-grey.inline location_on
+                        p.small-grey.inline= tweet.location
+                    div.pull-right
+                        i.tiny.material-icons.small-grey.inline schedule
+                        p.small-grey.inline= tweet.dateTime
 
         div.col.s6#negativeContainer
             for tweet in data.negative
@@ -35,8 +38,13 @@ block content
                     div.pull-right
                         b(style='color: darkred') #{tweet.sentiment * 100}%
                     p !{tweet.body}
-                    i.tiny.material-icons.small-grey.inline location_on
-                    p.small-grey.inline= tweet.location
+                    if tweet.location
+                        i.tiny.material-icons.small-grey.inline location_on
+                        p.small-grey.inline= tweet.location
+                    div.pull-right
+                        i.tiny.material-icons.small-grey.inline schedule
+                        p.small-grey.inline= tweet.dateTime
+
 
 
 
