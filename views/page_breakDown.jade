@@ -1,0 +1,29 @@
+extends layout
+
+block head
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+
+block content
+
+
+    div.row.center-block(style='width: 80%')
+        div.col.s9.card-panel.input-field(style='height: 4em')
+            input#txtKeyword.validate(type='text', value='#{searchTerm}')
+            label(for='txtKeyword', style='margin-top: 1em') Enter a keyword, topic or search term to fetch new Tweets
+
+        div.col.s2.offset-s1.card-panel(style='height: 4em')
+            form.tree
+                input#size(type='radio', name='mode', value='size', checked='')
+                label(for='size') Size
+                input#count(type='radio', name='mode', value='count')
+                label(for='count') Count
+
+    div.row.center-block(style='width: 80%')
+        div.card-panel#tree
+
+block scripts
+    script(type='text/javascript').
+        var results = !{JSON.stringify(data)};
+    script(type='text/javascript', src='/bower_components/d3/d3.min.js')
+    script(type='text/javascript', src='/javascripts/charts/break-down.js')
+
