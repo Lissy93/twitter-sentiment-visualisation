@@ -19,6 +19,7 @@ fetchAndFormatTweets = (searchTerm, cb) ->
 formatTweets = (twitterResults) ->
   results = ""
   for tweet in twitterResults then results += tweet.body + " "
+  results = results.replace(/(?:https?|ftp):\/\/[\n\S]+/g, '')
   results =  results.replace(/[^A-Za-z0-9 ]/g, '')
   results = results.substring(0, 5000)
 
@@ -34,7 +35,6 @@ formatResultsForChart = (hpResults) ->
       {name:'negative', children: []}
     ]
   }
-
   i = 1
   while i <= 10
     data.children[0].children.push({name: i/10, children: [] })

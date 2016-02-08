@@ -34,7 +34,7 @@ node = div.datum(root)
   .data(treemap.nodes)
   .enter()
   .append('div')
-  .attr('class', 'tree-node tooltipped')
+  .attr('class', (d) -> 'tree-node ' + if d.topic? then 'tooltipped')
   .call(position)
   .attr('data-position', 'top')
   .attr('data-tooltip', (d) -> if d.topic != '' then d.topic else '[no topic]')
@@ -50,3 +50,7 @@ d3.selectAll('input').on 'change', ->
 
 $(document).ready ->
   $('.tooltipped').tooltip delay: 50
+
+$('#txtKeyword').keyup (e) -> if e.keyCode == 13
+  showLoader()
+  window.location = '/break-down/'+$('#txtKeyword').val()

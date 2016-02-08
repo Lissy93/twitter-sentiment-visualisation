@@ -18,8 +18,16 @@ block content
                 input#count(type='radio', name='mode', value='count')
                 label(for='count') Count
 
-    div.row.center-block(style='width: 80%')
-        div.card-panel#tree
+    div.row.center-block(style='width: 80%').card-panel
+        if searchTerm
+            - var relatingTo = ' relating to <b>'+searchTerm+'</b>'
+        else
+            - var relatingTo = ''
+        p The block diagram shows key terms that represented sentiment!{relatingTo}.
+            | The color represents sentiment, and the size of the block, weighting.
+        b You can hover over the blocks to see the topic being described.
+        div#tree
+        br
 
 block scripts
     script(type='text/javascript').
