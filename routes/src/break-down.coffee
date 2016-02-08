@@ -70,7 +70,7 @@ router.get '/:query', (req, res) ->
       results = formatResultsForChart hpResults
       res.render 'page_breakDown',
         title: searchTerm+' results'
-        pageNum: 8
+        pageNum: -1
         data: results
         searchTerm: searchTerm
 
@@ -81,7 +81,7 @@ router.get '/', (req, res) ->
         results = formatResultsForChart hpResults
         res.render 'page_breakDown',
           title: 'Break down results'
-          pageNum: 8
+          pageNum: -1
           data:  results
           searchTerm: ''
 
