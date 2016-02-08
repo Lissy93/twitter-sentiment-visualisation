@@ -36,7 +36,7 @@ draw = (words) ->
     .data(words)
     .enter()
     .append('text')
-    .style('font-size', (d) -> d.size + 'px')
+    .style('font-size', (d) -> if d.size < 140 then d.size + 'px' else '140px')
     .style('font-family', 'Impact')
     .style('cursor', 'pointer')
     .style('fill', (d, i) -> fillScale getSentimentForWord d.text)
