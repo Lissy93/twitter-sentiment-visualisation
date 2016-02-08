@@ -13,13 +13,14 @@ router = express.Router()
 
 
 fetchAndFormatTweets = (searchTerm, cb) ->
-  results = ""
-  fetchTweets.byTopic searchTerm, (tweets) ->
-    for tweet in tweets then results += tweet.body + " "
-    results =  results.replace(/[^A-Za-z0-9 ]/g, '')
-    results = results.substring(0, 5000)
-    cb results
+  fetchTweets.byTopic searchTerm, (results) ->
+    cb formatTweets results
 
+formatTweets = (twitterResults) ->
+  results = ""
+  for tweet in twitterResults then results += tweet.body + " "
+  results =  results.replace(/[^A-Za-z0-9 ]/g, '')
+  results = results.substring(0, 5000)
 
 getHpSentimentResults = (tweetBody, cb) ->
   hpSentimentAnalysis tweetBody, hpKey, (results) ->
@@ -60,15 +61,6 @@ formatResultsForChart = (hpResults) ->
   data
 
 
-# Main route - no search term
-router.get '/', (req, res, next) ->
-  Tweet.getAllTweets (tweets) ->
-    res.render 'page_breakDown',
-      title: 'Sentiment Analysis Breakdown'
-      pageNum: 8
-      data: data
-      searchTerm: ''
-
 # Route with search term
 router.get '/:query', (req, res) ->
   searchTerm = req.params.query # Get the search term from URL param
@@ -81,12 +73,16 @@ router.get '/:query', (req, res) ->
         pageNum: 8
         data: results
         searchTerm: searchTerm
-#
-#  fetchTweets.byTopic searchTerm, (tweets) ->
-#    res.render 'page_breakDown',
-#      title: searchTerm+' results'
-#      pageNum: 8
-#      data: data
-#      searchTerm: searchTerm
+
+router.get '/', (req, res) ->
+  Tweet.getAllTweets (tweets) ->
+      tweetBody = formatTweets tweets
+      getHpSentimentResults tweetBody, (hpResults) ->
+        results = formatResultsForChart hpResults
+        res.render 'page_breakDown',
+          title: 'Break down results'
+          pageNum: 8
+          data:  results
+          searchTerm: ''
 
 module.exports = router
