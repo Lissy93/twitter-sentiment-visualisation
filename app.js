@@ -34,6 +34,7 @@ var wordCloud = require('./routes/word-cloud');
 var wordPlot  = require('./routes/word-plot');
 var textTweets= require('./routes/text-tweets');
 var breakdown = require('./routes/break-down');
+var entExtract= require('./routes/entity-extraction');
 
 /* view engine setup */
 app.set('views', path.join(__dirname, 'views'));
@@ -63,6 +64,7 @@ app.use('/word-cloud', wordCloud);
 app.use('/word-scatter-plot', wordPlot);
 app.use('/text-tweets', textTweets);
 app.use('/break-down', breakdown);
+app.use('/entity-extraction', entExtract);
 
 
 /* Set a stream listener for tweets matching tracking keywords */
