@@ -11,7 +11,27 @@ block content
             input#txtKeyword.validate(type='text', value='#{searchTerm}')
             label(for='txtKeyword', style='margin-top: 1em') Enter a keyword, topic or search term to fetch new Tweets
 
-    
+    div.container(style='width: 90%')
+        for key in Object.keys(data)
+            h4 #{key.charAt(0).toUpperCase()+key.split('_')[0].slice(1)}
+            div.row
+                for entity in data[key]
+                    div.card.small.col.s2
+                        div.card-image
+                            img.better-img-card-position(src='#{entity.additional_information.image}')
+                            span.card-title #{entity.normalized_text}
+                        div.card-content
+                            p <b>#{entity.matches.length}</b> occurrences found
+                            for match in entity.matches.splice(0,4)
+                                span= ' '+match+' '
+                            if entity.matches.length > 1
+                                span ...
+                        div.card-action
+                            if entity.additional_information.wiki != ''
+                                a(href='#{entity.additional_information.wiki}') Wikipedia
+                            a(href='/entity-extraction/'+entity.normalized_text) Entities
+
+
 block scripts
     script(type='text/javascript').
         var results = !{JSON.stringify(data)};
