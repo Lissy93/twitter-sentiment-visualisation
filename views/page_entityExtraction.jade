@@ -6,10 +6,14 @@ block head
 block content
 
 
-    div.row.center-block(style='width: 90%')
-        div.col.s6.offset-s3.card-panel.input-field(style='height: 4em;')
-            input#txtKeyword.validate(type='text', value='#{searchTerm}')
-            label(for='txtKeyword', style='margin-top: 1em') Enter a keyword, topic or search term to fetch new Tweets
+    div.row.container
+        div.col.s8.offset-s2.card-panel
+            h3 Entity Extraction
+            p Extract key information (people, places, topics, companies, media...) from Tweets.
+                | Enter a search term to fetch and analyse fresh Twitter data.
+            div.input-field
+                input#txtKeyword.validate(type='text', value='#{searchTerm}')
+                label(for='txtKeyword') Enter a keyword, topic or search term to fetch new Tweets
 
     div.container(style='width: 90%')
         for key in Object.keys(data)
