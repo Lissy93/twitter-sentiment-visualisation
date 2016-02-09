@@ -3,6 +3,7 @@
 Tweet = require '../models/Tweet' # The Tweet model
 sentimentAnalysis = require 'sentiment-analysis'
 moment = require 'moment'
+makeClickWords = require '../utils/make-click-words'
 FetchTweets = require 'fetch-tweets'
 twitterKey = require('../config/keys').twitter
 fetchTweets = new FetchTweets twitterKey
@@ -10,17 +11,6 @@ removeWords = require 'remove-words'
 express = require('express')
 router = express.Router()
 
-# Makes keywords click-able hyperlinks, returns HTML
-makeClickWords = (body) ->
-  clWord = (word) -> (''+word).toLowerCase().replace /\W/g, ''
-  clickWords = removeWords body # Array of keywords
-  htmlTweet = ''
-  aStyle = 'style="color: black; font-weight: bold;" ' # style for hyperlinks
-  for word in body.split " "
-    if clWord(word) in clickWords
-      htmlTweet += "<a #{aStyle} href='/text-tweets/#{clWord word}'>#{word}</a> "
-    else htmlTweet += "#{word} "
-  htmlTweet
 
 # Converts Tweet objects into the right format
 formatTweets = (tweets) ->
@@ -36,7 +26,7 @@ formatTweets = (tweets) ->
     sentiment = if t.sentiment then t.sentiment else sentimentAnalysis t.body
     keywords = removeWords t.body
     r = body: body, location: location, sentiment: sentiment, keywords: keywords
-    r.dateTime = moment(t.dateTime).fromNow()
+    r.dateTime = moment(new Date(t.dateTime)).fromNow()
     if sentiment > 0 then pos.push r else if sentiment < 0 then neg.push r
 
   pos.sort (b, a) -> parseFloat(a.sentiment) - parseFloat(b.sentiment)
