@@ -1,7 +1,17 @@
 extends layout
 
 block content
-  main.content.dashboard
-    each val, index in {1:'One',2:'Two',3:'Three'}
-      div.card.home-panels
-        h3='Title of Page ' + val
+  div(style='width: 80%').center-block
+    .row
+      div.col.s8.offset-s2.card-panel
+        div.input-field
+          input#txtKeyword.validate(type='text')
+          label(for='txtKeyword') Enter a keyword, topic or search term to fetch new Tweets
+
+
+
+    .row
+      each val, index in ['Word Cloud', 'Regional Map', 'Heat Map', '3D Globe', 'Time Line', 'Real Time Tweets', 'Entity Extraction', 'Topic Break Down']
+        .col.s3
+          .card(style='width: 100%; height: 250px;')
+            h3= val
