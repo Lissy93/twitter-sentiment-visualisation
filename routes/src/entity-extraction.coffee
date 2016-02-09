@@ -18,6 +18,15 @@ formatTweets = (twitterResults) ->
   results =  results.replace(/[^A-Za-z0-9 ]/g, '')
   results = results.substring(0, 5000)
 
+formatFinalData = (havenData) ->
+  results = []
+  for hd in havenData
+    results.push hd
+  console.log results
+  results
+
+
+
 # Main route - no search term
 router.get '/', (req, res, next) ->
   Tweet.getAllTweets (tweets) ->
