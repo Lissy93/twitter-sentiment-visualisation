@@ -25,7 +25,7 @@ body { font: 12px sans-serif; }
 
 
 
-
+// Tre diagram
 #tree {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   position: relative;
@@ -44,3 +44,27 @@ body { font: 12px sans-serif; }
 }
 
 .tree-node:hover{ background: grey;  }
+
+
+//sankey diagram
+
+.sankey-node rect {
+  cursor: move;
+  fill-opacity: .9;
+  shape-rendering: crispEdges;
+}
+
+.sankey-node text {
+  pointer-events: none;
+  text-shadow: 0 1px 0 #fff;
+}
+
+.sankey-link {
+  fill: none;
+  stroke: #000;
+  stroke-opacity: .2;
+}
+
+.sankey-link:hover {
+  stroke-opacity: .5;
+}
