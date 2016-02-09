@@ -45,6 +45,7 @@ block scripts
     script(type='text/javascript').
         var results = !{JSON.stringify(data)};
         var searchTerm = !{JSON.stringify(searchTerm)};
+        var sankeyData = !{JSON.stringify(sankeyData)};
     script(type='text/javascript', src='/bower_components/d3/d3.min.js')
     script(type='text/javascript', src='/bower_components/sankey.js/index.js')
     script(type='text/javascript', src='/javascripts/charts/entity-extraction.js')

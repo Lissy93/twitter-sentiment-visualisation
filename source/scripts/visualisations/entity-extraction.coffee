@@ -151,7 +151,7 @@ sankey = d3.sankey().nodeWidth(36).nodePadding(10).size([width, height])
 path = sankey.link()
 
 # load the data
-graph = data
+graph = sankeyData
 nodeMap = {}
 
 # the function for moving the nodes

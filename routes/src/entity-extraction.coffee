@@ -18,14 +18,34 @@ formatTweets = (twitterResults) ->
   results =  results.replace(/[^A-Za-z0-9 ]/g, '')
   results = results.substring(0, 5000)
 
-formatFinalData = (havenData) ->
-  results = []
-  for hd in havenData
-    results.push hd
-  console.log results
+
+makeSankeyData = (startNode, data) ->
+  results = {links: [], nodes: []}
+
+  results.nodes.push {name: startNode}
+
+  for key in Object.keys data
+    nodeName = key.charAt(0).toUpperCase()+key.split('_')[0].slice(1)
+    results.nodes.push {name: nodeName}
+    results.links.push {
+      source: startNode, target: nodeName, value: data[key].length}
+
+    for entity in data[key]
+      entityName = entity.normalized_text
+      results.nodes.push {name: entityName}
+      results.links.push {
+        source: nodeName, target: entityName, value: entity.matches.length}
+
+      for match in entity.matches
+        canInsert = true
+        for m in results.nodes then if m.name == match then canInsert = false
+        if canInsert
+          results.nodes.push {name: match}
+          results.links.push {source: entityName, target: match, value:  0.5}
+        else
+          for l in results.links then if l.target == match then l.value += 0.5
+
   results
-
-
 
 # Main route - no search term
 router.get '/', (req, res, next) ->
@@ -36,10 +56,11 @@ router.get '/', (req, res, next) ->
         pageNum: 8
         data: results
         searchTerm: ''
+        sankeyData: makeSankeyData 'Recent Tweets', results
 
 # Route with search term
 router.get '/:query', (req, res) ->
-  searchTerm = req.params.query # Get the search term from URL param
+  searchTerm = req.params.query.toLowerCase() # Get the search term of URL param
   fetchTweets.byTopic searchTerm, (tweets) ->
     entityExtraction formatTweets(tweets), hpKey, (results) ->
       res.render 'page_entityExtraction',
@@ -47,5 +68,6 @@ router.get '/:query', (req, res) ->
         pageNum: 8
         data: results
         searchTerm: searchTerm
+        sankeyData: makeSankeyData searchTerm, results
 
 module.exports = router
