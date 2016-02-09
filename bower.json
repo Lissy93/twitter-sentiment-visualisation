@@ -40,6 +40,7 @@
     "socket.io": "https://raw.githubusercontent.com/socketio/socket.io-client/master/socket.io.js",
     "d3-word-cloud": "https://jardindesconnaissances.googlecode.com/svn-history/r82/trunk/public/js/d3.layout.cloud.js",
     "tipsy": "https://cdnjs.cloudflare.com/ajax/libs/jquery.tipsy/1.0.2/jquery.tipsy.js",
-    "nvd3": "~1.8.2"
+    "nvd3": "~1.8.2",
+    "sankey.js": "https://raw.githubusercontent.com/d3/d3-plugins/master/sankey/sankey.js"
   }
 }
