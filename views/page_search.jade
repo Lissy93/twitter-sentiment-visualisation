@@ -3,14 +3,49 @@ extends layout
 block content
 
 
-    div.container(style='width: 90%')
+    .container(style='width: 90%')
         .row
-            div.col.s3.card-panel(style='height: 23em')
-                div#gaugeChart
-            div.col.s6
-                div#chart.card-panel(style='height: 23em')
-            div.col.s3.card-panel(style='height: 23em')
+            h3 Sentiment Summary for '#{searchTerm}'
+            .col.s3.card-panel(style='height: 23em')
+                #gaugeChart
+                br
+                br
+                if averageSentiment > 0
+                    p Average Sentiment is <b style='color: green'>positive</b>
+                else if averageSentiment < 0
+                    p Average Sentiment is <b style='color: darkred'>negative</b>
+                else
+                    p Average Sentiment is <b style='color: grey'>neutral</b>
+            .col.s6
+                .card-panel(style='height: 23em')
+                    p.absolute.grey-text(style='margin-top: -12px')
+                        | Hover over a hexagon to read the associated Tweet.
+                        | Sentiment is represented by color
+                    #chart
+            .col.s3.card-panel(style='height: 23em')
                 p Something else here
+
+
+
+        .row
+            h3 Click on a link below to see the '#{searchTerm}' results data in another format
+            each page in pages
+                .col.s4
+                    a(href='/#{page.page}/#{searchTerm}')
+                        .card.home-card
+                            .card-image.waves-effect.waves-block.waves-light
+                                img(src='/images/thumbnails/thumb_#{page.index}.png')
+                            .card-content
+                                span.card-title.grey-text.text-darken-4= page.title
+
+
+        .row
+            h3 Make a new search
+            .col.s6.offset-3.card-panel
+                .input-field
+                    input#txtKeyword.validate(type='text')
+                    label(for='txtKeyword') Enter a keyword, topic, brand, celebrity or search term
+
 
 block scripts
     script(type='text/javascript').

@@ -5,7 +5,7 @@ sentiment = (average * 100)/2 + 50
 chart = c3.generate(
   bindto: '#gaugeChart'
   data:
-    columns: [ ['data', sentiment] ]
+    columns: [ ['sentiment', sentiment] ]
     type: 'gauge'
   gauge: {}
   color:
