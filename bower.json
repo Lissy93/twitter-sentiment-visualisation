@@ -42,6 +42,7 @@
     "tipsy": "https://cdnjs.cloudflare.com/ajax/libs/jquery.tipsy/1.0.2/jquery.tipsy.js",
     "nvd3": "~1.8.2",
     "sankey.js": "https://raw.githubusercontent.com/d3/d3-plugins/master/sankey/sankey.js",
-    "hexbin": "http://d3js.org/d3.hexbin.v0.min.js"
+    "hexbin": "http://d3js.org/d3.hexbin.v0.min.js",
+    "d3tip": "https://raw.githubusercontent.com/Caged/d3-tip/master/index.js"
   }
 }
