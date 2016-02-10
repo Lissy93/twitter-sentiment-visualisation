@@ -3,16 +3,28 @@ block pageConfig
   - var hideNav = true
 
 block content
-  div(style='width: 80%').center-block
+  .container.center-block
     .row
-      div.col.s8.offset-s2.card-panel
-        div.input-field
-          input#txtKeyword.validate(type='text')
-          label(for='txtKeyword') Enter a keyword, topic or search term to fetch new Tweets
+      .col.s6
+        .card-panel(style='min-height: 19em')
+          h3 Introduction to Sentiment Sweep
+          p Sentiment Sweep aims to captcha the mood of the internet, either
+            | overall or towards a specific topic.
+            | It does this by analysing real-time Twitter data, and calculating
+            | how positive or negative each Tweet it.
 
-    - var pages = [{title: 'Word Cloud', page:'word-cloud', index: '1'}, {title: 'Regional Map', page:'region-map', index: '2'}, {title: 'Heat Map', page:'map', index: '3'}, {title: '3D Globe', page:'globe', index: '4'}, {title: 'Time Line', page:'timeline', index: '5'}, {title: 'Raw Tweets', page:'text-tweets', index: '6'}, {title: 'Entity Extraction', page:'entity-extraction', index: '7'}, {title: 'Break Down', page:'break-down', index: '8'} ]
+          p A series of dynamic data visualisations are then used to
+            | illustrate the results, and find trends between sentiment and
+            | other factors such as time of day, location, topic, country, people...
 
+      .col.s6
+        .card-panel(style='min-height: 19em')
+          h3 Get started, enter a search term...
+          .input-field
+            input#txtKeyword.validate(type='text')
+            label(for='txtKeyword') Enter a keyword, topic, brand, celebrity or search term
 
+          h3 ... or click one of the links below
 
 
     .row
@@ -24,3 +36,9 @@ block content
                 img(src='/images/thumbnails/thumb_#{page.index}.png')
               .card-content
                 span.card-title.grey-text.text-darken-4= page.title
+
+block scripts
+  script.
+    $('#txtKeyword').keyup(function (e) { if (e.keyCode === 13) {
+        showLoader(); window.location = '/search/' + $('#txtKeyword').val();
+      }});
