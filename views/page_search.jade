@@ -5,9 +5,12 @@ block content
 
     div.container(style='width: 90%')
         .row
-            div.col.s10.offset-1.card-panel
-                div#chart
-
+            div.col.s3.card-panel
+                p Gauge will go here
+            div.col.s6
+                div#chart.card-panel
+            div.col.s3.card-panel
+                p Something else here
 
 block scripts
     script(type='text/javascript').
@@ -16,5 +19,6 @@ block scripts
         var searchTerm = !{JSON.stringify(searchTerm)};
     script(type = 'text/javascript', src = '/bower_components/d3/d3.min.js')
     script(type = 'text/javascript', src = '/bower_components/hexbin/index.js')
+    script(type = 'text/javascript', src = '/bower_components/d3tip/index.js')
     script(type='text/javascript', src='/javascripts/charts/search-summary.js')
 
