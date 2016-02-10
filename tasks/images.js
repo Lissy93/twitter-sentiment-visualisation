@@ -5,6 +5,6 @@ var gulp    = require('gulp');
 gulp.task('images',  function(){
     return[
         gulp.src('source/graphics/favicon.ico').pipe(gulp.dest('public')),
-        gulp.src('source/graphics/*.{png,gif,jpg}').pipe(gulp.dest('public/images'))
+        gulp.src('source/graphics/**/*.{png,gif,jpg}').pipe(gulp.dest('public/images'))
     ];
 });
