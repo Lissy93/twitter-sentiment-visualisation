@@ -8,8 +8,13 @@ fillScale = d3.scale.linear()
   .range(scaleColors)
 
 # Initialise tooltip
-tip = d3.tip().attr('class', 'd3-tip').html((d) ->
-  '<strong>Frequency:</strong> <span style=\'color:red\'>' + d.x + '</span>'
+tip = d3.tip().attr('class', 'd3-tip').html((d, i) ->
+  s = results[i].sentiment
+  col = if s > 0 then 'green' else if s < 0 then 'darkred' else 'grey'
+  html = '<b>Sentiment:</b>'
+  html += ' <span style=\'color:'+col+'\'>' + s + '</span> <br>'
+  html += '<span>'+results[i].body+'</span>'
+  html
 )
 
 #svg sizes and margins
@@ -65,9 +70,9 @@ svg.append('g')
   .attr('stroke-width', '1px')
   .style('fill', (d, i) -> fillScale(results[i].sentiment))
   .on 'mouseover', (d,i) ->
-    tip.show(d)
+    tip.show(d, i)
     el = d3.select(this).transition().duration(10).style('fill-opacity', 0.3)
   .on 'mouseout', (d, i) ->
-    tip.hide(d)
+    tip.hide(d, i)
     el = d3.select(this).transition().duration(1000).style('fill-opacity', 1)
 
