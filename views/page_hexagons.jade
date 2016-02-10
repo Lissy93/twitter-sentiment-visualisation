@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    br
+    span.grey-text
+        | Hover over a hexagon to read the associated Tweet.
+        | Sentiment is represented by color
+    #chart(style='width: 90%').center-block
+
+block scripts
+    script(type='text/javascript').
+        var results = !{JSON.stringify(data)};
+        var average = !{JSON.stringify(averageSentiment)};
+        var searchTerm = !{JSON.stringify(searchTerm)};
+        var hexPage = true;
+    script(type = 'text/javascript', src = '/bower_components/d3/d3.min.js')
+    script(type = 'text/javascript', src = '/bower_components/hexbin/index.js')
+    script(type = 'text/javascript', src = '/bower_components/d3tip/index.js')
+    script(type='text/javascript', src='/javascripts/charts/hexagons-module.js')
+

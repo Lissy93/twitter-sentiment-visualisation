@@ -21,8 +21,9 @@ tip = d3.tip().attr('class', 'd3-tip').html((d, i) ->
 #svg sizes and margins
 margin = top: 30, right: 20, bottom: 20, left: 50
 
-width = $(window).width() - margin.left - margin.right - 40;
-height = ($(window).height() - margin.top - margin.bottom - 80) / 2;
+width = $(window).width() - margin.left - margin.right - 40
+height = ($(window).height() - margin.top - margin.bottom - 80)/2
+if hexPage? then if hexPage then height = height * 2
 
 MapColumns  = Math.round(Math.sqrt(results.length*1.33))
 MapRows     =  Math.round(Math.sqrt(results.length*0.66))

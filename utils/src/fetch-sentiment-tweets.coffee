@@ -3,10 +3,17 @@ FetchTweets = require 'fetch-tweets'
 sentiment   = require 'sentiment-analysis'
 removeWords = require 'remove-words'
 twitterKey  = require('../config/keys').twitter
-
+Tweet       = require '../models/Tweet'
 
 module.exports = (searchTerm, callback) ->
-  (new FetchTweets twitterKey).byTopic searchTerm, (results) ->
+
+  if searchTerm == '' then Tweet.getAllTweets (results) ->
+    format results, callback
+
+  else (new FetchTweets twitterKey).byTopic searchTerm, (results) ->
+    format results, callback
+
+  format = (results, callback) ->
 
     # Assign Sentiments
     for tweet in results then tweet.sentiment = sentiment tweet.body
