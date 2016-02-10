@@ -1,4 +1,6 @@
 extends layout
+block pageConfig
+  - var hideNav = true
 
 block content
   div(style='width: 80%').center-block
@@ -8,11 +10,17 @@ block content
           input#txtKeyword.validate(type='text')
           label(for='txtKeyword') Enter a keyword, topic or search term to fetch new Tweets
 
+    - var pages = [{title: 'Word Cloud', page:'word-cloud', index: '1'}, {title: 'Regional Map', page:'region-map', index: '2'}, {title: 'Heat Map', page:'map', index: '3'}, {title: '3D Globe', page:'globe', index: '4'}, {title: 'Time Line', page:'timeline', index: '5'}, {title: 'Raw Tweets', page:'text-tweets', index: '6'}, {title: 'Entity Extraction', page:'entity-extraction', index: '7'}, {title: 'Break Down', page:'break-down', index: '8'} ]
+
+
 
 
     .row
-      each val, index in ['Word Cloud', 'Regional Map', 'Heat Map', '3D Globe', 'Time Line', 'Real Time Tweets', 'Entity Extraction', 'Topic Break Down']
+      each page in pages
         .col.s4
-          .card(style='width: 100%; height: 200px;')
-            h3= val
-            img(src='/images/thumbnails/thumb_#{index+1}.png')
+          a(href='/#{page.page}')
+            .card.home-card
+              .card-image.waves-effect.waves-block.waves-light
+                img(src='/images/thumbnails/thumb_#{page.index}.png')
+              .card-content
+                span.card-title.grey-text.text-darken-4= page.title
