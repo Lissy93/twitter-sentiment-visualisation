@@ -8,6 +8,19 @@ fillScale = d3.scale.linear()
 .domain([-1,-0.8, -0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6, 0.8, 1])
 .range(scaleColors)
 
+if homePage? and homePage
+  scaleColors = ['rgb(15, 160, 255)', 'rgb(60, 230, 255)', 'rgb(60, 255, 181)'
+    'rgb(70, 255, 99)', 'rgb(174, 255, 99)', 'rgb(217, 255, 99)'
+    'rgb(251, 255, 99)', 'rgb(255, 230, 99)', 'rgb(255, 182, 99)'
+    'rgb(255, 142, 99)', 'rgb(250, 125, 100)', 'rgb(255, 117, 99)'
+    'rgb(255, 99, 100)', 'rgb(255, 55, 55)'
+  ]
+  scaleColors.reverse()
+  fillScale = d3.scale.linear()
+  .domain([-1,-0.8, -0.6, -0.5, -0.4, -0.3, -0.2, -0.1, 0, 0.1, 0.2, 0.3,
+      0.4, 0.5, 0.6, 0.8, 1])
+  .range(scaleColors)
+
 # Initialise tooltip
 tip = d3.tip().attr('class', 'd3-tip').html((d, i) ->
   s = results[i].sentiment
@@ -20,10 +33,12 @@ tip = d3.tip().attr('class', 'd3-tip').html((d, i) ->
 
 #svg sizes and margins
 margin = top: 30, right: 20, bottom: 20, left: 50
+if homePage? and homePage then margin = top: 0, right: 0, bottom: 0, left: 0
 
-width = $(window).width() - margin.left - margin.right - 40
+width = $(window).width() - margin.left - margin.right
 height = ($(window).height() - margin.top - margin.bottom - 80)/2
 if hexPage? then if hexPage then height = height * 2
+else if homePage? then if homePage then height = height * 0.8 and width += 20
 
 MapColumns  = Math.round(Math.sqrt(results.length*1.33))
 MapRows     =  Math.round(Math.sqrt(results.length*0.66))
