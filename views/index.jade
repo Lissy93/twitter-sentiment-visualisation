@@ -1,33 +1,53 @@
 extends layout
+
+block head
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+
 block pageConfig
   - var hideNav = true
 
 block content
-    .row.absolute.home-row
-      .col.s6
-        .card-panel(style='min-height: 19em')
-          h3 Introduction to Sentiment Sweep
-          p Sentiment Sweep aims to captcha the mood of the internet, either
-            | overall or towards a specific topic.
-            | It does this by analysing real-time Twitter data, and calculating
-            | how positive or negative each Tweet it.
+    #part-1
+        .row.absolute.home-row
+          .col.s6
+            .card-panel(style='min-height: 19em')
+              h3 Introduction to Sentiment Sweep
+              p Sentiment Sweep aims to captcha the mood of the internet, either
+                | overall or towards a specific topic.
+                | It does this by analysing real-time Twitter data, and calculating
+                | how positive or negative each Tweet it.
 
-          p A series of dynamic data visualisations are then used to
-            | illustrate the results, and find trends between sentiment and
-            | other factors such as time of day, location, topic, country, people...
+              p A series of dynamic data visualisations are then used to
+                | illustrate the results, and find trends between sentiment and
+                | other factors such as time of day, location, topic, country, people...
 
-      .col.s6
-        .card-panel(style='min-height: 19em')
-          h3 Get started, enter a search term...
-          .input-field
-            input#txtKeyword.validate(type='text')
-            label(for='txtKeyword') Enter a keyword, topic, brand, celebrity or search term
+          .col.s6
+            .card-panel(style='min-height: 19em')
+              h3 Get started, enter a search term...
+              .input-field
+                input#txtKeyword.validate(type='text')
+                label(for='txtKeyword') Enter a keyword, topic, brand, celebrity or search term
 
-          h3 ... or click one of the links below
+              h3 ... or scroll down to view the real-time dashboard
 
-    #chart.home-hexagons
+        #chart.home-hexagons
 
-    .section.white
+        a.scroll-down#scroll-1(href='#')
+            i.material-icons.large.center-align play_for_work
+            p.center-align Scroll Down
+
+        a#hex-details(href='/hexagons')
+            p The hexagon background is made up of Tweets from the past 60 seconds.
+                | Hover over a hexagon to read the associated Tweet.
+                | Sentiment is represented by color
+
+    #part-0
+        p
+
+    .section.white#part-2
+        h1 hello world
+
+    .section.white#part-3
         .row
           each page in pages
             .col.s4
@@ -40,22 +60,49 @@ block content
 
 block scripts
   script.
-    var homePage = true;
-    var results = !{JSON.stringify(data)};
-    var average = !{JSON.stringify(averageSentiment)};
+    var homePage = true; // Show different hexagons
+    var results = !{JSON.stringify(data)}; // Get and parse Twitter results
+    var average = !{JSON.stringify(averageSentiment)}; // Average sentiment
 
+    // Submit search field when enter is pressed
     $('#txtKeyword').keyup(function (e) { if (e.keyCode === 13) {
         showLoader(); window.location = '/search/' + $('#txtKeyword').val();
       }});
 
     $(document).ready(function(){
-        $('#chart').find('svg').attr({'height': $(window).height()+20, 'width': $(window).width()});
 
-        $(".home-row")
-        .animate(
+        // Set the size of the chart to fit the window
+        $('#part-1').css('height', $(window).height())
+        $('#chart').find('svg').attr(
+                {'height': $(window).height()+20, 'width': $(window).width()}
+        );
+
+        // Pull down the blocks on the front page
+        $(".home-row").animate(
         {'margin-top': $(window).height() / 5},
         { duration: 600, step: function (now) { $(this).attr("margin-top", now); }
         });
+
+        // Scroll to positions
+        $('a.scroll-down#scroll-1').click(function(){
+            $('html, body').animate({
+                scrollTop: $("#part-2").offset().top
+            }, 850);
+        });
+
+
+        $(window).bind('scroll', function (e) {
+            parallaxScroll();
+        });
+
+        function parallaxScroll() {
+            var scrolledY = $(window).scrollTop();
+            $('#part-1').css('margin-top', ((scrolledY * 0.5)) + 'px');
+            $('#scroll-1').css('bottom', ((scrolledY * 0.3 + 10)) + 'px');
+            $('#hex-details').css('bottom', ((scrolledY * 0.3 + 10)) + 'px');
+        }
+
+
     });
 
 

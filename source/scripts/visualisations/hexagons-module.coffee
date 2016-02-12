@@ -37,7 +37,7 @@ if homePage? and homePage then margin = top: 0, right: 0, bottom: 0, left: 0
 
 width = $(window).width() - margin.left - margin.right
 height = ($(window).height() - margin.top - margin.bottom - 80)/2
-if hexPage? then if hexPage then height = height * 2
+if hexPage? then if hexPage then height = height and width = width -= 10
 else if homePage? then if homePage then height = height * 0.8 and width += 20
 
 MapColumns  = Math.round(Math.sqrt(results.length*1.33))
