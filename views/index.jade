@@ -3,8 +3,7 @@ block pageConfig
   - var hideNav = true
 
 block content
-  .container.center-block
-    .row
+    .row.absolute.home-row
       .col.s6
         .card-panel(style='min-height: 19em')
           h3 Introduction to Sentiment Sweep
@@ -26,19 +25,42 @@ block content
 
           h3 ... or click one of the links below
 
+    #chart.home-hexagons
 
-    .row
-      each page in pages
-        .col.s4
-          a(href='/#{page.page}')
-            .card.home-card
-              .card-image.waves-effect.waves-block.waves-light
-                img(src='/images/thumbnails/thumb_#{page.index}.png')
-              .card-content
-                span.card-title.grey-text.text-darken-4= page.title
+    .section.white
+        .row
+          each page in pages
+            .col.s4
+              a(href='/#{page.page}')
+                .card.home-card
+                  .card-image.waves-effect.waves-block.waves-light
+                    img(src='/images/thumbnails/thumb_#{page.index}.png')
+                  .card-content
+                    span.card-title.grey-text.text-darken-4= page.title
 
 block scripts
   script.
+    var homePage = true;
+    var results = !{JSON.stringify(data)};
+    var average = !{JSON.stringify(averageSentiment)};
+
     $('#txtKeyword').keyup(function (e) { if (e.keyCode === 13) {
         showLoader(); window.location = '/search/' + $('#txtKeyword').val();
       }});
+
+    $(document).ready(function(){
+        $('#chart').find('svg').attr({'height': $(window).height()+20, 'width': $(window).width()});
+
+        $(".home-row")
+        .animate(
+        {'margin-top': $(window).height() / 5},
+        { duration: 600, step: function (now) { $(this).attr("margin-top", now); }
+        });
+    });
+
+
+  script(type = 'text/javascript', src = '/bower_components/d3/d3.min.js')
+  script(type = 'text/javascript', src = '/bower_components/hexbin/index.js')
+  script(type = 'text/javascript', src = '/bower_components/d3tip/index.js')
+  script(type='text/javascript', src='/javascripts/charts/hexagons-module.js')
+
