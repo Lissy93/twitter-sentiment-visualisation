@@ -5,8 +5,18 @@ block content
     .container
         .row
             for result, index in data
+                - var topic = result.searchTerm.charAt(0).toUpperCase() + result.searchTerm.slice(1)
                 div(class='col s#{12/data.length}')
-                    h3= result.searchTerm.charAt(0).toUpperCase() + result.searchTerm.slice(1)
+                    h3= topic
+                    .card-panel
+                        p The average sentiment for <i>'#{topic}'</i> over the past 24 hours is:
+                        if result.averageSentiment > 0
+                            p(style='color: green; font-size: 1.5em') Positive (<b>#{Math.round(result.averageSentiment * 100)}%</b>)
+                        else if result.averageSentiment < 0
+                            p(style='color: darkred; font-size: 1.5em') Negative (<b>#{Math.round(result.averageSentiment * -100)}%</b>)
+                        else
+                            p(style='color: grey; font-size: 1.5em') Neutral
+
                     .card-panel
                         div(id='chart-#{index}')
 
