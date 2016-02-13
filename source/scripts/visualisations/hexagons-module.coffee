@@ -93,3 +93,10 @@ svg.append('g')
   tip.hide(d, i)
   el = d3.select(this).transition().duration(1000).style('fill-opacity', 1)
 
+window.updateHexData = (newData) ->
+  randomIndex = Math.floor(Math.random() * points.length)
+  results[randomIndex] = newData
+  svg.selectAll('.hexagon')
+  .data(hexbin(points))
+  .style('fill', (d, i) -> fillScale(results[i].sentiment))
+  .enter()

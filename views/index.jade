@@ -64,6 +64,7 @@ block scripts
     var results = !{JSON.stringify(data)}; // Get and parse Twitter results
     var average = !{JSON.stringify(averageSentiment)}; // Average sentiment
 
+  script(type = 'text/javascript', src = 'https://cdn.socket.io/socket.io-1.4.3.js')
   script(type = 'text/javascript', src = '/javascripts/charts/home-page.js')
   script(type = 'text/javascript', src = '/bower_components/d3/d3.min.js')
   script(type = 'text/javascript', src = '/bower_components/hexbin/index.js')

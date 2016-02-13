@@ -2,6 +2,14 @@
 homePage = true # Show different hexagons for the homepage
 
 
+# Socket.io
+socket = io.connect('http://localhost:8080');
+
+socket.on 'anyTweet', (tweetObj) ->
+  if tweetObj.sentiment != 0
+    tweet = sentiment: tweetObj.sentiment, body: tweetObj.body
+    window.updateHexData(tweet)
+
 # Submit search field when enter is pressed
 $('#txtKeyword').keyup (e) ->
   if e.keyCode == 13
@@ -34,3 +42,4 @@ $(document).ready ->
     $('#hex-details').css 'bottom', scrolledY * 0.3 + 10 + 'px'
 
   $(window).bind 'scroll', (e) -> parallaxScroll()
+
