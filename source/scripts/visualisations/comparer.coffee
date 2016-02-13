@@ -25,3 +25,12 @@ $('#get-results').click () ->
   if $('#brand-4').val() != '' then url += ','+$('#brand-4').val()
   showLoader()
   window.location = url
+
+$('a#add-new').click () ->
+  $('.input-field').slideDown('fast')
+  $(this).fadeOut('fast')
+  
+$('#brand-2').keyup () ->
+  if $(this).val() != ''
+    $('.input-field').slideDown('fast')
+    $('a#add-new').fadeOut('fast')

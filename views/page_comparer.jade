@@ -52,7 +52,7 @@ block content
             br
             .center-block(style='width: 50%').card-panel
                 h2 Brand Comparison
-                h3.flow-text Enter up to four brand names, retailers, businesses,
+                span.flow-text Enter up to four brand names, retailers, businesses,
                     | places, objects, celebrities that you'd like to compare
                     | peoples opinions on.
                 br
@@ -72,6 +72,10 @@ block content
                 .input-field(style='display: none')
                     label.active(for='brand-4') Forth Search Term
                     input.validate#brand-4(type='text')
+
+                a.small#add-new(style='cursor: pointer') Add more search queries
+                br
+                br
 
                 .waves-effect.waves-light.btn.center-block#get-results Get Results!
 
