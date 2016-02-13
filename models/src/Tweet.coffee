@@ -7,9 +7,7 @@ schema = new mongoose.Schema({
   sentiment : Number
   location  : { type : Object , "default" : {} }
 },
-{
-  capped: 104857600
-}
+{size: 1024, max: 1500, autoIndexId: true}
 )
 
 schema.statics.getAllTweets = (callback) ->
