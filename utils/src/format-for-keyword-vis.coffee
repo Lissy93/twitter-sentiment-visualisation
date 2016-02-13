@@ -12,7 +12,7 @@ fetchTweets = new FetchTweets twitterKey
 class FormatWordsForCloud
 
   # Converts ordinary Tweet array to suitable form for word cloud
-  formatResultsForCloud: (twitterResults, allWords = false) ->
+  formatResultsForCloud= (twitterResults, allWords = false) ->
     results = []
     tweetWords = makeTweetWords twitterResults
     for word in tweetWords
@@ -23,7 +23,7 @@ class FormatWordsForCloud
         else for res in results then  if res.text == word then res.freq++
     results
 
-  findTopWords: (cloudWords) ->
+  findTopWords= (cloudWords) ->
     posData = cloudWords.filter (cw) -> cw.sentiment > 0
     negData = cloudWords.filter (cw) -> cw.sentiment < 0
     neutData = cloudWords.filter (cw) -> cw.sentiment == 0
@@ -74,9 +74,11 @@ class FormatWordsForCloud
         sentence.trending = findTrendingWords cloudData
         cb cloudData, sentence
 
+  findTrends: (tweets) ->
+    findTopWords formatResultsForCloud tweets, true
+
 fwfc = new FormatWordsForCloud()
 module.exports.getFreshData = fwfc.renderWithFreshData
 module.exports.getDbData = fwfc.renderWithDatabaseResults
-module.exports.formatExistingData = fwfc.formatResultsForCloud
-module.exports.findTopWords = (tweets) ->
-  fwfc.findTopWords fwfc.formatResultsForCloud tweets, true
+module.exports.findTopWords = fwfc.findTrends
+
