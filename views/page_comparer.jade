@@ -9,7 +9,7 @@ block content
                 div(class='col s#{12/data.length}')
                     h3= topic
                     .card-panel
-                        p The average sentiment for <i>'#{topic}'</i> over the past 24 hours is:
+                        p The overall average sentiment for <i>'#{topic}'</i> is:
                         if result.averageSentiment > 0
                             p(style='color: green; font-size: 1.5em') Positive (<b>#{Math.round(result.averageSentiment * 100)}%</b>)
                         else if result.averageSentiment < 0
@@ -18,7 +18,21 @@ block content
                             p(style='color: grey; font-size: 1.5em') Neutral
 
                     .card-panel
+                        h4.flow-text Summary of Tweets for <i>'#{topic}'</i>
                         div(id='chart-#{index}')
+
+                    .card-panel
+                        h4.flow-text Top words used in <i>'#{topic}'</i> Tweets
+                        ol
+                            for wordObject in result.keywordData
+                                if wordObject.sentiment > 0
+                                    - var color = 'green'
+                                else if wordObject.sentiment < 0
+                                    - var color = 'darkred'
+                                else
+                                    - var color = 'dimgrey'
+                                li
+                                    a(href='/search/#{wordObject.text}', style='color: #{color}; font-size: 1.1em; font-weight: bold;') #{wordObject.text}
 
 
 
