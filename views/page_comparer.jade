@@ -2,10 +2,21 @@ extends layout
 
 block content
 
+    .container
+        .row
+            for result, index in data
+                div(class='col s#{12/data.length}')
+                    h3= result.searchTerm.charAt(0).toUpperCase() + result.searchTerm.slice(1)
+                    .card-panel
+                        div(id='chart-#{index}')
+
+
 
 block scripts
     script(type='text/javascript').
         var results = !{JSON.stringify(data)};
 
     script(type = 'text/javascript', src = '/bower_components/d3/d3.min.js')
+    script(type='text/javascript', src='/bower_components/c3/c3.min.js')
+    script(type='text/javascript', src='/javascripts/charts/comparer.js')
 
