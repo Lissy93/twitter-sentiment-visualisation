@@ -51,10 +51,12 @@ block content
     .section.white#part-2
         h1 hello world
 
-    .section.container#part-3(style='max-width: 60%;')
+    .section.container#part-3(style='max-width: 80%;')
+        h2 Sentiment Data Visualisations
+        p.flow-text.grey-text.darken-4 Click one of the links below to generate the chart with the latest Twitter data
         .row
           each page in pages
-            .col.s4
+            .col.s3
               a(href='/#{page.page}')
                 .card.home-card
                   .card-image.waves-effect.waves-block.waves-light
