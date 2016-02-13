@@ -32,7 +32,7 @@ block content
                 input#txtKeyword.validate(type='text')
                 label(for='txtKeyword') Enter a keyword, topic, brand, celebrity or search term
 
-              h3 ... or scroll down to view the real-time dashboard
+              h3 ... or scroll down to view more data visualisations
 
         #chart.home-hexagons
 
@@ -48,21 +48,31 @@ block content
     #part-0
         p
 
-    .section.white#part-2
-        h1 hello world
+    .section#part-2
+        .container(style='max-width: 80%;')
+            h2 Sentiment Data Visualisations
+            p.flow-text.grey-text.darken-4 Click one of the links below to generate the chart with the latest Twitter data
+            .row
+              each page in pages
+                .col.s3
+                  a(href='/#{page.page}')
+                    .card.home-card
+                      .card-image.waves-effect.waves-block.waves-light
+                        img(src='/images/thumbnails/thumb_#{page.index}.png')
+                      .card-content(style='padding: 0.5em 1em;')
+                        span.card-title.grey-text.text-darken-4= page.title
 
-    .section.container#part-3(style='max-width: 80%;')
-        h2 Sentiment Data Visualisations
-        p.flow-text.grey-text.darken-4 Click one of the links below to generate the chart with the latest Twitter data
-        .row
-          each page in pages
-            .col.s3
-              a(href='/#{page.page}')
-                .card.home-card
-                  .card-image.waves-effect.waves-block.waves-light
-                    img(src='/images/thumbnails/thumb_#{page.index}.png')
-                  .card-content(style='padding: 0.5em 1em;')
-                    span.card-title.grey-text.text-darken-4= page.title
+    footer
+        .footer-copyright
+            .row
+                .col.s3
+                    p
+                .col.s2
+                    a.small-grey(href='/about') About Sentiment Sweep
+                .col.s2
+                    a.small-grey(href='https://github.com/Lissy93/twitter-sentiment-visualisation') Source Code and Documentation
+                .col.s2
+                    a.small-grey(href='http://aliciasykes.com') &copy; Alicia Sykes 2016
 
 block scripts
   script.

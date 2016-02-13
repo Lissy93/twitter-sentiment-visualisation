@@ -1,15 +1,6 @@
 
 homePage = true # Show different hexagons for the homepage
 
-
-# Socket.io
-socket = io.connect('http://localhost:8080');
-
-socket.on 'anyTweet', (tweetObj) ->
-  if tweetObj.sentiment != 0
-    tweet = sentiment: tweetObj.sentiment, body: tweetObj.body
-    window.updateHexData(tweet)
-
 # Submit search field when enter is pressed
 $('#txtKeyword').keyup (e) ->
   if e.keyCode == 13
