@@ -3,15 +3,23 @@
 express = require('express')
 router = express.Router()
 asyncTweets = require '../utils/async-tweets'
+wordFormatter = require('../utils/format-for-keyword-vis').findTopWords
 
 
 formatResults = (data) ->
   for tweetArr in data
 
+    # Add keywords list
+    wrdsjs = wordFormatter(tweetArr.tweets, true)
+    topData = wrdsjs.topPositive.concat(wrdsjs.topNegative, wrdsjs.topNeutral)
+    topData = topData.sort (a, b) -> parseFloat(b.freq) - parseFloat(a.freq)
+    topData = topData.splice(0,10)
+    tweetArr.keywordData= topData = topData.sort -> 0.5 - Math.random()
+
     # Find average sentiment
     totalSentiment = 0
     for tweet in tweetArr.tweets then totalSentiment += tweet.sentiment
-    tweetArr.averageSentiment = totalSentiment / tweetArr.length
+    tweetArr.averageSentiment = totalSentiment / tweetArr.tweets.length
 
     # Find percentage positive, negative and neutral
     pieChart = {positive: 0, neutral: 0, negative: 0}
