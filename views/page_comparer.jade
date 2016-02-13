@@ -35,6 +35,18 @@ block content
                                     a(href='/search/#{wordObject.text}', style='color: #{color}; font-size: 1.1em; font-weight: bold;') #{wordObject.text}
 
 
+                    .card-panel
+                        h4.flow-text View more data visualisations for <i>'#{topic}'</i>
+                        a.waves-effect.waves-teal.btn-flat.block(href='/word-cloud/#{topic}') Word Cloud
+                        a.waves-effect.waves-teal.btn-flat.block(href='/regional-map/#{topic}') Regional Map
+                        a.waves-effect.waves-teal.btn-flat.block(href='/map/#{topic}') Heat Map
+                        a.waves-effect.waves-teal.btn-flat.block(href='/globe/#{topic}') 3D Globe
+                        a.waves-effect.waves-teal.btn-flat.block(href='/timeline/#{topic}') TimeLine
+                        a.waves-effect.waves-teal.btn-flat.block(href='/text-tweets/#{topic}') Raw Tweets
+                        a.waves-effect.waves-teal.btn-flat.block(href='/entity-extraction/#{topic}') Entity Extraction
+                        a.waves-effect.waves-teal.btn-flat.block(href='/break-down/#{topic}') Topic Breakdown
+
+
 
 block scripts
     script(type='text/javascript').
