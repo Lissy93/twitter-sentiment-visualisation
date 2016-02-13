@@ -100,3 +100,11 @@ window.updateHexData = (newData) ->
   .data(hexbin(points))
   .style('fill', (d, i) -> fillScale(results[i].sentiment))
   .enter()
+
+# Socket.io
+if io?
+  socket = io.connect('http://localhost:8080');
+  socket.on 'anyTweet', (tweetObj) ->
+    if tweetObj.sentiment != 0
+      tweet = sentiment: tweetObj.sentiment, body: tweetObj.body
+      window.updateHexData(tweet)
