@@ -31,7 +31,7 @@ formatResults = (data) ->
 
   data
 
-# Main route - no search term
+# Main route - with search terms
 router.get '/:query', (req, res, next) ->
   searchTerms = req.params.query.split(',').splice(0,4)
   asyncTweets searchTerms, (results) ->
@@ -40,5 +40,13 @@ router.get '/:query', (req, res, next) ->
       pageNum: 10
       data: formatResults results
       searchTerm: searchTerms
+
+# Main route - no search term
+router.get '/', (req, res, next) ->
+  res.render 'page_comparer', # Render template
+    title: 'Comparer'
+    pageNum: 10
+    data: ''
+    searchTerm: ''
 
 module.exports = router

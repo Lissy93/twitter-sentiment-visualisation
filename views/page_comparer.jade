@@ -3,49 +3,77 @@ extends layout
 block content
 
     .container
+        if data != ''
+            .row
+                for result, index in data
+                    - var topic = result.searchTerm.charAt(0).toUpperCase() + result.searchTerm.slice(1)
+                    div(class='col s#{12/data.length}')
+                        h3= topic
+                        .card-panel
+                            p The overall average sentiment for <i>'#{topic}'</i> is:
+                            if result.averageSentiment > 0
+                                p(style='color: green; font-size: 1.5em') Positive (<b>#{Math.round(result.averageSentiment * 100)}%</b>)
+                            else if result.averageSentiment < 0
+                                p(style='color: darkred; font-size: 1.5em') Negative (<b>#{Math.round(result.averageSentiment * -100)}%</b>)
+                            else
+                                p(style='color: grey; font-size: 1.5em') Neutral
+
+                        .card-panel
+                            h4.flow-text Summary of Tweets for <i>'#{topic}'</i>
+                            div(id='chart-#{index}')
+
+                        .card-panel
+                            h4.flow-text Top words used in <i>'#{topic}'</i> Tweets
+                            ol
+                                for wordObject in result.keywordData
+                                    if wordObject.sentiment > 0
+                                        - var color = 'green'
+                                    else if wordObject.sentiment < 0
+                                        - var color = 'darkred'
+                                    else
+                                        - var color = 'dimgrey'
+                                    li
+                                        a(href='/search/#{wordObject.text}', style='color: #{color}; font-size: 1.1em; font-weight: bold;') #{wordObject.text}
+
+
+                        .card-panel
+                            h4.flow-text View more data visualisations for <i>'#{topic}'</i>
+                            a.waves-effect.waves-teal.btn-flat.block(href='/word-cloud/#{topic}') Word Cloud
+                            a.waves-effect.waves-teal.btn-flat.block(href='/regional-map/#{topic}') Regional Map
+                            a.waves-effect.waves-teal.btn-flat.block(href='/map/#{topic}') Heat Map
+                            a.waves-effect.waves-teal.btn-flat.block(href='/globe/#{topic}') 3D Globe
+                            a.waves-effect.waves-teal.btn-flat.block(href='/timeline/#{topic}') TimeLine
+                            a.waves-effect.waves-teal.btn-flat.block(href='/text-tweets/#{topic}') Raw Tweets
+                            a.waves-effect.waves-teal.btn-flat.block(href='/entity-extraction/#{topic}') Entity Extraction
+                            a.waves-effect.waves-teal.btn-flat.block(href='/break-down/#{topic}') Topic Breakdown
+
         .row
-            for result, index in data
-                - var topic = result.searchTerm.charAt(0).toUpperCase() + result.searchTerm.slice(1)
-                div(class='col s#{12/data.length}')
-                    h3= topic
-                    .card-panel
-                        p The overall average sentiment for <i>'#{topic}'</i> is:
-                        if result.averageSentiment > 0
-                            p(style='color: green; font-size: 1.5em') Positive (<b>#{Math.round(result.averageSentiment * 100)}%</b>)
-                        else if result.averageSentiment < 0
-                            p(style='color: darkred; font-size: 1.5em') Negative (<b>#{Math.round(result.averageSentiment * -100)}%</b>)
-                        else
-                            p(style='color: grey; font-size: 1.5em') Neutral
+            br
+            br
+            .center-block(style='width: 50%').card-panel
+                h2 Brand Comparison
+                h3.flow-text Enter up to four brand names, retailers, businesses,
+                    | places, objects, celebrities that you'd like to compare
+                    | peoples opinions on.
+                br
 
-                    .card-panel
-                        h4.flow-text Summary of Tweets for <i>'#{topic}'</i>
-                        div(id='chart-#{index}')
+                .input-field
+                    label.active(for='brand-1') First Search Term
+                    input.validate#brand-1(type='text')
 
-                    .card-panel
-                        h4.flow-text Top words used in <i>'#{topic}'</i> Tweets
-                        ol
-                            for wordObject in result.keywordData
-                                if wordObject.sentiment > 0
-                                    - var color = 'green'
-                                else if wordObject.sentiment < 0
-                                    - var color = 'darkred'
-                                else
-                                    - var color = 'dimgrey'
-                                li
-                                    a(href='/search/#{wordObject.text}', style='color: #{color}; font-size: 1.1em; font-weight: bold;') #{wordObject.text}
+                .input-field
+                    label.active(for='brand-2') Second Search Term
+                    input.validate#brand-2(type='text')
 
+                .input-field(style='display:none')
+                    label.active(for='brand-3') Third Search Term
+                    input.validate#brand-3(type='text')
 
-                    .card-panel
-                        h4.flow-text View more data visualisations for <i>'#{topic}'</i>
-                        a.waves-effect.waves-teal.btn-flat.block(href='/word-cloud/#{topic}') Word Cloud
-                        a.waves-effect.waves-teal.btn-flat.block(href='/regional-map/#{topic}') Regional Map
-                        a.waves-effect.waves-teal.btn-flat.block(href='/map/#{topic}') Heat Map
-                        a.waves-effect.waves-teal.btn-flat.block(href='/globe/#{topic}') 3D Globe
-                        a.waves-effect.waves-teal.btn-flat.block(href='/timeline/#{topic}') TimeLine
-                        a.waves-effect.waves-teal.btn-flat.block(href='/text-tweets/#{topic}') Raw Tweets
-                        a.waves-effect.waves-teal.btn-flat.block(href='/entity-extraction/#{topic}') Entity Extraction
-                        a.waves-effect.waves-teal.btn-flat.block(href='/break-down/#{topic}') Topic Breakdown
+                .input-field(style='display: none')
+                    label.active(for='brand-4') Forth Search Term
+                    input.validate#brand-4(type='text')
 
+                .waves-effect.waves-light.btn.center-block#get-results Get Results!
 
 
 block scripts
