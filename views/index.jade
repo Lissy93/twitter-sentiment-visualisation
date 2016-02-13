@@ -7,6 +7,10 @@ block pageConfig
   - var hideNav = true
 
 block content
+
+    a#github-corner(href='https://github.com/Lissy93/twitter-sentiment-visualisation', target = '_blank')
+        img(src='/images/github-corner.png', title='View source code and documentation on GitHub')
+
     #part-1
         .row.absolute.home-row
           .col.s6
@@ -19,8 +23,8 @@ block content
 
               p A series of dynamic data visualisations are then used to
                 | illustrate the results, and find trends between sentiment and
-                | other factors such as time of day, location, topic, country, people...
-
+                | other factors such as time of day, location, topic, country, people etc
+              a.waves-effect.waves-teal.btn-flat.pull-right(href='/about') Read More...
           .col.s6
             .card-panel(style='min-height: 19em')
               h3 Get started, enter a search term...
@@ -47,7 +51,7 @@ block content
     .section.white#part-2
         h1 hello world
 
-    .section.white#part-3
+    .section.container#part-3(style='max-width: 60%;')
         .row
           each page in pages
             .col.s4
@@ -55,7 +59,7 @@ block content
                 .card.home-card
                   .card-image.waves-effect.waves-block.waves-light
                     img(src='/images/thumbnails/thumb_#{page.index}.png')
-                  .card-content
+                  .card-content(style='padding: 0.5em 1em;')
                     span.card-title.grey-text.text-darken-4= page.title
 
 block scripts
