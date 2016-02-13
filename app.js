@@ -37,6 +37,7 @@ var textTweets= require('./routes/text-tweets');
 var breakdown = require('./routes/break-down');
 var entExtract= require('./routes/entity-extraction');
 var hexagons  = require('./routes/hexagons');
+var comparer  = require('./routes/comparer');
 
 /* view engine setup */
 app.set('views', path.join(__dirname, 'views'));
@@ -69,6 +70,7 @@ app.use('/text-tweets', textTweets);
 app.use('/break-down', breakdown);
 app.use('/entity-extraction', entExtract);
 app.use('/hexagons', hexagons);
+app.use('/comparer', comparer);
 
 
 /* Set a stream listener for tweets matching tracking keywords */

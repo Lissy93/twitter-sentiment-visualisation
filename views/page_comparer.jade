@@ -1,0 +1,11 @@
+extends layout
+
+block content
+
+
+block scripts
+    script(type='text/javascript').
+        var results = !{JSON.stringify(data)};
+
+    script(type = 'text/javascript', src = '/bower_components/d3/d3.min.js')
+
