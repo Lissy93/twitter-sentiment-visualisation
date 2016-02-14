@@ -3,7 +3,7 @@ var footerText = "\n\/* (C) Alicia Sykes <alicia@aliciasykes.com> 2015          
     "*\\\r\n\\* MIT License. Read full license at: https:\/\/goo.gl\/IL4lQJ *\/"
 
 module.exports = {
-    SOURCE_ROOT         : "source",     // Folder name for all js and css client-side-source
+    SOURCE_ROOT         : "client-side-source",  // Folder name for all js and css client-side-source
     DEST_ROOT           : "public",     // Folder name for the results root
     CSS_DEST_DIR_NAME   : "stylesheets",// Name of CSS directory
     CSS_SRC_DIR_NAME    : "styles",     // Name of CSS directory
@@ -13,10 +13,10 @@ module.exports = {
     SCRIPT_PATHS        : [             // Paths for JavaScript files
         { src: 'client-side-source/scripts/**/*.{js,coffee}',   dest: 'public/javascripts' },
         { src: 'client-side-source/scripts/visualisations/*.coffee', dest: 'public/javascripts/charts' },
-        { src: 'models/src/*.coffee',               dest: 'models' },
-        { src: 'utils/src/*.coffee',                dest: 'utils' },
-        { src: 'config/src/*.coffee',               dest: 'config' },
-        { src: 'routes/src/*.coffee',               dest: 'routes' }
+        { src: 'server-side-source/models/*.coffee',               dest: 'models' },
+        { src: 'server-side-source/utils/*.coffee',                dest: 'utils' },
+        { src: 'server-side-source/config/*.coffee',               dest: 'config' },
+        { src: 'server-side-source/routes/*.coffee',               dest: 'routes' }
     ],
     SHOW_OUTPUT: true
 };
