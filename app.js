@@ -13,7 +13,6 @@ var config        = require('./config/app-config');
 var streamHandler = require('./utils/stream-handler');
 
 
-
 /* Create Express server and configure socket.io */
 var app = express();
 var server = http.createServer(app);
@@ -22,26 +21,11 @@ server.listen(config.server.port, function(){
     console.log('Express server listening on port ' + config.server.port);
 });
 
-/* Include the files defining the routes */
-var routes    = require('./routes/index');
-var searchRt  = require('./routes/search');
-var map       = require('./routes/map');
-var regionMap = require('./routes/region-map');
-var globe     = require('./routes/globe');
-var timeline  = require('./routes/timeline');
-var about     = require('./routes/about');
-var comparison= require('./routes/sa-comparison');
-var wordCloud = require('./routes/word-cloud');
-var wordPlot  = require('./routes/word-plot');
-var textTweets= require('./routes/text-tweets');
-var breakdown = require('./routes/break-down');
-var entExtract= require('./routes/entity-extraction');
-var hexagons  = require('./routes/hexagons');
-var comparer  = require('./routes/comparer');
 
 /* view engine setup */
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
+
 
 /* Set up other Express bits and bobs */
 app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -52,35 +36,33 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
 
+
 /* Connect to MongoDB */
 mongoose.connect(config.db.URL);
 
+
 /* Specify which route files to use */
-app.use('/', routes);
-app.use('/search', searchRt);
-app.use('/map', map);
-app.use('/region-map', regionMap);
-app.use('/globe', globe);
-app.use('/timeline', timeline);
-app.use('/about', about);
-app.use('/sa-comparison', comparison);
-app.use('/word-cloud', wordCloud);
-app.use('/word-scatter-plot', wordPlot);
-app.use('/text-tweets', textTweets);
-app.use('/break-down', breakdown);
-app.use('/entity-extraction', entExtract);
-app.use('/hexagons', hexagons);
-app.use('/comparer', comparer);
+    app.use('/',        require('./routes/index'));
+app.use('/search',      require('./routes/search'));
+app.use('/map',         require('./routes/map'));
+app.use('/region-map',  require('./routes/region-map'));
+app.use('/globe',       require('./routes/globe'));
+app.use('/timeline',    require('./routes/timeline'));
+app.use('/about',       require('./routes/about'));
+app.use('/text-tweets', require('./routes/text-tweets'));
+app.use('/break-down',  require('./routes/break-down'));
+app.use('/hexagons',    require('./routes/hexagons'));
+app.use('/comparer',    require('./routes/comparer'));
+app.use('/word-cloud',  require('./routes/word-cloud'));
+app.use('/word-scatter-plot',   require('./routes/word-plot'));
+app.use('/sa-comparison',       require('./routes/sa-comparison'));
+app.use('/entity-extraction',   require('./routes/entity-extraction'));
 
 
 /* Set a stream listener for tweets matching tracking keywords */
 var credentials = require('./config/keys').twitter;
-
 var twit = new streamTweets(credentials);
-
-twit.stream('a', function(stream){
-  streamHandler(stream,io);
-});
+twit.stream('a', function(stream){ streamHandler(stream,io); });
 
 
 /* catch 404 and forward to error handler */
@@ -89,6 +71,7 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
+
 
 /*-- error handlers -- */
 
