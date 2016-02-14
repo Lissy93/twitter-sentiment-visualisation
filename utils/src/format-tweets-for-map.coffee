@@ -38,7 +38,6 @@ class FormatTweetsForMap
       tweetData =
         body:     tweet.body
         dateTime: tweet.date
-        keywords  : tweet.keywords
         sentiment : tweet.sentiment
         location  : tweet.location
       if isSuitableForDb tweetData

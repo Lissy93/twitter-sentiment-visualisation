@@ -3,11 +3,10 @@ mongoose = require 'mongoose'
 schema = new mongoose.Schema({
   body      : String
   dateTime  : String
-  keywords  : Array
   sentiment : Number
   location  : { type : Object , "default" : {} }
 },
-{size: 1024, max: 1500, autoIndexId: true}
+{ capped: { size: 49152, max: 1500, autoIndexId: true } }
 )
 
 schema.statics.getAllTweets = (callback) ->
