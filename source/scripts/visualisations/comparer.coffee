@@ -29,7 +29,7 @@ $('#get-results').click () ->
 $('a#add-new').click () ->
   $('.input-field').slideDown('fast')
   $(this).fadeOut('fast')
-  
+
 $('#brand-2').keyup () ->
   if $(this).val() != ''
     $('.input-field').slideDown('fast')
