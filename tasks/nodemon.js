@@ -8,7 +8,7 @@ gulp.task('nodemon', function (cb) {
     var called = false;
     return nodemon({
         script: './bin/www',
-        watch: ['source/**/*']
+        watch: ['client-side-source/**/*']
     })
         .on('start', function onStart() {
             if (!called) { cb(); }

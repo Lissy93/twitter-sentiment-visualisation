@@ -12,7 +12,7 @@ require('coffee-script/register');
 
 /* Run all tests and produce coverage report */
 gulp.task('test', function (cb) {
-    gulp.src(['source/**/*.js', 'main.js'])
+    gulp.src(['client-side-source/**/*.js', 'main.js'])
         .pipe(istanbul()) // Covering files
         .pipe(istanbul.hookRequire()) // Force `require` to return covered files
         .on('finish', function () {

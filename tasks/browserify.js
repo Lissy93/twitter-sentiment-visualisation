@@ -31,7 +31,7 @@ gulp.task('browserify', function () {
 
                 }))
                 .pipe(buffer())
-                /* Uncomment the next two lines for source maps for debugging */
+                /* Uncomment the next two lines for client-side-source maps for debugging */
                 //.pipe(sourcemaps.init({loadMaps: true}))
                 //.pipe(sourcemaps.write('./'))
                 .pipe(footer(CONFIG.FOOTER_TEXT))
