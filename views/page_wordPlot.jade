@@ -20,8 +20,6 @@ block content
     div#scatter-words.center-block.card-panel
 
 block scripts
-    script(type='text/javascript', src='/bower_components/d3/d3.min.js')
-    script(type='text/javascript', src='/bower_components/tipsy/index.js')
     script(type='text/javascript').
         var wordData = !{JSON.stringify(data)};
     script(type='text/javascript', src='/javascripts/scatter-words.bundle.js')

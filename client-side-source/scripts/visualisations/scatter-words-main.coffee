@@ -1,3 +1,7 @@
+
+d3 = require 'd3/d3.min.js'
+tipsy = require 'tipsy/index.js'
+
 mainPage = 'word-scatter-plot'
 pageControls = require '../page-controls-module.coffee'
 pageControls.setMainPage mainPage
