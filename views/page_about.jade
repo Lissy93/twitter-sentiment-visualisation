@@ -1,7 +1,161 @@
 extends layout
 block content
-   main.content.timeline
-      h4=title
+   main.content.about-page
+      h1 About Sentiment Sweep
+
+      h2 Introduction
+      .row.card-panel
+         h3 What is Sentiment Sweep?
+         p.flow-text
+            | Sentiment Sweep aims to captcha the mood of the internet,
+            | either overall or towards a specific topic.
+            | It does this by analysing real-time Twitter data, and
+            | calculating how positive or negative each Tweet it.
+         p.flow-text
+            | Ten dynamic data visualisations are then used to illustrate
+            | the results, and find trends between sentiment and other factors
+            | such as time of day, location, topic, country, people etc
+
+         h3 What can it be used for?
+         p.flow-text
+            | SS has many uses, from analysing how successful a marketing
+            | campaign was in various locations and times, and comparing it
+            | to your competitors, to predicting how stock prices will change
+            | based on what people are saying about that company. It can also
+            | be used to predict which political party will be next in power
+            | before the polls are in, based on popularity of each.
+            | It can show which train lines are currently delayed or overcrowded,
+            | or which the football team has the most support at that time,
+            | to name just a few uses.
+         h3 Is it free?
+         p.flow-text Yes.
+
+      h2 Technical Overview
+      .row.card-panel
+         h3 How does it work?
+         p.flow-text Well, in short Tweets are streamed live from Twitter, and
+            | as each one comes in an algorithm calculates the sentiment based on
+            | which words are in the Tweet and how they are positioned.
+            | A function is then triggered that formats that Tweet and adds it
+            | to which ever data visualisations are currently being viewed.
+            | If you search for a custom search term, then that will fetch fresh
+            | data from Twitter relative to what you searched and the synonyms.
+            | If it's for a location based visualisation that the Google Places API
+            | is used in conjunction to get the latitude and longitude of where the
+            | Tweet was from. Data from the last 60 minutes is cashed, so that
+            | everything loads fast.
+         p.flow-text All the data visualisations use the same backend, but have
+            | different adapter code to format the data into the right format for
+            | each chart, most of which is done server-side for efficiency.
+            | Everything's written in a very modular way, for maximum code reusability.
+
+         h3 Modular code, what's that?
+         p.flow-text
+            | Well most the components of sentiment sweep are quite generic, so
+            | could be used for other things in other programs. For this reason
+            | eight node modules have been written, documented and tested then
+            | published free under the MIT license on NPM. They are in separate
+            | repositories, but you can find links to them in the readme.md
+
+         h3 So what's it written in?
+         p.flow-text The backend is mainly Node.js written in CoffeeScript, and
+            | using MongoDB for data caching. The data visualisations are mainly
+            | developed using D3.js and most of them are rendered isomophically
+            | so that real-time changes are efficient, again these are written in
+            | CoffeeScript. The Express framework is used for routing, and page
+            | layouts are written in Jade, with styles written in LESS.
+
+         h3 Nice, so can I see the code?
+         p.flow-text Yes, because it's 100% open sauce! Everything is published on
+            | GitHub under the MIT license, so you can view and copy whatever
+            | you want :)
+            a(href='https://github.com/Lissy93/twitter-sentiment-visualisation')
+               |  Check it out here
+
+         h3 How will I know what's what in the code?
+         p.flow-text There is a lot of code, but it's all fully documented both
+            | in-code documentation, unit tests, and written documentation.
+            a(href='https://github.com/Lissy93/twitter-sentiment-visualisation/tree/dev/docs')
+               | You can read the written documentation here
+
+
+      h2 Stability
+      .row.card-panel
+         h3 How do you know this works?
+         p.flow-text It's unit tested.
+
+         h3 What if I find a bug?
+         p.flow-text If you find something that doesn't work as you'd expect,
+            | then you can raise it as an issue
+            a(href='https://github.com/Lissy93/twitter-sentiment-visualisation/issues')
+               |  here.
+         h3 The live data has stopped working, why?
+         p.flow-text Probably the API limits have been reached, try again tomorrow.
+            | This will be sorted later on when we can qualify for a larger quota.
+
+         h3 This could be better
+         p.flow-text I'm always open to suggestions, there are contact details at the bottom of the page
+
+      h2 Legal
+      .row.card-panel
+         h3 So I can copy the code, right?
+         p.flow-text Yeah, because it's open-source. But you can't duplicate this
+            | project and pass it of as your own work.
+
+         h3 Is it guaranteed to work?
+         p.flow-text Nope, no guarantees, use at your own risk.
+
+         h3 Is it okay to be using people's Tweets like this?
+         p.flow-text Sentiment Sweep follows the rules outlined in
+            | the Twitter API T&C's. Only public Tweets are displayed,
+            | and the users location is blurred by 100m, to hide their exact address.
+            | No Tweets are cashed for more than 24 hours (usually it's less than an hour)
+
+      h2 License
+      .row.card-panel
+         h3 MIT License
+         p.flow-text Copyright (c) Alicia Sykes <alicia@aliciasykes.com>
+         p.flow-text
+            | Permission is hereby granted, free of charge, to any person obtaining a copy
+            | of this software and associated documentation files (the "Software"), to deal
+            | in the Software without restriction, including without limitation the rights
+            | to use, copy, modify, merge, publish, distribute, sub-license, and/or sell
+            | copies of the Software, and to permit persons to whom the Software is furnished
+            | to do so, subject to the following conditions:
+         p.flow-text
+            | The above copyright notice and this permission notice shall be included install
+            | copies or substantial portions of the Software.
+         p.flow-text
+            | THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+            | IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANT ABILITY,
+            | FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT. IN NO EVENT SHALL
+            | THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+            | LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+            | OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+      h2 Author
+      .row.card-panel
+         h3 Who wrote this thing?
+         p.flow-text
+            | Me, Alicia Sykes.
+
+         h3 Why did you make it?
+         p.flow-text
+            | Thought it would be cool
+
+         h3 Did it take long to develop?
+         p.flow-text
+            | Yes, ages - but I like coding :)
+
+         h3 How can I contact you?
+         p.flow-text
+            | Visit my website, there's a contact form:
+            a(href='http://aliciasykes.com')  http://aliciasykes.com
+
+         h3 Are you available for hire?
+         p.flow-text
+            | No, I get a lot of emails asking this. I am not looking for work at this time!
+
    include ./footer
 
   
