@@ -1,6 +1,10 @@
 extends layout
-
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+  main.content.error-page
+    h3 Nothing to worry about, but...
+    h2= error.status
+    h1= message
+    a.waves-effect.waves-light.btn.center-block(href='/') Head back to the homepage
+
+  include ./footer
+
