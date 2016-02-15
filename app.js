@@ -59,6 +59,17 @@ app.use('/sa-comparison',       require('./routes/sa-comparison'));
 app.use('/entity-extraction',   require('./routes/entity-extraction'));
 
 
+mobileRoute  = express.Router();
+mobileRoute.get('/', function(req, res, next) {
+  return res.render('error', {
+    message: 'Not compatible with your device :\'(',
+    error: {}
+  });
+});
+
+app.use('/mobile', mobileRoute);
+
+
 /* Set a stream listener for tweets matching tracking keywords */
 var credentials = require('./config/keys').twitter;
 var twit = new streamTweets(credentials);
