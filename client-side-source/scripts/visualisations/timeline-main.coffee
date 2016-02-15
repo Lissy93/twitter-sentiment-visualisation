@@ -1,7 +1,9 @@
 
+d3 = require 'd3/d3.min.js'
+nv = require 'nvd3/build/nv.d3.js'
+
 pageControls = require '../page-controls-module.coffee'
 pageControls.setMainPage 'timeline'
-
 
 nv.addGraph ->
 
