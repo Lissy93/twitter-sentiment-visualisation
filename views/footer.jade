@@ -1,21 +1,21 @@
-footer.page-footer
+footer.page-footer.zero-padding
   .container
     .row
       .col.l6.s12
-        h5.white-text Footer Content
-        p.grey-text.text-lighten-4 You can use rows and columns here to organize your footer content.
-      .col.l4.offset-l2.s12
-        h5.white-text Links
+        h5.white-text Sentiment Sweep
+        p.grey-text.text-lighten-4 The ultimate social media sentiment analysis tool
+      .col.s3
         ul
-          li
-            a.grey-text.text-lighten-3(href='#!') Link 1
-          li
-            a.grey-text.text-lighten-3(href='#!') Link 2
-          li
-            a.grey-text.text-lighten-3(href='#!') Link 3
-          li
-            a.grey-text.text-lighten-3(href='#!') Link 4
+          each page in pages.splice(0,4)
+            li: a.grey-text.text-lighten-3(href='/#{page.page}')= page.title
+
+      .col.s3
+        ul
+          each page in pages.splice(0,6)
+            li: a.grey-text.text-lighten-3(href='/#{page.page}')= page.title
+
+
   .footer-copyright
     .container
-      | © 2014 Copyright Text
-      a.grey-text.text-lighten-4.right(href='#!') More Links
+      a.flow-text.white-text(href='http://aliciasykes.com') &copy; Alicia Sykes 2016
+      a.flow-text.white-text.right(href='https://github.com/Lissy93/twitter-sentiment-visualisation') Source Code & Documentation
