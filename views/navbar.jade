@@ -1,19 +1,22 @@
 nav
     .nav-wrapper
-        a.brand-logo(href='#') Twitter Sentiment Visualisation
+        a.brand-logo.waves-effect.waves-block.waves-light(href='/')
+            h1.title Sentiment Sweep
         ul#nav-mobile.right.hide-on-med-and-down.waves-effect.waves-block.waves-light
             li(class=(pageNum===0 ? 'active' : ''))
                 a(href='/') Dashboard
             li(class=(pageNum===1 ? 'active' : ''))
-                a(href='/map') Map
+                a(href='/map') Heat Map
+            li(class=(pageNum === 6 ? 'active' : ''))
+                a(href='/region-map') Region Map
+            li(class=(pageNum === 4 ? 'active' : ''))
+                a(href='/globe') Globe
+            li(class=(pageNum === 10 ? 'active' : ''))
+                a(href='/comparer') Comparison
             li(class=(pageNum===3 ? 'active' : ''))
                 a(href='/timeline') Timeline
-            li(class=(pageNum===4 ? 'active' : ''))
-                a(href='/globe') Globe
             li(class=(pageNum===5 ? 'active' : ''))
                 a(href='/word-cloud') Word Cloud
-            li(class=(pageNum===6 ? 'active' : ''))
-                a(href='/region-map') Region Map
             li(class=(pageNum===7 ? 'active' : ''))
                 a(href='/text-tweets') Raw Tweets
             li(class=(pageNum===8 ? 'active' : ''))
