@@ -1,6 +1,8 @@
 
 
-
+/****************\
+ * Scatter Plot *
+\****************/
 .axis path,
 .axis line {
   fill: none;
@@ -8,14 +10,9 @@
   shape-rendering: crispEdges;
   opacity: 1;
 }
-
 .axis text { font-size:10px; }
-
-body { font: 12px sans-serif; }
 .circles { opacity: .5; }
-
 .tipsy { font-size:11px; margin-top:-10px;}
-
 .guide line {
   fill: none;
   stroke: #000;
@@ -25,7 +22,9 @@ body { font: 12px sans-serif; }
 
 
 
-// Tre diagram
+/****************\
+ * Tree Diagram *
+\****************/
 #tree {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   position: relative;
@@ -33,7 +32,6 @@ body { font: 12px sans-serif; }
   margin: -2em auto 1em auto;
   padding: 0;
 }
-
 .tree-node {
   border: solid 1px white;
   font: 10px sans-serif;
@@ -42,36 +40,34 @@ body { font: 12px sans-serif; }
   position: absolute;
   text-indent: 2px;
 }
-
 .tree-node:hover{ background: grey;  }
 
 
-//sankey diagram
-
+/******************\
+ * Sankey Diagram *
+\******************/
 .sankey-node rect {
   cursor: move;
   fill-opacity: .9;
   shape-rendering: crispEdges;
 }
-
 .sankey-node text {
   pointer-events: none;
   text-shadow: 0 1px 0 #fff;
 }
-
 .sankey-link {
   fill: none;
   stroke: #000;
   stroke-opacity: .2;
 }
-
 .sankey-link:hover {
   stroke-opacity: .5;
 }
 
 
-// tooltip
-
+/**************\
+ * D3 Tooltip *
+\**************/
 .d3-tip {
   line-height: 1;
   font-weight: bold;
@@ -81,7 +77,6 @@ body { font: 12px sans-serif; }
   border-radius: 2px;
   pointer-events: none;
 }
-
 /* Creates a small triangle extender for the tooltip */
 .d3-tip:after {
   box-sizing: border-box;
@@ -93,7 +88,6 @@ body { font: 12px sans-serif; }
   position: absolute;
   pointer-events: none;
 }
-
 /* Northward tooltips */
 .d3-tip.n:after {
   content: "\25BC";
@@ -102,7 +96,6 @@ body { font: 12px sans-serif; }
   left: 0;
   text-align: center;
 }
-
 /* Eastward tooltips */
 .d3-tip.e:after {
   content: "\25C0";
@@ -110,7 +103,6 @@ body { font: 12px sans-serif; }
   top: 50%;
   left: -8px;
 }
-
 /* Southward tooltips */
 .d3-tip.s:after {
   content: "\25B2";
@@ -119,7 +111,6 @@ body { font: 12px sans-serif; }
   left: 0;
   text-align: center;
 }
-
 /* Westward tooltips */
 .d3-tip.w:after {
   content: "\25B6";
@@ -129,14 +120,8 @@ body { font: 12px sans-serif; }
 }
 
 
-// Gauge diagram
+/*****************\
+ * Gauge Diagram *
+\*****************/
 .c3-chart-arcs-background{fill:#e0e0e0;stroke:none}
 
-
-// Hexagons on the homepage
-.home-hexagons{
-  opacity: 0.7;
-}
-
-.home-row{
-  z-index: 5;}

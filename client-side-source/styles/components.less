@@ -2,31 +2,85 @@
 @import "constants";
 
 
-.card{
-  display: inline-block;
-  background: #ffffff;
-  border-radius: 2px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+/***********************\
+ * Control Options Box *
+\***********************/
 
-  &:hover{
-    box-shadow: @shadow_panel_hover;
+// The control box super class
+.top-left-controls{
+  position: absolute;
+  margin: 0.5em;
+  padding: 0.3em;
+  z-index: 999;
+  max-width: 20em;
+  border-radius: 5px;
+  cursor: default;
+  opacity: 0.9;
+  min-height: 3.5em;
+  h2{
+    display: inline;
+    font-size: 1.5em;
   }
-
-  &.home-panels{
-    width: 24em;
-    height: 15em;
-    padding: 0.5em 1em;
+  .outline{
+    background: none;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+  .outline-button{
+    .outline();
+    cursor: pointer;
+    padding: 0.5em;
     margin: 0.5em;
+    width: 7em;
+    display: inline-block;
+    text-align: center;
+    position: relative;
+  }
+}
+
+// The control box for the globe
+.top-left-controls-dark {
+  .top-left-controls();
+  background: rgba(50, 50, 50, .75);
+  h2, p, label{ color: @col_white; }
+  .outline-button{
+    border: 1px solid @col_white;
+    color: @col_white;
+    &:hover{ background: rgba(50,50,50,.75)}
   }
 
+  input{
+    width: 15em;
+    border: 1px solid @col_white;
+    color: @col_white;
+    background: none;
+    text-decoration: none;
+    border-radius: 4px;    margin: 1em 0.5em;
+    padding: 0.5em;
+    &:focus{ background: rgba(50,50,50,.75); outline: none; }
+  }
+}
+
+// The control box for the lighter pages
+.top-left-controls-light {
+  width: 16em;
+  padding: 0.3em 0.8em;
+  max-height: 550px;
+  overflow-y: auto;
+  .top-left-controls();
+  background: rgba(255,255,255,0.8);
+  .outline-button{
+    &:hover{ background: rgba(180,180,180,.25)}
+  }
+  li{list-style-type: none;}
+  li a{color: #000000; }
 }
 
 
 
-/**
- * Autocompleter styles
- */
-
+/************************\
+ * Autocompleter styles *
+\************************/
 
 .autocompleter {
   width: 20em !important;
@@ -105,85 +159,3 @@
   margin-top: -15px;
 }
 
-
-.whiteBtn{
-  background: @col_white !important;
-  color: black !important;
-}
-
-
-.better-img-card-position{
-  position: absolute !important;
-  top: 50% !important;
-  left: 50% !important;
-  width: 100% !important;
-  height: auto;
-  margin-top: -50%;
-  margin-left: -50%;
-  background: rgba(147, 147, 147, 0.8);
-}
-
-.grey-square{
-  position: absolute;
-  padding: 0.5em;
-  background: rgba(10,10,10,0.7);
-  border-radius: 5px;
-  color: #FFFFFF;
-}
-
-
-#hex-details{
-  .grey-square();
-  bottom: 10px;
-  right: 10px;
-  width: 20em;
-}
-
-.scroll-down{
-  .grey-square();
-  bottom: 10px;
-  margin: 0 auto;
-  width: 7em;
-  left: 0;
-  right: 0;
-  padding: 0 0.5em;
-  p, i{
-    padding: 0;
-    margin: 0;
-  }
-}
-
-#github-corner{
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 10;
-  opacity: 0.65;
-  img{ width: 5em; }
-}
-
-#part-0{
-  visibility: hidden;
-  display: block;
-  min-height: 100%;
-  position: relative;
-}
-
-#part-1{
-  position:absolute;
-  min-height: 100%;
-  display: block;
-}
-
-#part-2{
-  z-index: 8;
-  min-height: 100%;
-  background: @col_palegrey;
-  display: block;
-}
-
-#part-3{
-  background: @col_palegrey;
-  min-height:100%;
-  display: block;
-}
