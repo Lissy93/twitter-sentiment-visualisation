@@ -31,12 +31,12 @@ block content
                 h5 Most Positive Regions
                 ul
                 for res in data.slice(data.length-10,data.length).reverse()
-                    li.flow-text #{res[0]} (<b style='color: green'>#{res[1]*100}%</b>)
+                    li.flow-text #{res[0]} (<b style='color: green'>#{Math.round(res[1]*100)}%</b>)
             div.col.s6
                 h5 Most Negative Regions
                 ul
                 for res in data.slice(3,13)
-                    li.flow-text #{res[0]} (<b style='color: darkred'>#{res[1]*100}%</b>)
+                    li.flow-text #{res[0]} (<b style='color: darkred'>#{Math.round(res[1]*100)}%</b>)
             br
             br
 block scripts
