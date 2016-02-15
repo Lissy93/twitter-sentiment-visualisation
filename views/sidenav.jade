@@ -1,0 +1,13 @@
+#slide-out.side-nav
+    ul
+        li: a(href='/') Home Page
+        each page in pages
+            li: a(href='/#{page.page}')= page.title
+
+
+    .nav-fixed-bottom
+        ul
+            li: a(href='/', target='_blank') Home
+            li: a(href='/about', target='_blank') About
+            li: a(href='https://github.com/Lissy93/twitter-sentiment-visualisation', target='_blank') Source Code & Documentation
+            li: a(href='http://aliciasykes.com', target='_blank') &copy; Alicia Sykes 2016
