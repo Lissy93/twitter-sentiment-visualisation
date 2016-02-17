@@ -3,6 +3,7 @@
 fetchSentimentTweets = require '../utils/fetch-sentiment-tweets'
 wordFormatter = require('../utils/format-for-keyword-vis').findTopWords
 toneAnalyzer = require '../utils/watson-tone-analyzer'
+makeClickWords = require '../utils/make-click-words'
 
 express = require('express')
 router = express.Router()
@@ -32,6 +33,23 @@ formatResults = (tweetArr) ->
   results.tweets = tweetArr
   results
 
+getTopTweets = (tweetArr) ->
+  tweetArr = JSON.parse(JSON.stringify(tweetArr)) # Clone tweetArr
+  results = {}
+  topPositiveTweets = tweetArr.sort((b, a) ->
+    a.sentiment - (b.sentiment)
+  ).slice(0, 5)
+  topNegativeTweets = tweetArr.sort((a, b) ->
+    a.sentiment - (b.sentiment)
+  ).slice(0, 5)
+  for tweet in topPositiveTweets then tweet.body = makeClickWords tweet.body
+  for tweet in topNegativeTweets then tweet.body = makeClickWords tweet.body
+  results.topPositive = topPositiveTweets
+  results.topNegative = topNegativeTweets
+  results
+
+
+
 # Main route - no search term
 router.get '/', (req, res, next) ->
   res.render 'page_search',
@@ -56,5 +74,6 @@ router.get '/:query', (req, res) ->
         averageSentiment: average
         searchTerm: searchTerm
         toneResults: toneResults
+        topTweets: getTopTweets results
 
 module.exports = router

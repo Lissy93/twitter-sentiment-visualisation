@@ -2,52 +2,84 @@ extends layout
 
 block content
 
-
     .container(style='width: 90%')
-        .row
-            h3 Sentiment Summary for '#{searchTerm}'
-            .col.s3.card-panel(style='height: 23em')
-                #gaugeChart
-                br
-                br
-                if averageSentiment > 0
-                    p Average Sentiment is <b style='color: green'>positive</b>
-                else if averageSentiment < 0
-                    p Average Sentiment is <b style='color: darkred'>negative</b>
-                else
-                    p Average Sentiment is <b style='color: grey'>neutral</b>
-            .col.s6
-                .card-panel(style='height: 23em')
-                    p.absolute.grey-text(style='margin-top: -12px')
-                        | Hover over a hexagon to read the associated Tweet.
-                        | Sentiment is represented by color
-                    #chart
-            .col.s3.card-panel(style='height: 23em')
-                h4.flow-text Top words used with <i>'#{searchTerm}'</i>
-                    ol
-                        for wordObject in data.keywordData
-                            if wordObject.sentiment > 0
-                                - var color = 'green'
-                            else if wordObject.sentiment < 0
-                                - var color = 'darkred'
-                            else
-                                - var color = 'dimgrey'
-                            li
-                                a(href='/search/#{wordObject.text}', style='color: #{color}; font-size: 1.1em;') #{wordObject.text}
+        if searchTerm != ''
+            .row
+                h3 Sentiment Summary for '#{searchTerm}'
+                .col.s3.card-panel(style='height: 23em')
+                    #gaugeChart
+                    br
+                    br
+                    if averageSentiment > 0
+                        p Average Sentiment is <b style='color: green'>positive</b>
+                    else if averageSentiment < 0
+                        p Average Sentiment is <b style='color: darkred'>negative</b>
+                    else
+                        p Average Sentiment is <b style='color: grey'>neutral</b>
+                .col.s6
+                    .card-panel(style='height: 23em')
+                        p.absolute.grey-text(style='margin-top: -12px')
+                            | Hover over a hexagon to read the associated Tweet.
+                            | Sentiment is represented by color
+                        #chart
+                .col.s3.card-panel(style='height: 23em')
+                    h4.flow-text Top words used with <i>'#{searchTerm}'</i>
+                        ol
+                            for wordObject in data.keywordData
+                                if wordObject.sentiment > 0
+                                    - var color = 'green'
+                                else if wordObject.sentiment < 0
+                                    - var color = 'darkred'
+                                else
+                                    - var color = 'dimgrey'
+                                li
+                                    a(href='/search/#{wordObject.text}', style='color: #{color}; font-size: 1.1em;') #{wordObject.text}
+
+            .row
+                .col.s4
+                    h4.flow-text Tone Identification Average
+                    #radar.card-panel
+
+                .col.s4
+                    h4.flow-text Top Positive Tweets
+                    for tweet in topTweets.topPositive
+                        div.card-panel
+                            div.pull-right
+                                b(style='color: green') #{tweet.sentiment * 100}%
+                            p !{tweet.body}
+                            if tweet.location
+                                i.tiny.material-icons.small-grey.inline location_on
+                                p.small-grey.inline= tweet.location.place_name
+                            div.pull-right
+                                i.tiny.material-icons.small-grey.inline schedule
+                                p.small-grey.inline #{new Date(tweet.date).getHours()}:#{new Date(tweet.date).getMinutes()}
+
+                .col.s4
+                    h4.flow-text Top Negative Results
+                    for tweet in topTweets.topNegative
+                        div.card-panel
+                            div.pull-right
+                                b(style='color: darkred') #{tweet.sentiment * 100}%
+                            p !{tweet.body}
+                            if tweet.location
+                                i.tiny.material-icons.small-grey.inline location_on
+                                p.small-grey.inline= tweet.place_name
+                            div.pull-right
+                                i.tiny.material-icons.small-grey.inline schedule
+                                p.small-grey.inline #{new Date(tweet.date).getHours()}:#{new Date(tweet.date).getMinutes()}
 
 
 
-
-        .row
-            h3 Click on a link below to see the '#{searchTerm}' results data in another format
-            each page in pages
-                .col.s3
-                    a(href='/#{page.page}/#{searchTerm}')
-                        .card.home-card
-                            .card-image.waves-effect.waves-block.waves-light
-                                img(src='/images/thumbnails/thumb_#{page.index}.png')
-                            .card-content
-                                span.card-title.grey-text.text-darken-4= page.title
+            .row
+                h3 Click on a link below to see the '#{searchTerm}' results data in another format
+                each page in pages
+                    .col.s3
+                        a(href='/#{page.page}/#{searchTerm}')
+                            .card.home-card
+                                .card-image.waves-effect.waves-block.waves-light
+                                    img(src='/images/thumbnails/thumb_#{page.index}.png')
+                                .card-content
+                                    span.card-title.grey-text.text-darken-4= page.title
 
 
         .row
@@ -59,14 +91,18 @@ block content
 
 
 block scripts
-    script(type='text/javascript').
-        var results = !{JSON.stringify(data.tweets)};
-        var average = !{JSON.stringify(averageSentiment)};
-        var searchTerm = !{JSON.stringify(searchTerm)};
-        var toneResults = !{JSON.stringify(toneResults)};
-    script(type = 'text/javascript', src = '/bower_components/d3/d3.min.js')
-    script(type = 'text/javascript', src = '/bower_components/hexbin/index.js')
-    script(type = 'text/javascript', src = '/bower_components/d3tip/index.js')
-    script(type='text/javascript', src='/bower_components/c3/c3.min.js')
-    script(type='text/javascript', src='/javascripts/search-summary.bundle.js')
+    if searchTerm != ''
+        script(type='text/javascript').
+            var results = !{JSON.stringify(data.tweets)};
+            var average = !{JSON.stringify(averageSentiment)};
+            var searchTerm = !{JSON.stringify(searchTerm)};
+            var toneResults = !{JSON.stringify(toneResults)};
+        script(type = 'text/javascript', src = '/bower_components/d3/d3.min.js')
+        script(type = 'text/javascript', src = '/bower_components/hexbin/index.js')
+        script(type = 'text/javascript', src = '/bower_components/d3tip/index.js')
+        script(type='text/javascript', src='/bower_components/c3/c3.min.js')
+        script(type='text/javascript', src='/bower_components/radar-chart-d3/src/radar-chart.min.js')
+        script(type='text/javascript', src='/javascripts/search-summary.bundle.js')
+        script(type='text/javascript', src='/javascripts/charts/radar-module.js')
+
 
