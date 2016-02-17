@@ -17,6 +17,11 @@ block content
                 | You can use your mouse to rotate the globe.
             br
             p!=summary_text.globeSentence
+            br
+            a.outline-button(href='/text-tweets/#{summary_text.searchTerm}') Raw Tweets
+            a.outline-button(href='/word-cloud/#{summary_text.searchTerm}') Key Words
+            a.outline-button(href='/map/#{summary_text.searchTerm}') Heat Map
+            a.outline-button(href='/region-map/#{summary_text.searchTerm}') Region Map
 
     div#container
 
