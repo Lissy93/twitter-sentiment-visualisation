@@ -57,6 +57,8 @@ app.use('/word-cloud',  require('./routes/word-cloud'));
 app.use('/word-scatter-plot',   require('./routes/word-plot'));
 app.use('/sa-comparison',       require('./routes/sa-comparison'));
 app.use('/entity-extraction',   require('./routes/entity-extraction'));
+app.use('/tone-analyzer',       require('./routes/tone-analyzer'));
+app.use('/api/tone',    require('./routes/tone-api'));
 
 
 mobileRoute  = express.Router();
