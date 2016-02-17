@@ -2,10 +2,10 @@
 # Require necessary modules, API keys and instantiate objects
 fetchSentimentTweets = require '../utils/fetch-sentiment-tweets'
 wordFormatter = require('../utils/format-for-keyword-vis').findTopWords
+toneAnalyzer = require '../utils/watson-tone-analyzer'
 
 express = require('express')
 router = express.Router()
-
 
 # Converts Tweet objects into the right format
 formatResults = (tweetArr) ->
@@ -46,12 +46,15 @@ router.get '/:query', (req, res) ->
   searchTerm = req.params.query # Get the search term from URL param
 
   fetchSentimentTweets searchTerm, (results, average) ->  # Fetch all data
-    console.log formatResults results
-    res.render 'page_search', # Render template
-      title: searchTerm+' results'
-      pageNum: -1
-      data: formatResults results
-      averageSentiment: average
-      searchTerm: searchTerm
+
+    toneAnalyzer results, (toneResults) ->
+
+      res.render 'page_search', # Render template
+        title: searchTerm+' results'
+        pageNum: -1
+        data: formatResults results
+        averageSentiment: average
+        searchTerm: searchTerm
+        toneResults: toneResults
 
 module.exports = router
