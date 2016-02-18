@@ -48,7 +48,10 @@ getTopTweets = (tweetArr) ->
   results.topNegative = topNegativeTweets
   results
 
-
+makeTweetBody = (tweetArr) ->
+  results = ""
+  for tweet in tweetArr then results += tweet.body + ' '
+  results
 
 # Main route - no search term
 router.get '/', (req, res, next) ->
@@ -65,15 +68,13 @@ router.get '/:query', (req, res) ->
 
   fetchSentimentTweets searchTerm, (results, average) ->  # Fetch all data
 
-#    toneAnalyzer results, (toneResults) ->
-
     res.render 'page_search', # Render template
       title: searchTerm+' results'
       pageNum: -1
       data: formatResults results
       averageSentiment: average
       searchTerm: searchTerm
-      toneResults: []
       topTweets: getTopTweets results
+      tweetBody: makeTweetBody results
 
 module.exports = router

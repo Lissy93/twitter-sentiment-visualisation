@@ -49,7 +49,7 @@ requestWatsonData = (tweetBody) ->
   $.post('/api/tone', {'text': tweetBody }, (results) -> renderResults results)
 
 $(document).ready ->
-  requestWatsonData('london is very rainy today')
+  requestWatsonData tweetBody
 
 
 #drawRadarChart toneResults
