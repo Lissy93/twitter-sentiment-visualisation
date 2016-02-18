@@ -2,7 +2,7 @@
 # Require necessary modules, API keys and instantiate objects
 fetchSentimentTweets = require '../utils/fetch-sentiment-tweets'
 wordFormatter = require('../utils/format-for-keyword-vis').findTopWords
-toneAnalyzer = require '../utils/watson-tone-analyzer'
+#toneAnalyzer = require '../utils/watson-tone-analyzer'
 makeClickWords = require '../utils/make-click-words'
 
 express = require('express')
@@ -65,15 +65,15 @@ router.get '/:query', (req, res) ->
 
   fetchSentimentTweets searchTerm, (results, average) ->  # Fetch all data
 
-    toneAnalyzer results, (toneResults) ->
+#    toneAnalyzer results, (toneResults) ->
 
-      res.render 'page_search', # Render template
-        title: searchTerm+' results'
-        pageNum: -1
-        data: formatResults results
-        averageSentiment: average
-        searchTerm: searchTerm
-        toneResults: toneResults
-        topTweets: getTopTweets results
+    res.render 'page_search', # Render template
+      title: searchTerm+' results'
+      pageNum: -1
+      data: formatResults results
+      averageSentiment: average
+      searchTerm: searchTerm
+      toneResults: []
+      topTweets: getTopTweets results
 
 module.exports = router
