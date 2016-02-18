@@ -38,6 +38,17 @@ block content
             .row
                 h4.flow-text Tone Identification
                 .card-panel(style='min-height: 25em')
+
+                    .preloader-wrapper.big.active.center-block#toneLoader
+                        .spinner-layer.spinner-blue-only
+                            .circle-clipper.left
+                                .circle
+                            .gap-patch
+                                .circle
+                            .circle-clipper.right
+                                .circle
+
+
                     .col.s4#toneResults1
                     .col.s4#toneResults2
                     .col.s4#toneResults3

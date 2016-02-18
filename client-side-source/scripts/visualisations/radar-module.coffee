@@ -35,11 +35,12 @@ requestWatsonData = (tweetBody) ->
       for tone in tCat.tones
         $('#toneResults'+i).append(makeHtmlProgress(tone.tone_name, tone.score))
     # Show containers now they have data in, and hide the loader
+    $('#toneLoader').fadeOut('fast')
     j = 1
     while j <= 3 then $('#toneResults'+j).slideDown('slow'); j++
 
 
-      
+
   # Hide empty containers to start with
   j = 1
   while j <= 3 then $('#toneResults'+j).hide(); j++
