@@ -18,10 +18,11 @@ requestWatsonData = (tweetBody) ->
 
   # Generates the HTML for each progress bar with label, value and tooltip
   makeHtmlProgress = (label, value) ->
+    percent = Math.round(value*100)
     html = ""
     html += "<label>#{label}</label>"
-    html += "<div class='progress horizontal-bar'>"
-    html += "<div class='determinate' style='width: #{Math.round(value*100)}%'>"
+    html += "<div class='progress horizontal-bar tooltipped' data-position='right' data-tooltip='#{percent}%'>"
+    html += "<div class='determinate' style='width: #{percent}%'>"
     html += "</div></div>"
     html
 
@@ -38,6 +39,7 @@ requestWatsonData = (tweetBody) ->
     $('#toneLoader').fadeOut('fast')
     j = 1
     while j <= 3 then $('#toneResults'+j).slideDown('slow'); j++
+    $('.tooltipped').tooltip({delay: 50}) # Initialise the tooltip
 
 
 
@@ -50,6 +52,7 @@ requestWatsonData = (tweetBody) ->
 
 $(document).ready ->
   requestWatsonData tweetBody
+
 
 
 #drawRadarChart toneResults
