@@ -59,6 +59,7 @@ app.use('/sa-comparison',       require('./routes/sa-comparison'));
 app.use('/entity-extraction',   require('./routes/entity-extraction'));
 app.use('/tone-analyzer',       require('./routes/tone-analyzer'));
 app.use('/api/tone',    require('./routes/tone-api'));
+app.use('/api/entity',  require('./routes/entity-api'));
 
 
 mobileRoute  = express.Router();
