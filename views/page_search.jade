@@ -37,7 +37,7 @@ block content
 
             .row
                 h4.flow-text Tone Identification
-                .card-panel(style='min-height: 27em')
+                .card-panel.auto-overflow
 
                     .preloader-wrapper.big.active.center-block#toneLoader
                         .spinner-layer.spinner-blue-only
@@ -57,7 +57,8 @@ block content
 
             .row
                 h4.flow-text Entity Extraction
-                .card-panel
+                .card-panel.auto-overflow
+                    p.grey-text Summary of the most spoken about entities in '<i>#{searchTerm}</i>' Tweets
                     .preloader-wrapper.big.active.center-block#entityLoader
                         .spinner-layer.spinner-blue-only
                             .circle-clipper.left
@@ -67,14 +68,16 @@ block content
                             .circle-clipper.right
                                 .circle
 
-                .col.s4#entityResults1
-                .col.s4#entityResults2
-                .col.s4#entityResults3
-                .col.s4#entityResults4
-                .col.s4#entityResults5
-                .col.s4#entityResults6
+                    .col.s4#entityResults1
+                    .col.s4#entityResults2
+                    .col.s4#entityResults3
+                    .col.s4#entityResults4
+                    .col.s4#entityResults5
+                    .col.s4#entityResults6
+                    .col.s4#entityResults7
+                    .col.s4#entityResults8
 
-
+                    a.waves-effect.waves-light.btn.pull-right(href='/entity-extraction/#{searchTerm}', style='margin-top: 3em') See More...
 
             .row
                 h4.flow-text Compare '<i>#{searchTerm}</i>' other topics
