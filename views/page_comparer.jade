@@ -81,10 +81,8 @@ block content
 
 
 block scripts
-    script(type='text/javascript').
-        var results = !{JSON.stringify(data)};
-
     script(type = 'text/javascript', src = '/bower_components/d3/d3.min.js')
     script(type='text/javascript', src='/bower_components/c3/c3.min.js')
     script(type='text/javascript', src='/javascripts/charts/comparer.js')
-
+    script(type='text/javascript').
+        window.drawDonuts(!{JSON.stringify(data)});

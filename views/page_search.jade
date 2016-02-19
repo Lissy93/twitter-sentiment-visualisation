@@ -80,7 +80,46 @@ block content
                     a.waves-effect.waves-light.btn.pull-right(href='/entity-extraction/#{searchTerm}', style='margin-top: 3em') See More...
 
             .row
-                h4.flow-text Compare '<i>#{searchTerm}</i>' other topics
+                h4.flow-text Compare '<i>#{searchTerm}</i>' with other topics
+                .card-panel.auto-overflow
+                    .col.s3
+                        p.flow-text '#{searchTerm}' Average
+                        #chart-0.search-av-chart1
+                    .col.s1: br
+                    .col.s3
+                        p.flow-text Overall Average for Today
+                        #chart-1.search-av-chart2
+                    .col.s1: br
+                    .col.s4
+                        p.flow-text Compare with more Twitter results
+                        span Enter up to four brand names, retailers, businesses,
+                            | places, celebrities or objects that you'd like to compare
+                            | peoples opinions on.
+                        br
+
+                        .input-field
+                            label.active(for='brand-1') First Search Term
+                            input.validate#brand-1(type='text', value='#{searchTerm}', disabled)
+
+                        .input-field
+                            label.active(for='brand-2') Second Search Term
+                            input.validate#brand-2(type='text')
+
+                        .input-field(style='display:none')
+                            label.active(for='brand-3') Third Search Term
+                            input.validate#brand-3(type='text')
+
+                        .input-field(style='display: none')
+                            label.active(for='brand-4') Forth Search Term
+                            input.validate#brand-4(type='text')
+
+                        a.small#add-new(style='cursor: pointer') Add more search queries
+                        br
+                        br
+
+                        .waves-effect.waves-light.btn.center-block#get-results(style='width: 12em') Get Results!
+
+
 
 
             .row
@@ -146,8 +185,10 @@ block scripts
         script(type = 'text/javascript', src = '/bower_components/d3tip/index.js')
         script(type='text/javascript', src='/bower_components/c3/c3.min.js')
         script(type='text/javascript', src='/bower_components/radar-chart-d3/src/radar-chart.min.js')
+        script(type='text/javascript', src='/javascripts/charts/comparer.js')
         script(type='text/javascript', src='/javascripts/search-summary.bundle.js')
         script(type='text/javascript', src='/javascripts/charts/radar-module.js')
         script(type='text/javascript', src='/javascripts/charts/entity-summary.js')
+        script(type='text/javascript', src='/javascripts/charts/comparison-for-search.js')
 
 
