@@ -60,6 +60,7 @@ app.use('/entity-extraction',   require('./routes/entity-extraction'));
 app.use('/tone-analyzer',       require('./routes/tone-analyzer'));
 app.use('/api/tone',    require('./routes/tone-api'));
 app.use('/api/entity',  require('./routes/entity-api'));
+app.use('/api/db',      require('./routes/db-api'));
 
 
 mobileRoute  = express.Router();
