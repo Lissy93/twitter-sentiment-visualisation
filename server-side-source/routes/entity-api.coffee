@@ -11,8 +11,15 @@ formatText = (tweetBody) ->
   tweetBody =  tweetBody.replace(/[^A-Za-z0-9 ]/g, '')
   tweetBody = tweetBody.substring(0, 5000)
 
+formatData = (data) ->
+  results = []
+  for key in Object.keys data
+    category = key.charAt(0).toUpperCase()+key.split('_')[0].slice(1)
+    results.push name: category, items: data[key]
+  results = results.sort (a, b) -> b.items.length - a.items.length
+
 router.post '/', (req, res) ->
   entityExtraction formatText(req.body.text), hpKey, (data) ->
-    res.json data
+    res.json formatData data
 
 module.exports = router
