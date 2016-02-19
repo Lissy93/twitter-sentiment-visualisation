@@ -37,7 +37,7 @@ block content
 
             .row
                 h4.flow-text Tone Identification
-                .card-panel(style='min-height: 25em')
+                .card-panel(style='min-height: 27em')
 
                     .preloader-wrapper.big.active.center-block#toneLoader
                         .spinner-layer.spinner-blue-only
@@ -48,10 +48,36 @@ block content
                             .circle-clipper.right
                                 .circle
 
-
                     .col.s4#toneResults1
                     .col.s4#toneResults2
                     .col.s4#toneResults3
+
+                    a.waves-effect.waves-light.btn.pull-right(href='/tone-analyzer/#{searchTerm}') See More...
+
+
+            .row
+                h4.flow-text Entity Extraction
+                .card-panel
+                    .preloader-wrapper.big.active.center-block#entityLoader
+                        .spinner-layer.spinner-blue-only
+                            .circle-clipper.left
+                                .circle
+                            .gap-patch
+                                .circle
+                            .circle-clipper.right
+                                .circle
+
+                .col.s4#entityResults1
+                .col.s4#entityResults2
+                .col.s4#entityResults3
+                .col.s4#entityResults4
+                .col.s4#entityResults5
+                .col.s4#entityResults6
+
+
+
+            .row
+                h4.flow-text Compare '<i>#{searchTerm}</i>' other topics
 
 
             .row
@@ -83,7 +109,7 @@ block content
                                 i.tiny.material-icons.small-grey.inline schedule
                                 p.small-grey.inline #{new Date(tweet.date).getHours()}:#{new Date(tweet.date).getMinutes()}
 
-
+            a.waves-effect.waves-teal.btn-large.whiteBtn.center-block(style='width: 20em', href='/text-tweets/#{searchTerm}') View more Tweets
 
             .row
                 h3 Click on a link below to see the '#{searchTerm}' results data in another format
@@ -119,5 +145,6 @@ block scripts
         script(type='text/javascript', src='/bower_components/radar-chart-d3/src/radar-chart.min.js')
         script(type='text/javascript', src='/javascripts/search-summary.bundle.js')
         script(type='text/javascript', src='/javascripts/charts/radar-module.js')
+        script(type='text/javascript', src='/javascripts/charts/entity-summary.js')
 
 
