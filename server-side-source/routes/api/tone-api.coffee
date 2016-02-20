@@ -2,7 +2,7 @@ express = require('express')
 router = express.Router()
 
 watson = require 'watson-developer-cloud'
-watsonCredentials = require('../config/keys').watson
+watsonCredentials = require('../../config/keys').watson
 
 
 toneAnalyzer = watson.tone_analyzer {

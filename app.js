@@ -54,6 +54,7 @@ app.use('/break-down',  require('./routes/break-down'));
 app.use('/hexagons',    require('./routes/hexagons'));
 app.use('/comparer',    require('./routes/comparer'));
 app.use('/word-cloud',  require('./routes/word-cloud'));
+//app.use('/trending',    require('./routes/trending'));
 app.use('/word-scatter-plot',   require('./routes/word-plot'));
 app.use('/sa-comparison',       require('./routes/sa-comparison'));
 app.use('/entity-extraction',   require('./routes/entity-extraction'));
