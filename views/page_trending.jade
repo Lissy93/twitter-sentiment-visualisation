@@ -1,0 +1,10 @@
+extends layout
+
+
+block content
+
+
+block scripts
+    script(type='text/javascript').
+        var locationTxt = !{JSON.stringify(location)};
+    script(type='text/javascript', src='/javascripts/charts/trending.js')
