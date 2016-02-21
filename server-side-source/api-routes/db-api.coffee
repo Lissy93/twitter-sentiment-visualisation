@@ -1,6 +1,6 @@
 express = require('express')
 router = express.Router()
-fetchSentimentTweets = require '../../utils/fetch-sentiment-tweets'
+fetchSentimentTweets = require '../utils/fetch-sentiment-tweets'
 
 router.post '/', (req, res) ->
   fetchSentimentTweets '', (data, average) ->

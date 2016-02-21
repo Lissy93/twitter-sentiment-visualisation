@@ -2,7 +2,7 @@ express = require('express')
 router = express.Router()
 
 entityExtraction =  require 'haven-entity-extraction'
-hpKey = require('../../config/keys').hp
+hpKey = require('../config/keys').hp
 
 
 # Formats tweets into a massive tweet body

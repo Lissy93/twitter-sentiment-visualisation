@@ -17,7 +17,7 @@ module.exports = {
         { src: 'server-side-source/utils/*.coffee',                dest: 'utils' },
         { src: 'server-side-source/config/*.coffee',               dest: 'config' },
         { src: 'server-side-source/routes/*.coffee',               dest: 'routes' },
-        { src: 'server-side-source/routes/api/*.coffee',           dest: 'routes' }
+        { src: 'server-side-source/api-routes/*.coffee',           dest: 'routes' }
     ],
     SHOW_OUTPUT: true
 };
