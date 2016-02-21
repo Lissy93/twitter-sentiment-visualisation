@@ -3,6 +3,11 @@ router = express.Router()
 FetchTweets = require 'fetch-tweets'
 twitterKey  = require('../config/keys').twitter
 asyncTweets = require '../utils/async-tweets'
+placeLookup = require 'place-lookup'
+placesKey   = require('../config/keys').googlePlaces
+
+fetchTweets = new FetchTweets twitterKey
+
 
 
 findAverageSentiment = (tweetArr) ->
@@ -15,8 +20,8 @@ findOriginalTrend = (searchTerm, searchTerms, trends) ->
   {}
 
 
-router.post '/', (req, res) ->
-  (new FetchTweets twitterKey).trending req.body.woid, (trendingResults) ->
+makeTrendRequest = (woeid, cb) ->
+  fetchTweets.trending woeid, (trendingResults) ->
 
     # Make a list of searchTerms from the trending topics
     searchTerms = []
@@ -32,7 +37,7 @@ router.post '/', (req, res) ->
     # Make the actual request
     asyncTweets searchTerms, (twitterResults) ->
 
-      #Make the results array
+    #Make the results array
       results = []
       for tweetArr in twitterResults
         t = findOriginalTrend(tweetArr.searchTerm, searchTerms, trendingResults)
@@ -40,8 +45,24 @@ router.post '/', (req, res) ->
           topic: t.trend
           sentiment: findAverageSentiment tweetArr
           volume: t.volume
+      cb results
 
-      # Done, just render the json
-      res.json results
 
+router.post '/', (req, res) ->
+  woeid = 1
+  makeTrendRequest woeid, (results) -> res.json {trends: results}
+
+
+
+router.post '/:location', (req, res) ->
+  fuzzyLocation = req.params.location
+  placeLookup fuzzyLocation, placesKey, (placeResults) ->
+    if !placeResults.error?
+      lat = placeResults.location.lat
+      lng = placeResults.location.lng
+      fetchTweets.closestTrendingWoeid lat, lng, (places) ->
+        woeid = places[0].woeid
+        makeTrendRequest woeid, (results) ->
+          res.json {trends: results, location: placeResults.place_name}
+    else res.json {}
 module.exports = router
