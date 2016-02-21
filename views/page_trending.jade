@@ -2,6 +2,22 @@ extends layout
 
 
 block content
+    .container(style='width: 60%')
+        .row.card-panel
+            h3 Search trends by location
+            .input-field
+                input#txtLocation.validate(type='text')
+                label(for='txtLocation') Enter a location to fetch local Twitter trends
+
+        .row.card-panel
+            if location == ''
+                h3 Showing world-wide Twitter trends
+            else
+                h3 Showing the latest Twitter trends from #{location}
+            p.small-grey Sorted by volume, and the color indicates the sentiment of associated Tweets.
+                | Click a trend for more information
+            #trending-text-loader.center-block(style='width: 2px;'): include ./component_spinner
+            #trending-text
 
 
 block scripts

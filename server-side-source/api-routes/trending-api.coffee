@@ -22,7 +22,7 @@ router.post '/', (req, res) ->
     searchTerms = []
     originalTrends = []
     i = 0
-    while searchTerms.length < 5
+    while searchTerms.length < 10
       trend = trendingResults[i].trend.replace(/[\W_]+/g, '')
       if trend.length > 0
         searchTerms.push trend
