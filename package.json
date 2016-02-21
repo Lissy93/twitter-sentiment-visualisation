@@ -25,7 +25,7 @@
     "cookie-parser": "^1.4.0",
     "debug": "^2.2.0",
     "express": "^4.13.3",
-    "fetch-tweets": "^0.1.6",
+    "fetch-tweets": "^0.1.7",
     "find-region-from-location": "git+https://github.com/Lissy93/find-region-from-location.git",
     "haven-entity-extraction": "git://github.com/Lissy93/haven-entity-extraction.git",
     "haven-sentiment-analysis": "git://github.com/Lissy93/haven-sentiment-analysis.git",
