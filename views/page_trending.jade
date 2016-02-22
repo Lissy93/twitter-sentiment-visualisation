@@ -22,8 +22,17 @@ block content
             #trending-text-loader.center-block(style='width: 2px;'): include ./component_spinner
             #trending-text
 
+        .row.card-panel
+            #bubble-trends.center-block(style='width: 460px;')
+            p.flow-text Bubble chart shows trending topics for today from a specific location.
+                | The size of the bubble represents the volume of Tweets about a certain
+                | topic, and the color illustrates sentiment calculated from Tweets
+                | associated with the topic. Hover over a bubble for more details.
+
 
 block scripts
     script(type='text/javascript').
         var locationTxt = !{JSON.stringify(location)};
+    script(type='text/javascript', src='/bower_components/d3/d3.min.js')
+    script(type='text/javascript', src='/javascripts/charts/trending-bubble-chart.js')
     script(type='text/javascript', src='/javascripts/charts/trending.js')

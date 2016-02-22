@@ -28,6 +28,7 @@ makeTrendRequest = (woeid, cb) ->
     originalTrends = []
     i = 0
     while searchTerms.length < 10
+      if !trendingResults[i]? then cb {}; return
       trend = trendingResults[i].trend.replace(/[\W_]+/g, '')
       if trend.length > 0
         searchTerms.push trend
@@ -63,6 +64,7 @@ router.post '/:location', (req, res) ->
       fetchTweets.closestTrendingWoeid lat, lng, (places) ->
         woeid = places[0].woeid
         makeTrendRequest woeid, (results) ->
+          if results == {} then res.json {}
           res.json {trends: results, location: placeResults.place_name}
     else res.json {}
 module.exports = router
