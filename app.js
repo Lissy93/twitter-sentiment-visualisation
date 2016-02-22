@@ -42,7 +42,7 @@ mongoose.connect(config.db.URL);
 
 
 /* Specify which route files to use */
-    app.use('/',        require('./routes/index'));
+app.use('/',            require('./routes/index'));
 app.use('/search',      require('./routes/search'));
 app.use('/map',         require('./routes/map'));
 app.use('/region-map',  require('./routes/region-map'));
@@ -55,10 +55,11 @@ app.use('/hexagons',    require('./routes/hexagons'));
 app.use('/comparer',    require('./routes/comparer'));
 app.use('/word-cloud',  require('./routes/word-cloud'));
 app.use('/trending',    require('./routes/trending'));
-app.use('/word-scatter-plot',   require('./routes/word-plot'));
-app.use('/sa-comparison',       require('./routes/sa-comparison'));
-app.use('/entity-extraction',   require('./routes/entity-extraction'));
 app.use('/tone-analyzer',       require('./routes/tone-analyzer'));
+app.use('/sa-comparison',       require('./routes/sa-comparison'));
+app.use('/word-scatter-plot',   require('./routes/word-plot'));
+app.use('/entity-extraction',   require('./routes/entity-extraction'));
+app.use('/real-time-dashboard', require('./routes/real-time'));
 app.use('/api/tone',    require('./routes/tone-api'));
 app.use('/api/entity',  require('./routes/entity-api'));
 app.use('/api/db',      require('./routes/db-api'));
