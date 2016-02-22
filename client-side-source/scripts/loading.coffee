@@ -12,4 +12,5 @@ $(document).ready () ->
     if window.location.pathname.indexOf('mobile') == -1
       document.location = '/mobile'
 
+  $('.nav-wrapper ul').click( () -> root.showLoader())
 
