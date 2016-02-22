@@ -42,18 +42,15 @@ requestWatsonData = (tweetBody) ->
     $('.tooltipped').tooltip({delay: 50}) # Initialise the tooltip
 
 
-
   # Hide empty containers to start with
   j = 1
   while j <= 3 then $('#toneResults'+j).hide(); j++
 
   # Make the actual request
-  $.post('/api/tone', {'text': tweetBody }, (results) -> renderResults results)
+  $.post('/api/tone', tweetBody, (results) -> renderResults results)
 
 $(document).ready ->
-  requestWatsonData tweetBody
+  if st? and st != '' then requestWatsonData {'searchTerm': st }
+  else if tweetBody?  then requestWatsonData {'text': tweetBody }
 
-
-
-#drawRadarChart toneResults
 

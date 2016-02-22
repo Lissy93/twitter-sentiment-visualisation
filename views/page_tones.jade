@@ -3,24 +3,32 @@ extends layout
 block head
 
 block content
-
     .container(style='width: 90%')
-
         .row
+            if searchTerm
+                h4.flow-text Tone Identification
+                .card-panel.auto-overflow
 
+                    #toneLoader.center-block(style='width: 10%'): include ./component_spinner
+                    br
 
-
-
+                    .col.s4#toneResults1
+                    .col.s4#toneResults2
+                    .col.s4#toneResults3
         .row
             h3 Make a new search
             .col.s6.offset-3.card-panel
                 .input-field
-                    input#txtKeyword.validate(type='text')
+                    input#txtKeyword.validate(type='text', value ='#{searchTerm}')
                     label(for='txtKeyword') Enter a keyword, topic, brand, celebrity or search term
-
-
+                    
 
 block scripts
+    script.
+        var st = !{JSON.stringify(searchTerm)};
+    script(type = 'text/javascript', src = '/bower_components/d3/d3.min.js')
+    script(type='text/javascript', src='/javascripts/charts/radar-module.js')
+
 
 
 
