@@ -191,4 +191,9 @@ block scripts
         script(type='text/javascript', src='/javascripts/charts/entity-summary.js')
         script(type='text/javascript', src='/javascripts/charts/comparison-for-search.js')
 
-
+    else
+        script.
+            $('#txtKeyword').keyup(function (e) {if (e.keyCode === 13) {
+                showLoader();
+                window.location = '/search/' + $('#txtKeyword').val();
+            }});

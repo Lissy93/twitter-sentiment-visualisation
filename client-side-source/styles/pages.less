@@ -2,9 +2,6 @@
 @import "constants";
 
 
-
-
-
 /***********\
  * Nav Bar *
 \***********/
@@ -35,8 +32,16 @@ h1.title{
 \*************/
 .home-card{
   width: 100%;
+  margin: 0.5em 1em;
   img{ width: 100% }
-  .card-content{ padding: 0.5em 1em; }
+  .card-content{
+    padding: 0.1em 1em;
+    span{
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      line-height: 28px !important;
+    }
+  }
 }
 
 #github-corner{
@@ -64,10 +69,12 @@ h1.title{
 
 #part-2{
   z-index: 8;
-  min-height: 100%;
+  min-height: 98%;
   background: @col_palegrey;
   display: block;
   .container{ max-width: 80%; }
+  h2{ margin: 0}
+  p{ margin: 0.5em 0; }
 }
 
 .home-hexagons{
@@ -101,7 +108,11 @@ h1.title{
   }
 }
 
-.home-row{ z-index: 5;}
+.home-row{
+  z-index: 5;
+  h3:first-of-type{ margin-top: 5px; }
+  .input-field{ margin-top: 2em; }
+}
 
 
 /**************\

@@ -2,17 +2,22 @@ footer.page-footer.zero-padding
   .container
     .row
       .col.l6.s12
-        h5.white-text Sentiment Sweep
+        a(href='/'): h5.white-text Sentiment Sweep
         p.grey-text.text-lighten-4 The ultimate social media sentiment analysis tool
       .col.s3
         ul
-          each page in pages.splice(0,4)
+          li: b: a.grey-text.text-lighten-3(href='/') Main Menu
+          each page in pages.splice(0,7)
             li: a.grey-text.text-lighten-3(href='/#{page.page}')= page.title
 
       .col.s3
         ul
           each page in pages.splice(0,6)
             li: a.grey-text.text-lighten-3(href='/#{page.page}')= page.title
+          li: a.grey-text.text-lighten-3(href='/break-down') Topic Breakdown
+          li: a.grey-text.text-lighten-3(href='/hexagons') Sentiment Hexagons
+          li: a.grey-text.text-lighten-3(href='/word-scatter-plot') Word Scatter Plot
+          li: a.grey-text.text-lighten-3(href='/sa-comparison') SA Method Comparison
 
 
   .footer-copyright
