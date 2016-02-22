@@ -4,9 +4,10 @@ block head
 
 block content
     .container(style='width: 90%')
-        .row
-            if searchTerm
-                h4.flow-text Tone Identification
+        if searchTerm
+
+            .row
+                h2.flow-text Tone Identification Bars
                 .card-panel.auto-overflow
 
                     #toneLoader.center-block(style='width: 10%'): include ./component_spinner
@@ -15,13 +16,34 @@ block content
                     .col.s4#toneResults1
                     .col.s4#toneResults2
                     .col.s4#toneResults3
+
+            .row
+                h2.flow-text Segment Chart
+                .card-panel.auto-overflow
+                    #radarLoader.center-block(style='width: 10%'): include ./component_spinner
+                    br
+
+                    #tone-radar.center-block(style='width: 650px')
+
+                    p.flow-text The sunburst charts visually illustrates the proportion
+                        | of text which fits into each tone category and sub-category.
+                        | The text data used was Tweets relating to '#{searchTerm}' and
+                        | fetched within the past 24 hours.
+                        | <br>
+                        | Hover over a segment to see which category it is, or click it
+                        | to view sub-categories. You can return to the full diagram by
+                        | clicking the center node.
+
+
+
+
+
         .row
             h3 Make a new search
             .col.s6.offset-3.card-panel
                 .input-field
                     input#txtKeyword.validate(type='text', value ='#{searchTerm}')
                     label(for='txtKeyword') Enter a keyword, topic, brand, celebrity or search term
-
 
 block scripts
     script.
