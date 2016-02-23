@@ -1,10 +1,10 @@
 
 
 # Color Scale
-scaleColors = ["#a50026", "#a50026","#d73027","#d73027","#f46d43","#f46d43",
-                "#fdae61","#fdae61","#fee08b","#B4B4B4","#B4B4B4","#d9ef8b",
-                "#d9ef8b","#a6d96a","#a6d96a","#66bd63","#66bd63","#1a9850",
-                "#1a9850","#006837","#006837"]
+scaleColors = ["#a50026", "#C11940","#d73027","#DC4139","#F04539","#F5504D",
+                "#FD6060","#F87575","#DD8E8E","#B4B4B4","#B4B4B4","#BCF08C",
+                "#d9ef8b","#92E16E","#a6d96a","#71C96E","#66bd63","#21B04C",
+                "#1a9850","#027D35","#006837"]
 
 # Global Variables
 chart = 0
@@ -40,9 +40,11 @@ nv.addGraph ->
 
   # Chart axis
   chart.xAxis
-    .axisLabel('Time')
+    .axisLabel('Time (HH:MM)')
     .tickFormat (d) -> d3.time.format('%I:%M') new Date(d)
-  chart.yAxis.axisLabel('Sentiment').tickFormat d3.format('.02f')
+  chart.yAxis
+    .axisLabel('Sentiment (+/-)')
+    .tickFormat (d) -> Math.round(d/10)*10 +'%'
 
   # Specify data and render
   rawData = makeData()
@@ -54,10 +56,17 @@ nv.addGraph ->
 
 # Dynamically add a new point to the graph
 window.addPoint = (time, sentiment, label) ->
-  size = Math.round(label.length/10) + (sentiment * 10)
+  axisSent = sentiment + (Math.round(((Math.random()/10)-0.05) *10000)/10000)
+  size = Math.round(label.length/10) + (Math.abs(sentiment) * 10)
   rawData[sentimentToIndex[Math.round(sentiment*10)/10]].values.push {
-    x: time, y: sentiment * 100, size: size, label: label
+    x: time, y: axisSent * 100, size: size, label: label
   }
   chartData.datum(rawData).transition().duration(500).call(chart)
   nv.utils.windowResize(chart.update)
 
+$ ->
+  $('#real-time-scatter').hide()
+  setTimeout(->
+    $('#scatter-loader').fadeOut('slow')
+    $('#real-time-scatter').slideDown('slow')
+  , 1500)
