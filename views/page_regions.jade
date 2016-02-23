@@ -1,6 +1,6 @@
 extends layout
 block head
-    link(rel='stylesheet', href='/bower_components/Autocompleter/jquery.autocompleter.css')
+    link(rel='stylesheet', href='/bower_components/jquery-autocompleter/jquery.autocompleter.css')
     script(src='https://www.gstatic.com/charts/loader.js')
     script(src='https://www.google.com/jsapi')
 block content
@@ -40,7 +40,7 @@ block content
             br
             br
 block scripts
-    script(type='text/javascript', src='/bower_components/Autocompleter/jquery.autocompleter.min.js')
+    script(type='text/javascript', src='/bower_components/jquery-autocompleter/jquery.autocompleter.min.js')
     script(type='text/javascript').
         var sentimentResults = !{JSON.stringify(data)};
         var searchRegion = !{JSON.stringify(summary_text.searchRegion)};

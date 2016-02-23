@@ -46,6 +46,7 @@
     "d3tip": "https://raw.githubusercontent.com/Caged/d3-tip/master/index.js",
     "c3": "~0.4.10",
     "radar-chart-d3": "https://github.com/alangrafu/radar-chart-d3.git#~1.2.1",
-    "Materialize": "materialize#~0.97.5"
+    "Materialize": "materialize#~0.97.5",
+    "jquery-autocompleter": "Autocompleter#~0.1.9"
   }
 }
