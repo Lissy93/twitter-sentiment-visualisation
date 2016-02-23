@@ -70,3 +70,11 @@ $ ->
     $('#scatter-loader').fadeOut('slow')
     $('#real-time-scatter').slideDown('slow')
   , 1500)
+
+
+# Socket.io
+if io?
+  socket = io.connect('http://localhost:8080');
+  socket.on 'anyTweet', (tweetObj) ->
+    if tweetObj.sentiment != 0 && tweetObj.body.indexOf('http') == -1
+      window.addPoint(new Date().getTime(), tweetObj.sentiment, tweetObj.body)
