@@ -1,6 +1,6 @@
 extends layout
 block head
-    link(rel='stylesheet', href='/bower_components/Autocompleter/jquery.autocompleter.css')
+    link(rel='stylesheet', href='/bower_components/jquery-autocompleter/jquery.autocompleter.css')
     script(src='https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places,visualization')
 
 block content
@@ -27,7 +27,7 @@ block content
                 img.pull-right(src='/images/heatmap-key.png')
 
 block scripts
-    script(type='text/javascript', src='/bower_components/Autocompleter/jquery.autocompleter.min.js')
+    script(type='text/javascript', src='/bower_components/jquery-autocompleter/jquery.autocompleter.min.js')
     script(type='text/javascript', src='/bower_components/markerclusterer_compiled/index.js')
     script(type='text/javascript', src='https://cdn.socket.io/socket.io-1.4.3.js')
     script(type='text/javascript').
