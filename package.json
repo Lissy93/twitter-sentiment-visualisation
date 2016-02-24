@@ -30,6 +30,7 @@
     "haven-entity-extraction": "git://github.com/Lissy93/haven-entity-extraction.git",
     "haven-sentiment-analysis": "git://github.com/Lissy93/haven-sentiment-analysis.git",
     "jade": "^1.11.0",
+    "mobile-redirect": "0.0.1",
     "moment": "^2.11.2",
     "mongoose": "^4.1.6",
     "morgan": "^1.6.1",
