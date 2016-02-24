@@ -103,7 +103,7 @@ window.updateHexData = (newData) ->
 
 # Socket.io
 if io?
-  socket = io.connect('http://localhost:8080');
+  socket = io.connect();
   socket.on 'anyTweet', (tweetObj) ->
     if tweetObj.sentiment != 0
       tweet = sentiment: tweetObj.sentiment, body: tweetObj.body

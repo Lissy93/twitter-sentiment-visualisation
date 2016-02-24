@@ -74,7 +74,7 @@ $ ->
 
 # Socket.io
 if io?
-  socket = io.connect('http://localhost:8080');
+  socket = io.connect();
   socket.on 'anyTweet', (tweetObj) ->
     if tweetObj.sentiment != 0 && tweetObj.body.indexOf('http') == -1
       window.addPoint(new Date().getTime(), tweetObj.sentiment, tweetObj.body)

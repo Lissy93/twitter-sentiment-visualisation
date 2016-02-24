@@ -2,7 +2,7 @@
   "name": "twitter-sentiment-visualisation",
   "description": "A series of data visualisations showing overall sentiment from Tweets by location and/or topic",
   "author": "Alicia Sykes <alicia@aliciasykes.com>",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",

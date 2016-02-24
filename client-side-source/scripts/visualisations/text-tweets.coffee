@@ -25,7 +25,7 @@ makeDiv = (tweet) ->
   html += "</div>"
   html
 
-socket = io.connect('http://localhost:8080');
+socket = io.connect();
 
 socket.on 'anyTweet', (tweetObj) ->
 

@@ -1,8 +1,6 @@
 
 if searchTerm == ''
-  url = require('../client-scripts-config.coffee').uri
-
-  socket = io.connect(url)
+  socket = io.connect()
 
   socket.on 'tweet', (tweetObj) ->
     heatMapItem =
