@@ -5,27 +5,19 @@ scaleColors = ["#a50026", "#C11940","#d73027","#DC4139","#F04539","#F5504D",
                 "#FD6060","#F87575","#DD8E8E","#B4B4B4","#B4B4B4","#BCF08C",
                 "#d9ef8b","#92E16E","#a6d96a","#71C96E","#66bd63","#21B04C",
                 "#1a9850","#027D35","#006837"]
+fillScale = d3.scale.linear()
+.domain([-1,-0.9, -0.8, -0.7, -0.6, -0.5, -0.4, -0.3, -0.2, -0.1,
+          0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1])
+.range(scaleColors)
+
 
 # Global Variables
 chart = 0
 chartData = 0
 rawData = []
-sentimentToIndex = {}
 
 # Generate the structure for the initial data object
-makeData = ->
-  data = []
-  groups = []
-  p = -1
-  i = 0
-  while p < 1
-    q =  Math.round(p*10)/10
-    groups.push q
-    data.push {key: "#{groups[i]*100}%", values: []}
-    sentimentToIndex[q]=i
-    p += 0.1
-    i++
-  data
+makeData = -> [{key: "Sentiment Data", values: []}]
 
 # Generate NVd3 Graph with options
 nv.addGraph ->
@@ -34,9 +26,9 @@ nv.addGraph ->
     .showDistX(true)
     .showDistY(true)
     .transitionDuration(350)
-    .color(scaleColors)
+#    .color(scaleColors)
     .showLegend(false)
-    .tooltipContent (key, y, e, graph) -> " <h5> #{graph.point.label} </h5> "
+    .tooltipContent (key, y, e, graph) -> "<b style='max-width: 100ch'> #{graph.point.label} </b> "
 
   # Chart axis
   chart.xAxis
@@ -58,8 +50,8 @@ nv.addGraph ->
 window.addPoint = (time, sentiment, label) ->
   axisSent = sentiment + (Math.round(((Math.random()/10)-0.05) *10000)/10000)
   size = Math.round(label.length/10) + (Math.abs(sentiment) * 10)
-  rawData[sentimentToIndex[Math.round(sentiment*10)/10]].values.push {
-    x: time, y: axisSent * 100, size: size, label: label
+  rawData[0].values.push {
+    x: time, y: axisSent * 100, size: size, label: label, color: fillScale(sentiment)
   }
   chartData.datum(rawData).transition().duration(500).call(chart)
   nv.utils.windowResize(chart.update)
