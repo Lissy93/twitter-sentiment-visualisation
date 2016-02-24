@@ -8,6 +8,7 @@ var cookieParser  = require('cookie-parser');
 var bodyParser    = require('body-parser');
 var mongoose      = require('mongoose');
 var http          = require('http');
+var mdirect = require('mobile-redirect');
 var streamTweets  = require('stream-tweets');
 var config        = require('./config/app-config');
 var streamHandler = require('./utils/stream-handler');
@@ -35,7 +36,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
-
+app.use(mdirect({redirectPath: '/mobile' }));
 
 /* Connect to MongoDB */
 mongoose.connect(config.db.URL);
