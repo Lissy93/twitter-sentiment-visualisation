@@ -35,7 +35,7 @@ makeRegionMapData = (tweets) ->
   results
 
 getRegions = () ->
-  fs.readFileSync(__dirname+'../../public/data/regions.csv','utf8').split('\r\n')
+  fs.readFileSync(__dirname+'/../public/data/regions.csv','utf8').split('\r\n')
 
 
 # Render to page
