@@ -75,7 +75,7 @@ It is also possible to show just local trends, where the user can enter a locati
 
 
 ## Text Tweets
-![](5_raw-tweets.png)
+![](5_raw-tweets.PNG)
 
 This page simply displays Tweets in their text form, useful for reading exactly what people are saying, both positive and negative, about a specific topic. 
 
@@ -105,7 +105,7 @@ This data visualisation is a bit of fun, it shows sentiment geographically eithe
 
 
 ## Time Line
-![](8_sentiment-time-of-day.png)
+![](8_sentment-time-of-day.png)
 
 The timeline show's sentiment over time. The aim is to capture which time of day people Tweet the most positive or negative things, either overall or regarding s apcific topic or search-term.
 
