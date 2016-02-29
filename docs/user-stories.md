@@ -191,6 +191,7 @@
 
 ## Home Screen
 > Stories relating to the initial landing page of the application
+
 **TSV-H037 As a user I should find the start page clear and concise**
 -	AC1 It will not contain more information than necessary 
 -	AC2 It will give a very brief overview about what the application is, and what it can be used for
@@ -208,6 +209,7 @@
 
 ## Regional Map Screen
 > Stories relating to the regional map front-end
+
 ** TSV-I040 - As a user I should be able to get an immediate overview of results**
 -	AC1 Should show geographical sentiment towards a specified topic
 -	AC2 Each region should be a single colour, with no gradients
@@ -225,6 +227,7 @@ TSV-I042 – As a user I should be able to see a list of most positive and negat
 
 ## Trending Screen
 > Stories relating to the trending topics front-end
+
 **TSV-J043 - As a user I should be able see what is currently trending worldwide**
 -	AC1 A list of the top ten trends worldwide will be shown
 -	AC2 The sentiment of each will be indicated by colour
@@ -264,8 +267,10 @@ TSV-I042 – As a user I should be able to see a list of most positive and negat
 
 **TSV-K049 – As a user I should see new tweets come in in real-time**
 -	AC1 – The user shouldn’t have to refresh page to see new data
-Word Cloud
-Stories for the front-end of the word cloud screen
+
+
+## Word Cloud
+>Stories for the front-end of the word cloud screen
 
 **TSV-L050 – As a user I can see a word cloud after entering my search term**
 -	AC1 Words should vary in size depending on number of times used
@@ -295,6 +300,7 @@ Stories for the front-end of the word cloud screen
 
 ## 3D Sentiment Globe
 > Stories for the front-end of the 3D sentiment globe
+
 **TSV-N054 – As a user I can interact with the globe**
 -	AC1 The user should be able to rotate the globe
 -	AC2 The user should be able to zoom in and out of the globe
@@ -365,6 +371,7 @@ Stories for the front-end of the word cloud screen
 
 ## Search Screen
 > User stories relating the search results screen
+
 **TSV-S067 – As a user I can make a search**
 -	AC1 Either from the homepage, initial search page or search results page
 
