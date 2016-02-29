@@ -116,9 +116,9 @@
 -	AC4 Calls must be made asyncrously 
 
 **TSV-E023 As a system I should have reasonable response times in fetching Tweets from the Twitter API**
--	AC1 � There should be as few requests as physically possible
--	AC2 � Only data that is going to be uses should be requested where possible
--	AC3 � If a data request takes more than 4 seconds it should time out and a backup data source used or show appropriate error message
+-	AC1 � There should be as few requests as physically possible
+-	AC2 � Only data that is going to be uses should be requested where possible
+-	AC3 � If a data request takes more than 4 seconds it should time out and a backup data source used or show appropriate error message
 
 **TSV-E024 As a system I should respond with a suitable error if there is a problem fetching Tweets from the Twitter API**
 -	AC1 An error code and clear message should be displayed
@@ -178,9 +178,234 @@
 -	AC2 When the number of Tweets reaches this number start to delete older Tweets whenever a new one is inserted 
 
 **TSV-G034 As a system I should be able to check and make safe data before inserting** 
--	AC1 All unnecessary data, such as URL�s, pictures and additional handles will be removed
+-	AC1 All unnecessary data, such as URL�s, pictures and additional handles will be removed
 -	AC2 All special characters will be escaped 
 -	AC3 The maximum length per Tweet will be cut to 145 characters
 
 **TSV-G035 As a system I should use both the cached and live data in conjunction or depending on user selection**
 -	AC1 If the user has searches for a location or hashtag, while it is loading database data will be displayed, and the map will then update according to new Tweets
+
+
+
+
+
+## Home Screen
+> Stories relating to the initial landing page of the application
+**TSV-H037 As a user I should find the start page clear and concise**
+-	AC1 It will not contain more information than necessary 
+-	AC2 It will give a very brief overview about what the application is, and what it can be used for
+
+**TSV-H038 As a user I can make a search directly from the home page**
+-	AC1 There will be a search field to enter a keyword or topic
+-	AC2 The user will be redirected to the search results page to display the findings
+-	AC3 It should be clear to the user where to search and what to enter
+
+**TSV-H039 As a user I can navigate to any other part of the application directly from the home screen**
+-	AC1 There will be a link to each section of the website, including all 10 data visualisations
+-	AC2 There will also be a link to the `about` page and the source code and documentation
+
+
+
+## Regional Map Screen
+> Stories relating to the regional map front-end
+** TSV-I040 - As a user I should be able to get an immediate overview of results**
+-	AC1 Should show geographical sentiment towards a specified topic
+-	AC2 Each region should be a single colour, with no gradients
+-	AC3 A region should be clickable 
+-	AC4 When user hovers or clicks a region, they should be able to view numeric results
+
+**TSV-I041 – As a user I should be able search for a specific search term**
+-	AC1 There must be an input box
+-	AC2 Results must then be rendered according to the value of the search field
+TSV-I042 – As a user I should be able to see a list of most positive and negative regions
+-	AC1 After the user has entered their topic and the map has been rendered, a bullet point list of the most positive regions, and most negative regions towards the specified topic.
+-	AC2 Items in the list must display a sentiment value in percentage form
+-	AC3 Items in the list should be clickable
+
+
+## Trending Screen
+> Stories relating to the trending topics front-end
+**TSV-J043 - As a user I should be able see what is currently trending worldwide**
+-	AC1 A list of the top ten trends worldwide will be shown
+-	AC2 The sentiment of each will be indicated by colour
+-	AC3 The list will be sorted by volume of tweets, with the most popular trends at the top
+
+**TSV-J044 – As a user I should be able to enter a custom location to view local trends**
+-	AC1 - An input filed will be provided for the user to enter a location
+-	AC2 The user should be able to enter any place e.g. ‘OX3 0BP’, ’14 Greys Road’, ‘California’, ‘Europe’. The Google Places API will then be used to find the latitude and longitude of the given string.
+-	AC3 The trends displayed should be specific to the users location
+
+**TSV-J045 – As a user I can click a trend to find out more**
+-	AC1 The user should be able to click any trend and be redirected to the search page
+-	AC2 It should be clear to the user the trends are clickable 
+-	AC3 Trends in the bubble chart (see below) will also be clickable 
+
+**TSV-J046 – As a user I can view trends visually, to get an overview of volume and sentiment**
+-	AC1 There will be a bubble diagram below the list of trends
+-	AC2 The diagram will show one bubble for each trend
+-	AC3 The size of the bubble will represent the volume of tweets for that trend
+-	AC4 The colour of each bubble will indicate sentiment
+-	AC5 The bubble will be clickable to gain more information about a given trend
+
+
+
+## Text Tweets Screen
+> Stories for the front-end of the text tweets screen, which shows displays raw tweets
+
+**TSV-K047 – As a user I should be able to read the plain text tweets relating to a chosen topic/ word**
+-	AC1 There must be a search field for the user to enter their topic or keyword into
+-	AC2 Once they press enter fresh data should be fetched and rendered
+-	AC3 Tweets should be laid out in a clear and concise manor
+
+**TSV-K048 – As a user I should be able to quickly pick out the key information while reading**
+-	AC1 Positive and negative tweets should be in separate columns
+-	AC2 Each tweet should have their keywords in bold, to make scan reading easier
+-	AC3 The sentiment, date/time and location of each tweet should be displayed
+
+**TSV-K049 – As a user I should see new tweets come in in real-time**
+-	AC1 – The user shouldn’t have to refresh page to see new data
+Word Cloud
+Stories for the front-end of the word cloud screen
+
+**TSV-L050 – As a user I can see a word cloud after entering my search term**
+-	AC1 Words should vary in size depending on number of times used
+-	AC2 Sentiment should be represented by the shade of colour, red = negative, green = positive, grey = neutral and all colours in between show sentiment in between
+
+**TSV-L051 – As a user I can see a text list of the top words used in positive and negative tweets**
+-	AC1 There should be two lists, one for top words used in positive tweets, the other negative
+-	AC2 Each word should have an average sentiment value for associated tweets, in percentage
+-	AC3 Each word should be followed by a number, of how many times it occurred in that set
+-	AC4 The words should be clickable to view more 
+
+
+
+## Word Scatter Plot
+> Stories for the front-end of the word scatter plot screen
+
+**TSV-M052 – As a user I can view the scatter plot for a given search term/ keyword**
+-	AC1 Sentiment should be displayed along the y-axis
+-	AC2 Frequency along the x-axis
+-	AC3 The colour of the points should also be relative to the sentiment
+
+**TSV-M053 – As a user I can hover over a point to view the associated key word**
+-	AC1 The word should be displayed as a tooltip
+-	AC2 The current point should slightly change colour/ size to make clear which one it is
+-	AC3 The user should also be able to click a point to search for that word
+
+
+## 3D Sentiment Globe
+> Stories for the front-end of the 3D sentiment globe
+**TSV-N054 – As a user I can interact with the globe**
+-	AC1 The user should be able to rotate the globe
+-	AC2 The user should be able to zoom in and out of the globe
+
+**TSV-N055 – As a user I can see sentiment for each location (that has Twitter) on the globe**
+-	AC1 There should be vertical bars for each settlement with Twitter
+-	AC2 The colour of the bar will represent sentiment
+-	AC3 The height of the bar will represent scale of sentiment and volume of tweets
+
+**TSV-N056 – As a user I can view statistics of the data shown on the globe**
+-	AC1 Including number of tweets displayed and average sentiment
+-	AC2 There will also be links to view the same data in other forms
+
+
+
+## Timeline
+> User stories relating to the sentiment over time-of-day visualisation
+
+**TSV-O057 – As a user I can see both positive and negative sentiment over the past 24 hours**
+-	AC1 The positive sentiment will be represented by a green line and shaded area
+-	AC2 The negative sentiment will be represented by a red line and shaded area
+**TSV-O058 – As a user I can interact with the map and the axis**
+-	AC1 The user should be able to hover over the line to see the sentiment at a given time
+-	AC2 The user should be able to hover over the line to see time for a given sentiment value
+
+
+
+## Comparison
+> User stories relating to the topic comparison page
+
+**TSV-P059 – As a user I can enter between one and four search terms**
+-	AC1 The screen will be divided into the number of search terms entered 
+-	AC2 The user should not be able to enter over four topics, or zero topics
+
+**TSV-P060 – As a user I can see the overall sentiment for each of my search terms**
+-	AC1 this should be displayed in the form of a donut chart for each topic
+-	AC2 the chart should be labelled, and the user can hover over it to get more details
+
+**TSV-P061 – As a user I can see most commonly used words and their sentiment for each topic**
+-	AC1 the top ten words will be displayed
+-	AC2 the words will be coloured according to sentiment
+-	AC3 the words will be clickable 
+
+**TSV-P062 – As a user I can view links to the other data visualisations for each of the topics**
+
+
+## Tone Identification
+> User stories relating to screen that identifies tone of language of tweets
+
+**TSV-Q063 – As a user I can view a summary of the key tones identified for a topic**
+-	AC1 these should be displayed in the form of no more than 12 mini bars on a chart
+-	AC2 the user should be able to hover over a bar to get a more accurate percentage value
+
+**TSV-Q64 – As a user I can see a more detailed breakdown in the form of a segmented radar chart**
+
+
+## Entity Extraction
+> User stories relating to the screen that displays the entity extraction results
+
+**TSV-R065 – As a user I can view the key entities extracted from a set of tweets**
+-	AC1 Entities should be grouped into categories
+-	AC2 The first few matches for each entity should be displayed
+-	AC3 Where possible an image should be shown for each entity, pulled from Wikipedia
+
+**TSV-R066 – As a user I can see what volume of each entity and category visually on a Sankey chart**
+
+
+
+## Search Screen
+> User stories relating the search results screen
+**TSV-S067 – As a user I can make a search**
+-	AC1 Either from the homepage, initial search page or search results page
+
+**TSV-S068 – As a user I can get a quick overview of the average sentiment of my topic**
+-	AC1 A gauge should show average sentiment
+-	AC2 A hexagon mesh should give a quick overview of sentiment of individual tweets
+
+**TSV-S069 – As a user I can see which keywords are most commonly used in the twitter results**
+-	AC1 Should be listed in order of volume of use
+-	AC2 Should be highlighted according to sentiment
+-	AC3 Should be clickable 
+
+**TSV-S070 – As a user I can see a summary of the tones identified** 
+-	AC1 Each tone identified and the percentage certainty should be displayed
+-	AC2 Displayed in the form of bars
+-	AC3 User should be able to hover to see exact percent
+-	AC4 There should be a see more button, directing the user to the tone identification page
+
+**TSV-S071 – As a user I can see a summary of the entities extracted**
+-	AC1 the top six categories for that topic should be displayed
+-	AC2 the entities in each six categories should be shown
+-	AC3 if the user hovers over an entity they should be able to see number of occurrences
+-	AC4 the entities should be clickable
+-	AC5 if the system has found an associated Wikipedia image for the entity, it should be displayed
+-	AC6 there should be a read more button to find and display more entities on the entity screen
+
+**TSV-S072 – As a user I can see how my topic compares to the rest of Twitter**
+-	AC1 Should be displayed as a donut chart
+-	AC2 There should be three input fields to enter more topics to compare with search term
+-	AC3 Should provide a link to the comparison screen
+
+**TSV-S073 – As a user I can read a set of tweets relating to my topic**
+-	AC1 The top five positive tweets should be shown in one column
+-	AC2 The top five negative tweets should be shown in another column
+-	AC3 There should be a load more button, to show more tweets from topic
+-	AC4 The sentiment for each tweet should be shown
+-	AC5 The location (if applicable) for each tweet should be shown as small grey text
+-	AC6 The time tweets should be displayed in a readable form in small grey text
+-	AC7 The keywords of each tweet should be highlighted in bold, and clickable
+
+**TSV-S074 – As a user I can view more results for my search term on each data visualisation**
+-	AC1 A thumbnail with image for each applicable data visualisation should be shown
+-	AC2 Each page will show relevant results to that search term
+
