@@ -6,7 +6,6 @@ moment = require 'moment'
 placeLookup = require 'place-lookup'
 
 placesApiKey = require('../config/keys').googlePlaces
-
 blankPlace = { place_name: '', location: { lat: 0.0000000, lng: 0.0000000 } }
 
 
@@ -25,7 +24,7 @@ isSuitableForDb = (tweetData) ->
   if !tweetData.location.location.lat? then return false
   if !tweetData.location.location.lng? then return false
   # new! to make the db fill up more slowly, reject all slightly neutral tweets
-  if tweetData.sentiment < 0.3 && tweetData.sentiment > -0.3 then return false
+  if tweetData.sentiment < 0.4 && tweetData.sentiment > -0.2 then return false
   return true
 
 
