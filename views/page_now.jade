@@ -1,7 +1,7 @@
 extends layout
 
 block head
-    link(href='/bower_components/nvd3/build/nv.d3.min.css', rel='stylesheet')
+    link(href='/bower_components/c3/c3.min.css', rel='stylesheet')
 
 block content
     .container
@@ -14,7 +14,8 @@ block content
             | <br><br>
         .row
             .col.s12.m5.l4
-                .card-panel#mini-bar-charts: h3.flow-text +/- Proportions
+                .card-panel: h3.flow-text +/- Proportions
+                    svg#mini-bar-charts.center-block(style='width: 90%')
             .col.s12.m7.l8
                 .card-panel#geo-loacations: h3.flow-text Live Sentiment Tweets by Location
         .row
@@ -56,8 +57,8 @@ block content
 
 block scripts
     script(type = 'text/javascript', src = 'https://cdn.socket.io/socket.io-1.4.3.js')
-    script(type = 'text/javascript', src = 'http://nvd3.org/assets/lib/d3.v3.js')
-    script(type='text/javascript', src='http://nvd3.org/assets/js/nv.d3.js')
+    script(type='text/javascript', src='/bower_components/d3/d3.min.js')
+    script(type = 'text/javascript', src = '/bower_components/c3/c3.min.js')
     script(type='text/javascript', src='/javascripts/charts/now.js')
 
 
