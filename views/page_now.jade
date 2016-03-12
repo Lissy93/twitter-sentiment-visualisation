@@ -5,6 +5,13 @@ block head
 
 block content
     .container
+        h2.flow-text(style='font-size: 2em; margin-bottom: 5px;') The mood from around the world, right now.
+        span.small-grey Sentiment results calculated from real-time Twitter data,
+            | and illustrated on a series of isomorphic D3.js data visualisations.<br>
+            | The sentiment analysis algorithm is based on the lexicon approach,
+            | and written in CoffeeScript, all code is open sauce on
+            | <a href="https://github.com/Lissy93/twitter-sentiment-visualisation">GitHub</a>
+            | <br><br>
         .row
             .col.s12.m5.l4
                 .card-panel#mini-bar-charts: h3.flow-text +/- Proportions
@@ -43,6 +50,9 @@ block content
 
 
         #scatter-loader.center-block(style='width: 50px; margin-top: 200px'): include ./component_spinner
+
+    include ./footer
+
 
 block scripts
     script(type = 'text/javascript', src = 'https://cdn.socket.io/socket.io-1.4.3.js')
