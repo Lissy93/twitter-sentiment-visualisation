@@ -1,19 +1,22 @@
 # Twitter Sentiment Visualisations
 
 [![Build Status](https://travis-ci.org/Lissy93/twitter-sentiment-visualisation.svg?branch=dev)](https://travis-ci.org/Lissy93/twitter-sentiment-visualisation)
-[![devDependency Status](https://david-dm.org/lissy93/twitter-sentiment-visualisation/dev-status.svg)](https://david-dm.org/lissy93/twitter-sentiment-visualisation#info=devDependencies)
 [![Dependency Status](https://david-dm.org/lissy93/twitter-sentiment-visualisation.svg)](https://david-dm.org/lissy93/twitter-sentiment-visualisation)
+[![devDependency Status](https://david-dm.org/lissy93/twitter-sentiment-visualisation/dev-status.svg)](https://david-dm.org/lissy93/twitter-sentiment-visualisation#info=devDependencies)
 [![Code Climate](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation/badges/gpa.svg)](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation)
-[![Test Coverage](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation/badges/coverage.svg)](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation/coverage)
 [![Maintenance](https://img.shields.io/maintenance/yes/2016.svg)](https://github.com/Lissy93/twitter-sentiment-visualisation)
+[![Test Coverage](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation/badges/coverage.svg)](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation/coverage)
 
 
-[![Stack Share](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/Lissy93/sentiment-sweep)
-[![Gitter](https://badges.gitter.im/Lissy93/twitter-sentiment-visualisation.svg)](https://gitter.im/Lissy93/twitter-sentiment-visualisation?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-[![npm](https://img.shields.io/npm/v/npm.svg)](https://github.com/Lissy93/twitter-sentiment-visualisation)
 [![node](https://img.shields.io/node/v/gh-badges.svg)](https://github.com/Lissy93/twitter-sentiment-visualisation)
-[![GitHub commits](https://img.shields.io/github/commits-since/SubtitleEdit/subtitleedit/3.4.7.svg)](https://github.com/Lissy93/twitter-sentiment-visualisation)
+[![npm](https://img.shields.io/npm/v/npm.svg)](https://github.com/Lissy93/twitter-sentiment-visualisation)
+[![Bower](https://img.shields.io/bower/v/bootstrap.svg)](https://github.com/Lissy93/twitter-sentiment-visualisation)
+[![trello](https://img.shields.io/badge/Methodology-Agile-blue.svg)](https://img.shields.io/badge/Methodology-Agile-blue.svg)
+[![Stack Share](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/Lissy93/sentiment-sweep)
 [![npm](https://img.shields.io/npm/l/express.svg)](https://github.com/Lissy93/twitter-sentiment-visualisation)
+[![Gitter](https://badges.gitter.im/Lissy93/twitter-sentiment-visualisation.svg)](https://gitter.im/Lissy93/twitter-sentiment-visualisation?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![GitHub commits](https://img.shields.io/github/commits-since/SubtitleEdit/subtitleedit/3.4.7.svg)](https://github.com/Lissy93/twitter-sentiment-visualisation)
+
 
 > A web app that uses data from Twitter combined with sentiment analysis and
 > emotion detection to create a series of data visualisations to illustrate
