@@ -5,7 +5,15 @@
 [![Dependency Status](https://david-dm.org/lissy93/twitter-sentiment-visualisation.svg)](https://david-dm.org/lissy93/twitter-sentiment-visualisation)
 [![Code Climate](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation/badges/gpa.svg)](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation)
 [![Test Coverage](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation/badges/coverage.svg)](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation/coverage)
+[![Maintenance](https://img.shields.io/maintenance/yes/2016.svg)](https://github.com/Lissy93/twitter-sentiment-visualisation)
+
+
 [![Stack Share](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/Lissy93/sentiment-sweep)
+[![Gitter](https://badges.gitter.im/Lissy93/twitter-sentiment-visualisation.svg)](https://gitter.im/Lissy93/twitter-sentiment-visualisation?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![npm](https://img.shields.io/npm/v/npm.svg)](https://github.com/Lissy93/twitter-sentiment-visualisation)
+[![node](https://img.shields.io/node/v/gh-badges.svg)](https://github.com/Lissy93/twitter-sentiment-visualisation)
+[![GitHub commits](https://img.shields.io/github/commits-since/SubtitleEdit/subtitleedit/3.4.7.svg)](https://github.com/Lissy93/twitter-sentiment-visualisation)
+[![npm](https://img.shields.io/npm/l/express.svg)](https://github.com/Lissy93/twitter-sentiment-visualisation)
 
 > A web app that uses data from Twitter combined with sentiment analysis and
 > emotion detection to create a series of data visualisations to illustrate
