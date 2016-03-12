@@ -5,6 +5,7 @@
 [![Dependency Status](https://david-dm.org/lissy93/twitter-sentiment-visualisation.svg)](https://david-dm.org/lissy93/twitter-sentiment-visualisation)
 [![Code Climate](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation/badges/gpa.svg)](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation)
 [![Test Coverage](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation/badges/coverage.svg)](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation/coverage)
+[![Stack Share](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/Lissy93/sentiment-sweep)
 
 > A web app that uses data from Twitter combined with sentiment analysis and
 > emotion detection to create a series of data visualisations to illustrate
@@ -75,7 +76,7 @@ To run tests: `npm test`
 - Continuous Integration Testing - [Travis CI](https://github.com/travis-ci/travis-ci)
 - Dependency Checking - [David](https://github.com/alanshaw/david)
 - Automated Code Review's - [Code Climate](https://github.com/codeclimate/codeclimate)
-- Headless Browser Testing – [PhantomJS](https://github.com/ariya/phantomjs)
+- Headless Browser Testing ï¿½ [PhantomJS](https://github.com/ariya/phantomjs)
 - Testing HTTP services - [SuperTest](https://github.com/visionmedia/supertest)
 
 More details on each of the tools and how they will be implemented along 
