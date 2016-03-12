@@ -1,0 +1,55 @@
+extends layout
+
+block head
+    link(href='/bower_components/nvd3/build/nv.d3.min.css', rel='stylesheet')
+
+block content
+    .container
+        .row
+            .col.s12.m5.l4
+                .card-panel#mini-bar-charts: h3.flow-text +/- Proportions
+            .col.s12.m7.l8
+                .card-panel#geo-loacations: h3.flow-text Live Sentiment Tweets by Location
+        .row
+            .col.s12.m12
+                .card-panel#bullet-chart: h3.flow-text Bullet Chart
+        .row
+            .col.s12.m6
+                .card-panel: h3.flow-text Recent Positive Tweets
+            .col.s12.m6
+                .card-panel: h3.flow-text Recent Negative Tweets
+        .row
+            .col.s12.m12
+                .card-panel: h3.flow-text Search
+        .row
+            .col.s4.m4
+                .card-panel: h4.flow-text Homepage
+            .col.s4.m4
+                .card-panel: h4.flow-text About Sentiment Sweep
+            .col.s4.m4
+                .card-panel: h4.flow-text Source & Documentation
+
+        .row
+            h2 More Sentiment Data Visualisations
+            p.flow-text.grey-text.darken-4 Click one of the links below to generate the chart with the latest Twitter data
+            each page in pages
+                .col.s6.m4.l3
+                    a(href='/#{page.page}')
+                        .card.home-card
+                            .card-image.waves-effect.waves-block.waves-light
+                                img(src='/images/thumbnails/thumb_#{page.index}.png')
+                            .card-content
+                                span.card-title.grey-text.text-darken-4= page.title
+
+
+        #scatter-loader.center-block(style='width: 50px; margin-top: 200px'): include ./component_spinner
+
+block scripts
+    script(type = 'text/javascript', src = 'https://cdn.socket.io/socket.io-1.4.3.js')
+    script(type = 'text/javascript', src = 'http://nvd3.org/assets/lib/d3.v3.js')
+    script(type='text/javascript', src='http://nvd3.org/assets/js/nv.d3.js')
+    script(type='text/javascript', src='/javascripts/charts/now.js')
+
+
+
+
