@@ -61,6 +61,7 @@ app.use('/sa-comparison',       require('./routes/sa-comparison'));
 app.use('/word-scatter-plot',   require('./routes/word-plot'));
 app.use('/entity-extraction',   require('./routes/entity-extraction'));
 //app.use('/real-time-dashboard', require('./routes/real-time'));
+app.use('/now',         require('./routes/now'));
 app.use('/api/tone',    require('./routes/tone-api'));
 app.use('/api/entity',  require('./routes/entity-api'));
 app.use('/api/db',      require('./routes/db-api'));
