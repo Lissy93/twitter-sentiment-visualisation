@@ -81,8 +81,8 @@ app.use('/mobile', mobileRoute);
 /* Set a stream listener for tweets matching tracking keywords */
 var credentials = require('./config/keys').twitter;
 var twit = new streamTweets(credentials);
-twit.stream('a', function(stream){ streamHandler(stream,io); });
-
+var world = [-180,-90,180,90];
+stream =twit.stream({ locations: world}, function(stream){ streamHandler(stream,io); });
 
 /* catch 404 and forward to error handler */
 app.use(function(req, res, next) {
