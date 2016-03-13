@@ -9,7 +9,7 @@ block content
     .container
         h2.flow-text(style='font-size: 2em; margin-bottom: 5px;') The mood from around the world, right now.
         span.small-grey Sentiment results calculated from real-time Twitter data,
-            | and illustrated on a series of isomorphic D3.js data visualisations.<br>
+            | and illustrated live on a series of isomorphic D3.js data visualisations.<br>
             | The sentiment analysis algorithm is based on the lexicon approach,
             | and written in CoffeeScript, all code is open sauce on
             | <a href="https://github.com/Lissy93/twitter-sentiment-visualisation">GitHub</a>
@@ -19,8 +19,17 @@ block content
                 .card-panel.better-padding: h3.flow-text +/- Proportions
                     svg#mini-bar-charts.center-block(style='width: 90%')
             .col.s12.m7.l8
-                .card-panel.better-padding: h3.flow-text Live Sentiment Tweets by Location
-                    #geo-loacations
+                .card-panel.better-padding
+                    h3.flow-text Live Sentiment Tweets by Location
+                    p.small-grey Dots show (a set of) real-time tweets,
+                        | where color indicates sentiment (green = positive,
+                        | red = negative, and all shades in between).
+                        | Hover over a point for more information.
+                    #geo-chart
+                    span.flow-text More geo-views:
+                    a.waves-effect.waves-teal.btn-flat.inline(href='/map') Heat Map
+                    a.waves-effect.waves-teal.btn-flat.inline(href='/globe') 3D Globe
+                    a.waves-effect.waves-teal.btn-flat.inline(href='/region-map') Regional Map
         .row
             .col.s12.m12
                 .card-panel.better-padding#bullet-chart: h3.flow-text Bullet Chart

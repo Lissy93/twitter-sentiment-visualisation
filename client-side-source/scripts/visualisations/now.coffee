@@ -84,6 +84,6 @@ $ ->
   if io?
     socket = io.connect();
     socket.on 'tweet', (tweetObj) ->
-      if tweetObj.sentiment != 0 && tweetObj.body.indexOf('http') == -1
+      if tweetObj.sentiment != 0
         newTweetArrived(tweetObj)
 
