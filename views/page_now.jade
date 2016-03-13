@@ -18,8 +18,8 @@ block content
             .col.s12.m5.l4
                 .card-panel.better-padding
                     h3.flow-text Stats
-                    p <b class='green-text'>XXX</b> positive,
-                        | and <b class='red-text'>XXX</b> negative
+                    p <b class='green-text' id='countPos'>0</b> positive,
+                        | and <b class='red-text' id='countNeg'>0</b> negative
                         | tweets analysed since landing on this page
                 .card-panel.better-padding
                     h3.flow-text +/- Proportions
@@ -43,7 +43,12 @@ block content
                     a.waves-effect.waves-teal.btn-flat.inline(href='/region-map') Regional Map
         .row
             .col.s12.m12
-                .card-panel.better-padding#bullet-chart: h3.flow-text Bullet Chart
+                .card-panel.better-padding#bullet-container
+                    h3.flow-text Bullet Chart
+                    p.small-grey The bullet chart shows volume of tweets analysed
+                        | since you landed on this page (x-axis), and what proportion
+                        | of these are positive (green) and negative (red).
+                    #bullet-chart
         .row
             .col.s12.m6
                 .card-panel.better-padding: h3.flow-text Recent Positive Tweets
@@ -82,6 +87,7 @@ block scripts
     script(type = 'text/javascript', src = 'https://cdn.socket.io/socket.io-1.4.3.js')
     script(type='text/javascript', src='/bower_components/d3/d3.min.js')
     script(type = 'text/javascript', src = '/bower_components/c3/c3.min.js')
+    script(type = 'text/javascript', src = '/bower_components/bullet.js/index.js')
     script(type='text/javascript', src='/javascripts/now.bundle.js')
 
 
