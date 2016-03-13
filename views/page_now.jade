@@ -36,7 +36,8 @@ block content
                         | where color indicates sentiment (green = positive,
                         | red = negative, and all shades in between).
                         | Hover over a point for more information.
-                    #geo-chart
+                    #geo-chart(style='display: none')
+                    #geo-chart-loader.center-block(style='width: 100px;'): include ./component_spinner
                     span.flow-text More geo-views:
                     a.waves-effect.waves-teal.btn-flat.inline(href='/map') Heat Map
                     a.waves-effect.waves-teal.btn-flat.inline(href='/globe') 3D Globe
