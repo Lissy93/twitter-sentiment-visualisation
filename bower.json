@@ -47,6 +47,7 @@
     "c3": "~0.4.10",
     "radar-chart-d3": "https://github.com/alangrafu/radar-chart-d3.git#~1.2.1",
     "Materialize": "materialize#~0.97.5",
-    "jquery-autocompleter": "Autocompleter#~0.1.9"
+    "jquery-autocompleter": "Autocompleter#~0.1.9",
+    "bullet.js": "https://gist.githubusercontent.com/mbostock/4061961/raw/6eb742223b9795260ba62150196ed0ae4a461e39/bullet.js"
   }
 }
