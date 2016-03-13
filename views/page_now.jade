@@ -51,9 +51,20 @@ block content
                     #bullet-chart
         .row
             .col.s12.m6
-                .card-panel.better-padding: h3.flow-text Recent Positive Tweets
+                .card-panel.better-padding
+                    h3.flow-text Recent Positive Tweets
+                    #topPositive
+                        #topPosLoader.center-block(style='width: 50px;')
+                            br
+                            include ./component_spinner
+
             .col.s12.m6
-                .card-panel.better-padding: h3.flow-text Recent Negative Tweets
+                .card-panel.better-padding
+                    h3.flow-text Recent Negative Tweets
+                    #topNegative
+                        #topNegLoader.center-block(style='width: 50px;')
+                            br
+                            include ./component_spinner
         .row
             .col.s12.m12
                 .card-panel.better-padding: h3.flow-text Search
