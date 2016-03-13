@@ -54,6 +54,15 @@ block content
             .col.s12.m6
                 .card-panel.better-padding
                     h3.flow-text Recent Positive Tweets
+                    .input-field.pull-right(style='width: 100px; top:-40px;')
+                        select#posLimit
+                            option(value='3') 3
+                            option(value='8',  selected='') 8
+                            option(value='10') 10
+                            option(value='15') 15
+                            option(value='25') 25
+                    span How many tweets to show
+
                     #topPositive
                         #topPosLoader.center-block(style='width: 50px;')
                             br
@@ -62,6 +71,14 @@ block content
             .col.s12.m6
                 .card-panel.better-padding
                     h3.flow-text Recent Negative Tweets
+                    .input-field.pull-right(style='width: 100px; top:-40px;')
+                        select#negLimit
+                            option(value='3') 3
+                            option(value='8',  selected='') 8
+                            option(value='10') 10
+                            option(value='15') 15
+                            option(value='25') 25
+                    span How many tweets to show
                     #topNegative
                         #topNegLoader.center-block(style='width: 50px;')
                             br
