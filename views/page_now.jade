@@ -2,6 +2,8 @@ extends layout
 
 block head
     link(href='/bower_components/c3/c3.min.css', rel='stylesheet')
+    script(src='https://www.gstatic.com/charts/loader.js')
+    script(src='https://www.google.com/jsapi')
 
 block content
     .container
@@ -17,7 +19,8 @@ block content
                 .card-panel.better-padding: h3.flow-text +/- Proportions
                     svg#mini-bar-charts.center-block(style='width: 90%')
             .col.s12.m7.l8
-                .card-panel.better-padding#geo-loacations: h3.flow-text Live Sentiment Tweets by Location
+                .card-panel.better-padding: h3.flow-text Live Sentiment Tweets by Location
+                    #geo-loacations
         .row
             .col.s12.m12
                 .card-panel.better-padding#bullet-chart: h3.flow-text Bullet Chart

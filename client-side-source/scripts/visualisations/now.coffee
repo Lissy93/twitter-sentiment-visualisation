@@ -8,6 +8,8 @@ totalNegativeScore = 0
 
 totalNumTweets = 0
 
+regionData = [['Latitude', 'Longitude'],[51.2, -2.54]]
+
 # Generate Initial Bar Chart
 colChart = c3.generate(
   bindto: '#mini-bar-charts'
@@ -24,7 +26,22 @@ colChart = c3.generate(
       tick:  format: -> return '';
   )
 
+# Render region map
+drawRegionsMap = ->
+  data = google.visualization.arrayToDataTable(regionData)
+  options = {
+    colorAxis: {colors: ['#DF0101', '#BDBDBD', '#04B404']}
+    backgroundColor: '#2C2C2C'
+    datalessRegionColor: '#D8D8D8'
+    defaultColor: '#f5f5f5'
+    showZoomOut: true
+  }
 
+  chart = new (google.visualization.GeoChart)(document.getElementById('geo-loacations'))
+  chart.draw data, options
+
+
+# When a new tweet arrives
 window.newTweetArrived = (tweet) ->
   s = tweet.sentiment # Get the sentiment
 
@@ -45,9 +62,14 @@ window.newTweetArrived = (tweet) ->
 
 
 
+google.charts.load 'current', 'packages': [ 'geochart' ]
+google.charts.setOnLoadCallback drawRegionsMap
+
+
 # Socket.io
 if io?
   socket = io.connect();
   socket.on 'tweet', (tweetObj) ->
     if tweetObj.sentiment != 0 && tweetObj.body.indexOf('http') == -1
       window.newTweetArrived(tweetObj)
+
