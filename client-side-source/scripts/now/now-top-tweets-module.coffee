@@ -29,7 +29,7 @@ addTopTweet = (tweet) ->
     $('#topPositive').prepend(tweetHtml)
     $('#topPositive .top-tweet:first').slideDown('normal')
       .css('border-color','#82FF79')
-    if $('#topPositive .top-tweet').length >= $('#posLimit').val()
+    while $('#topPositive .top-tweet').length > $('#posLimit').val()
       $('#topPositive .top-tweet:last').slideUp('normal').remove()
   else if tweet.sentiment < 0
     $('#topNegLoader').slideUp('slow').remove()
@@ -40,6 +40,17 @@ addTopTweet = (tweet) ->
       $('#topNegative .top-tweet:last').slideUp('normal').remove()
 
 $(document).ready -> $('select').material_select()
+
+
+$('#posLimit').change( ->
+  while $('#topPositive .top-tweet').length > $('#posLimit').val()
+    $('#topPositive .top-tweet:last').slideUp('normal').remove()
+)
+
+$('#negLimit').change( ->
+  while $('#topNegative .top-tweet').length > $('#negLimit').val()
+    $('#topNegative .top-tweet:last').slideUp('normal').remove()
+)
 
 module.exports.init     = initTopTweets
 module.exports.addTweet = addTopTweet
