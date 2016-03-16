@@ -5,14 +5,14 @@ nav
         a.brand-logo.waves-effect.waves-block.waves-light(href='/')
             h1.title Sentiment Sweep
         ul#nav-mobile.right.hide-on-med-and-down.waves-effect.waves-block.waves-light
-            li(class=(pageNum===0 ? 'active' : ''))
-                a(href='/') Dashboard
+            li(class=(pageNum===15 ? 'active' : ''))
+                a(href='/now') The World Now
             li(class=(pageNum===1 ? 'active' : ''))
                 a(href='/map') Heat Map
-            li(class=(pageNum === 6 ? 'active' : ''))
-                a(href='/region-map') Region Map
+            li(class=(pageNum === 11 ? 'active' : ''))
+                a(href='/trending') Trending
             li(class=(pageNum === 4 ? 'active' : ''))
-                a(href='/globe') Globe
+                a(href='/globe') 3D Globe
             li(class=(pageNum === 10 ? 'active' : ''))
                 a(href='/comparer') Comparison
             li(class=(pageNum===3 ? 'active' : ''))
@@ -23,3 +23,5 @@ nav
                 a(href='/text-tweets') Raw Tweets
             li(class=(pageNum===8 ? 'active' : ''))
                 a(href='/entity-extraction') Entity Extraction
+            li(class=(pageNum===-1 ? 'active' : ''))
+                a(href='/search') Search
