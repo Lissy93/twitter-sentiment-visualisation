@@ -14,3 +14,6 @@ $(document).ready () ->
 
   $('.nav-wrapper ul').click( () -> root.showLoader())
 
+  # Open external links in a new tab
+  $("a[href^='http://']").attr("target","_blank");
+  $("a[href^='https://']").attr("target","_blank");
