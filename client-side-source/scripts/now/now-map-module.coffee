@@ -24,6 +24,7 @@ drawRegionsMap = ->
 
 # Add tweet to map
 addTweetToMap = (tweet) ->
+  if regionData.length > 300 then regionData.splice(1,1)
   regionData.push [tweet.location.location.lat, tweet.location.location.lng, tweet.sentiment, Math.abs(tweet.sentiment), tweet.body]
   if google.visualization?
     newMapData = google.visualization.arrayToDataTable(regionData)
@@ -31,7 +32,6 @@ addTweetToMap = (tweet) ->
   if regionData.length > 5 && regionData.length < 10
     $('#geo-chart-loader').fadeOut('slow')
     $('#geo-chart').slideDown('slow')
-
 
 
 startDraw = () ->
