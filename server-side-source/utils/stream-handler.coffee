@@ -24,7 +24,7 @@ isSuitableForDb = (tweetData) ->
   if !tweetData.location.location.lat? then return false
   if !tweetData.location.location.lng? then return false
   # new! to make the db fill up more slowly, reject all slightly neutral tweets
-  if tweetData.sentiment < 0.4 && tweetData.sentiment > -0.2 then return false
+  if tweetData.sentiment < 0.4 && tweetData.sentiment > -0.4 then return false
   # And reject tweets that out URL's - they're usually crap!
   if tweetData.body.indexOf('http') != -1 then return false
   return true
