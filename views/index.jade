@@ -35,8 +35,15 @@ block content
               .input-field
                 input#txtKeyword.validate(type='text')
                 label(for='txtKeyword') Enter a keyword, topic, brand, celebrity or search term
-
               h3 ... or scroll down to view more data visualisations
+              span.waves-effect.waves-teal.btn-flat(onClick="document.location.href ='/now'")
+                  | The world according to Twitter is currently
+                  if averageSentiment > 0
+                    | <span style='colour: green'><b>#{averageSentiment*100}%</b> positive </span>.
+                  else
+                     | <span style='color: darkred;'><b>#{averageSentiment * 100}%</b> negative </span>.
+
+                  |  <a href='/now'> See More</a>
 
         #chart.home-hexagons
 
