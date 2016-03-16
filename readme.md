@@ -6,7 +6,6 @@
 [![Code Climate](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation/badges/gpa.svg)](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation)
 [![Maintenance](https://img.shields.io/maintenance/yes/2016.svg)](https://github.com/Lissy93/twitter-sentiment-visualisation)
 [![stable](http://badges.github.io/stability-badges/dist/stable.svg)](#)
-[![Test Coverage](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation/badges/coverage.svg)](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation/coverage)
 
 
 [![node](https://img.shields.io/node/v/gh-badges.svg)](https://github.com/Lissy93/twitter-sentiment-visualisation)
@@ -31,6 +30,7 @@ Several open sauce node modules have been developed and published on npm as part
 - [remove-words] - removes all non-key words from a string sentence
 - [place-lookup] - finds the latitude and longitude for any fuzzy place name using the Google Places API 
 - [hp-haven-sentiment-analysis] - A Node.js client library for HP Haven OnDemand Sentiment Analysis module
+- [haven-entity-extraction] - Node.js client for HP Haven OnDemand Entity Extraction
 - [tweet-location] - calculates the location from geo-tagged Tweets using the Twitter Geo API
 - [find-region-from-location] - given a latitude and longitude calculates which region that point belongs in
 
@@ -131,5 +131,6 @@ of the documentation.
    [remove-words]: <https://www.npmjs.com/package/remove-words>
    [sentiment-analysis]: <https://www.npmjs.com/package/sentiment-analysis>
    [hp-haven-sentiment-analysis]: <https://github.com/Lissy93/haven-sentiment-analysis>
+   [haven-entity-extraction]: <https://github.com/Lissy93/haven-entity-extraction>
    [find-region-from-location]: <https://github.com/Lissy93/find-region-from-location>
 
