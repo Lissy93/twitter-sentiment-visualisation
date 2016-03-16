@@ -36,7 +36,7 @@ block content
                         | where color indicates sentiment (green = positive,
                         | red = negative, and all shades in between).
                         | Hover over a point for more information.
-                    #geo-chart(style='display: none')
+                    #geo-chart(style='display: none; min-height: 350px;')
                     #geo-chart-loader.center-block(style='width: 100px;'): include ./component_spinner
                     span.flow-text More geo-views:
                     a.waves-effect.waves-teal.btn-flat.inline(href='/map') Heat Map
@@ -62,11 +62,13 @@ block content
                             option(value='15') 15
                             option(value='25') 25
                     span How many tweets to show
-
+                    br
+                    br
                     #topPositive
                         #topPosLoader.center-block(style='width: 50px;')
                             br
                             include ./component_spinner
+                    a.waves-effect.waves-teal.btn-flat.center-block.center-align(href='/text-tweets') See More
 
             .col.s12.m6
                 .card-panel.better-padding
@@ -79,20 +81,58 @@ block content
                             option(value='15') 15
                             option(value='25') 25
                     span How many tweets to show
+                    br
+                    br
                     #topNegative
                         #topNegLoader.center-block(style='width: 50px;')
                             br
                             include ./component_spinner
+                    a.waves-effect.waves-teal.btn-flat.center-block.center-align(href='/text-tweets') See More
+
         .row
             .col.s12.m12
-                .card-panel.better-padding: h3.flow-text Search
+                .card-panel.better-padding
+                   h3.flow-text Search
+                   .row
+                       .input-field.col.s12.m8.offset-m1
+                            input#txtKeyword.validate(placeholder='Enter a keyword, place, brand, celebrity, politician, object....', type='text')
+                            label(for='txtKeyword') Enter a topic and press enter
+                        .col.s10.offest-s1.m2
+                            br
+                            a.waves-effect.waves-light.btn.center-block#btnSearch Go!
+
         .row
-            .col.s4.m4
-                .card-panel.better-padding: h4.flow-text Homepage
-            .col.s4.m4
-                .card-panel.better-padding: h4.flow-text About Sentiment Sweep
-            .col.s4.m4
-                .card-panel.better-padding: h4.flow-text Source & Documentation
+            .col.s12.m6
+                .card-panel.better-padding
+                    h4.flow-text About Sentiment Sweep
+                    p Sentiment Sweep aims to captcha the mood of the internet,
+                        | either overall or towards a specific topic. It does
+                        | this by analysing real-time Twitter data, and calculating
+                        | how positive or negative each Tweet it.
+                        | <br><br>
+                        | A series of dynamic data visualisations are then used
+                        | to illustrate the results, and find trends between
+                        | sentiment and other factors such as time of day,
+                        | location, topic, country, people etc
+                    a.waves-effect.waves-teal.btn-flat.pull-right(href='/about') Read More...
+                    br
+                    br
+                    br
+
+            .col.s12.m6
+                .card-panel.better-padding
+                    h4.flow-text Source & Documentation
+                    p Sentiment Sweep is open sauce and distributed under the
+                        | <a href='https://github.com/Lissy93/twitter-sentiment-visualisation/blob/dev/docs/LICENSE.md'>MIT License</a>.
+                        | All code is published on
+                        | <a href='https://github.com/Lissy93/twitter-sentiment-visualisation/'>GitHub (lissy93/twitter-sentiment-visualisations)</a>.
+                        | <br><br>
+                        | The project is primarily written in Node.js CoffeeScript,
+                        | and D3.js is used for the majority of the data visualisations.
+                        | Socket.io is used to manage the live interactions, and the
+                        | data cache is MongoDB. Everything is hosted on a CentOS VPS.
+                        | <br><br>
+                        | All code is thoroughly documented and tested.
 
         .row
             h2 More Sentiment Data Visualisations
@@ -106,8 +146,13 @@ block content
                             .card-content
                                 span.card-title.grey-text.text-darken-4= page.title
 
+        .row
+            .col.s10.offset-s1.m6
+                .card-panel
+                    h4.flow-text For more information....
+                    a.waves-effect.waves-teal.btn-flat(href='/') Visit the home page
 
-        #scatter-loader.center-block(style='width: 50px; margin-top: 200px'): include ./component_spinner
+
 
     include ./footer
 
