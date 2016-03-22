@@ -8,7 +8,6 @@ var cookieParser  = require('cookie-parser');
 var bodyParser    = require('body-parser');
 var mongoose      = require('mongoose');
 var http          = require('http');
-var mdirect = require('mobile-redirect');
 var config        = require('./config/app-config');
 
 
@@ -34,10 +33,23 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/bower_components',  express.static(__dirname + '/bower_components'));
-app.use(mdirect({redirectPath: '/mobile' }));
+
 
 /* Connect to MongoDB */
 mongoose.connect(config.db.URL);
+
+
+/* Check the stream is still connected */
+var stream = null;
+app.use(function (req, res, next) {
+  if (stream != null) { stream.checkStillConnected(); }
+  next();
+});
+
+
+/* Set a stream listener for tweets matching tracking keywords */
+var credentials = require('./config/keys').twitter;
+stream = new (require('./utils/streamer'))(credentials, io);
 
 
 /* Specify which route files to use */
@@ -58,28 +70,11 @@ app.use('/tone-analyzer',       require('./routes/tone-analyzer'));
 app.use('/sa-comparison',       require('./routes/sa-comparison'));
 app.use('/word-scatter-plot',   require('./routes/word-plot'));
 app.use('/entity-extraction',   require('./routes/entity-extraction'));
-//app.use('/real-time-dashboard', require('./routes/real-time'));
 app.use('/now',         require('./routes/now'));
 app.use('/api/tone',    require('./routes/tone-api'));
 app.use('/api/entity',  require('./routes/entity-api'));
 app.use('/api/db',      require('./routes/db-api'));
 app.use('/api/trending',require('./routes/trending-api'));
-
-
-mobileRoute  = express.Router();
-mobileRoute.get('/', function(req, res, next) {
-  return res.render('error', {
-    message: 'Not compatible with your device :\'(',
-    error: {}
-  });
-});
-
-app.use('/mobile', mobileRoute);
-
-
-/* Set a stream listener for tweets matching tracking keywords */
-var credentials = require('./config/keys').twitter;
-new (require('./utils/streamer'))(credentials, io);
 
 
 /* catch 404 and forward to error handler */
