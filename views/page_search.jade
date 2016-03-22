@@ -166,11 +166,13 @@ block content
 
 
         .row
-            h3 Make a new search
-            .col.s6.offset-3.card-panel
-                .input-field
-                    input#txtKeyword.validate(type='text')
-                    label(for='txtKeyword') Enter a keyword, topic, brand, celebrity or search term
+            .row: br
+            .col.s10.offset-s1.m8.offset-m2.l6.offset-l3
+                .card-panel
+                    h3.flow-text Make a new search
+                    .input-field
+                        input#txtKeyword.validate(type='text')
+                        label(for='txtKeyword') Enter a keyword, topic, brand, celebrity or search term
 
 
 block scripts

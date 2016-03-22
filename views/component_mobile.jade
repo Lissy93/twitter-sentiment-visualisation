@@ -1,0 +1,47 @@
+.row
+    .col.s12.m8.offset-m2.l6.offset-l3
+        h2.grey-text.text-darken-2 Real-time analysis of social opinions
+        span.red-text
+            | Your missing out on half the fun!
+            | Sentiment Sweep is best viewed in a desktop browser, or on a larger device
+
+        p.flow-text Tap one of the links below to get started
+        .card-panel.waves-effect.hoverable(onClick="document.location.href ='/now'")
+            p.flow-text
+                | The world according to Twitter is currently
+                | <b> #{Math.round(averageSentiment * 100)}%</b> positive.
+                | <a href='/now'> Find out more...</a>
+
+        .card-panel.waves-effect.hoverable(onClick="$('html, body').animate({scrollTop: $('#part-2').offset().top}, 1200);")
+            p.flow-text(onClick="$('html, body').animate({scrollTop: $('#part-2').offset().top}, 1200);")
+                | Interactive data visualisations with sentiment results calculated from real-time.
+                |  <a href='#part-2'> View now...</a>
+        .card-panel.waves-effect.hoverable(onClick="document.location.href ='/search'")
+            p.flow-text
+                | Generate custom results from fresh Twitter data by entering a topic,
+                | person, location, brand or object.
+                |  <a href='/search'> Make a search now...</a>
+        .card-panel.waves-effect.hoverable(onClick="$('#aboutMore').slideDown('fast'); $('html, body').animate({scrollTop: $('#aboutMore').offset().top}, 1200);")
+            p.flow-text
+                | Want to know more about what Sentiment Sweep is, what it can be used for and how it works?
+                | <a href='#aboutMore'>Learn more...</a>
+
+
+.row(style='display: none')#aboutMore
+    .col.s12.m8.offset-m2.l6.offset-l3
+        .card-panel
+            h3 Introduction to Sentiment Sweep
+            p Sentiment Sweep aims to captcha the mood of the internet, either
+                | overall or towards a specific topic.
+                | It does this by analysing real-time Twitter data, and calculating
+                | how positive or negative each Tweet it.
+
+            p A series of dynamic data visualisations are then used to
+                | illustrate the results, and find trends between sentiment and
+                | other factors such as time of day, location, topic, country, people etc
+
+            p It's open sauce, and the code and documentation can be viewed
+                | on <a href='https://github.com/Lissy93/twitter-sentiment-visualisation'>GitHub</a>
+
+            a.waves-effect.waves-teal.btn-flat.pull-right(href='/about') Read More...
+            .row: br

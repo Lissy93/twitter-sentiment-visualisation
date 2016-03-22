@@ -5,27 +5,29 @@ block head
 
 
 block content
-    main.content.timeline.full-width
-       div(style='width: 80%; margin-bottom: 1em').center-block
-           div.row
-               div.col.s6.card-panel(style='min-height: 10em')
+    main.timeline
+       .row
+           .col.l5.offset-l1.m6.s12
+               .card-panel(style='min-height: 10em')
                    h3 #{searchTerm} Sentiment Timeline
                    p.flow-text Timeline shows the average positive and negative sentiments of
                        | Tweets over the last 24 hours.
-                    br
-                div.col.s1
-                    br
+                   br
 
-                div.col.s5.card-panel(style='min-height: 10em')
-                    p.flow-text Enter a keyword or topic to view the sentiment over time
 
-                    label.active(for='txtKeyword', style='width: 8em') Enter keyword or topic to fetch new Tweets
-                    input#txtKeyword.validate(type='text', style='width: 12em; margin-right: 1em', value='#{searchTerm}')
-                    div.btn#btnSearch Search
-                    br
+           .col.l5.m6.s12
+               .card-panel(style='min-height: 10em')
+                   p.flow-text Enter a keyword or topic to view the sentiment over time
+                        .input-field
+                            input#txtKeyword.validate(type='text', value='#{searchTerm}')
+                            label.active(for='txtKeyword') Enter keyword or topic
+                            div.btn#btnSearch.pull-right Search
+                        br
 
-        div#chart.card-panel(style='width: 80%; height: 25em;').center-block
-           svg
+        .row
+            .col.l10.offset-l1.m12.s12
+                #chart.card-panel(style='height: 25em;').center-block
+                    svg
 
 block scripts
     script(type='text/javascript').

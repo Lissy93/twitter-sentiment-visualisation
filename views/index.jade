@@ -11,9 +11,9 @@ block content
     a#github-corner(href='https://github.com/Lissy93/twitter-sentiment-visualisation', target = '_blank')
         img(src='/images/github-corner.png', title='View source code and documentation on GitHub')
 
-    #part-1
+    #part-1.hide-on-small-only
         .row.absolute.home-row
-          .col.s6
+          .col.l6
             .card-panel
               h3 Introduction to Sentiment Sweep
               p Sentiment Sweep aims to captcha the mood of the internet, either
@@ -29,7 +29,9 @@ block content
                 | on <a href='https://github.com/Lissy93/twitter-sentiment-visualisation'>GitHub</a>
 
               a.waves-effect.waves-teal.btn-flat.pull-right(href='/about') Read More...
-          .col.s6
+              .row: br
+
+          .col.l6.s10.offset-s1
             .card-panel
               h3 Get started, enter a search term...
               .input-field
@@ -55,7 +57,7 @@ block content
                 | Hover over a hexagon to read the associated Tweet.
                 | Sentiment is represented by color
 
-    #part-0
+    #part-0.hide-on-small-only
         p
 
     .section#part-2
@@ -64,7 +66,7 @@ block content
             p.flow-text.grey-text.darken-4 Click one of the links below to generate the chart with the latest Twitter data
             .row
               each page in pages
-                .col.s3
+                .col.s10.offset-s1.m4.l3
                   a(href='/#{page.page}')
                     .card.home-card
                       .card-image.waves-effect.waves-block.waves-light

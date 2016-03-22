@@ -7,7 +7,7 @@ block content
             .row
                 for result, index in data
                     - var topic = result.searchTerm.charAt(0).toUpperCase() + result.searchTerm.slice(1)
-                    div(class='col s#{12/data.length}')
+                    div.col.s12(class='l#{12/data.length} m#{24/data.length}')
                         h3= topic
                         .card-panel
                             p The overall average sentiment for <i>'#{topic}'</i> is:
@@ -48,9 +48,8 @@ block content
                             a.waves-effect.waves-teal.btn-flat.block(href='/break-down/#{topic}') Topic Breakdown
 
         .row
-            br
-            br
-            .center-block(style='width: 50%').card-panel
+            .row: br
+            .col.s10.offset-s1.m8.offset-m2.l6.offset-l3.card-panel
                 h2 Brand Comparison
                 span.flow-text Enter up to four brand names, retailers, businesses,
                     | places, celebrities or objects that you'd like to compare
@@ -76,8 +75,8 @@ block content
                 a.small#add-new(style='cursor: pointer') Add more search queries
                 br
                 br
-
                 .waves-effect.waves-light.btn.center-block#get-results Get Results!
+                .row: br
 
 
 block scripts

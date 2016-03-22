@@ -4,13 +4,13 @@ footer.page-footer.zero-padding
       .col.l6.s12
         a(href='/'): h5.white-text Sentiment Sweep
         p.grey-text.text-lighten-4 The ultimate social media sentiment analysis tool
-      .col.s3
+      .col.l3.s6
         ul
           li: b: a.grey-text.text-lighten-3(href='/') Main Menu
           each page in pages.splice(0,7)
             li: a.grey-text.text-lighten-3(href='/#{page.page}')= page.title
 
-      .col.s3
+      .col.l3.s6
         ul
           each page in pages.splice(0,6)
             li: a.grey-text.text-lighten-3(href='/#{page.page}')= page.title

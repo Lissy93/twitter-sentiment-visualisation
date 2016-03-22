@@ -12,6 +12,9 @@ html
     include ./sidenav
     unless hideNav
       include ./navbar
+    else
+      .hide-on-med-and-up: include ./navbar
+      .hide-on-med-and-up: include ./component_mobile
     block content
     include ./footer_scripts
     block scripts
