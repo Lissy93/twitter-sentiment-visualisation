@@ -3,7 +3,10 @@ Twit = require 'twit'
 streamHandler = require '../utils/stream-handler'
 
 class streamer
+
   constructor: (@credentials, @io) ->
+
+    @stream = null
 
     T = new Twit(
       consumer_key: @credentials.consumer_key
@@ -42,10 +45,12 @@ class streamer
         'lang': twitterResults.lang
       }
 
+    io = @io
+    stream = @stream
+
     world = [-180, -90, 180, 90 ]
     stream = T.stream('statuses/filter', locations: world)
 
-    io = @io
     stream.on 'tweet', (tweet) ->
       streamHandler(formatResults(tweet),io)
 
@@ -56,5 +61,12 @@ class streamer
 
     stream.on 'connected', (response) ->
       console.log 'Twitter Stream Connected'
+
+    @stream = stream
+
+  checkStillConnected: ()->
+    if @stream.response.statusCode != 200
+      console.log 'Stream doesn\'t appear to be connected; I\'ll just start it.'
+      @stream.start()
 
 module.exports = streamer
