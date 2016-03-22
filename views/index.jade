@@ -39,10 +39,9 @@ block content
               span.waves-effect.waves-teal.btn-flat(onClick="document.location.href ='/now'")
                   | The world according to Twitter is currently
                   if averageSentiment > 0
-                    | <span style='colour: green'><b>#{averageSentiment*100}%</b> positive </span>.
+                    | <span style='color: green;'> <b> #{Math.round(averageSentiment*100)}%</b> positive </span>.
                   else
-                     | <span style='color: darkred;'><b>#{averageSentiment * 100}%</b> negative </span>.
-
+                     | <span style='color: darkred;'> <b> #{Math.round(averageSentiment * 100)}%</b> negative </span>.
                   |  <a href='/now'> See More</a>
 
         #chart.home-hexagons
