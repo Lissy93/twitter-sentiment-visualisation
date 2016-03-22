@@ -9,9 +9,7 @@ var bodyParser    = require('body-parser');
 var mongoose      = require('mongoose');
 var http          = require('http');
 var mdirect = require('mobile-redirect');
-var streamTweets  = require('stream-tweets');
 var config        = require('./config/app-config');
-var streamHandler = require('./utils/stream-handler');
 
 
 /* Create Express server and configure socket.io */
@@ -81,9 +79,8 @@ app.use('/mobile', mobileRoute);
 
 /* Set a stream listener for tweets matching tracking keywords */
 var credentials = require('./config/keys').twitter;
-var twit = new streamTweets(credentials);
-var world = [-180,-90,180,90];
-stream =twit.stream({ locations: world}, function(stream){ streamHandler(stream,io); });
+new (require('./utils/streamer'))(credentials, io);
+
 
 /* catch 404 and forward to error handler */
 app.use(function(req, res, next) {
