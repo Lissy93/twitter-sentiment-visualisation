@@ -1,0 +1,743 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Sentiment Sweep | Alicia Sykes</title>
+
+        <meta name="description" content="Presentation for Sentiment Sweep Application">
+        <meta name="author" content="Alicia Sykes">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/blood.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+                <section>
+                    <section data-background-iframe="http://sentiment-sweep.com/hexagons?iframe" style="background: rgba(30,30,30,0.7); ">
+                        <h1 style="font-size: 2.5em">Sentiment Analysis</h1>
+                        <h3>on Real-Time Social Media Data</h3>
+                        <p>
+                            <small>Alicia Sykes</small>
+                        </p>
+
+                    </section>
+                    <section>
+                        <h2>Links</h2>
+                        <p class="left">
+                            <b>Live Demo: </b> <br/> <a href="http://sentiment-sweep.com">http://sentiment-sweep.com</a>
+                            <br/><br/>
+                            <b>Source Code and Documentation: </b> <br/> <a href="https://git.io/vVhGy "> https://git.io/vVhGy</a>
+                            <br/><br/>
+                            <b>This Presentation: </b> <br/> <a href="http://presentation.sentiment-sweep.com/">http://presentation.sentiment-sweep.com/</a>
+                        </p>
+
+                    </section>
+
+                </section>
+
+
+                <section>
+                    <section data-background="#002B17">
+                        <h2>The world is changing</h2>
+                        <p>3.65 billion people internet access via a smart phone/  tablet</p>
+                        <p>2.1 billion people regularly use social media </p>
+                        <p>1.3 billion people are registered on Twitter</p>
+                        <p>88% of Twitter users are on mobile</p>
+                        <p>500 million+ tweets per day</p>
+                    </section>
+
+                    <section data-background="#026D3B">
+                        <p>People openly express their opinions on social networks</p>
+
+                        <p class="fragment">Much of this data is public, and freely available</p>
+
+                        <p class="fragment">This makes social media data, such as tweets ideal for gauging peoples opinions</p>
+
+                        <p class="fragment">This data has the potential to totally revolutionise how information is gathered</p>
+
+                        <h3 class="fragment">However, there's a problem...</h3>
+                    </section>
+
+                </section>
+
+
+                <section data-background="#520606">
+                    <h2>The Problem</h2>
+                    <p>
+                        There is no way of interpreting the key attitudes
+                        and opinions conveyed in social media data,
+                        other than reading through an unworkable mass of tweets,
+                        most of which may not even be relevant to the topic.
+                    </p>
+                    <p>Further to this, it's not possible for a human to draw
+                        trends between the overall sentiment, and other factors
+                        such as location, time, key events and more
+                    </p>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>The Aim</h2>
+                    </section>
+                    <section>
+                        <p>
+                            The aim of this project was to develop a platform that would
+                            calculate the sentiment towards a given topic, and display
+                            results in a series of interactive data visualisations that
+                            will allow trends to be found
+                        </p>
+                    </section>
+                    <section>
+                        <p>
+                            More specifically, the final solution will stream real-time
+                            Twitter data, and allow the user to enter a specific topic or
+                            keyword to display live sentiment results in various forms.
+                        </p>
+                    </section>
+                    <section>
+                        <h3>Aims</h3>
+                        <ul>
+                            <li>
+                                Show how sentiment varies with location.
+                                i.e. which areas of the country and world are
+                                more or less positive about a given topic
+                            </li>
+                            <li>
+                                Show how sentiment varies with time.
+                                What are the most positive or negative times of
+                                day for the specified keyword
+                            </li>
+                            <li>
+                                Give an insight into why the sentiment value is
+                                what it is. What keywords are people talking about
+                                which make the overall attitude more or less positive
+                            </li>
+                            <li>
+                                Compare the sentiment values of two similar topics or keywords
+                            </li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Secondary Aim</h3>
+                        <p>
+                            This is quite a new area, and in order to complete
+                            the final solution I will bring together several new
+                            technologies in a way they have not been used before.
+                        </p>
+                        <p>
+                            For that reason, I am going to develop the application
+                            following a modular approach and for each component developed,
+                            it will be fully tested, documented and then published
+                            to the open source community both on GitHub and NPM.
+                        </p>
+                        <p>
+                            This will allow other developers to build on the
+                            existing code base and take it further.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>Real-world uses</h3>
+                        <p>
+                            There are many times when this would be extremely useful,
+                            or provide interesting insights. For example
+                        </p>
+                        <ul>
+                            <li>Analysing the success of a marketing campaign</li>
+                            <li>Predicting the result of an election</li>
+                            <li>Comparing the sentiment towards a brand/ company with it's competitors</li>
+
+                            <li>Market research</li>
+
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <h3>My motivation for developing this application was:</h3>
+                    <ul style="font-size: 0.8em">
+                        <li>Nothing like this already exists</li>
+                        <li>To try and tackle the challenge of making sense of such a large amount of social media data</li>
+                        <li>To learn and utilise the latest open source technologies</li>
+                        <li>To research a new, but fast expanding area of technology</li>
+                        <li>To develop an efficient yet accurate sentiment analysis algorithm</li>
+                        <li>To give something back to the open source community</li>
+                        <li>To accept the challenge of creating a fully scalable app</li>
+                        <li>To learn about visual analytics, and the use of JavaScript and D3 to represent data</li>
+                        <li>Because it's such an interesting and fast moving area, with so much potential for coolness!</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Research 1</h2>
+                        <h3> Current Research and uses for Social Sentiment Analysis</h3>
+                        <p class="fragment">
+                            Extensive research into the current progress of
+                            sentiment analysis, including a literature review
+                            was carried out.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h4>Predicting Election Winners</h4>
+                        <blockquote cite="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?tp=&arnumber=6731323">
+                            Twitter is a well-known micro-blogging website which
+                            allows millions of users to interact over different
+                            types of communities, topics, and tweeting trends.
+                            The big data being generated on Twitter daily, and
+                            its significant impact on social networking, has
+                            motivated the application of data mining (analysis)
+                            to extract useful information from tweets.
+                        </blockquote>
+                        <small>
+                            [2013] Tariq Mahmood, Atika Mustafa, Tasmiyah Iqbal,
+                            Farnaz Amin and Wajeeta Lohaana, "Mining Twitter Big
+                            Data to Predict 2013 Pakistan Election Winner",
+                            IEEE INMIC, Lahore, Pakistan
+                        </small>
+                    </section>
+
+                    <section>
+                        <h4>Determining Customer Opinions</h4>
+                        <blockquote>
+                            One key use for this insight into people opinions
+                            would be to aid marketing campaigns, as companies
+                            will have a better understanding of what techniques
+                            were effective in successfully marketing a product
+                            or service
+                        </blockquote>
+                        <small>Wenbo Wang et. al 2012</small>
+                    </section>
+
+                    <section>
+                        <h4>Predicting Stock Prices</h4>
+                        <blockquote>
+                            Tweet sentiment score precedes stock price movement
+                            starting from about 7 hours beforehand for the
+                            highest gainers in stock. As time goes on, the
+                            correlation between tweets score and stock prices
+                            increases linearly. This shows that to some
+                            degree, tweet sentiments precede stock prices.
+                        </blockquote>
+                        <small>Meesad (2014)</small>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Research 2</h2>
+                        <h3>Exploring methods of sentiment analysis</h3>
+                        <p class="fragment">
+                            Research was conducted into the ways that sentiment can
+                            be calculated, and a few sample algorithms were developed
+                            in order to find the best option for the final solution
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>Lexicon-based Approach</h3>
+                        <p>
+                            The lexicon-based approach involves calculating
+                            orientation for a document from the semantic
+                            orientation of words or phrases in the document
+                        </p>
+                        <small>
+                            This is usually done with a predefined dataset of
+                            words annotated with their semantic values, and a
+                            simple algorithm can then calculate an overall semantic
+                            score for a given string. Dictionaries for this approach
+                            can either be created manually, or automatically,
+                            using seed words to expand the list of words
+                        </small>
+                    </section>
+
+                    <section>
+                        <h3>Natural Language Understanding Approach</h3>
+                        <p>
+                            The natural language understanding (NLU) or text
+                            classification approach involves building classifiers
+                            from labelled instances of texts or sentences,
+                            essentially a supervised classification task.
+                        </p>
+                        <small>
+                            There are various NLU algorithms, the two main
+                            branches are supervised and unsupervised machine
+                            learning. A supervised learning algorithm generally
+                            builds a classification model on a large annotated
+                            corpus. Its accuracy is mainly based on the quality
+                            of the annotation, and usually the training process
+                            will take a long time. Unsupervised uses a sentiment
+                            dictionary, rather like the lexicon-based approach,
+                            with the addition that builds up a database of common
+                            phrases and their aggregated sentiment as well.
+                        </small>
+                    </section>
+
+                    <section>
+                        <h3>Experiment to compare SA methods</h3>
+                        <p>
+                            I conducted an experiment to find the optimum SA
+                            algorithm, in terms of efficiency and accuracy.
+                            A lexicon approach, NLU approach and a human (as a bench mark)
+                            calculated sentiment over the same set of Tweets to
+                            and the results were compared.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>The Results</h3>
+                        <small>
+                            A live demo of results can be viewed at
+                            <a href="http://sentiment-sweep.com/sa-comparison">http://sentiment-sweep.com/sa-comparison</a>
+                        </small>
+                        <img src="img/survey-results.png" alt="The Results"/>
+
+                    </section>
+
+                    <section>
+                        <h3>Key Findings</h3>
+                        <ul>
+                            <li>There was a clear relationship between the length of the input string (in this case a Tweet) and the accuracy of the results</li>
+                            <li>The dictionary-based results tended to produce more neutral values, whereas the NLU method was able to distinguish positivity and negativity in most tweets</li>
+                            <li>NLU occasionally was capable of factoring in simple sarcasm</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <img src="img/findings.png" />
+                    </section>
+
+                </section>
+
+
+                <section>
+                    <section>
+                        <h2>Methodology</h2>
+                        <h3>1. Project Management</h3>
+                    </section>
+
+                    <section>
+                        <h3>Agile</h3>
+                        <p>
+                            The application was developed following the agile methodology
+                        </p>
+                        <small>
+                            The methodology used in this project followed the principles
+                            of agile, more specifically personal-SCRUM (one-man agile).
+                            This is an iterative approach, where the project will be
+                            divided into a set of phases, called sprints. Each sprint
+                            had a set of requirements presented in the form of user
+                            stories and acceptance criteria. The sprint was only marked
+                            as complete once each story has been developed, implemented
+                            and tested (or descoped). User stories were prioritised and
+                            given a complexity estimate before each sprint, to ensure
+                            the best use of time and resources.
+                        </small>
+                    </section>
+
+                    <section>
+                        <h3>Key Agile Principles</h3>
+                        <ul>
+                            <li>Test Driven Development (TDD)</li>
+                            <li>Refactoring</li>
+                            <li>Continuous Integration</li>
+                            <li>Doing the simplest possible to make the solution work, then refactoring</li>
+                            <li>Automated deployment</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Risk</h3>
+                        <img src="img/risk.png" alt="Risk"/>
+                    </section>
+
+
+                    <section>
+                        <h3>Time Plan</h3>
+                        <img src="img/gannt.jpg" alt="Gannt"/>
+                    </section>
+
+                    <section>
+                        <h3>Sprints</h3>
+                        <small>
+                            <ul>
+                                <li>Sprint 0 – Project setup</li>
+                                <li>Sprint 1 – Create base application and empty database</li>
+                                <li>Sprint 2 – All tweet handling backend modules</li>
+                                <li>Sprint 3 – All location and utility backend modules</li>
+                                <li>Sprint 4 – Sentiment Analysis module</li>
+                                <li>Sprint 5 – Integrate backend modules into application</li>
+                                <li>Sprint 6 – Link blank frontend to backend to make twitter sentiment results</li>
+                                <li>Sprint 7 – All geographically based sentiment data visualisations</li>
+                                <li>Sprint 8 – All keyword based sentiment data visualisations</li>
+                                <li>Sprint 9 – Timeline, trending and comparison data visualisations</li>
+                                <li>Sprint 10 – Implement real-time functionality into data visualisations and create txt page</li>
+                                <li>Sprint 11 – Home page and search page</li>
+                                <li>Sprint 12 – Final testing, code quality, UX review – then publish to public cloud server</li>
+                            </ul>
+                        </small>
+                    </section>
+                    
+                    <section>
+                        <img src="img/sprints.png" alt="" style="border: none"/>
+                    </section>
+                </section>
+
+
+                <section>
+                    <section>
+                        <h2>Methodology</h2>
+                        <h3>2. Development Tools</h3>
+                    </section>
+
+                    <section>
+                        <h3>Tools used while developing</h3>
+                        <ul>
+                            <li>VCS - Git</li>
+                            <li>IDE - WebStorm</li>
+                            <li>Dev Server - CeontOS VPS</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Building</h3>
+                            <p>
+                                Gulp was used to automate the project build process. <br>
+                                A script was developed and configured, to do the following:
+                            </p>
+                        <small>
+                            <ul>
+                                <li>Compile server-side scripts</li>
+                                <li>Compile client-side scripts</li>
+                                <li>Compile styles</li>
+                                <li>Optimise images and graphics</li>
+                                <li>Run tests (see later.)</li>
+                                <li>Clean the workspace</li>
+                                <li>Check for errors, warnings and poor code style</li>
+                                <li>Lint appropriate code</li>
+                                <li>Minify appropriate code</li>
+                                <li>Browserify client-side scripts</li>
+                                <li>Log useful output to the console</li>
+                                <li>Watch files for changes, and run the correct task on change</li>
+                                <li>Keep multiple browsers and devices in sync during development</li>
+                                <li>Provide a simple interface to do all of the above</li>
+                            </ul>
+                        </small>
+                    </section>
+                    
+                    <section>
+                        <img src="img/gulp.png" alt=""/>
+                    </section>
+                </section>
+
+
+                <section>
+                    <section>
+                        <h2>Methodology</h2>
+                        <h3>3. Testing</h3>
+                    </section>
+
+                    <section>
+                        <h3>Test Driven Development</h3>
+                    </section>
+
+                    <section>
+                        <h3>Unit Testing</h3>
+                    </section>
+
+                    <section>
+                        <h3>Behaviour Driven Development</h3>
+                    </section>
+
+                    <section>
+                        <h3>Automated Continuous Integration Testing</h3>
+                    </section>
+
+                    <section>
+                        <h3>Coverage Testing</h3>
+                    </section>
+
+                    <section>
+                        <h3>Dependency Checking</h3>
+                    </section>
+
+                    <section>
+                        <h3>Automated Code Reviews</h3>
+                    </section>
+
+                    <section>
+                        <h3>Assertions</h3>
+                    </section>
+
+                    <section>
+                        <h3>The test framework</h3>
+                    </section>
+
+                    <section>
+                        <h3>Stubs, spies and mocks</h3>
+                    </section>
+
+                    <section>
+                        <h3>Headless Testing</h3>
+                    </section>
+
+                    <section>
+                        <h3>Testing HTTP services</h3>
+                    </section>
+
+                    <section>
+                        <h3>Pass Fail Criteria</h3>
+                        <small>
+                            <table>
+                                <tr>
+                                    <th class="tg-y2tu"><br>  Test Type<br>  </th>
+                                    <th class="tg-y2tu"><br>  Pass Condition<br>  </th>
+                                </tr>
+                                <tr>
+                                    <td class="tg-yw4l"><br>  Functional Testing<br>  </td>
+                                    <td class="tg-yw4l"><br>  All acceptance criteria must be met, checked and documented<br>  </td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-yw4l"><br>  Unit Tests<br>  </td>
+                                    <td class="tg-yw4l"><br>  All acceptance criteria must be met, checked and documented<br>  </td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-yw4l"><br>  Integration Tests<br>  </td>
+                                    <td class="tg-yw4l"><br>  100% pass rate after every commit<br>  </td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-yw4l"><br>  Coverage Tests<br>  </td>
+                                    <td class="tg-yw4l"><br>  80% or greater<br>  </td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-yw4l"><br>  Code Reviews<br>  </td>
+                                    <td class="tg-yw4l"><br>  B grade/ Level 4 or higher. Ideally A grade/ Level 5 if<br>  possible.<br>  </td>
+                                </tr>
+                                <tr>
+                                    <td class="tg-yw4l"><br>  Dependency Checks<br>  </td>
+                                    <td class="tg-yw4l"><br>  Mostly up-to-date dependencies except in<br>  justified circumstances.<br>  </td>
+                                </tr>
+                            </table>
+                        </small>
+                    </section>
+
+                    <section>
+                        <h3>Documenting Results</h3>
+                    </section>
+
+                    <section>
+                        <iframe data-src="docs/testing.pdf" width="845" height="655" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:3px solid #666; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+                    </section>
+
+                </section>
+
+
+				<section>
+                    <section>
+                        <h2>Methodology</h2>
+                        <h3>4. Front End</h3>
+                    </section>
+
+                    <section>
+                        <h3>D3.js</h3>
+                        <p style="font-size: 0.8em; ">
+                            The majority of the charts and data visualizations were
+                            coded in D3.js (but written in CoffeeScript).
+                            D3 (or Data Driven Documents) is an advanced JavaScript
+                            library for manipulating documents based on data. It
+                            allows for web elements (such as SVG and HTML) to be
+                            bound to data.
+                            <br/>
+                            (See more at <a href="https://d3js.org/">https://d3js.org/).</a>
+                            <br/><br/>
+                            D3 was chosen, because it is focused on binding DOM
+                            elements to the data, and is a bare-bones language,
+                            meaning the highly customizable documents can be created.
+                            Furthermore D3.js is written in JavaScript, and uses a
+                            functional style meaning code reuse is seamless.
+                            For this project CoffeeScript will be used as opposed
+                            to JavaScript, but the same applies.
+                        </p>
+                    </section>
+
+
+
+                    <section>
+                        <iframe data-src="docs/Wireframes.pdf" width="845" height="655" frameborder="0"  allowfullscreen> </iframe>
+                    </section>
+
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Methodology</h2>
+                        <h3>5. Backend</h3>
+                    </section>
+
+                    <section>
+                        <h3>Node.js</h3>
+                        <img src="https://openfin.co/wp-content/uploads/2015/05/nodejs_logo.png"
+                             alt=""/>
+                        <p>
+                            Node.js is a JavaScript runtime built on Chrome's V8
+                            JavaScript engine. Node.js uses an event-driven,
+                            non-blocking I/O model that makes it lightweight and
+                            efficient
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>Key Components of the Backend</h3>
+                        <ul>
+                            <li>Tweet handling</li>
+                            <li>Sentiment Analysis</li>
+                            <li>Data adapter</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>Tweet Handeling</h3>
+                        <p>Two node packaged were developed and published, for getting tweets:</p>
+                        <ul>
+                            <li><b>fetch-tweets</b> - fetches tweets from Twitter based on topic, location, timeframe or combination</li>
+                            <li><b>stream-tweets</b> - streams live Tweets in real-time</li>
+                        </ul>
+                        <p>
+                            A data cache was also developed, using <b>MongoDB</b> as the
+                            database to store significant tweets from the past 24 hours.
+                            This speeds up initial page load
+                        </p>
+                        <small>
+                            <b>fetch-tweets: </b>
+                            <a href="https://www.npmjs.com/package/fetch-tweets">https://www.npmjs.com/package/fetch-tweets</a>
+                            <br/>
+                            <b>stream-tweets: </b>
+                            <a href="https://www.npmjs.com/package/stream-tweets">https://www.npmjs.com/package/stream-tweets</a>
+                        </small>
+                    </section>
+
+                    <section>
+                        <h3>Sentiment Analysis</h3>
+                        <p>
+                            A sentiment analysis algorithm was developed from scratch,
+                            fully unit tested, documented and published to NPM.
+                            <br/><br/>
+                            It is significantly faster than other SA algorithms, with an
+                            85% accuracy, it is ideal for calculating sentiment of live
+                            twitter data quickly.
+                        </p>
+                        <br/>
+                        <small  >
+                            Since it was published in December, it has been used
+                            by 800+ different developers world wide.
+                            <br/>
+                            <b>Download Page (on NPM):</b>
+                            <a href="https://www.npmjs.com/package/sentiment-analysis">https://www.npmjs.com/package/sentiment-analysis</a>
+                            <br/>
+                            <b>Documentation and Source Code (on GitHub):</b>
+                            <a href="https://github.com/Lissy93/sentiment-analysis">https://github.com/Lissy93/sentiment-analysis</a>
+                        </small>
+                    </section>
+
+                    <section>
+                        <h3>Geographical Modules</h3>
+                        <small>
+                            Since there are several location-based data visualisations,
+                            a series of geo modules were developed and published
+                            to calculate interim results
+                        </small>
+                        <br/><br/>
+                        <small class="left">
+                            <b>place-lookup</b> - finds the lat and long for any fuzzy place name based on the Google Places database
+                            <br/>
+                            <a href="https://github.com/Lissy93/place-lookup">https://github.com/Lissy93/place-lookup</a>
+                            <br/><br/>
+                            <b>tweet-location</b> - calculates the location from geo-tagged Tweets using the Twitter Geo API
+                            <br/>
+                            <a href="https://www.npmjs.com/package/tweet-location">https://www.npmjs.com/package/tweet-location</a>
+                            <br/><br/>
+                            <b>find-region-from-location</b> - given a lat and long calculates which region that point belongs in
+                            <br/>
+                            <a href="https://github.com/Lissy93/find-region-from-location">https://github.com/Lissy93/find-region-from-location</a>
+                        </small>
+                    </section>
+
+
+                    <section>
+                        <h3>Node module to extract keywords from a sentence</h3>
+                        <small class="left">
+                            <b>remove-words</b> - removes all non-key words from a string sentence
+                            <br/>
+                            <a href="https://www.npmjs.com/package/remove-words">https://www.npmjs.com/package/remove-words</a>
+                            <br/><br/>
+
+                        </small>
+                    </section>
+
+                    <section>
+                        <h3>API wrapper modules</h3>
+                        <small class="left">
+                            <b>hp-haven-sentiment-analysis</b> - A Node.js client library for HP Haven OnDemand SA
+                            <br/>
+                            <a href="https://github.com/Lissy93/haven-sentiment-analysis">https://github.com/Lissy93/haven-sentiment-analysis</a>
+                            <br/><br/>
+                            <b>haven-entity-extraction</b> - Node.js client for HP Haven OnDemand Entity Extraction
+                            <br/>
+                            <a href="https://github.com/Lissy93/haven-entity-extraction">https://github.com/Lissy93/haven-entity-extraction</a>
+                            <br/><br/>
+                        </small>
+
+                    </section>
+
+                    <section>
+                        <img src="img/flow.png" height="650" alt=""/>
+                    </section>
+                </section>
+
+                <section>
+                    <img src="img/stack.png" alt="THE TECH STACK    "/>
+                </section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script src="js/custom.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+
+            Reveal.configure({ backgroundTransition: 'zoom' })
+		</script>
+	</body>
+</html>
