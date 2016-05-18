@@ -8,7 +8,10 @@
 
 [System Development Life Cycle](sdlc.md)
 
+[Licence](LICENSE.md)
 
+
+---
 
 ### Project Planning
 [User Stories](user-stories.md)
@@ -44,4 +47,3 @@
 
 [References](references.md)
 
-[Licence](LICENSE.md)
