@@ -96,6 +96,12 @@ with the pass and fail criteria can be found on the [test strategy] page
 of the documentation.
 
 
+## Screen Shots
+#### [Click here to view the screen shots](docs/screenshots/readme.md)
+
+![Overview of screenshots](docs/screenshots/overview.png)
+
+
 ## The Stack
 This project wouldn't have been possible at all without making use of many many 
 open source packages, libraries, frameworks etc..
