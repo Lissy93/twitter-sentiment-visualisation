@@ -95,6 +95,19 @@ More details on each of the tools and how they will be implemented along
 with the pass and fail criteria can be found on the [test strategy] page 
 of the documentation.
 
+
+## The Stack
+This project wouldn't have been possible at all without making use of many many 
+open source packages, libraries, frameworks etc..
+
+I would like to personally thank the hundreds of developers who have worked on open source packages like these.
+
+There is an extensive stack of technologies that were used to develop the final application. 
+The following list is a summary of the key utilities:
+
+![The Stack](docs/stack.png)
+
+
 ## Documentation
 ### Project Planning
 [User Stories](docs/user-stories.md)
