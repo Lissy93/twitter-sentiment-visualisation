@@ -2,6 +2,8 @@
 ## Main Programme
 > User stories relating to the program in general
 
+[View complexity estimates for each story here](story-points.md)
+
 **TSV-A001 As a user I should be able to view the solution in my browser simply by visiting a URL**
 -	AC1 There will be no login, start screen or any other pages to navigate through before being presented with the solution
 -	AC2 The URL will use the http protocol
