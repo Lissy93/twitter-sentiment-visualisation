@@ -1,7 +1,5 @@
 # Twitter Sentiment Visualisations
 
-[![Join the chat at https://gitter.im/Lissy93/twitter-sentiment-visualisation](https://badges.gitter.im/Lissy93/twitter-sentiment-visualisation.svg)](https://gitter.im/Lissy93/twitter-sentiment-visualisation?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 [![Build Status](https://travis-ci.org/Lissy93/twitter-sentiment-visualisation.svg?branch=dev)](https://travis-ci.org/Lissy93/twitter-sentiment-visualisation)
 [![Dependency Status](https://david-dm.org/lissy93/twitter-sentiment-visualisation.svg)](https://david-dm.org/lissy93/twitter-sentiment-visualisation)
 [![devDependency Status](https://david-dm.org/lissy93/twitter-sentiment-visualisation/dev-status.svg)](https://david-dm.org/lissy93/twitter-sentiment-visualisation#info=devDependencies)
@@ -16,7 +14,7 @@
 [![trello](https://img.shields.io/badge/Methodology-Agile-blue.svg)](https://img.shields.io/badge/Methodology-Agile-blue.svg)
 [![Stack Share](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/Lissy93/sentiment-sweep)
 [![npm](https://img.shields.io/npm/l/express.svg)](https://github.com/Lissy93/twitter-sentiment-visualisation)
-[![Gitter](https://badges.gitter.im/Lissy93/twitter-sentiment-visualisation.svg)](https://gitter.im/Lissy93/twitter-sentiment-visualisation?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Join the chat at https://gitter.im/Lissy93/twitter-sentiment-visualisation](https://badges.gitter.im/Lissy93/twitter-sentiment-visualisation.svg)](https://gitter.im/Lissy93/twitter-sentiment-visualisation?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![GitHub commits](https://img.shields.io/github/commits-since/SubtitleEdit/subtitleedit/3.4.7.svg)](https://github.com/Lissy93/twitter-sentiment-visualisation)
 
 
