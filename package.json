@@ -75,6 +75,7 @@
     "gulp-uncss": "^1.0.2",
     "gulp-util": "^3.0.6",
     "istanbul": "^0.4.2",
+    "jshint": "^2.9.4",
     "jshint-stylish": "^2.0.1",
     "lodash": "^4.3.0",
     "mocha": "^2.2.5",
