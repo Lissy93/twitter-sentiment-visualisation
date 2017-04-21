@@ -29,6 +29,14 @@ Run: `npm run config` to generate a JSON file for you to paste your keys into. I
 
 You may also want to check the variables set in `config/src/app-config.coffee` which would have been set with predicted defaults, such as MongoDB path, default port and other key bits of data.
 
+To get your developer API keys, you will need to sign up for free, at the following URL's:
+
+- **HP Haven OnDemand**: http://www.havenondemand.com/login.html?signUp=true
+- **IBM Watson**: https://www.ibm.com/account/us-en/signup/register.html?Target=https://myibm.ibm.com/
+- **Google Developer**: https://console.developers.google.com/apis/dashboard
+- **Twitter Developer**: https://dev.twitter.com/resources/signup
+
+
 ## Building
 Since the majority of the code is written in CoffeeScript or other languages that need to be compiled or bundled, the project must be built before it can be run. You can read more about the build process in the build document.
 
