@@ -6,11 +6,11 @@ watson = require 'watson-developer-cloud'
 watsonCredentials = require('../config/keys').watson
 
 toneAnalyzer = watson.tone_analyzer {
-  url: 'https://gateway.watsonplatform.net/tone-analyzer-beta/api/'
+  url: 'https://gateway.watsonplatform.net/tone-analyzer/api'
   username: watsonCredentials.username
   password: watsonCredentials.password
   version_date: '2016-11-02'
-  version: 'v3-beta'
+  version: 'v3'
 }
 
 noBodyProvided = (req, res, next) ->
