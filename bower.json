@@ -37,7 +37,6 @@
     "three.min": "https://raw.githubusercontent.com/dataarts/webgl-globe/master/globe/third-party/three.min.js",
     "Tween": "https://raw.githubusercontent.com/dataarts/webgl-globe/master/globe/third-party/Tween.js",
     "globe": "https://raw.githubusercontent.com/dataarts/webgl-globe/master/globe/globe.js",
-    "socket.io": "https://raw.githubusercontent.com/socketio/socket.io-client/master/socket.io.js",
     "d3-word-cloud": "https://raw.githubusercontent.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js",
     "tipsy": "https://cdnjs.cloudflare.com/ajax/libs/jquery.tipsy/1.0.2/jquery.tipsy.js",
     "nvd3": "~1.8.2",
@@ -48,6 +47,7 @@
     "radar-chart-d3": "https://github.com/alangrafu/radar-chart-d3.git#~1.2.1",
     "Materialize": "materialize#~0.97.5",
     "jquery-autocompleter": "Autocompleter#~0.1.9",
-    "bullet.js": "https://gist.githubusercontent.com/mbostock/4061961/raw/6eb742223b9795260ba62150196ed0ae4a461e39/bullet.js"
+    "bullet.js": "https://gist.githubusercontent.com/mbostock/4061961/raw/6eb742223b9795260ba62150196ed0ae4a461e39/bullet.js",
+    "socket.io": "^2.0.3"
   }
 }
