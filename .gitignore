@@ -1,6 +1,7 @@
 # Packages and libraries
 node_modules
 bower_components
+yarn.lock
 
 # IDE files and logs
 .idea
