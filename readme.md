@@ -4,7 +4,7 @@
 [![Dependency Status](https://david-dm.org/lissy93/twitter-sentiment-visualisation.svg)](https://david-dm.org/lissy93/twitter-sentiment-visualisation)
 [![devDependency Status](https://david-dm.org/lissy93/twitter-sentiment-visualisation/dev-status.svg)](https://david-dm.org/lissy93/twitter-sentiment-visualisation#info=devDependencies)
 [![Code Climate](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation/badges/gpa.svg)](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation)
-[![Maintenance](https://img.shields.io/maintenance/yes/2016.svg)](https://github.com/Lissy93/twitter-sentiment-visualisation)
+[![Maintenance](https://img.shields.io/maintenance/yes/2017.svg)](https://github.com/Lissy93/twitter-sentiment-visualisation)
 [![stable](http://badges.github.io/stability-badges/dist/stable.svg)](#)
 
 
