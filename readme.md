@@ -15,7 +15,7 @@
 [![Stack Share](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/Lissy93/sentiment-sweep)
 [![npm](https://img.shields.io/npm/l/express.svg)](https://github.com/Lissy93/twitter-sentiment-visualisation)
 [![Join the chat at https://gitter.im/Lissy93/twitter-sentiment-visualisation](https://badges.gitter.im/Lissy93/twitter-sentiment-visualisation.svg)](https://gitter.im/Lissy93/twitter-sentiment-visualisation?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![GitHub commits](https://img.shields.io/github/commits-since/SubtitleEdit/subtitleedit/3.4.7.svg)](https://github.com/Lissy93/twitter-sentiment-visualisation)
+[![GitHub commits](https://img.shields.io/github/commits-since/lissy93/twitter-sentiment-visualisation/0.0.1.svg)](https://github.com/Lissy93/twitter-sentiment-visualisation)
 
 
 > A web app that uses data from Twitter combined with sentiment analysis and
