@@ -1,5 +1,7 @@
 # Twitter Sentiment Visualisations
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/Lissy93/twitter-sentiment-visualisation.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/Lissy93/twitter-sentiment-visualisation.svg?branch=dev)](https://travis-ci.org/Lissy93/twitter-sentiment-visualisation)
 [![Dependency Status](https://david-dm.org/lissy93/twitter-sentiment-visualisation.svg)](https://david-dm.org/lissy93/twitter-sentiment-visualisation)
 [![devDependency Status](https://david-dm.org/lissy93/twitter-sentiment-visualisation/dev-status.svg)](https://david-dm.org/lissy93/twitter-sentiment-visualisation#info=devDependencies)
