@@ -8,9 +8,6 @@ root.hideLoader = () -> $('#loading-graphic').fadeOut 'slow'
 
 $(document).ready () ->
   $(".button-collapse").sideNav()
-  if ($(window).width() <= 699)
-    if window.location.pathname.indexOf('mobile') == -1
-      document.location = '/mobile'
 
   $('.nav-wrapper ul').click( () -> root.showLoader())
 
