@@ -32,7 +32,6 @@
     "haven-entity-extraction": "git://github.com/Lissy93/haven-entity-extraction.git",
     "haven-sentiment-analysis": "git://github.com/Lissy93/haven-sentiment-analysis.git",
     "jade": "^1.11.0",
-    "mobile-redirect": "0.0.1",
     "moment": "^2.11.2",
     "mongoose": "^4.1.6",
     "morgan": "^1.6.1",
@@ -43,7 +42,7 @@
     "serve-favicon": "^2.3.0",
     "socket.io": "^2.0.3",
     "stream-tweets": "^1.1.0",
-    "twit": "^2.2.5",
+    "twit": "^2.2.9",
     "watson-developer-cloud": "^2.39.0"
   },
   "devDependencies": {
