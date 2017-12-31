@@ -2,11 +2,11 @@ extends layout
 
 block content
 
-    .container(style='width: 90%')
-        if searchTerm != ''
+    .container(style='width: 85%')
+        if searchTerm !== ''
             .row
                 h3 Sentiment Summary for '#{searchTerm}'
-                .col.s3.card-panel(style='height: 23em')
+                .col.s12.m3.card-panel(style='height: 23em')
                     #gaugeChart
                     br
                     br
@@ -16,13 +16,13 @@ block content
                         p Average Sentiment is <b style='color: darkred'>negative</b>
                     else
                         p Average Sentiment is <b style='color: grey'>neutral</b>
-                .col.s6
+                .col.s12.m6
                     .card-panel(style='height: 23em')
                         p.absolute.grey-text(style='margin-top: -12px')
-                            | Hover over a hexagon to read the associated Tweet.
+                            | Hover over a hexagon to read the associated Tweet.<br>
                             | Sentiment is represented by color
-                        #chart
-                .col.s3.card-panel(style='height: 23em')
+                        #chart(style='height: 100%')
+                .col.s12.m3.card-panel(style='height: 23em')
                     h4.flow-text Top words used with <i>'#{searchTerm}'</i>
                         ol
                             for wordObject in data.keywordData
@@ -48,9 +48,9 @@ block content
                             .circle-clipper.right
                                 .circle
 
-                    .col.s4#toneResults1
-                    .col.s4#toneResults2
-                    .col.s4#toneResults3
+                    .col.s12.m4#toneResults1
+                    .col.s12.m4#toneResults2
+                    .col.s12.m4#toneResults3
 
                     a.waves-effect.waves-light.btn.pull-right(href='/tone-analyzer/#{searchTerm}') See More...
 
@@ -68,29 +68,27 @@ block content
                             .circle-clipper.right
                                 .circle
 
-                    .col.s4#entityResults1
-                    .col.s4#entityResults2
-                    .col.s4#entityResults3
-                    .col.s4#entityResults4
-                    .col.s4#entityResults5
-                    .col.s4#entityResults6
-                    .col.s4#entityResults7
-                    .col.s4#entityResults8
+                    .col.s6.m4#entityResults1
+                    .col.s6.m4#entityResults2
+                    .col.s6.m4#entityResults3
+                    .col.s6.m4#entityResults4
+                    .col.s6.m4#entityResults5
+                    .col.s6.m4#entityResults6
+                    .col.s6.m4#entityResults7
+                    .col.s6.m4#entityResults8
 
                     a.waves-effect.waves-light.btn.pull-right(href='/entity-extraction/#{searchTerm}', style='margin-top: 3em') See More...
 
             .row
                 h4.flow-text Compare '<i>#{searchTerm}</i>' with other topics
                 .card-panel.auto-overflow
-                    .col.s3
+                    .col.s12.m3
                         p.flow-text '#{searchTerm}' Average
                         #chart-0.search-av-chart1
-                    .col.s1: br
-                    .col.s3
+                    .col.s12.m3.offset-m1
                         p.flow-text Overall Average for Today
                         #chart-1.search-av-chart2
-                    .col.s1: br
-                    .col.s4
+                    .col.s12.m4.offset-m1
                         p.flow-text Compare with more Twitter results
                         span Enter up to four brand names, retailers, businesses,
                             | places, celebrities or objects that you'd like to compare
@@ -153,11 +151,11 @@ block content
 
             a.waves-effect.waves-teal.btn-large.whiteBtn.center-block(style='width: 20em', href='/text-tweets/#{searchTerm}') View more Tweets
 
-            .row
+            .row(style='padding: 1em 2em 1em 1em')
                 h3 Click on a link below to see the '#{searchTerm}' results data in another format
                 each page in pages
-                    .col.s3
-                        a(href='/#{page.page}/#{searchTerm}')
+                    .col.s12.m4.l3.xl1
+                        a(href='/#{page.page}')
                             .card.home-card
                                 .card-image.waves-effect.waves-block.waves-light
                                     img(src='/images/thumbnails/thumb_#{page.index}.png')
@@ -167,7 +165,7 @@ block content
 
         .row
             .row: br
-            .col.s10.offset-s1.m8.offset-m2.l6.offset-l3
+            .col.s12.offset-m2.m8.offset-l3.l6
                 .card-panel
                     h3.flow-text Make a new search
                     .input-field

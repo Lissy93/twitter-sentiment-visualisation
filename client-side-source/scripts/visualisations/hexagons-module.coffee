@@ -40,6 +40,11 @@ renderHexChart = () ->
 
   width = $(window).width() - margin.left - margin.right
   height = ($(window).height() - margin.top - margin.bottom - 80)
+
+  if !homePage? or !homePage
+    width = Math.round(d3.select('#chart').node().getBoundingClientRect().width)
+    height = Math.round(d3.select('#chart').node().getBoundingClientRect().height - 20)
+
   if hexPage? then if hexPage then height = height and width = width -= 10
   else if homePage? then if homePage then height = height * 0.8 and width += 20
 
