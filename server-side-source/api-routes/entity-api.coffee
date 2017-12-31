@@ -13,6 +13,7 @@ formatText = (tweetBody) ->
 
 formatData = (data) ->
   results = []
+  if data == null then return []
   for key in Object.keys data
     category = key.charAt(0).toUpperCase()+key.split('_')[0].slice(1)
     results.push name: category, items: data[key]
@@ -20,6 +21,7 @@ formatData = (data) ->
 
 router.post '/', (req, res) ->
   entityExtraction formatText(req.body.text), hpKey, (data) ->
+    console.log data
     res.json formatData data
 
 module.exports = router
