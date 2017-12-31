@@ -13,7 +13,7 @@ block content
 
     #part-1.hide-on-small-only
         .row.absolute.home-row
-          .col.l6
+          .col.s10.m10.l6.offset-m1
             .card-panel
               h3 Introduction to Sentiment Sweep
               p Sentiment Sweep aims to captcha the mood of the internet, either
@@ -31,7 +31,7 @@ block content
               a.waves-effect.waves-teal.btn-flat.pull-right(href='/about') Read More...
               .row: br
 
-          .col.l6.s10.offset-s1
+          .col.s10.m10.l6.offset-m1
             .card-panel
               h3 Get started, enter a search term...
               .input-field
@@ -61,32 +61,27 @@ block content
         p
 
     .section#part-2
-        .container
-            h2 Sentiment Data Visualisations
-            p.flow-text.grey-text.darken-4 Click one of the links below to generate the chart with the latest Twitter data
-            .row
-              each page in pages
-                .col.s10.offset-s1.m4.l3
-                  a(href='/#{page.page}')
-                    .card.home-card
-                      .card-image.waves-effect.waves-block.waves-light
-                        img(src='/images/thumbnails/thumb_#{page.index}.png')
-                      .card-content
-                        span.card-title.grey-text.text-darken-4= page.title
-
-
+        h2 Sentiment Data Visualisations
+        p.flow-text.grey-text.darken-4 Click one of the links below to generate the chart with the latest Twitter data
+        .row
+          each page in pages
+            .col.s12.m4.l3.xl1
+              a(href='/#{page.page}')
+                .card.home-card
+                  .card-image.waves-effect.waves-block.waves-light
+                    img(src='/images/thumbnails/thumb_#{page.index}.png')
+                  .card-content
+                    span.card-title.grey-text.text-darken-4= page.title
 
     footer
         .footer-copyright
-            .row
-                .col.s3
-                    p
-                .col.s2
-                    a.small-grey.right(href='/about') About Sentiment Sweep
-                .col.s2
-                    a.small-grey.right(href='https://github.com/Lissy93/twitter-sentiment-visualisation') Source Code and Documentation
-                .col.s2
-                    a.small-grey.right(href='http://aliciasykes.com') &copy; Alicia Sykes 2016
+            .row.text-center
+                .col.s12.m4
+                    a.small-grey(href='/about') About Sentiment Sweep
+                .col.s12.m4
+                    a.small-grey(href='https://github.com/Lissy93/twitter-sentiment-visualisation') Source Code and Documentation
+                .col.s12.m4
+                    a.small-grey(href='http://aliciasykes.com') &copy; Alicia Sykes 2016
 
 block scripts
   script.

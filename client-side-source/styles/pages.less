@@ -64,7 +64,12 @@ h1.title{
   position:absolute;
   min-height: 100%;
   display: block;
-  .row.absolute.home-row{ .col.s6{ .card-panel{ min-height: 19em; }}}
+  .row.absolute.home-row{
+    @media all and (max-width: 900px) {
+      margin-top: 2em !important;
+    }
+    .col.s6{ .card-panel{ min-height: 20em; }}
+  }
 }
 
 #part-2{
@@ -72,7 +77,9 @@ h1.title{
   min-height: 98%;
   background: @col_palegrey;
   display: block;
-  .container{ max-width: 80%; }
+  //.container{ max-width: 80%; }
+  padding: 1em 2em;
+  text-align: center;
   h2{ margin: 0}
   p{ margin: 0.5em 0; }
 }
@@ -96,7 +103,7 @@ h1.title{
 
 .scroll-down{
   .grey-square();
-  bottom: 10px;
+  bottom: 15px;
   margin: 0 auto;
   width: 7em;
   left: 0;
@@ -105,6 +112,9 @@ h1.title{
   p, i{
     padding: 0;
     margin: 0;
+  }
+  @media all and (max-width: 900px) {
+    margin-left: 2em;
   }
 }
 
