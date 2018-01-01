@@ -4,18 +4,14 @@
 [![Dependency Status](https://david-dm.org/lissy93/twitter-sentiment-visualisation.svg)](https://david-dm.org/lissy93/twitter-sentiment-visualisation)
 [![devDependency Status](https://david-dm.org/lissy93/twitter-sentiment-visualisation/dev-status.svg)](https://david-dm.org/lissy93/twitter-sentiment-visualisation#info=devDependencies)
 [![Code Climate](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation/badges/gpa.svg)](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation)
-[![Maintenance](https://img.shields.io/maintenance/yes/2017.svg)](https://github.com/Lissy93/twitter-sentiment-visualisation)
+[![Maintenance](https://img.shields.io/maintenance/yes/2018.svg)](https://github.com/Lissy93/twitter-sentiment-visualisation)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/1caedd6623554c5cacb3cb450bc30a62)](https://www.codacy.com/app/lissy93/twitter-sentiment-visualisation?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Lissy93/twitter-sentiment-visualisation&amp;utm_campaign=Badge_Grade)
 [![stable](http://badges.github.io/stability-badges/dist/stable.svg)](#)
 
-
-[![node](https://img.shields.io/node/v/gh-badges.svg)](https://github.com/Lissy93/twitter-sentiment-visualisation)
-[![npm](https://img.shields.io/npm/v/npm.svg)](https://github.com/Lissy93/twitter-sentiment-visualisation)
-[![Bower](https://img.shields.io/bower/v/bootstrap.svg)](https://github.com/Lissy93/twitter-sentiment-visualisation)
 [![trello](https://img.shields.io/badge/Methodology-Agile-blue.svg)](https://img.shields.io/badge/Methodology-Agile-blue.svg)
 [![Stack Share](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/Lissy93/sentiment-sweep)
 [![npm](https://img.shields.io/npm/l/express.svg)](https://github.com/Lissy93/twitter-sentiment-visualisation)
 [![Join the chat at https://gitter.im/Lissy93/twitter-sentiment-visualisation](https://badges.gitter.im/Lissy93/twitter-sentiment-visualisation.svg)](https://gitter.im/Lissy93/twitter-sentiment-visualisation?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![GitHub commits](https://img.shields.io/github/commits-since/lissy93/twitter-sentiment-visualisation/0.0.1.svg)](https://github.com/Lissy93/twitter-sentiment-visualisation)
 
 
 > A web app that uses data from Twitter combined with sentiment analysis and
