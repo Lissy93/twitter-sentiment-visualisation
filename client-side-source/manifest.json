@@ -1,0 +1,48 @@
+{
+
+  "name": "Sentiment Sweep",
+  "short_name": "SS",
+  "description": "See how the world is feeling about a given topic, based on real-time Twitter data",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#3E9BFF",
+  "theme_color": "#3E9BFF",
+  "icons": [{
+    "src": "./images/app_icons/mipmap-mdpi/ic_launcher.png",
+    "type": "image/png",
+    "sizes": "48x48"
+  },
+    {
+    "src": "./images/app_icons/mipmap-hdpi/ic_launcher.png",
+    "type": "image/png",
+    "sizes": "72x72"
+  },
+    {
+    "src": "./images/app_icons/mipmap-xhdpi/ic_launcher.png",
+    "type": "image/png",
+    "sizes": "96x96"
+  },
+  {
+    "src": "./images/app_icons/mipmap-xxhdpi/ic_launcher.png",
+    "type": "image/png",
+    "sizes": "144x144"
+  },
+  {
+    "src": "./images/app_icons/mipmap-xxxhdpi/ic_launcher.png",
+    "type": "image/png",
+    "sizes": "192x192"
+  },
+  {
+      "src": "./images/web_hi_res_512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }],
+  "author": {
+    "name": "Alicia Sykes",
+    "website": "https://aliciasykes.com",
+    "github": "https://github.com/lissy93",
+    "source-repo": "https://github.com/Lissy93/twitter-sentiment-visualisation"
+  }
+
+}
