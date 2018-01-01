@@ -32,7 +32,7 @@
     "haven-entity-extraction": "git://github.com/Lissy93/haven-entity-extraction.git",
     "haven-sentiment-analysis": "git://github.com/Lissy93/haven-sentiment-analysis.git",
     "jade": "^1.11.0",
-    "moment": "^2.11.2",
+    "moment": "^2.20.1",
     "mongoose": "^5.0.0-rc0",
     "morgan": "^1.6.1",
     "place-lookup": "1.0.1",
