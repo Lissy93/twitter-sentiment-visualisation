@@ -5,6 +5,10 @@ fillScale = d3.scale.linear()
   .domain([-1,-0.8, -0.6, -0.4, -0.2, 0, 0.2, 0.4, 0.6, 0.8, 1])
   .range(scaleColors)
 
+getSentiment = (result) ->
+  if !result then return 0
+  else return result.sentiment
+    
 if homePage? and homePage
   scaleColors = ['rgb(15, 160, 255)', 'rgb(60, 230, 255)', 'rgb(60, 255, 181)'
     'rgb(70, 255, 99)', 'rgb(174, 255, 99)', 'rgb(217, 255, 99)'
@@ -26,7 +30,7 @@ renderHexChart = () ->
 
   # Initialise tooltip
   tip = d3.tip().attr('class', 'd3-tip').html((d, i) ->
-    s = results[i].sentiment
+    s = getSentiment(results[i])
     col = if s > 0 then 'green' else if s < 0 then 'darkred' else 'grey'
     html = '<b>Sentiment:</b>'
     html += ' <span style=\'color:'+col+'\'>' + s + '</span> <br>'
@@ -48,7 +52,7 @@ renderHexChart = () ->
   if hexPage? then if hexPage then height = height and width = width -= 10
   else if homePage? then if homePage then height = height * 0.8 and width += 20
 
-  MapColumns  = Math.round(Math.sqrt(results.length*1.2))
+  MapColumns  = Math.round(Math.sqrt(results.length*1.15))
   MapRows     =  Math.round(Math.sqrt(results.length*0.8))
 
   #The maximum radius the hexagons can have to still fit the screen
@@ -93,7 +97,7 @@ renderHexChart = () ->
   .attr('d', (d) -> 'M' + d.x + ',' + d.y + hexbin.hexagon())
   .attr('stroke', (d, i) -> '#fff')
   .attr('stroke-width', '1px')
-  .style('fill', (d, i) -> fillScale(results[i].sentiment))
+  .style('fill', (d, i) -> fillScale(getSentiment(results[i])))
   .on 'mouseover', (d,i) ->
     tip.show(d, i)
     el = d3.select(this).transition().duration(10).style('fill-opacity', 0.3)
@@ -119,7 +123,7 @@ window.updateHexData = (newData) ->
   results[randomIndex] = newData
   svg.selectAll('.hexagon')
   .data(hexbin(points))
-  .style('fill', (d, i) -> fillScale(results[i].sentiment))
+  .style('fill', (d, i) -> fillScale(getSentiment(results[i])))
   .enter()
 
 # Socket.io
