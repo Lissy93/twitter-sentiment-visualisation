@@ -1,30 +1,44 @@
 .row
     .col.s12.m8.offset-m2.l6.offset-l3
         h2.grey-text.text-darken-2 Real-time analysis of social opinions
+
+        p.flow-text Tap one of the links below to get started
+        .card-panel.waves-effect.hoverable.mobile-home-card(onClick="document.location.href ='/now'")
+
+            i.material-icons.pull-left public
+            h3.bold.flow-text.inline World Sentiment Now
+            p.flow-text
+                | The world according to Twitter is currently
+                | <b> #{Math.round(averageSentiment * 100)}%</b> positive. View the real-time twitter sentiment feed
+                | <br>
+                | <a href='/now'> Find out more...</a>
+
+        .card-panel.waves-effect.hoverable.mobile-home-card(onClick="$('html, body').animate({scrollTop: $('#part-2').offset().top}, 1200);")
+            i.material-icons.pull-left blur_on
+            h3.bold.flow-text.inline Browse Data Charts
+            p.flow-text(onClick="$('html, body').animate({scrollTop: $('#part-2').offset().top}, 1200);")
+                | Interactive data visualisations with sentiment results calculated in real-time
+                | <br>
+                |  <a href='#part-2'> View now...</a>
+        .card-panel.waves-effect.hoverable.mobile-home-card(onClick="document.location.href ='/search'")
+            i.material-icons.pull-left search
+            h3.bold.flow-text.inline Custom Search
+            p.flow-text
+                | Generate the latest results from fresh Twitter data by entering a topic,
+                | person, location, brand or object
+                | <br>
+                |  <a href='/search'> Make a search now...</a>
+        .card-panel.waves-effect.hoverable.mobile-home-card(onClick="$('#aboutMore').slideDown('fast'); $('html, body').animate({scrollTop: $('#aboutMore').offset().top}, 1200);")
+            i.material-icons.pull-left info
+            h3.bold.flow-text.inline Learn More about this App
+            p.flow-text
+                | Want to know more about what Sentiment Sweep is, what it can be used for and how it works?
+                | <br>
+                | <a href='#aboutMore'>Learn more...</a>
+
         span.red-text
             | Your missing out on half the fun!
             | Sentiment Sweep is best viewed in a desktop browser, or on a larger device
-
-        p.flow-text Tap one of the links below to get started
-        .card-panel.waves-effect.hoverable(onClick="document.location.href ='/now'")
-            p.flow-text
-                | The world according to Twitter is currently
-                | <b> #{Math.round(averageSentiment * 100)}%</b> positive.
-                | <a href='/now'> Find out more...</a>
-
-        .card-panel.waves-effect.hoverable(onClick="$('html, body').animate({scrollTop: $('#part-2').offset().top}, 1200);")
-            p.flow-text(onClick="$('html, body').animate({scrollTop: $('#part-2').offset().top}, 1200);")
-                | Interactive data visualisations with sentiment results calculated from real-time.
-                |  <a href='#part-2'> View now...</a>
-        .card-panel.waves-effect.hoverable(onClick="document.location.href ='/search'")
-            p.flow-text
-                | Generate custom results from fresh Twitter data by entering a topic,
-                | person, location, brand or object.
-                |  <a href='/search'> Make a search now...</a>
-        .card-panel.waves-effect.hoverable(onClick="$('#aboutMore').slideDown('fast'); $('html, body').animate({scrollTop: $('#aboutMore').offset().top}, 1200);")
-            p.flow-text
-                | Want to know more about what Sentiment Sweep is, what it can be used for and how it works?
-                | <a href='#aboutMore'>Learn more...</a>
 
 
 .row(style='display: none')#aboutMore

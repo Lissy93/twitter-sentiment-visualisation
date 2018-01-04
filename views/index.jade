@@ -65,7 +65,7 @@ block content
         p.flow-text.grey-text.darken-4 Click one of the links below to generate the chart with the latest Twitter data
         .row(style='max-width: 1100px')
           each page in pages
-            .col.s12.m4.l3.xl1
+            .col.s12.m4.l3.xl1.home-tile
               a(href='/#{page.page}')
                 .card.home-card
                   .card-image.waves-effect.waves-block.waves-light
@@ -89,7 +89,7 @@ block scripts
     var results = !{JSON.stringify(data)}; // Get and parse Twitter results
     var average = !{JSON.stringify(averageSentiment)}; // Average sentiment
 
-  script(type = 'text/javascript', src = 'https://cdn.socket.io/socket.io-1.4.3.js')
+  script(type = 'text/javascript', src = '/bower_components/socketio/index.js')
   script(type = 'text/javascript', src = '/javascripts/charts/home-page.js')
   script(type = 'text/javascript', src = '/bower_components/d3/d3.min.js')
   script(type = 'text/javascript', src = '/bower_components/hexbin/index.js')

@@ -32,5 +32,33 @@ $(document).ready ->
     $('#scroll-1').css 'bottom', scrolledY * 0.3 + 10 + 'px'
     $('#hex-details').css 'bottom', scrolledY * 0.3 + 10 + 'px'
 
+  # Homepage fancy tile fading magic
   $(window).bind 'scroll', (e) -> parallaxScroll()
+  fade = (pageLoad) ->
+    windowTop = $(window).scrollTop()
+    windowBottom = windowTop + $(window).innerHeight()
+    min = 0.2
+    max = 1
+    threshold = 0.01
+    $('.home-tile, .mobile-home-card').each ->
+      objectHeight = $(this).outerHeight()
+      objectTop = $(this).offset().top
+      objectBottom = $(this).offset().top + objectHeight
+      if objectTop < windowTop
+        if objectBottom > windowTop
+          $(this).fadeTo 0, min + (max - min) * (objectBottom - windowTop) / objectHeight
+        else if $(this).css('opacity') >= min + threshold or pageLoad
+          $(this).fadeTo 0, min
+      else if objectBottom > windowBottom
+        if objectTop < windowBottom
+          $(this).fadeTo 0, min + (max - min) * (windowBottom - objectTop) / objectHeight
+        else if $(this).css('opacity') >= min + threshold or pageLoad
+          $(this).fadeTo 0, min
+      else if $(this).css('opacity') <= max - threshold or pageLoad
+        $(this).fadeTo 0, max
+  fade true
+
+  $(window).scroll ->
+    fade false
+    return
 
