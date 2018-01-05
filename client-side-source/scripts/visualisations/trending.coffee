@@ -1,3 +1,4 @@
+window.incompatibleWithMobile = true
 
 drawBubbleChart = (results) ->
   diameter = 450

@@ -16,6 +16,7 @@ $(document).ready () ->
   $("a[href^='https://']").attr("target","_blank");
 
   # Show toast telling the user they r stupid if on a mobile device
-  compatStr = "<p><span style='color: #F78181;'>Incompatible Device. </span><br>"
-  compatStr += "Use a PC or tablet to access full functionality</p>"
-  if $( window ).width() < 600 then Materialize.toast(compatStr, 4000)
+  if( window.incompatibleWithMobile)
+    compatStr = "<p><span style='color: #F78181;'>Incompatible Device. </span><br>"
+    compatStr += "Use a PC or tablet to access full functionality</p>"
+    if $( window ).width() < 600 then Materialize.toast(compatStr, 4000)

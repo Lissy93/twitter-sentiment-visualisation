@@ -8,7 +8,7 @@ fillScale = d3.scale.linear()
 getSentiment = (result) ->
   if !result then return 0
   else return result.sentiment
-    
+
 if homePage? and homePage
   scaleColors = ['rgb(15, 160, 255)', 'rgb(60, 230, 255)', 'rgb(60, 255, 181)'
     'rgb(70, 255, 99)', 'rgb(174, 255, 99)', 'rgb(217, 255, 99)'

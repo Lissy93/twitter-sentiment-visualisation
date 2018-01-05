@@ -37,9 +37,9 @@ $(document).ready ->
   fade = (pageLoad) ->
     windowTop = $(window).scrollTop()
     windowBottom = windowTop + $(window).innerHeight()
-    min = 0.2
+    min = 0.6
     max = 1
-    threshold = 0.01
+    threshold = 0.3
     $('.home-tile, .mobile-home-card').each ->
       objectHeight = $(this).outerHeight()
       objectTop = $(this).offset().top
