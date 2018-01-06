@@ -6,7 +6,7 @@
   "start_url": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#3E9BFF",
+  "background_color": "#FFFFFF",
   "theme_color": "#3E9BFF",
   "icons": [{
     "src": "./images/app_icons/mipmap-mdpi/ic_launcher.png",
