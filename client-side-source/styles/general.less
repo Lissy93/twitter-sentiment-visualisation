@@ -12,6 +12,10 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  @media only screen and (max-width:640px) {
+    height: auto !important;
+  }
+
 }
 
 main {
@@ -22,6 +26,9 @@ main {
 
 footer{
   padding: 0;
+  @media only screen and (max-width:640px) {
+    .col{ margin: 0.5em 0; }
+  }
 }
 
 .whitebg{

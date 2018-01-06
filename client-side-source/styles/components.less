@@ -6,18 +6,21 @@
  * Side Nav *
 \************/
 .side-nav{
-  padding-top: 65px;
+  padding-top: 1em;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: fixed;
 
-li{
-   height: 2.5em;
-  padding: 5px 0 0 5px;
+  ul.flex{ flex: 1; }
+  li{
+    height: 2.5em;
+    padding: 5px 0 0 5px;
     a{ line-height: 10px; height: 45px; }
- }
+  }
 
   .nav-fixed-bottom{
-    position: absolute;
-    bottom: 8em;
-    height: 8em;
+    height: 10em;
     width: 100%;
   }
 }
