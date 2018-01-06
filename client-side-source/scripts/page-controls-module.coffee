@@ -25,4 +25,9 @@ $(document).ready ->
   $('#btnHide').click () ->
     if vis == true then vis = hideDetails() else vis = showDetails()
 
+  # Social
+  $("#share").jsSocials({
+    shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "stumbleupon", "whatsapp"]
+  });
+
 module.exports.setMainPage = (val) -> mainPage = val

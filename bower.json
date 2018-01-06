@@ -48,6 +48,9 @@
     "Materialize": "materialize#~0.97.5",
     "jquery-autocompleter": "Autocompleter#~0.1.9",
     "bullet.js": "https://gist.githubusercontent.com/mbostock/4061961/raw/6eb742223b9795260ba62150196ed0ae4a461e39/bullet.js",
-    "socket.io": "^2.0.3"
+    "socket.io": "^2.0.3",
+    "socketio": "https://cdn.socket.io/socket.io-1.4.3.js",
+    "jssocials": "^1.5.0",
+    "components-font-awesome": "^4.7.0"
   }
 }

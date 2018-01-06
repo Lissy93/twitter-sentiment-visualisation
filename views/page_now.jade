@@ -138,7 +138,7 @@ block content
             h2 More Sentiment Data Visualisations
             p.flow-text.grey-text.darken-4 Click one of the links below to generate the chart with the latest Twitter data
             each page in pages
-                .col.s6.m4.l3
+                .col.s12.m4.l3.xl1
                     a(href='/#{page.page}')
                         .card.home-card
                             .card-image.waves-effect.waves-block.waves-light
@@ -147,12 +147,17 @@ block content
                                 span.card-title.grey-text.text-darken-4= page.title
 
         .row
-            .col.s10.offset-s1.m6
-                .card-panel
+            .col.s12.offset-m3.m6.l4.offset-l4.xl2.offset-xl5
+                .card-panel.more-info
                     h4.flow-text For more information....
-                    a.waves-effect.waves-teal.btn-flat(href='/') Visit the home page
+                    a.waves-effect.waves-teal.btn-flat.btn(href='/') Visit the home page
+                    a.waves-effect.waves-teal.btn-flat.btn(href='/Search') Make a new Search
+                    a.waves-effect.waves-teal.btn-flat.btn(href='/about') About Sentiment Sweep
+                    a.waves-effect.waves-teal.btn-flat.btn(href='https://github.com/Lissy93/twitter-sentiment-visualisation') Source Code + Documentation
+                    a(href='http://aliciasykes.com') © Alicia Sykes 2018
+                    a(href='https://github.com/Lissy93/twitter-sentiment-visualisation/blob/dev/docs/LICENSE.md') Open sourced under MIT
 
-
+                include ./component_social
 
     include ./footer
 
