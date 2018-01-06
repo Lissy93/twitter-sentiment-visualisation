@@ -1,4 +1,7 @@
-
+# Show Incompatible with Mobile Toast
+compatStr = "<p><span style='color: #F78181;'>Incompatible Device. </span><br>"
+compatStr += "Use a PC or tablet to access full functionality</p>"
+if $( window ).width() < 600 then Materialize.toast(compatStr, 4000)
 
 mainPage = 'word-cloud'
 pageControls = require '../page-controls-module.coffee'
