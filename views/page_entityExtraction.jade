@@ -18,14 +18,14 @@ block content
 
         .row
             div.col.s12.card-panel
-                p#chart
+                p#chart(style='overflow: auto;')
 
     div.container(style='width: 90%')
         for key in Object.keys(data)
             h4 #{key.charAt(0).toUpperCase()+key.split('_')[0].slice(1)}
             div.row
                 for entity in data[key]
-                    div.card.small.col.s2
+                    div.card.small.col.s12.m3.l2.xl1
                         div.card-image
                             img.better-img-card-position(src='#{entity.additional_information.image}')
                             span.card-title #{entity.normalized_text}

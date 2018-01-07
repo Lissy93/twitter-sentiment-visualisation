@@ -13,9 +13,9 @@ block content
                     #toneLoader.center-block(style='width: 10%'): include ./component_spinner
                     br
 
-                    .col.s4#toneResults1
-                    .col.s4#toneResults2
-                    .col.s4#toneResults3
+                    .col.s12.m4.xl2.offset-xl3#toneResults1
+                    .col.s12.m4.xl2#toneResults2
+                    .col.s12.m4.xl2#toneResults3
 
             .row
                 h2.flow-text Segment Chart
@@ -39,8 +39,8 @@ block content
 
 
         .row
-            h3 Make a new search
-            .col.s6.offset-3.card-panel
+            .col.s12.m8.offset-m2.l6.offset-l3.xl4.offset-xl4.card-panel
+                h3 Make a new search
                 .input-field
                     input#txtKeyword.validate(type='text', value ='#{searchTerm}')
                     label(for='txtKeyword') Enter a keyword, topic, brand, celebrity or search term
