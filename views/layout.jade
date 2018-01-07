@@ -14,7 +14,7 @@ html
     unless hideNav
       include ./navbar
     else
-      .hide-on-med-and-up.mobile-nav-trick: include ./navbar
+      .hide-on-med-and-up#mobile-nav: include ./navbar
     block content
     include ./footer_scripts
     block scripts

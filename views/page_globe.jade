@@ -18,10 +18,13 @@ block content
             br
             p!=summary_text.globeSentence
             br
-            a.outline-button(href='/text-tweets/#{summary_text.searchTerm}') Raw Tweets
-            a.outline-button(href='/word-cloud/#{summary_text.searchTerm}') Key Words
-            a.outline-button(href='/map/#{summary_text.searchTerm}') Heat Map
-            a.outline-button(href='/region-map/#{summary_text.searchTerm}') Region Map
+            a.outline-button(href='/') Home Page
+            a.outline-button(href='/now') World Now
+            a.outline-button(href='/search/#{summary_text.searchTerm}') New Search
+            a.outline-button(href='/about') About App
+
+            a.center.block.white-text.sml-margin(href='https://github.com/Lissy93/twitter-sentiment-visualisation/blob/dev/docs/LICENSE.md') Open sourced under MIT
+            a.center.block.white-text.sml-margin(href='http://aliciasykes.com') © Alicia Sykes 2018
 
     div#container
 
