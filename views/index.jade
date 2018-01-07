@@ -75,6 +75,24 @@ block content
                   .card-content
                     span.card-title.grey-text.text-darken-4= page.title
 
+        a#scroll-3.cursor-pointer.hide-mobile(style='display: none;')
+            p.center-align Scroll Down for More Information
+
+
+    div#more-info-section(style='display: none;')
+        .row
+            .col.s12.offset-m2.m8.l6.offset-l3.xl4.offset-xl4
+                .card-panel.more-info
+                    h4.flow-text For more information....
+                    a.waves-effect.waves-teal.btn-flat.btn(href='/now') The World Now
+                    a.waves-effect.waves-teal.btn-flat.btn(href='/Search') Make a new Search
+                    a.waves-effect.waves-teal.btn-flat.btn(href='/about') About Sentiment Sweep
+                    a.waves-effect.waves-teal.btn-flat.btn(href='https://github.com/Lissy93/twitter-sentiment-visualisation') Source Code + Documentation
+                    a(href='http://aliciasykes.com') © Alicia Sykes 2018
+                    a(href='https://github.com/Lissy93/twitter-sentiment-visualisation/blob/dev/docs/LICENSE.md') Open sourced under MIT
+                .card-panel
+                    include ./component_social
+
     footer
         .footer-copyright
             .row.text-center
@@ -83,7 +101,7 @@ block content
                 .col.s12.m4
                     a.small-grey(href='https://github.com/Lissy93/twitter-sentiment-visualisation') Source Code and Documentation
                 .col.s12.m4
-                    a.small-grey(href='http://aliciasykes.com') &copy; Alicia Sykes 2016
+                    a.small-grey(href='http://aliciasykes.com') &copy; Alicia Sykes 2018
 
 block scripts
   script.

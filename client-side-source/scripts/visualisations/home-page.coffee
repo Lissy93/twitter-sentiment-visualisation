@@ -58,7 +58,22 @@ $(document).ready ->
         $(this).fadeTo 0, max
   fade true
 
+  # Sharing stuff
+  $("#share").jsSocials({
+    shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "stumbleupon", "whatsapp"]
+  });
+
   $(window).scroll ->
+    threshold = 5
+    op = ($(document).height() - $(window).height() - $(window).scrollTop()) / threshold
+    if op <= 0
+      window.setTimeout( (()-> $('#scroll-3').slideDown(100)), 2000)
+
     fade false
     return
+
+  $('#scroll-3').click(()->
+    $(this).fadeOut('fast', (()-> $(this).remove() )) # Get rid of more info button
+    $('#more-info-section').slideDown(200, ()-> $('html, body').animate { scrollTop: $('#more-info-section').offset().top }, 850)
+  )
 
