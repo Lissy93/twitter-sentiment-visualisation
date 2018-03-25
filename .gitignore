@@ -20,5 +20,8 @@ models/*.js
 utils/*.js
 config/*.js
 routes/*.js
-public/javascripts
-public/stylesheets
+public
+
+# Weird OS files
+.DS_Store
+*/**/.DS_Store
