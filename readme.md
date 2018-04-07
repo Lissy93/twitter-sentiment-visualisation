@@ -31,7 +31,7 @@ factors such as geographical location, time of day, other topics...
 It has a wide range of uses, from analysing the effectiveness of a marketing campaign,
 to comparing two competing topics.
 
-Read more about the application [here](docs/introduction.md).
+Read more about the application [here](docs/project-introduction.md).
 
 The application is fully documented, which can be viewed [here](docs/readme.md)
 
@@ -52,7 +52,7 @@ Below is a sample of the 12 key screens.
 
 
 ## Modules
-Several open sauce node modules have been developed and published on npm as part of this project
+Several open source node modules have been developed and published on npm as part of this project
 - [sentiment-analysis] - useses the AFINN-111 word list to calculate overall sentiment of a sentence
 - [fetch-tweets] - fetches tweets from Twitter based on topic, location, timeframe or combination
 - [stream-tweets] - streams live Tweets in real-time
