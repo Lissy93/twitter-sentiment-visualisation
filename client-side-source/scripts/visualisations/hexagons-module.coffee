@@ -52,8 +52,8 @@ renderHexChart = () ->
   if hexPage? then if hexPage then height = height and width = width -= 10
   else if homePage? then if homePage then height = height * 0.8 and width += 20
 
-  MapColumns  = Math.round(Math.sqrt(results.length*1.15))
-  MapRows     =  Math.round(Math.sqrt(results.length*0.8))
+  MapColumns  = Math.round(Math.sqrt(results.length*1.5))
+  MapRows     =  Math.round(Math.sqrt(results.length*0.85))
 
   #The maximum radius the hexagons can have to still fit the screen
   hexRadius = d3.min([
