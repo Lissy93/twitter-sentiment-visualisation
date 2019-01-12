@@ -57,8 +57,8 @@ renderHexChart = () ->
 
   #The maximum radius the hexagons can have to still fit the screen
   hexRadius = d3.min([
-    width / ((MapColumns + 0.5) * Math.sqrt(3))
-    height / ((MapRows + 1 / 3) * 1.5)
+    width / (MapColumns * 1.5)
+    height / (MapRows * 1.2)
   ])
 
   #Set the new height and width of the SVG
