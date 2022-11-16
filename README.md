@@ -75,7 +75,7 @@ View full tech stack at: [stackshare.io/Lissy93/sentiment-sweep](http://stacksha
 
 The backend is primarily written in Node.js, with web-sockets facilitating the real-time communication with the frontend, and a data cache stored in MongoDB. Pages are rendered isomorphically, with data visualizations written using D3.js. Social data is fetched from Twitter, compute happens locally, and a few external APIs were used to provide additional context in the form of AI. Views are written in Pug, styles in Less, scripts in CoffeeScript and everything is compiled via a Gulp script.
 
-The project and app are still functional, however 5 years on, this would not be an ideal tech stack. There are now better technologies available that would enable greater performance, less code, easier project management and improved developer experience. If I was to re-write this project in 2022, a better tech stack would likely be Go for the backend, Svelte + Svelte Kit for the frontend and TypeScript for the code, styled-components for styling and Rollup for putting it all together.
+The project and app are still functional, however 5 years on, this would not be an ideal tech stack. There are now better technologies available that would enable greater performance, less code, easier project management and improved developer experience. If I was to re-write this project in 2022, a better tech stack would likely be Go for the backend, Svelte + Svelte Kit for the frontend and TypeScript for the code, with Pixi.js for the interactive content, styled-components for styling and Rollup for putting it all together.
 
 #### Awards
 
@@ -230,21 +230,23 @@ Each is published as a fully tested, documented and MIT-licensed NPM module for 
 The MIT License (MIT)
 Copyright (c) Alicia Sykes <alicia@omg.com> 
 
-Permission is hereby granted, free of charge, to any person obtaining a copy 
-of this software and associated documentation files (the "Software"), to deal 
-in the Software without restriction, including without limitation the rights 
-to use, copy, modify, merge, publish, distribute, sub-license, and/or sell 
-copies of the Software, and to permit persons to whom the Software is furnished 
-to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation files
+(the "Software"), to deal in the Software without restriction,
+including without limitation the rights to use, copy, modify, merge,
+publish, distribute, sub-license, and/or sell copies of the Software,
+and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included install 
-copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be
+included install copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
-INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANT ABILITY, FITNESS FOR A
-PARTICULAR PURPOSE AND NON INFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANT ABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
 
