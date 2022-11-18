@@ -14,12 +14,12 @@
 
 - [About](#about)
 - [Demo](#demo)
-- [Project Info](#project-info)
 - [Build Instructions](#building)
    - [Developing](#developing)
    - [Deploying](#deploying)
    - [Testing](#testing)
 - [Modules](#modules)
+- [Project Info](#project-info)
 - [Documentation](#documentation)
 - [License](#license)
 
@@ -44,51 +44,6 @@ A live demo is available at: [http://sentiment-sweep.com](http://sentiment-sweep
 This project was initially developed in 2015.
 Some of the technologies used are a little out-dated now, although the app still works great.
 A few of the external services that were used to provide additional context (like HP Idol on Demand, and IBM Watson, and certain GCP features) have been discontinued, meaning certain features may now be unavailible on the live instance.
-
-#### Status
-
-[![Build Status](https://travis-ci.org/Lissy93/twitter-sentiment-visualisation.svg?branch=dev)](https://travis-ci.org/Lissy93/twitter-sentiment-visualisation)
-[![View on Snyk](https://snyk.io/test/github/lissy93/twitter-sentiment-visualisation/badge.svg)](https://snyk.io/test/github/Lissy93/Twitter-Sentiment-Visualisation)
-[![Code Climate](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation/badges/gpa.svg)](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation)
-![Size](https://img.shields.io/bundlephobia/min/sentiment-analysis)
-[![Website](https://img.shields.io/website?down_color=red&down_message=Down&up_color=green&up_message=Online&url=https%3A%2F%2Fsentiment-sweep.com%2F)](https://sentiment-sweep.com/)
-
----
-
-## Demo
-
-A live demo of the application has been deployed to: [http://sentiment-sweep.com](http://sentiment-sweep.com)
-
-View [Screenshots](/docs/screenshots#readme) of each screen in the docs.
-
----
-
-## Project Info
-
-#### Project Planning
-
-A set of [User Stories with Acceptance Criteria] and [Complexity Estimates](docs/story-points.md) were drawn up outlining what features the finished solution should have. These were expaned upon further with wireframes in the [Methodology](https://github.com/Lissy93/twitter-sentiment-visualisation/blob/dev/docs/methodology-frontend.md) section.
-
-#### Technologies
-
-View full tech stack at: [stackshare.io/Lissy93/sentiment-sweep](http://stackshare.io/Lissy93/sentiment-sweep)
-
-The backend is primarily written in Node.js, with web-sockets facilitating the real-time communication with the frontend, and a data cache stored in MongoDB. Pages are rendered isomorphically, with data visualizations written using D3.js. Social data is fetched from Twitter, compute happens locally, and a few external APIs were used to provide additional context in the form of AI. Views are written in Pug, styles in Less, scripts in CoffeeScript and everything is compiled via a Gulp script.
-
-The project and app are still functional, however 5 years on, this would not be an ideal tech stack. There are now better technologies available that would enable greater performance, less code, easier project management and improved developer experience. If I was to re-write this project in 2022, a better tech stack would likely be Go for the backend, Svelte + Svelte Kit for the frontend and TypeScript for the code, with Pixi.js for the interactive content, styled-components for styling and Rollup for putting it all together.
-
-#### Awards
-
-<a href="https://notes.aliciasykes.com/p/0s5s3uOtKj"><img align="left" width="240" src="https://i.ibb.co/RzcxQGK/profile1.jpg" alt="Alicia Sykes - StartHack Winner" /></a>
-<a href="https://oxon.bcs.org/2016/06/27/annual-student-prizes-2016/"><img align="left" width="315" src="https://oxon.bcs.org/wp-content/uploads/2016/06/IMG_0681-768x576.jpg" alt="Alicia Sykes - Oxford Winner" /></a>
-
-The first stages of the project were developed at StartHack Switzerland 2014, where it won first-place. 
-
-It was then further expanded upon, and used as part of my undergraduate thesis, where it won the Oxford BCS best Dissertation Award.
-
-<br><br><br>
-
-The University Project recieved 96%, so feel free to use it as an example - here's the [Final Report](https://www.docdroid.net/x8srrAf/final-report-with-appendix-asykes-12011471-pdf) in PDF format (warning - it's 300 pages!). And the deck used for the technical presentation, us available at: [presentation.sentiment-sweep.com](https://presentation.sentiment-sweep.com/#/)
 
 ---
 
@@ -193,6 +148,49 @@ Each is published as a fully tested, documented and MIT-licensed NPM module for 
 
 ---
 
+## Project Info
+
+#### Project Planning
+
+A set of [User Stories with Acceptance Criteria] and [Complexity Estimates](docs/story-points.md) were drawn up outlining what features the finished solution should have. These were expaned upon further with wireframes in the [Methodology](https://github.com/Lissy93/twitter-sentiment-visualisation/blob/dev/docs/methodology-frontend.md) section.
+
+#### Technologies
+
+View full tech stack at: [stackshare.io/Lissy93/sentiment-sweep](http://stackshare.io/Lissy93/sentiment-sweep)
+
+The backend is primarily written in Node.js, with web-sockets facilitating the real-time communication with the frontend, and a data cache stored in MongoDB. Pages are rendered isomorphically, with data visualizations written using D3.js. Social data is fetched from Twitter, compute happens locally, and a few external APIs were used to provide additional context in the form of AI. Views are written in Pug, styles in Less, scripts in CoffeeScript and everything is compiled via a Gulp script.
+
+The project and app are still functional, however 5 years on, this would not be an ideal tech stack. There are now better technologies available that would enable greater performance, less code, easier project management and improved developer experience. If I was to re-write this project in 2022, a better tech stack would likely be Go for the backend, Svelte + Svelte Kit for the frontend and TypeScript for the code, with Pixi.js for the interactive content, styled-components for styling and Rollup for putting it all together.
+
+#### Status
+
+[![Build Status](https://travis-ci.org/Lissy93/twitter-sentiment-visualisation.svg?branch=dev)](https://travis-ci.org/Lissy93/twitter-sentiment-visualisation)
+[![View on Snyk](https://snyk.io/test/github/lissy93/twitter-sentiment-visualisation/badge.svg)](https://snyk.io/test/github/Lissy93/Twitter-Sentiment-Visualisation)
+[![Code Climate](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation/badges/gpa.svg)](https://codeclimate.com/github/Lissy93/twitter-sentiment-visualisation)
+![Size](https://img.shields.io/bundlephobia/min/sentiment-analysis)
+[![Website](https://img.shields.io/website?down_color=red&down_message=Down&up_color=green&up_message=Online&url=https%3A%2F%2Fsentiment-sweep.com%2F)](https://sentiment-sweep.com/)
+
+#### Demo
+
+A live demo of the application has been deployed to: [http://sentiment-sweep.com](http://sentiment-sweep.com)
+
+View [Screenshots](/docs/screenshots#readme) of each screen in the docs.
+
+#### Awards
+
+<a href="https://notes.aliciasykes.com/p/0s5s3uOtKj"><img align="left" width="240" src="https://i.ibb.co/RzcxQGK/profile1.jpg" alt="Alicia Sykes - StartHack Winner" /></a>
+<a href="https://oxon.bcs.org/2016/06/27/annual-student-prizes-2016/"><img align="left" width="315" src="https://oxon.bcs.org/wp-content/uploads/2016/06/IMG_0681-768x576.jpg" alt="Alicia Sykes - Oxford Winner" /></a>
+
+The first stages of the project were developed at StartHack Switzerland 2014, where it won first-place. 
+
+It was then further expanded upon, and used as part of my undergraduate thesis, where it won the Oxford BCS best Dissertation Award.
+
+<br><br><br>
+
+The University Project recieved 96%, so feel free to use it as an example - here's the [Final Report](https://www.docdroid.net/x8srrAf/final-report-with-appendix-asykes-12011471-pdf) in PDF format (warning - it's 300 pages!). And the deck used for the technical presentation, us available at: [presentation.sentiment-sweep.com](https://presentation.sentiment-sweep.com/#/)
+
+---
+
 ## Documentation
 
 - **Development Documentation**
@@ -222,9 +220,6 @@ Each is published as a fully tested, documented and MIT-licensed NPM module for 
 [twitter-sentiment-visualisation](https://github.com/Lissy93/twitter-sentiment-visualisation) was developed by [Alicia Sykes](https://aliciasykes.com), licensed under [MIT](https://git.io/Jew4i) © 2014 - 2022.
 
 <sup>For information, see [TLDR Legal > MIT](https://tldrlegal.com/license/mit-license)</sup>
-
-<a href="https://aliciasykes.com"><img width="200" align="right" src="https://i.ibb.co/SncFTYK/alicia-sykes-139.jpg" /></a>
-
 
 ```
 The MIT License (MIT)
