@@ -176,6 +176,8 @@ A live demo of the application has been deployed to: [http://sentiment-sweep.com
 
 View [Screenshots](/docs/screenshots#readme) of each screen in the docs.
 
+[![Screenshots](https://i.ibb.co/873YkwP/sentiemnt-sweep-screenshots.png)](/docs/screenshots#readme)
+
 #### Awards
 
 <a href="https://notes.aliciasykes.com/p/0s5s3uOtKj"><img align="left" width="240" src="https://i.ibb.co/RzcxQGK/profile1.jpg" alt="Alicia Sykes - StartHack Winner" /></a>
