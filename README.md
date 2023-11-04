@@ -1,13 +1,21 @@
+
 <h1 align="center">🌍 Twitter Sentiment Visualisations</h1>
 <p align="center">
  <i>Visualising sentiment trends from real-time social media data</i><br>
- <b><a href="https://sentiment-sweep.com/">sentiment-sweep.com</a></b>
+ <b><a href="https://web.archive.org/web/20220810055104/https://sentiment-sweep.com/">sentiment-sweep.com</a></b>
 </p>
 <p align="center">
-  <a href="https://sentiment-sweep.com/about">
+  <a href="/docs/screenshots#readme">
     <img width="800" src="https://i.ibb.co/W0f10Vv/sentiment-sweep-grid.png" />
   </a>
 </p>
+
+> [!IMPORTANT]
+> As of Feb 2023, [X no longer provides free API](https://twitter.com/XDevelopers/status/1621026986784337922). This makes it impractical to continue running this app afforably or at scale.<br><br>
+> Further to this, now that general purpose AI models are faster, more availible and less expensive than ever before, the static analysis approach (used here) no longer makes sense, given that AI sentiment analysis will yeild much more accurate and insightful results.<br><br>
+> For these reasons, the public instance of Sentiment Sweep is no longer availible, and this project will cease to be maintained going forwards.<br><br>
+> We had a good run! The Sentiment Sweep website ran for nearly a decade, saw upwards of 1 million sessions, and won 2 awards. It was a great learning experience, and a fun little project. Thank you everybody who used, supported and visited the website! 💖
+
 
 ### Contents
 
@@ -37,7 +45,7 @@ The aim of the app is to allow trends to be found between sentiment and other fa
 It has a range of uses, like analysing the effectiveness of a marketing campaign, comparing competing products, viewing local trends, gauging public opinion by location, determining best time of day to advertise to certain audiences, etc.
 
 #### Where
-A live demo is available at: [http://sentiment-sweep.com](http://sentiment-sweep.com)
+A live demo is available at: [http://sentiment-sweep.com](https://web.archive.org/web/20220810055104/https://sentiment-sweep.com/) (archived)
 
 #### When
 This project was initially developed in 2015.
@@ -188,7 +196,7 @@ It was then further expanded upon, and used as part of my undergraduate thesis, 
 
 <br><br><br>
 
-The University Project recieved 96%, so feel free to use it as an example - here's the [Final Report](https://www.docdroid.net/x8srrAf/final-report-with-appendix-asykes-12011471-pdf) in PDF format (warning - it's 300 pages!). And the deck used for the technical presentation, us available at: [presentation.sentiment-sweep.com](https://presentation.sentiment-sweep.com/#/)
+The University Project recieved 96%, so feel free to use it as an example - here's the [Final Report](https://www.docdroid.net/x8srrAf/final-report-with-appendix-asykes-12011471-pdf) in PDF format (warning - it's 300 pages!). And the deck used for the technical presentation, us available at: [presentation.sentiment-sweep.com](https://web.archive.org/web/20231104114344/https://presentation.sentiment-sweep.com/#/)
 
 ---
 
@@ -257,7 +265,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   <sup>Thanks for visiting :)</sup>
 </p>
 
-<!-- Dinosaur -->
+<!-- Dinosaurs are Awesome -->
 <!-- 
                         . - ~ ~ ~ - .
       ..     _      .-~               ~-.
