@@ -1,4 +1,3 @@
-
 <h1 align="center">🌍 Twitter Sentiment Visualisations</h1>
 <p align="center">
  <i>Visualising sentiment trends from real-time social media data</i><br>
